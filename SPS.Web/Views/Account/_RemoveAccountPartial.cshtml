@@ -1,0 +1,34 @@
+﻿@model ICollection<Microsoft.AspNet.Identity.UserLoginInfo>
+
+@if (Model.Count > 0)
+{
+    <h4>Logons registrados</h4>
+    <table class="table">
+        <tbody>
+            @foreach (var account in Model)
+            {
+                <tr>
+                    <td>@account.LoginProvider</td>
+                    <td>
+                        @if (ViewBag.ShowRemoveButton)
+                        {
+                            using (Html.BeginForm("Disassociate", "Account"))
+                            {
+                            @Html.AntiForgeryToken()
+                            <div>
+                                @Html.Hidden("loginProvider", account.LoginProvider)
+                                @Html.Hidden("providerKey", account.ProviderKey)
+                                <input type="submit" class="btn btn-default" value="Remover" title="Remover este logon de @account.LoginProvider de sua conta" />
+                            </div>
+                            }
+                        }
+                        else
+                        {
+                            @: &nbsp;
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

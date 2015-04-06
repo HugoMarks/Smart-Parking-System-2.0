@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="file:///C:/PROGRAM FILES (X86)/MICROSOFT VISUAL STUDIO 12.0/COMMON7/IDE/EXTENSIONS/MICROSOFT/ARCHITECTURE TOOLS/EXTENSIBILITY/Logging/CodeGenLog.xslt"?>
+<Log xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeGen.RE.Log" Label="Code Generation/Text Transformation Log">
+  <MessageClass Name="Message" Label="Message" Option="Show informational messages" />
+  <MessageClass Name="Warning" Label="Warning" Option="Show warnings" />
+  <MessageClass Name="Error" Label="Error" Option="Show errors" />
+  <MessageClass Name="Property" Label="Property" Option="Show metadata" />
+  <MessageClass Name="Diagnostic" Label="Message" Option="Show diagnostic messages" />
+  <Message Timestamp="2015-04-04T11:49:39" Importance="High" Text="Code generation or text transformation started." />
+  <Message Timestamp="2015-04-04T11:49:39" Importance="Diagnostic" Text="Name = InterfaceTemplate" />
+  <Message Timestamp="2015-04-04T11:49:39" Importance="Diagnostic" Text="Overwrite = True" />
+  <Message Timestamp="2015-04-04T11:49:39" Importance="Diagnostic" Text="ProjectPath = ..\SPS.Model\SPS.Model.csproj" />
+  <Message Timestamp="2015-04-04T11:49:39" Importance="Diagnostic" Text="TargetDirectory = {PackageStructure}" />
+  <Message Timestamp="2015-04-04T11:49:39" Importance="Diagnostic" Text="TargetName = {Name}" />
+  <Message Timestamp="2015-04-04T11:49:39" Importance="Diagnostic" Text="TemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 12.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\InterfaceTemplate.t4" />
+  <Message Timestamp="2015-04-04T11:49:39" Importance="Diagnostic" Text="ResolvedTemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 12.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\InterfaceTemplate.t4" />
+  <Message Timestamp="2015-04-04T11:49:39" Importance="Medium" Text="SPS.Architeture's Text Template Binding: 'InterfaceTemplate' will apply InterfaceTemplate.t4 to: 'SPS.Architeture::IBusiness' -  (Interface) " />
+  <Message Timestamp="2015-04-04T11:49:40" Importance="Medium" Text="'SPS.Architeture::IBusiness' -  (Interface) : success (file created) - C:\Users\André\Documents\Visual Studio 2013\Projects\SPS\SPS.Model\IBusiness.cs" />
+  <Message Timestamp="2015-04-04T11:49:40" Importance="High" Text="Code generation complete. Errors: 0. Warnings: 0." />
+</Log>

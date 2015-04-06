@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>Microsoft.Owin.Security.Facebook</name>
+  </assembly>
+  <members>
+    <member name="T:Microsoft.Owin.Security.Facebook.FacebookAuthenticatedContext">
+      <summary>Fornece acesso às informações autenticadas do Facebook.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Facebook.FacebookAuthenticatedContext.#ctor(Microsoft.Owin.IOwinContext,Newtonsoft.Json.Linq.JObject,System.String,System.String)"></member>
+    <member name="P:Microsoft.Owin.Security.Facebook.FacebookAuthenticatedContext.AccessToken">
+      <summary>Obtém ou define o token de acesso.</summary>
+      <returns>O token de acesso.</returns>
+    </member>
+    <member name="P:Microsoft.Owin.Security.Facebook.FacebookAuthenticatedContext.Email">
+      <summary>Obtém ou define o email usado para acessar o Facebook.</summary>
+      <returns>O email usado para acessar o Facebook.</returns>
+    </member>
+    <member name="P:Microsoft.Owin.Security.Facebook.FacebookAuthenticatedContext.ExpiresIn"></member>
+    <member name="P:Microsoft.Owin.Security.Facebook.FacebookAuthenticatedContext.Id">
+      <summary>Obtém ou define o identificador associado ao contexto.</summary>
+      <returns>O identificador associado ao contexto.</returns>
+    </member>
+    <member name="P:Microsoft.Owin.Security.Facebook.FacebookAuthenticatedContext.Identity">
+      <summary>Obtém ou define a identidade desta instância.</summary>
+      <returns>A identidade desta instância.</returns>
+    </member>
+    <member name="P:Microsoft.Owin.Security.Facebook.FacebookAuthenticatedContext.Link">
+      <summary>Obtém ou define o link para <see cref="T:Microsoft.Owin.Security.Facebook.FacebookAuthenticatedContext" />.</summary>
+      <returns>O link para <see cref="T:Microsoft.Owin.Security.Facebook.FacebookAuthenticatedContext" />.</returns>
+    </member>
+    <member name="P:Microsoft.Owin.Security.Facebook.FacebookAuthenticatedContext.Name">
+      <summary>Obtém ou define o nome associado ao contexto.</summary>
+      <returns>O nome associado ao contexto.</returns>
+    </member>
+    <member name="P:Microsoft.Owin.Security.Facebook.FacebookAuthenticatedContext.Properties"></member>
+    <member name="P:Microsoft.Owin.Security.Facebook.FacebookAuthenticatedContext.User">
+      <summary>Obtém ou define o usuário que acessa a autenticação.</summary>
+      <returns>O usuário que acessa a autenticação.</returns>
+    </member>
+    <member name="P:Microsoft.Owin.Security.Facebook.FacebookAuthenticatedContext.UserName"></member>
+    <member name="T:Microsoft.Owin.Security.Facebook.FacebookAuthenticationMiddleware">
+      <summary>Representa o middleware de autenticação do Facebook.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Facebook.FacebookAuthenticationMiddleware.#ctor(Microsoft.Owin.OwinMiddleware,Owin.IAppBuilder,Microsoft.Owin.Security.Facebook.FacebookAuthenticationOptions)">
+      <summary>Inicia uma nova instância da classe <see cref="T:Microsoft.Owin.Security.Facebook.FacebookAuthenticationMiddleware" />.</summary>
+      <param name="next">Avança para o próximo aplicativo.</param>
+      <param name="app">O aplicativo.</param>
+      <param name="options">As opções para autenticar o Facebook.</param>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Facebook.FacebookAuthenticationMiddleware.CreateHandler">
+      <summary>Cria um manipulador de autenticação.</summary>
+      <returns>Um manipulador de autenticação.</returns>
+    </member>
+    <member name="T:Microsoft.Owin.Security.Facebook.FacebookAuthenticationOptions">
+      <summary>Fornece opções para autenticação do Facebook.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Facebook.FacebookAuthenticationOptions.#ctor">
+      <summary>Inicia uma nova instância da classe <see cref="T:Microsoft.Owin.Security.Facebook.FacebookAuthenticationOptions" />.</summary>
+    </member>
+    <member name="P:Microsoft.Owin.Security.Facebook.FacebookAuthenticationOptions.AppId">
+      <summary>Obtém ou define o identificador do aplicativo.</summary>
+      <returns>O identificador de aplicativo.</returns>
+    </member>
+    <member name="P:Microsoft.Owin.Security.Facebook.FacebookAuthenticationOptions.AppSecret">
+      <summary>Obtém ou define o segredo do aplicativo.</summary>
+      <returns>O segredo do aplicativo.</returns>
+    </member>
+    <member name="P:Microsoft.Owin.Security.Facebook.FacebookAuthenticationOptions.BackchannelCertificateValidator"></member>
+    <member name="P:Microsoft.Owin.Security.Facebook.FacebookAuthenticationOptions.BackchannelHttpHandler"></member>
+    <member name="P:Microsoft.Owin.Security.Facebook.FacebookAuthenticationOptions.BackchannelTimeout"></member>
+    <member name="P:Microsoft.Owin.Security.Facebook.FacebookAuthenticationOptions.CallbackPath"></member>
+    <member name="P:Microsoft.Owin.Security.Facebook.FacebookAuthenticationOptions.Caption">
+      <summary>Obtém ou define a legenda de texto que é exibida no aplicativo.</summary>
+      <returns>A legenda de texto que é exibida no aplicativo.</returns>
+    </member>
+    <member name="P:Microsoft.Owin.Security.Facebook.FacebookAuthenticationOptions.Provider">
+      <summary>Obtém ou define o provedor de autenticação.</summary>
+      <returns>O provedor de autenticação.</returns>
+    </member>
+    <member name="P:Microsoft.Owin.Security.Facebook.FacebookAuthenticationOptions.Scope">
+      <summary>Obtém ou define o escopo associado à autenticação.</summary>
+      <returns>O escopo associado à autenticação.</returns>
+    </member>
+    <member name="P:Microsoft.Owin.Security.Facebook.FacebookAuthenticationOptions.SignInAsAuthenticationType">
+      <summary>Obtém ou define uma cadeia de caracteres que representa o tipo de autenticação para entrada.</summary>
+      <returns>Uma cadeia de caracteres que representa o tipo de autenticação para entrada.</returns>
+    </member>
+    <member name="P:Microsoft.Owin.Security.Facebook.FacebookAuthenticationOptions.StateDataFormat"></member>
+    <member name="T:Microsoft.Owin.Security.Facebook.FacebookAuthenticationProvider">
+      <summary>Representa um provedor de autenticação do Facebook.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Facebook.FacebookAuthenticationProvider.#ctor">
+      <summary>Inicia uma nova instância da classe <see cref="T:Microsoft.Owin.Security.Facebook.FacebookAuthenticationProvider" />.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Facebook.FacebookAuthenticationProvider.Authenticated(Microsoft.Owin.Security.Facebook.FacebookAuthenticatedContext)">
+      <summary>Indica o Facebook autenticado.</summary>
+      <returns>A tarefa que conclui a autenticação.</returns>
+      <param name="context">O contexto.</param>
+    </member>
+    <member name="P:Microsoft.Owin.Security.Facebook.FacebookAuthenticationProvider.OnAuthenticated">
+      <summary>Obtém ou define o evento OnAuthenticated.</summary>
+      <returns>O evento OnAuthenticated.</returns>
+    </member>
+    <member name="P:Microsoft.Owin.Security.Facebook.FacebookAuthenticationProvider.OnReturnEndpoint">
+      <summary>Obtém ou define o evento OnReturnEndpoint.</summary>
+      <returns>O evento OnReturnEndpoint.</returns>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Facebook.FacebookAuthenticationProvider.ReturnEndpoint(Microsoft.Owin.Security.Facebook.FacebookReturnEndpointContext)">
+      <summary>Retorna o ponto de extremidade do Facebook.</summary>
+      <returns>A tarefa que conclui o processo de retorno do ponto de extremidade.</returns>
+      <param name="context">O contexto.</param>
+    </member>
+    <member name="T:Microsoft.Owin.Security.Facebook.FacebookReturnEndpointContext">
+      <summary>Representa o contexto do ponto de extremidade de retorno para propriedades do Facebook.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Facebook.FacebookReturnEndpointContext.#ctor(Microsoft.Owin.IOwinContext,Microsoft.Owin.Security.AuthenticationTicket)"></member>
+    <member name="T:Microsoft.Owin.Security.Facebook.IFacebookAuthenticationProvider">
+      <summary>Fornece um contexto do Facebook para autenticação.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Facebook.IFacebookAuthenticationProvider.Authenticated(Microsoft.Owin.Security.Facebook.FacebookAuthenticatedContext)">
+      <summary>Identifica o contexto autenticado.</summary>
+      <returns>O contexto autenticado.</returns>
+      <param name="context">O contexto a autenticar.</param>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Facebook.IFacebookAuthenticationProvider.ReturnEndpoint(Microsoft.Owin.Security.Facebook.FacebookReturnEndpointContext)">
+      <summary>Retorna o contexto do ponto de extremidade do Facebook.</summary>
+      <returns>O contexto do ponto de extremidade do Facebook.</returns>
+      <param name="context">O contexto do ponto de extremidade.</param>
+    </member>
+    <member name="T:Owin.FacebookAuthenticationExtensions">
+      <summary>Fornece métodos de extensão para autenticação do Facebook.</summary>
+    </member>
+    <member name="M:Owin.FacebookAuthenticationExtensions.UseFacebookAuthentication(Owin.IAppBuilder,Microsoft.Owin.Security.Facebook.FacebookAuthenticationOptions)">
+      <summary>Gera uma autenticação do Facebook para o aplicativo OWIN.</summary>
+      <returns>O <see cref="T:Owin.IAppBuilder" /> que gera a autenticação.</returns>
+      <param name="app">O construtor do aplicativo.</param>
+      <param name="options">As opções de autenticação do Facebook.</param>
+    </member>
+    <member name="M:Owin.FacebookAuthenticationExtensions.UseFacebookAuthentication(Owin.IAppBuilder,System.String,System.String)">
+      <summary>Gera uma autenticação do Facebook para o aplicativo OWIN.</summary>
+      <returns>O <see cref="T:Owin.IAppBuilder" /> que gera a autenticação.</returns>
+      <param name="app">O construtor do aplicativo.</param>
+      <param name="appId">A ID do aplicativo.</param>
+      <param name="appSecret">O segredo do aplicativo.</param>
+    </member>
+  </members>
+</doc>

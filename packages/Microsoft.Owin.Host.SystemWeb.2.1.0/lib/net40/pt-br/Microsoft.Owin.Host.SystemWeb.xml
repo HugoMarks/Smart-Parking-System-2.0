@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>Microsoft.Owin.Host.SystemWeb</name>
+  </assembly>
+  <members>
+    <member name="T:Microsoft.Owin.Host.SystemWeb.AuthenticationResult">
+      <summary>Representa o resultado da autenticação OWIN.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Host.SystemWeb.AuthenticationResult.#ctor(System.Security.Principal.IIdentity,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.Object})">
+      <summary>Inicia uma nova instância da classe <see cref="T:Microsoft.Owin.Host.SystemWeb.AuthenticationResult" />.</summary>
+      <param name="identity">A identidade do resultado.</param>
+      <param name="extra">A autenticação extra.</param>
+      <param name="properties">As propriedades do resultado da autenticação.</param>
+    </member>
+    <member name="P:Microsoft.Owin.Host.SystemWeb.AuthenticationResult.Extra">
+      <summary>Obtém a autenticação extra.</summary>
+      <returns>A autenticação extra.</returns>
+    </member>
+    <member name="P:Microsoft.Owin.Host.SystemWeb.AuthenticationResult.Identity">
+      <summary>Obtém a identidade do resultado.</summary>
+      <returns>A identidade do resultado.</returns>
+    </member>
+    <member name="P:Microsoft.Owin.Host.SystemWeb.AuthenticationResult.Properties">
+      <summary>Obtém as propriedades do resultado da autenticação.</summary>
+      <returns>As propriedades do resultado da autenticação.</returns>
+    </member>
+    <member name="T:Microsoft.Owin.Host.SystemWeb.OwinHttpHandler">
+      <summary>Processa solicitações a partir da <see cref="T:System.Web" /> com solicitações OWIN.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Host.SystemWeb.OwinHttpHandler.#ctor">
+      <summary>Inicia uma nova instância da classe <see cref="T:Microsoft.Owin.Host.SystemWeb.OwinHttpHandler" />.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Host.SystemWeb.OwinHttpHandler.BeginProcessRequest(System.Web.HttpContextBase,System.AsyncCallback,System.Object)">
+      <summary>Inicia um chamado assíncrono para o manipulador HTTP.</summary>
+      <returns>Um <see cref="T:System.IAsyncResult" /> que contém informações sobre o status do processo.</returns>
+      <param name="httpContext">Um objeto <see cref="T:System.Web.HttpContextBase" /> que fornece referência para objetos do servidor intrínsecos (por exemplo, Solicitação, Resposta, Sessão e Servidor) usados para solicitações de servidor HTTP.</param>
+      <param name="callback">O <see cref="T:System.AsyncCallback" /> a chamar quando o chamado de método assíncrono é concluído.Se o retorno de chamada for nulo, o delegado não é chamado.</param>
+      <param name="extraData">Qualquer dado extra necessário para processar a solicitação.</param>
+    </member>
+    <member name="M:Microsoft.Owin.Host.SystemWeb.OwinHttpHandler.EndProcessRequest(System.IAsyncResult)">
+      <summary>Fornece um método Final de processo assíncrono quando o processo termina.</summary>
+      <param name="result">Um <see cref="T:System.IAsyncResult" /> que contém informações sobre o status do processo.</param>
+    </member>
+    <member name="P:Microsoft.Owin.Host.SystemWeb.OwinHttpHandler.IsReusable">
+      <summary>Obtém um valor que indica se outra solicitação pode usar a instância <see cref="T:System.Web.IHttpHandler" />.</summary>
+      <returns>Retorna verdadeiro.</returns>
+    </member>
+    <member name="M:Microsoft.Owin.Host.SystemWeb.OwinHttpHandler.System#Web#IHttpAsyncHandler#BeginProcessRequest(System.Web.HttpContext,System.AsyncCallback,System.Object)">
+      <summary>Inicia um chamado assíncrono para o manipulador HTTP.</summary>
+      <returns>Um <see cref="T:System.IAsyncResult" /> que contém informações sobre o status do processo.</returns>
+      <param name="context">Um objeto <see cref="T:System.Web.HttpContext" /> que fornece referência para objetos do servidor intrínsecos (por exemplo, Solicitação, Resposta, Sessão e Servidor) usados para solicitações de servidor HTTP.</param>
+      <param name="cb">O <see cref="T:System.AsyncCallback" /> a chamar quando o chamado de método assíncrono é concluído.Se o retorno de chamada for nulo, o delegado não é chamado.</param>
+      <param name="extraData">Qualquer dado extra necessário para processar a solicitação.</param>
+    </member>
+    <member name="M:Microsoft.Owin.Host.SystemWeb.OwinHttpHandler.System#Web#IHttpHandler#ProcessRequest(System.Web.HttpContext)">
+      <summary>Processa a solicitação para o manipulador HTTP.</summary>
+      <param name="context">O contexto.</param>
+    </member>
+    <member name="T:Microsoft.Owin.Host.SystemWeb.OwinRouteHandler">
+      <summary>Processa uma rota através de um pipeline OWIN.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Host.SystemWeb.OwinRouteHandler.#ctor(System.Action{Owin.IAppBuilder})">
+      <summary>Inicializa um OwinRouteHandler.</summary>
+      <param name="startup">O método para inicializar o pipeline que processa solicitações para a rota.</param>
+    </member>
+    <member name="M:Microsoft.Owin.Host.SystemWeb.OwinRouteHandler.GetHttpHandler(System.Web.Routing.RequestContext)">
+      <summary>Fornece o objeto que processa a solicitação.</summary>
+      <returns>Um objeto que processa a solicitação.</returns>
+      <param name="requestContext">Um objeto que encapsula informações sobre a solicitação.</param>
+    </member>
+    <member name="M:Microsoft.Owin.Host.SystemWeb.OwinRouteHandler.System#Web#Routing#IRouteHandler#GetHttpHandler(System.Web.Routing.RequestContext)">
+      <summary>Fornece o objeto que processa a solicitação.</summary>
+      <returns>Um objeto que processa a solicitação.</returns>
+      <param name="requestContext">Um objeto que encapsula informações sobre a solicitação.</param>
+    </member>
+    <member name="T:Microsoft.Owin.Host.SystemWeb.PreApplicationStart">
+      <summary>Registra o módulo de processamento da solicitação OWIN na inicialização do aplicativo.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Host.SystemWeb.PreApplicationStart.Initialize">
+      <summary>Registra o módulo de processamento da solicitação OWIN.</summary>
+    </member>
+    <member name="T:System.Web.HttpContextBaseExtensions">
+      <summary>Fornece métodos de extensão para <see cref="T:System.Web.HttpContextBase" />.</summary>
+    </member>
+    <member name="M:System.Web.HttpContextBaseExtensions.GetOwinContext(System.Web.HttpContextBase)"></member>
+    <member name="M:System.Web.HttpContextBaseExtensions.GetOwinContext(System.Web.HttpRequestBase)"></member>
+    <member name="T:System.Web.HttpContextExtensions">
+      <summary>Fornece métodos de extensão para <see cref="T:System.Web.HttpContext" />.</summary>
+    </member>
+    <member name="M:System.Web.HttpContextExtensions.GetOwinContext(System.Web.HttpContext)"></member>
+    <member name="M:System.Web.HttpContextExtensions.GetOwinContext(System.Web.HttpRequest)"></member>
+    <member name="T:System.Web.Routing.RouteCollectionExtensions">
+      <summary>Fornece métodos de extensão para registrar aplicativos OWIN como rotas System.Web.</summary>
+    </member>
+    <member name="M:System.Web.Routing.RouteCollectionExtensions.MapOwinPath(System.Web.Routing.RouteCollection,System.String)">
+      <summary>Registra uma rota para o aplicativo OWIN padrão.</summary>
+      <returns>A rota criada.</returns>
+      <param name="routes">A coleção de rotas.</param>
+      <param name="pathBase">O caminho da rota a mapear para o aplicativo OWIN padrão.</param>
+    </member>
+    <member name="M:System.Web.Routing.RouteCollectionExtensions.MapOwinPath(System.Web.Routing.RouteCollection,System.String,System.Action{Owin.IAppBuilder})">
+      <summary>Invoca o delegado de inicialização System.Action para construir o aplicativo OWIN e, em seguida, registra uma rota para ele no caminho fornecido.</summary>
+      <returns>A rota criada.</returns>
+      <param name="routes">A coleção de rotas.</param>
+      <param name="pathBase">O caminho da rota a mapear para o aplicativo OWIN fornecido.</param>
+      <param name="startup">Um delegado System.Action invocado para construir o aplicativo OWIN.</param>
+    </member>
+    <member name="M:System.Web.Routing.RouteCollectionExtensions.MapOwinPath(System.Web.Routing.RouteCollection,System.String,System.String)">
+      <summary> Registra uma rota para o aplicativo OWIN padrão. </summary>
+      <returns>A rota criada.</returns>
+      <param name="routes">A coleção de rotas.</param>
+      <param name="name">O nome fornecido da rota.</param>
+      <param name="pathBase">O caminho da rota a mapear para o aplicativo OWIN padrão.</param>
+    </member>
+    <member name="M:System.Web.Routing.RouteCollectionExtensions.MapOwinPath(System.Web.Routing.RouteCollection,System.String,System.String,System.Action{Owin.IAppBuilder})">
+      <summary> Invoca o delegado de inicialização System.Action para construir o aplicativo OWIN e, em seguida, registra uma rota para ele no caminho fornecido. </summary>
+      <returns>A rota criada.</returns>
+      <param name="routes">A coleção de rotas.</param>
+      <param name="name">O nome fornecido da rota.</param>
+      <param name="pathBase">O caminho da rota a mapear para o aplicativo OWIN fornecido.</param>
+      <param name="startup">Um delegado System.Action invocado para construir o aplicativo OWIN.</param>
+    </member>
+    <member name="M:System.Web.Routing.RouteCollectionExtensions.MapOwinPath``1(System.Web.Routing.RouteCollection,System.String,System.String,``0)">
+      <summary> Registra uma rota para um ponto de entrada do aplicativo OWIN especificado. </summary>
+      <returns>A rota criada.</returns>
+      <param name="routes">A coleção de rotas.</param>
+      <param name="name">O nome fornecido da rota.</param>
+      <param name="pathBase">O caminho da rota a mapear para o aplicativo OWIN fornecido.</param>
+      <param name="app">O ponto de entrada do aplicativo OWIN.</param>
+      <typeparam name="TApp">O tipo de ponto de entrada do aplicativo OWIN.</typeparam>
+    </member>
+    <member name="M:System.Web.Routing.RouteCollectionExtensions.MapOwinPath``1(System.Web.Routing.RouteCollection,System.String,``0)">
+      <summary> Registra uma rota para um ponto de entrada do aplicativo OWIN especificado. </summary>
+      <returns>A rota criada.</returns>
+      <param name="routes">A coleção de rotas.</param>
+      <param name="pathBase">O caminho da rota a mapear para o aplicativo OWIN fornecido.</param>
+      <param name="app">O ponto de entrada do aplicativo OWIN.</param>
+      <typeparam name="TApp">O tipo de ponto de entrada do aplicativo OWIN.</typeparam>
+    </member>
+    <member name="M:System.Web.Routing.RouteCollectionExtensions.MapOwinRoute(System.Web.Routing.RouteCollection,System.String,System.Action{Owin.IAppBuilder})">
+      <summary>Fornece uma maneira de definir rotas para um pipeline OWIN.</summary>
+      <returns>A rota criada.</returns>
+      <param name="routes">A coleção de rotas.</param>
+      <param name="routeUrl">O padrão de URL para a rota.</param>
+      <param name="startup">O método para inicializar o pipeline que processa solicitações para a rota.</param>
+    </member>
+    <member name="M:System.Web.Routing.RouteCollectionExtensions.MapOwinRoute(System.Web.Routing.RouteCollection,System.String,System.String,System.Action{Owin.IAppBuilder})">
+      <summary> Fornece uma maneira de definir rotas para um pipeline OWIN. </summary>
+      <returns>A rota criada.</returns>
+      <param name="routes">A coleção de rotas.</param>
+      <param name="routeName">O nome da rota.</param>
+      <param name="routeUrl">O padrão de URL para a rota.</param>
+      <param name="startup">O método para inicializar o pipeline que processa solicitações para a rota.</param>
+    </member>
+    <member name="M:System.Web.Routing.RouteCollectionExtensions.MapOwinRoute(System.Web.Routing.RouteCollection,System.String,System.String,System.Web.Routing.RouteValueDictionary,System.Action{Owin.IAppBuilder})">
+      <summary> Fornece uma maneira de definir rotas para um pipeline OWIN. </summary>
+      <returns>A rota criada.</returns>
+      <param name="routes">A coleção de rotas.</param>
+      <param name="routeName">O nome da rota.</param>
+      <param name="routeUrl">O padrão de URL para a rota.</param>
+      <param name="defaults">Os valores a usar se a URL não contiver todos os parâmetros.</param>
+      <param name="startup">O método para inicializar o pipeline que processa solicitações para a rota.</param>
+    </member>
+    <member name="M:System.Web.Routing.RouteCollectionExtensions.MapOwinRoute(System.Web.Routing.RouteCollection,System.String,System.String,System.Web.Routing.RouteValueDictionary,System.Web.Routing.RouteValueDictionary,System.Action{Owin.IAppBuilder})">
+      <summary> Fornece uma maneira de definir rotas para um pipeline OWIN. </summary>
+      <returns>A rota criada.</returns>
+      <param name="routes">A coleção de rotas.</param>
+      <param name="routeName">O nome da rota.</param>
+      <param name="routeUrl">O padrão de URL para a rota.</param>
+      <param name="defaults">Os valores a usar se a URL não contiver todos os parâmetros.</param>
+      <param name="constraints">Uma expressão regular que especifica valores válidos para um parâmetro de URL.</param>
+      <param name="startup">O método para inicializar o pipeline que processa solicitações para a rota.</param>
+    </member>
+    <member name="M:System.Web.Routing.RouteCollectionExtensions.MapOwinRoute(System.Web.Routing.RouteCollection,System.String,System.String,System.Web.Routing.RouteValueDictionary,System.Web.Routing.RouteValueDictionary,System.Web.Routing.RouteValueDictionary,System.Action{Owin.IAppBuilder})">
+      <summary> Fornece uma maneira de definir rotas para um pipeline OWIN. </summary>
+      <returns>A rota criada.</returns>
+      <param name="routes">A coleção de rotas.</param>
+      <param name="routeName">O nome da rota.</param>
+      <param name="routeUrl">O padrão de URL para a rota.</param>
+      <param name="defaults">Os valores a usar se a URL não contiver todos os parâmetros.</param>
+      <param name="constraints">Uma expressão regular que especifica valores válidos para um parâmetro de URL.</param>
+      <param name="dataTokens">Valores personalizados que são passados ao manipulador de rota, mais que não são usados para determinar se a rota corresponde com um padrão de URL específico.Esses valores são passados para o manipulador de rota, onde podem ser usados para processar a solicitação.</param>
+      <param name="startup">O método para inicializar o pipeline que processa solicitações para a rota.</param>
+    </member>
+    <member name="M:System.Web.Routing.RouteCollectionExtensions.MapOwinRoute(System.Web.Routing.RouteCollection,System.String,System.Web.Routing.RouteValueDictionary,System.Action{Owin.IAppBuilder})">
+      <summary> Fornece uma maneira de definir rotas para um pipeline OWIN. </summary>
+      <returns>A rota criada.</returns>
+      <param name="routes">A coleção de rotas.</param>
+      <param name="routeUrl">O padrão de URL para a rota.</param>
+      <param name="defaults">Os valores a usar se a URL não contiver todos os parâmetros.</param>
+      <param name="startup">O método para inicializar o pipeline que processa solicitações para a rota.</param>
+    </member>
+    <member name="M:System.Web.Routing.RouteCollectionExtensions.MapOwinRoute(System.Web.Routing.RouteCollection,System.String,System.Web.Routing.RouteValueDictionary,System.Web.Routing.RouteValueDictionary,System.Action{Owin.IAppBuilder})">
+      <summary> Fornece uma maneira de definir rotas para um pipeline OWIN. </summary>
+      <returns>A rota criada.</returns>
+      <param name="routes">A coleção de rotas.</param>
+      <param name="routeUrl">O padrão de URL para a rota.</param>
+      <param name="defaults">Os valores a usar se a URL não contiver todos os parâmetros.</param>
+      <param name="constraints">Uma expressão regular que especifica valores válidos para um parâmetro de URL.</param>
+      <param name="startup">O método para inicializar o pipeline que processa solicitações para a rota.</param>
+    </member>
+    <member name="M:System.Web.Routing.RouteCollectionExtensions.MapOwinRoute(System.Web.Routing.RouteCollection,System.String,System.Web.Routing.RouteValueDictionary,System.Web.Routing.RouteValueDictionary,System.Web.Routing.RouteValueDictionary,System.Action{Owin.IAppBuilder})">
+      <summary> Fornece uma maneira de definir rotas para um pipeline OWIN. </summary>
+      <returns>A rota criada.</returns>
+      <param name="routes">A coleção de rotas.</param>
+      <param name="routeUrl">O padrão de URL para a rota.</param>
+      <param name="defaults">Os valores a usar se a URL não contiver todos os parâmetros.</param>
+      <param name="constraints">Uma expressão regular que especifica valores válidos para um parâmetro de URL.</param>
+      <param name="dataTokens">Valores personalizados que são passados ao manipulador de rota, mais que não são usados para determinar se a rota corresponde com um padrão de URL específico.Esses valores são passados para o manipulador de rota, onde podem ser usados para processar a solicitação.</param>
+      <param name="startup">O método para inicializar o pipeline que processa solicitações para a rota.</param>
+    </member>
+  </members>
+</doc>

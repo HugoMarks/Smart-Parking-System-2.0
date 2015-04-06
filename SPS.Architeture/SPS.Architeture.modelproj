@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{71bada7c-07c3-427a-8f20-5d335fa267a7}</ProjectGuid>
+    <ArchitectureToolsVersion>2.0.0.0</ArchitectureToolsVersion>
+    <Name>SPS.Architeture</Name>
+    <RootNamespace>SPS.Architeture</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" Condition="'$(VSToolsPath)' != ''" />
+  <ItemGroup>
+    <Content Include="SPS.BO.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="SPS.BO.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>SPS.BO.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="SPS.Model.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="SPS.Model.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>SPS.Model.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="SPS.Repository.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="SPS.Repository.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>SPS.Repository.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="ViewModel.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ViewModel.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>ViewModel.classdiagram</DependentUpon>
+    </Content>
+    <Folder Include="ModelDefinition\" />
+    <Content Include="ModelDefinition\SPS.Architeture.uml">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+</Project>
