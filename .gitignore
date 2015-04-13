@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/SPS.Modelo/bin/System.Net.Http.Formatting.dll
+/SPS.Modelo/bin/System.Web.Http.dll
+/SPS.Modelo/bin/System.Web.Http.WebHost.dll
