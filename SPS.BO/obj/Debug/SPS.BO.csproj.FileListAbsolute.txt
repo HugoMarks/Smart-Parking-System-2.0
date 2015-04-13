@@ -12,3 +12,17 @@ C:\Users\André\Documents\Visual Studio 2013\Projects\SPS\SPS.BO\bin\Debug\Entit
 C:\Users\André\Documents\Visual Studio 2013\Projects\SPS\SPS.BO\obj\Debug\SPS.BO.csprojResolveAssemblyReference.cache
 C:\Users\André\Documents\Visual Studio 2013\Projects\SPS\SPS.BO\obj\Debug\SPS.BO.dll
 C:\Users\André\Documents\Visual Studio 2013\Projects\SPS\SPS.BO\obj\Debug\SPS.BO.pdb
+C:\Users\Hugo\Source\Repos\SPS\SPS.BO\bin\Debug\SPS.BO.dll.config
+C:\Users\Hugo\Source\Repos\SPS\SPS.BO\bin\Debug\SPS.BO.dll
+C:\Users\Hugo\Source\Repos\SPS\SPS.BO\bin\Debug\SPS.BO.pdb
+C:\Users\Hugo\Source\Repos\SPS\SPS.BO\bin\Debug\EntityFramework.dll
+C:\Users\Hugo\Source\Repos\SPS\SPS.BO\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Hugo\Source\Repos\SPS\SPS.BO\bin\Debug\SPS.Model.dll
+C:\Users\Hugo\Source\Repos\SPS\SPS.BO\bin\Debug\SPS.Repository.dll
+C:\Users\Hugo\Source\Repos\SPS\SPS.BO\bin\Debug\SPS.Model.pdb
+C:\Users\Hugo\Source\Repos\SPS\SPS.BO\bin\Debug\SPS.Repository.pdb
+C:\Users\Hugo\Source\Repos\SPS\SPS.BO\bin\Debug\EntityFramework.xml
+C:\Users\Hugo\Source\Repos\SPS\SPS.BO\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Hugo\Source\Repos\SPS\SPS.BO\obj\Debug\SPS.BO.csprojResolveAssemblyReference.cache
+C:\Users\Hugo\Source\Repos\SPS\SPS.BO\obj\Debug\SPS.BO.dll
+C:\Users\Hugo\Source\Repos\SPS\SPS.BO\obj\Debug\SPS.BO.pdb

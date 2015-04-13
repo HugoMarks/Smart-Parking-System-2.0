@@ -10,3 +10,15 @@ C:\Users\André\Documents\Visual Studio 2013\Projects\SPS\SPS.Repository\bin\Deb
 C:\Users\André\Documents\Visual Studio 2013\Projects\SPS\SPS.Repository\obj\Debug\SPS.Repository.csprojResolveAssemblyReference.cache
 C:\Users\André\Documents\Visual Studio 2013\Projects\SPS\SPS.Repository\obj\Debug\SPS.Repository.dll
 C:\Users\André\Documents\Visual Studio 2013\Projects\SPS\SPS.Repository\obj\Debug\SPS.Repository.pdb
+C:\Users\Hugo\Source\Repos\SPS\SPS.Repository\bin\Debug\SPS.Repository.dll.config
+C:\Users\Hugo\Source\Repos\SPS\SPS.Repository\bin\Debug\SPS.Repository.dll
+C:\Users\Hugo\Source\Repos\SPS\SPS.Repository\bin\Debug\SPS.Repository.pdb
+C:\Users\Hugo\Source\Repos\SPS\SPS.Repository\bin\Debug\EntityFramework.dll
+C:\Users\Hugo\Source\Repos\SPS\SPS.Repository\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Hugo\Source\Repos\SPS\SPS.Repository\bin\Debug\SPS.Model.dll
+C:\Users\Hugo\Source\Repos\SPS\SPS.Repository\bin\Debug\SPS.Model.pdb
+C:\Users\Hugo\Source\Repos\SPS\SPS.Repository\bin\Debug\EntityFramework.xml
+C:\Users\Hugo\Source\Repos\SPS\SPS.Repository\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Hugo\Source\Repos\SPS\SPS.Repository\obj\Debug\SPS.Repository.csprojResolveAssemblyReference.cache
+C:\Users\Hugo\Source\Repos\SPS\SPS.Repository\obj\Debug\SPS.Repository.dll
+C:\Users\Hugo\Source\Repos\SPS\SPS.Repository\obj\Debug\SPS.Repository.pdb

@@ -139,6 +139,6 @@ C:\Users\Hugo\Source\Repos\SPS\SPS.Web\bin\pt-br\Microsoft.Owin.Security.Faceboo
 C:\Users\Hugo\Source\Repos\SPS\SPS.Web\bin\pt-br\Microsoft.Owin.Security.Google.resources.dll
 C:\Users\Hugo\Source\Repos\SPS\SPS.Web\bin\pt-br\Microsoft.Owin.Security.Twitter.resources.dll
 C:\Users\Hugo\Source\Repos\SPS\SPS.Web\bin\pt-br\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
-C:\Users\Hugo\Source\Repos\SPS\SPS.Web\obj\Debug\SPS.Web.csprojResolveAssemblyReference.cache
 C:\Users\Hugo\Source\Repos\SPS\SPS.Web\obj\Debug\SPS.Web.dll
 C:\Users\Hugo\Source\Repos\SPS\SPS.Web\obj\Debug\SPS.Web.pdb
+C:\Users\Hugo\Source\Repos\SPS\SPS.Web\obj\Debug\SPS.Web.csprojResolveAssemblyReference.cache
