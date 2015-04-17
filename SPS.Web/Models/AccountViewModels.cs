@@ -54,6 +54,22 @@ namespace SPS.Web.Models
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "Primeiro nome")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Sobrenome")]
+        public string LastName { get; set; }
+
+        [Required]
+        [Display(Name = "RG")]
+        public string RG { get; set; }
+
+        [Required]
+        [Display(Name = "CPF")]
+        public string CPF { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }

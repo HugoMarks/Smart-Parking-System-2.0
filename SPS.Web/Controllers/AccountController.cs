@@ -28,7 +28,8 @@ namespace SPS.Web.Controllers
             UserManager = userManager;
         }
 
-        public ApplicationUserManager UserManager {
+        public ApplicationUserManager UserManager
+        {
             get
             {
                 return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
@@ -58,6 +59,7 @@ namespace SPS.Web.Controllers
             if (ModelState.IsValid)
             {
                 var user = await UserManager.FindAsync(model.Email, model.Password);
+
                 if (user != null)
                 {
                     await SignInAsync(user, model.RememberMe);
@@ -92,15 +94,17 @@ namespace SPS.Web.Controllers
             {
                 var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+
                 if (result.Succeeded)
                 {
-                    await SignInAsync(user, isPersistent: false);
+                    //await SignInAsync(user, isPersistent: false);
 
                     // Para obter mais informações sobre como ativar a confirmação de senha e a redefinição de senha, visite http://go.microsoft.com/fwlink/?LinkID=320771
                     // Enviar um email com este link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirmar sua conta", "Confirme sua conta clicando <a href=\"" + callbackUrl + "\">aqui</a>");
+                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+
+                    await UserManager.SendEmailAsync(user.Id, "Confirmar sua conta", "Confirme sua conta clicando <a href=\"" + callbackUrl + "\">aqui</a>");
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -119,12 +123,13 @@ namespace SPS.Web.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ConfirmEmail(string userId, string code)
         {
-            if (userId == null || code == null) 
+            if (userId == null || code == null)
             {
                 return View("Error");
             }
 
             IdentityResult result = await UserManager.ConfirmEmailAsync(userId, code);
+
             if (result.Succeeded)
             {
                 return View("ConfirmEmail");
@@ -154,6 +159,7 @@ namespace SPS.Web.Controllers
             if (ModelState.IsValid)
             {
                 var user = await UserManager.FindByNameAsync(model.Email);
+
                 if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
                 {
                     ModelState.AddModelError("", "O usuário não existe ou não está confirmado.");
@@ -162,10 +168,11 @@ namespace SPS.Web.Controllers
 
                 // Para obter mais informações sobre como ativar a confirmação de senha e a redefinição de senha, visite http://go.microsoft.com/fwlink/?LinkID=320771
                 // Enviar um email com este link
-                // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                // await UserManager.SendEmailAsync(user.Id, "Redefinir senha", "Redefina sua senha, clicando <a href=\"" + callbackUrl + "\">aqui</a>");
-                // return RedirectToAction("ForgotPasswordConfirmation", "Account");
+                string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+
+                await UserManager.SendEmailAsync(user.Id, "Redefinir senha", "Redefina sua senha clicando <a href=\"" + callbackUrl + "\">aqui</a>");
+                return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 
             // Se chegamos até aqui e houver alguma falha, exiba novamente o formulário
@@ -179,13 +186,13 @@ namespace SPS.Web.Controllers
         {
             return View();
         }
-	
+
         //
         // GET: /Account/ResetPassword
         [AllowAnonymous]
         public ActionResult ResetPassword(string code)
         {
-            if (code == null) 
+            if (code == null)
             {
                 return View("Error");
             }
@@ -202,6 +209,7 @@ namespace SPS.Web.Controllers
             if (ModelState.IsValid)
             {
                 var user = await UserManager.FindByNameAsync(model.Email);
+
                 if (user == null)
                 {
                     ModelState.AddModelError("", "Nenhum usuário encontrado.");
@@ -239,6 +247,7 @@ namespace SPS.Web.Controllers
         {
             ManageMessageId? message = null;
             IdentityResult result = await UserManager.RemoveLoginAsync(User.Identity.GetUserId(), new UserLoginInfo(loginProvider, providerKey));
+
             if (result.Succeeded)
             {
                 var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
@@ -262,6 +271,7 @@ namespace SPS.Web.Controllers
                 : message == ManageMessageId.RemoveLoginSuccess ? "O logon externo foi removido."
                 : message == ManageMessageId.Error ? "Ocorreu um erro."
                 : "";
+
             ViewBag.HasLocalPassword = HasPassword();
             ViewBag.ReturnUrl = Url.Action("Manage");
             return View();
@@ -274,16 +284,20 @@ namespace SPS.Web.Controllers
         public async Task<ActionResult> Manage(ManageUserViewModel model)
         {
             bool hasPassword = HasPassword();
+
             ViewBag.HasLocalPassword = hasPassword;
             ViewBag.ReturnUrl = Url.Action("Manage");
+
             if (hasPassword)
             {
                 if (ModelState.IsValid)
                 {
                     IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
+
                     if (result.Succeeded)
                     {
                         var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+
                         await SignInAsync(user, isPersistent: false);
                         return RedirectToAction("Manage", new { Message = ManageMessageId.ChangePasswordSuccess });
                     }
@@ -297,6 +311,7 @@ namespace SPS.Web.Controllers
             {
                 // O usuário não tem uma senha, então remova os erros de validação causados por um campo OldPassword ausente
                 ModelState state = ModelState["OldPassword"];
+
                 if (state != null)
                 {
                     state.Errors.Clear();
@@ -305,6 +320,7 @@ namespace SPS.Web.Controllers
                 if (ModelState.IsValid)
                 {
                     IdentityResult result = await UserManager.AddPasswordAsync(User.Identity.GetUserId(), model.NewPassword);
+
                     if (result.Succeeded)
                     {
                         return RedirectToAction("Manage", new { Message = ManageMessageId.SetPasswordSuccess });
@@ -337,6 +353,7 @@ namespace SPS.Web.Controllers
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
         {
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
+
             if (loginInfo == null)
             {
                 return RedirectToAction("Login");
@@ -344,6 +361,7 @@ namespace SPS.Web.Controllers
 
             // Faça logon do usuário com este provedor de logon externo se o usuário já tiver um logon
             var user = await UserManager.FindAsync(loginInfo.Login);
+
             if (user != null)
             {
                 await SignInAsync(user, isPersistent: false);
@@ -354,6 +372,7 @@ namespace SPS.Web.Controllers
                 // Se o usuário não tiver uma conta, solicite que o usuário crie uma conta
                 ViewBag.ReturnUrl = returnUrl;
                 ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
+
                 return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
             }
         }
@@ -373,15 +392,19 @@ namespace SPS.Web.Controllers
         public async Task<ActionResult> LinkLoginCallback()
         {
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync(XsrfKey, User.Identity.GetUserId());
+
             if (loginInfo == null)
             {
                 return RedirectToAction("Manage", new { Message = ManageMessageId.Error });
             }
+
             IdentityResult result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
+
             if (result.Succeeded)
             {
                 return RedirectToAction("Manage");
             }
+
             return RedirectToAction("Manage", new { Message = ManageMessageId.Error });
         }
 
@@ -405,21 +428,23 @@ namespace SPS.Web.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
+
                 var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
                 IdentityResult result = await UserManager.CreateAsync(user);
+
                 if (result.Succeeded)
                 {
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
                         await SignInAsync(user, isPersistent: false);
-                        
+
                         // Para obter mais informações sobre como habilitar a confirmação de conta e a redefinição de senha, visite http://go.microsoft.com/fwlink/?LinkID=320771
                         // Enviar um email com este link
                         // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                         // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                         // SendEmail(user.Email, callbackUrl, "Confirmar sua conta", "Confirme sua conta clicando neste link");
-                        
+
                         return RedirectToLocal(returnUrl);
                     }
                 }
@@ -452,6 +477,7 @@ namespace SPS.Web.Controllers
         public ActionResult RemoveAccountList()
         {
             var linkedAccounts = UserManager.GetLogins(User.Identity.GetUserId());
+
             ViewBag.ShowRemoveButton = HasPassword() || linkedAccounts.Count > 1;
             return (ActionResult)PartialView("_RemoveAccountPartial", linkedAccounts);
         }
@@ -463,6 +489,7 @@ namespace SPS.Web.Controllers
                 UserManager.Dispose();
                 UserManager = null;
             }
+
             base.Dispose(disposing);
         }
 
@@ -495,16 +522,18 @@ namespace SPS.Web.Controllers
         private bool HasPassword()
         {
             var user = UserManager.FindById(User.Identity.GetUserId());
+
             if (user != null)
             {
                 return user.PasswordHash != null;
             }
+
             return false;
         }
 
         private void SendEmail(string email, string callbackUrl, string subject, string message)
         {
-            // Para obter informações sobre o envio de email, visite http://go.microsoft.com/fwlink/?LinkID=320771
+
         }
 
         public enum ManageMessageId
@@ -529,7 +558,8 @@ namespace SPS.Web.Controllers
 
         private class ChallengeResult : HttpUnauthorizedResult
         {
-            public ChallengeResult(string provider, string redirectUri) : this(provider, redirectUri, null)
+            public ChallengeResult(string provider, string redirectUri)
+                : this(provider, redirectUri, null)
             {
             }
 
@@ -547,10 +577,12 @@ namespace SPS.Web.Controllers
             public override void ExecuteResult(ControllerContext context)
             {
                 var properties = new AuthenticationProperties() { RedirectUri = RedirectUri };
+
                 if (UserId != null)
                 {
                     properties.Dictionary[XsrfKey] = UserId;
                 }
+
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
         }

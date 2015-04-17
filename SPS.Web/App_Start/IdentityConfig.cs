@@ -4,6 +4,14 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using SPS.Web.Models;
+using SendGrid;
+using System.Net;
+using System.Configuration;
+using System.Web;
+using System.Net.Mail;
+using System.Net.Mime;
+using System;
+using SPS.Web.Common;
 
 namespace SPS.Web
 {
@@ -16,7 +24,7 @@ namespace SPS.Web
         {
         }
 
-        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context) 
+        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
         {
             var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationDbContext>()));
             // Configurar a lógica de validação para nomes de usuário
@@ -60,8 +68,26 @@ namespace SPS.Web
     {
         public Task SendAsync(IdentityMessage message)
         {
-            // Conecte o seu serviço de email aqui para enviar um email.
-            return Task.FromResult(0);
+            return Task.Run(() =>
+                {
+                    var msg = new MailMessage()
+                    {
+                        From = new MailAddress("sps@engineer.com", "Smart Parking System"),
+                        Subject = message.Subject
+                    };
+
+                    msg.To.Add(new MailAddress(message.Destination));
+                    msg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(message.Body, null, MediaTypeNames.Text.Plain));
+                    msg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(message.Body, null, MediaTypeNames.Text.Html));
+
+                    var smtpClient = new SmtpClient(ApplicationConfig.MailSMTPServerAddress, Convert.ToInt32(587))
+                    {
+                        Credentials = new NetworkCredential(ApplicationConfig.SPSMail, ApplicationConfig.SPSMailPassword),
+                        EnableSsl = true
+                    };
+
+                    smtpClient.Send(msg);
+                });
         }
     }
 
@@ -69,8 +95,28 @@ namespace SPS.Web
     {
         public Task SendAsync(IdentityMessage message)
         {
-            // Conecte o seu serviço de sms aqui para enviar uma mensagem de texto.
-            return Task.FromResult(0);
+            return Task.Run(() =>
+            {
+                string toPhoneNumber = "DestinationPhoneNumber";
+                string login = "YoureIPIPIUsername";
+                string password = "YourPassword";
+                string compression = "Compression Option goes here - find out more";
+                string body = "Your Message";
+
+
+                System.Web.Mail.MailMessage mail = new System.Web.Mail.MailMessage();
+                mail.To = toPhoneNumber + "@sms.ipipi.com";
+                mail.From = login + "@ipipi.com";
+                mail.Subject = compression;
+                mail.Body = body;
+                mail.Fields.Add("http://schemas.microsoft.com/cdo/configuration/smtpauthenticate", "1");
+                mail.Fields.Add("http://schemas.microsoft.com/cdo/configuration/sendusername", login);
+                mail.Fields.Add("http://schemas.microsoft.com/cdo/configuration/sendpassword", password);
+
+
+                System.Web.Mail.SmtpMail.SmtpServer = "ipipi.com";
+                System.Web.Mail.SmtpMail.Send(mail);
+            });
         }
     }
 }
