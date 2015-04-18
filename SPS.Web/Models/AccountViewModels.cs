@@ -62,6 +62,10 @@ namespace SPS.Web.Models
         public string LastName { get; set; }
 
         [Required]
+        [Display(Name = "Telefone")]
+        public string PhoneNumber { get; set; }
+
+        [Required]
         [Display(Name = "RG")]
         public string RG { get; set; }
 

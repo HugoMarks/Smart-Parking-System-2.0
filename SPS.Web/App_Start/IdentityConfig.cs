@@ -80,9 +80,9 @@ namespace SPS.Web
                     msg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(message.Body, null, MediaTypeNames.Text.Plain));
                     msg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(message.Body, null, MediaTypeNames.Text.Html));
 
-                    var smtpClient = new SmtpClient(ApplicationConfig.MailSMTPServerAddress, Convert.ToInt32(587))
+                    var smtpClient = new SmtpClient(ApplicationConfig.MailServerAddress, Convert.ToInt32(587))
                     {
-                        Credentials = new NetworkCredential(ApplicationConfig.SPSMail, ApplicationConfig.SPSMailPassword),
+                        Credentials = new NetworkCredential(ApplicationConfig.Mail, ApplicationConfig.MailPassword),
                         EnableSsl = true
                     };
 
@@ -95,28 +95,7 @@ namespace SPS.Web
     {
         public Task SendAsync(IdentityMessage message)
         {
-            return Task.Run(() =>
-            {
-                string toPhoneNumber = "DestinationPhoneNumber";
-                string login = "YoureIPIPIUsername";
-                string password = "YourPassword";
-                string compression = "Compression Option goes here - find out more";
-                string body = "Your Message";
-
-
-                System.Web.Mail.MailMessage mail = new System.Web.Mail.MailMessage();
-                mail.To = toPhoneNumber + "@sms.ipipi.com";
-                mail.From = login + "@ipipi.com";
-                mail.Subject = compression;
-                mail.Body = body;
-                mail.Fields.Add("http://schemas.microsoft.com/cdo/configuration/smtpauthenticate", "1");
-                mail.Fields.Add("http://schemas.microsoft.com/cdo/configuration/sendusername", login);
-                mail.Fields.Add("http://schemas.microsoft.com/cdo/configuration/sendpassword", password);
-
-
-                System.Web.Mail.SmtpMail.SmtpServer = "ipipi.com";
-                System.Web.Mail.SmtpMail.Send(mail);
-            });
+            return Task.FromResult(0);
         }
     }
 }
