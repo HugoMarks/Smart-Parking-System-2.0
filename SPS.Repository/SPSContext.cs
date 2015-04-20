@@ -71,6 +71,11 @@ namespace SPS.Repository
         /// Gets the Address table.
         /// </summary>
         public DbSet<Address> Addresses { get; set; }
+
+        public static SPSContext Create()
+        {
+            return new SPSContext();
+        }
     }
 
     /// <summary>

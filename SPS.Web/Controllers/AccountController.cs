@@ -62,8 +62,15 @@ namespace SPS.Web.Controllers
 
                 if (user != null)
                 {
-                    await SignInAsync(user, model.RememberMe);
-                    return RedirectToLocal(returnUrl);
+                    if (!user.EmailConfirmed)
+                    {
+                        ModelState.AddModelError("", "Email não confirmado. Por favor, verifique sua caixa de entrada e valide seu registro.");
+                    }
+                    else
+                    {
+                        await SignInAsync(user, model.RememberMe);
+                        return RedirectToLocal(returnUrl);
+                    }
                 }
                 else
                 {
@@ -92,7 +99,20 @@ namespace SPS.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber };
+                var user = new ApplicationUser() 
+                { 
+                    UserName = model.Email, 
+                    Email = model.Email, 
+                    PhoneNumber = model.PhoneNumber,
+                    CEP = model.CEP,
+                    Street = model.Rua,
+                    Square = model.Bairro,
+                    Number = model.Numero,
+                    Complement = model.Complemento,
+                    City = model.Cidade,
+                    State = model.Estado
+                };
+
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)

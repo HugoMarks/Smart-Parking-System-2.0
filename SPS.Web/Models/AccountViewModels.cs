@@ -66,16 +66,30 @@ namespace SPS.Web.Models
         public string PhoneNumber { get; set; }
 
         [Required]
-        [Display(Name = "RG")]
+        [StringLength(9)]
+        public string CEP { get; set; }
+
+        public string Rua { get; set; }
+
+        [Display(Name = "Número")]
+        public string Numero { get; set; }
+
+        public string Complemento { get; set; }
+
+        public string Bairro { get; set; }
+
+        public string Cidade { get; set; }
+
+        public string Estado { get; set; }
+
+        [Required]
         public string RG { get; set; }
 
         [Required]
-        [Display(Name = "CPF")]
         public string CPF { get; set; }
 
         [Required]
         [EmailAddress]
-        [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Required]

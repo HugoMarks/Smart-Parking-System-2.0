@@ -4,7 +4,6 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using SPS.Web.Models;
-using SendGrid;
 using System.Net;
 using System.Configuration;
 using System.Web;
@@ -70,6 +69,7 @@ namespace SPS.Web
         {
             return Task.Run(() =>
                 {
+                    //Email criado no mail.com
                     var msg = new MailMessage()
                     {
                         From = new MailAddress("sps@engineer.com", "Smart Parking System"),

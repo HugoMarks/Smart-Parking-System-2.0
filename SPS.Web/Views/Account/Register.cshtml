@@ -32,6 +32,56 @@
         </div>
     </div>
     <div class="form-group">
+        @Html.LabelFor(m => m.CEP, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.CEP, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.CEP, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Rua, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Rua, new { @class = "form-control disabled" })
+            @Html.ValidationMessageFor(m => m.Rua, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Numero, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Numero, new { @class = "form-control disabled" })
+            @Html.ValidationMessageFor(m => m.Numero, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Complemento, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Complemento, new { @class = "form-control disabled" })
+            @Html.ValidationMessageFor(m => m.Complemento, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Estado, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Estado, new { @class = "form-control disabled" })
+            @Html.ValidationMessageFor(m => m.Estado, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Bairro, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Bairro, new { @class = "form-control disabled" })
+            @Html.ValidationMessageFor(m => m.Bairro, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(m => m.Cidade, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Cidade, new { @class = "form-control disabled" })
+            @Html.ValidationMessageFor(m => m.Cidade, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
         @Html.LabelFor(m => m.RG, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.RG, new { @class = "form-control" })
