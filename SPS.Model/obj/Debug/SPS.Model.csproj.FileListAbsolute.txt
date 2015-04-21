@@ -18,3 +18,13 @@ C:\Users\Hugo\Source\Repos\SPS\SPS.Model\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Hugo\Source\Repos\SPS\SPS.Model\obj\Debug\SPS.Model.csprojResolveAssemblyReference.cache
 C:\Users\Hugo\Source\Repos\SPS\SPS.Model\obj\Debug\SPS.Model.dll
 C:\Users\Hugo\Source\Repos\SPS\SPS.Model\obj\Debug\SPS.Model.pdb
+C:\Users\André\Source\Repos\SPS\SPS.Model\bin\Debug\SPS.Model.dll.config
+C:\Users\André\Source\Repos\SPS\SPS.Model\bin\Debug\SPS.Model.dll
+C:\Users\André\Source\Repos\SPS\SPS.Model\bin\Debug\SPS.Model.pdb
+C:\Users\André\Source\Repos\SPS\SPS.Model\bin\Debug\EntityFramework.dll
+C:\Users\André\Source\Repos\SPS\SPS.Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\André\Source\Repos\SPS\SPS.Model\bin\Debug\EntityFramework.xml
+C:\Users\André\Source\Repos\SPS\SPS.Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\André\Source\Repos\SPS\SPS.Model\obj\Debug\SPS.Model.csprojResolveAssemblyReference.cache
+C:\Users\André\Source\Repos\SPS\SPS.Model\obj\Debug\SPS.Model.dll
+C:\Users\André\Source\Repos\SPS\SPS.Model\obj\Debug\SPS.Model.pdb
