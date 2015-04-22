@@ -214,3 +214,9 @@ C:\Users\André\Source\Repos\SPS\SPS.Web\bin\pt-br\Microsoft.Owin.Security.Micro
 C:\Users\André\Source\Repos\SPS\SPS.Web\obj\Debug\SPS.Web.csprojResolveAssemblyReference.cache
 C:\Users\André\Source\Repos\SPS\SPS.Web\obj\Debug\SPS.Web.dll
 C:\Users\André\Source\Repos\SPS\SPS.Web\obj\Debug\SPS.Web.pdb
+C:\Users\Hugo\Source\Repos\SPS\SPS.Web\bin\System.Net.Http.Formatting.dll
+C:\Users\Hugo\Source\Repos\SPS\SPS.Web\bin\System.Web.Http.dll
+C:\Users\Hugo\Source\Repos\SPS\SPS.Web\bin\System.Web.Http.WebHost.dll
+C:\Users\Hugo\Source\Repos\SPS\SPS.Web\bin\System.Net.Http.Formatting.xml
+C:\Users\Hugo\Source\Repos\SPS\SPS.Web\bin\System.Web.Http.xml
+C:\Users\Hugo\Source\Repos\SPS\SPS.Web\bin\System.Web.Http.WebHost.xml

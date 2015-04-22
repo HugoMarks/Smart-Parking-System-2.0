@@ -69,7 +69,7 @@ namespace SPS.Web.Controllers
                     else
                     {
                         await SignInAsync(user, model.RememberMe);
-                        return RedirectToLocal(returnUrl);
+                        return RedirectToLocal("/Client/Index");
                     }
                 }
                 else

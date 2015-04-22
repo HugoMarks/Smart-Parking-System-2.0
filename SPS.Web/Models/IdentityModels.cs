@@ -36,7 +36,7 @@ namespace SPS.Web.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("SPSDatabase", false)
+            : base("SPS.Web", false)
         {
         }
 
