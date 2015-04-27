@@ -10,110 +10,109 @@
     @Html.AntiForgeryToken()
     <h4>Crie uma nova conta.</h4>
     <hr />
-    <div class="form-group">
-        @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+    <h5>Dados Pessoais:</h5><br />
+    <div class="row">
+        <div class="form-group">
+            @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 col-lg-2 control-label" })
+            <div class="col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(m => m.LastName, new { @class = "col-md-1 col-lg-1 control-label" })
+            <div class="col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+            </div>
         </div>
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+    <div class="row">
+        <div class="form-group">
+            @Html.LabelFor(m => m.RG, new { @class = "col-md-2 col-lg-2 control-label" })
+            <div class="col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.RG, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.RG, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(m => m.CPF, new { @class = "col-md-1 col-lg-1 control-label" })
+            <div class="col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.CPF, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.CPF, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-1 col-lg-1 control-label" })
+            <div class="col-md-2 col-lg-2">
+                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+            </div>
         </div>
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+    <div class="row">
+        <div class="form-group">
+            @Html.LabelFor(m => m.CEP, new { @class = "col-md-2 col-lg-2 control-label" })
+            <div class="col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.CEP, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.CEP, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(m => m.Rua, new { @class = "col-md-1 col-lg-1 control-label" })
+            <div class="col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.Rua, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Rua, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(m => m.Numero, new { @class = "col-md-1 col-lg-1 control-label" })
+            <div class="col-md-1 col-lg-1">
+                @Html.TextBoxFor(m => m.Numero, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Numero, "", new { @class = "text-danger" })
+            </div>
         </div>
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.CEP, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.CEP, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.CEP, "", new { @class = "text-danger" })
+    <div class="row">
+        <div class="form-group">
+            @Html.LabelFor(m => m.Complemento, new { @class = "col-md-2 col-lg-2 control-label" })
+            <div class="col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.Complemento, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Complemento, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(m => m.Cidade, new { @class = "col-md-1 col-lg-1 control-label" })
+            <div class="col-md-3 col-lg-3">
+                @Html.TextBoxFor(m => m.Cidade, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Cidade, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(m => m.Estado, new { @class = "col-md-1 col-lg-1 control-label" })
+            <div class="col-md-1 col-lg-1">
+                @Html.TextBoxFor(m => m.Estado, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Estado, "", new { @class = "text-danger" })
+            </div>
         </div>
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Rua, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Rua, new { @class = "form-control disabled" })
-            @Html.ValidationMessageFor(m => m.Rua, "", new { @class = "text-danger" })
+    <hr />
+    <h5>Dados para Acesso:</h5><br />
+    <div class="row">
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 col-lg-2 control-label" })
+            <div class="col-md-4 col-lg-4">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            </div>
         </div>
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Numero, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Numero, new { @class = "form-control disabled" })
-            @Html.ValidationMessageFor(m => m.Numero, "", new { @class = "text-danger" })
+    <div class="row">
+        <div class="form-group">
+            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 col-lg-2 control-label" })
+            <div class="col-md-4 col-lg-4">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+            </div>
         </div>
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Complemento, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Complemento, new { @class = "form-control disabled" })
-            @Html.ValidationMessageFor(m => m.Complemento, "", new { @class = "text-danger" })
+    <div class="row">
+        <div class="form-group">
+            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 col-lg-2 control-label" })
+            <div class="col-md-4 col-lg-4">
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control required" })
+                @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+            </div>
         </div>
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Estado, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Estado, new { @class = "form-control disabled" })
-            @Html.ValidationMessageFor(m => m.Estado, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Bairro, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Bairro, new { @class = "form-control disabled" })
-            @Html.ValidationMessageFor(m => m.Bairro, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    
-    <div class="form-group">
-        @Html.LabelFor(m => m.Cidade, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Cidade, new { @class = "form-control disabled" })
-            @Html.ValidationMessageFor(m => m.Cidade, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.RG, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.RG, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.RG, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.CPF, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.CPF, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.CPF, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
+
+   <!-- Html.ValidationSummary("", new { class = "text-danger" })-->
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" class="btn btn-primary" value="Registrar-se" />

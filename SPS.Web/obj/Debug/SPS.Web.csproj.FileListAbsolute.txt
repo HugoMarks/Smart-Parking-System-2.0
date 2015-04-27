@@ -220,3 +220,9 @@ C:\Users\Hugo\Source\Repos\SPS\SPS.Web\bin\System.Web.Http.WebHost.dll
 C:\Users\Hugo\Source\Repos\SPS\SPS.Web\bin\System.Net.Http.Formatting.xml
 C:\Users\Hugo\Source\Repos\SPS\SPS.Web\bin\System.Web.Http.xml
 C:\Users\Hugo\Source\Repos\SPS\SPS.Web\bin\System.Web.Http.WebHost.xml
+C:\Users\Hugo\Source\Repos\SPS\SPS.Web\bin\SPS.BO.dll
+C:\Users\Hugo\Source\Repos\SPS\SPS.Web\bin\SPS.Model.dll
+C:\Users\Hugo\Source\Repos\SPS\SPS.Web\bin\SPS.Repository.dll
+C:\Users\Hugo\Source\Repos\SPS\SPS.Web\bin\SPS.BO.pdb
+C:\Users\Hugo\Source\Repos\SPS\SPS.Web\bin\SPS.Model.pdb
+C:\Users\Hugo\Source\Repos\SPS\SPS.Web\bin\SPS.Repository.pdb

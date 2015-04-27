@@ -23,7 +23,6 @@ namespace SPS.Web.Models
         public string City { get; set; }
 
         public string State { get; set; }
-
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Observe que o authenticationType deve corresponder àquele definido em CookieAuthenticationOptions.AuthenticationType
@@ -36,7 +35,7 @@ namespace SPS.Web.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("SPS.Web", false)
+            : base("SPS.Web2.0", false)
         {
         }
 

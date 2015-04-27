@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Owin;
 using SPS.Web.Models;
+using SPS.BO;
 
 namespace SPS.Web.Controllers
 {
@@ -120,13 +121,14 @@ namespace SPS.Web.Controllers
                     //await SignInAsync(user, isPersistent: false);
 
                     // Para obter mais informações sobre como ativar a confirmação de senha e a redefinição de senha, visite http://go.microsoft.com/fwlink/?LinkID=320771
+                   
                     // Enviar um email com este link
                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
 
-                    await UserManager.SendEmailAsync(user.Id, "Confirmar sua conta", "Confirme sua conta clicando <a href=\"" + callbackUrl + "\">aqui</a>");
+                    await UserManager.SendEmailAsync(user.Id, "Confirmar sua Conta Smart Parking System", "Olá "+ model.FirstName +",<br/> Para começar a utilizar sua nova Conta Smart Parking System,<br/> confirme sua conta clicando <a href=\"" + callbackUrl + "\">aqui</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Login", "Account");
                 }
                 else
                 {

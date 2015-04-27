@@ -62,34 +62,43 @@ namespace SPS.Web.Models
         public string LastName { get; set; }
 
         [Required]
-        [Display(Name = "Telefone")]
+        [Display(Name = "Celular")]
         public string PhoneNumber { get; set; }
 
         [Required]
+        [Display(Name = "CEP")]
         [StringLength(9)]
         public string CEP { get; set; }
 
+        [Display(Name = "Rua")]
         public string Rua { get; set; }
 
         [Display(Name = "Número")]
         public string Numero { get; set; }
 
+        [Display(Name = "Complemento")]
         public string Complemento { get; set; }
 
+        [Display(Name = "Bairro")]
         public string Bairro { get; set; }
 
+        [Display(Name = "Cidade")]
         public string Cidade { get; set; }
 
+        [Display(Name = "Estado")]
         public string Estado { get; set; }
 
         [Required]
+        [Display(Name = "RG")]
         public string RG { get; set; }
 
         [Required]
+        [Display(Name = "CPF")]
         public string CPF { get; set; }
 
         [Required]
         [EmailAddress]
+        [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Required]
@@ -97,7 +106,8 @@ namespace SPS.Web.Models
         [DataType(DataType.Password)]
         [Display(Name = "Senha")]
         public string Password { get; set; }
-
+        
+        [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Confirmar Senha")]
         [Compare("Password", ErrorMessage = "A senha e a senha de confirmação não correspondem.")]

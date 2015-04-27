@@ -33,7 +33,7 @@ namespace SPS.Repository
         /// Initializes a new instance of the <see cref="SPSContext"/> class.
         /// </summary>
         private SPSContext() 
-            : base("SPSDb")
+            : base("SPS.Web")
         {
         }
 

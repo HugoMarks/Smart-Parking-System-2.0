@@ -1,12 +1,5 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
-
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    margin: 0 auto;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -15,3 +8,13 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/* alteração da cor do footer */
+.section-primary {
+  background-color: #337cbb;
+  color: #ffffff;
+}
+.espaco {
+    margin-bottom:5em;
+}
+
