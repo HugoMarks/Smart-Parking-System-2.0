@@ -53,63 +53,64 @@ namespace SPS.Web.Models
 
     public class RegisterViewModel
     {
-        [Required]
-        [Display(Name = "Primeiro nome")]
+        [Required(ErrorMessage = "O nome é obrigatório")]
+        [Display(Name = "Primeiro nome*")]
         public string FirstName { get; set; }
 
-        [Required]
-        [Display(Name = "Sobrenome")]
+        [Required(ErrorMessage = "O sobrenome é obrigatório")]
+        [Display(Name = "Sobrenome*")]
         public string LastName { get; set; }
 
-        [Required]
-        [Display(Name = "Celular")]
+        [Required(ErrorMessage = "O celular é obrigatório")]
+        [Display(Name = "Celular*")]
         public string PhoneNumber { get; set; }
 
-        [Required]
-        [Display(Name = "CEP")]
+        [Required(ErrorMessage = "O CEP é obrigatório")]
+        [Display(Name = "CEP*")]
         [StringLength(9)]
         public string CEP { get; set; }
 
         [Display(Name = "Rua")]
-        public string Rua { get; set; }
+        public string Street { get; set; }
 
-        [Display(Name = "Número")]
-        public string Numero { get; set; }
+		[Required(ErrorMessage = "O número da residência é obrigatório")]
+        [Display(Name = "Número*")]
+        public string Number { get; set; }
 
         [Display(Name = "Complemento")]
-        public string Complemento { get; set; }
+        public string Complement { get; set; }
 
         [Display(Name = "Bairro")]
-        public string Bairro { get; set; }
+        public string Square { get; set; }
 
         [Display(Name = "Cidade")]
-        public string Cidade { get; set; }
+        public string City { get; set; }
 
         [Display(Name = "Estado")]
-        public string Estado { get; set; }
+        public string State { get; set; }
 
-        [Required]
-        [Display(Name = "RG")]
+        [Required(ErrorMessage = "O RG é obrigatório")]
+        [Display(Name = "RG*")]
         public string RG { get; set; }
 
-        [Required]
-        [Display(Name = "CPF")]
+        [Required(ErrorMessage = "O CPF é obrigatório")]
+        [Display(Name = "CPF*")]
         public string CPF { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O email é obrigatório")]
         [EmailAddress]
-        [Display(Name = "Email")]
+        [Display(Name = "Email*")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "A senha é obrigatória")]
         [StringLength(100, ErrorMessage = "O/A {0} deve ter no mínimo {2} caracteres.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Senha")]
+        [Display(Name = "Senha*")]
         public string Password { get; set; }
-        
-        [Required]
-        [DataType(DataType.Password)]
-        [Display(Name = "Confirmar Senha")]
+
+		[Required(ErrorMessage = "A confirmação de senha é obrigatória")]
+		[DataType(DataType.Password)]
+        [Display(Name = "Confirmar Senha*")]
         [Compare("Password", ErrorMessage = "A senha e a senha de confirmação não correspondem.")]
         public string ConfirmPassword { get; set; }
     }

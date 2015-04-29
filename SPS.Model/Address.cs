@@ -6,6 +6,7 @@ using System.Text;
 
 namespace SPS.Model
 {
+	[Serializable]
     public class Address
     {
         [Key]

@@ -12,6 +12,8 @@ using Microsoft.Owin.Security;
 using Owin;
 using SPS.Web.Models;
 using SPS.BO;
+using SPS.Web.Services;
+using System.Web.Script.Serialization;
 
 namespace SPS.Web.Controllers
 {
@@ -106,12 +108,12 @@ namespace SPS.Web.Controllers
                     Email = model.Email, 
                     PhoneNumber = model.PhoneNumber,
                     CEP = model.CEP,
-                    Street = model.Rua,
-                    Square = model.Bairro,
-                    Number = model.Numero,
-                    Complement = model.Complemento,
-                    City = model.Cidade,
-                    State = model.Estado
+                    Street = model.Street,
+                    Square = model.Square,
+                    Number = model.Number,
+                    Complement = model.Complement,
+                    City = model.City,
+                    State = model.State
                 };
 
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
@@ -486,6 +488,19 @@ namespace SPS.Web.Controllers
             AuthenticationManager.SignOut();
             return RedirectToAction("Index", "Home");
         }
+
+		//
+		// POST: /Account/GetAddress
+		[HttpPost]
+		[AllowAnonymous]
+		public JsonResult GetAddress(string postalCode)
+		{
+			var postalService = new PostalCodeService();
+			var address = postalService.GetAdrressFromPostalCodeAsync(postalCode);
+			var result = new JavaScriptSerializer().Serialize(address);
+
+            return Json(address);
+		}
 
         //
         // GET: /Account/ExternalLoginFailure
