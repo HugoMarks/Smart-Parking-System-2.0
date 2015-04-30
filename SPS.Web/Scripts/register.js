@@ -21,17 +21,19 @@
 		if (cep == null || cep == "")
 			return;
 
-		$.ajax({
-			type: "POST",
-			contentType: "application/json",
-			url: "/Account/GetAddress",
-			data: JSON.stringify({ postalCode: cep }),
-			dataType: "json",
-			success: function (data) {
-				$("#streetTextBox").val(data.Street);
-				$("#cityTextBox").val(data.City);
-				$("#stateTextBox").val(data.State);
-			}
-		});
+		$.post("/Account/GetAddress", { postalCode: cep })
+			.done(function (data) {
+				var address = JSON.parse(data);
+
+				$("#streetTextBox").val(address.Street);
+				$("#cityTextBox").val(address.City);
+				$("#stateTextBox").val(address.State);
+			})
+			.fail(function (jqXHR, textStatus, message) {
+				$("#streetTextBox").val(null);
+				$("#cityTextBox").val(null);
+				$("#stateTextBox").val(null);
+				alert(message);
+			});
 	}
 });

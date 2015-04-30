@@ -14,6 +14,7 @@ using SPS.Web.Models;
 using SPS.BO;
 using SPS.Web.Services;
 using System.Web.Script.Serialization;
+using System.Net;
 
 namespace SPS.Web.Controllers
 {
@@ -493,13 +494,17 @@ namespace SPS.Web.Controllers
 		// POST: /Account/GetAddress
 		[HttpPost]
 		[AllowAnonymous]
-		public JsonResult GetAddress(string postalCode)
+		public ActionResult GetAddress(string postalCode)
 		{
 			var postalService = new PostalCodeService();
-			var address = postalService.GetAdrressFromPostalCodeAsync(postalCode);
-			var result = new JavaScriptSerializer().Serialize(address);
+			var result = postalService.GetAdrressFromPostalCode(postalCode);
 
-            return Json(address);
+			if (result.Address != null)
+			{
+				return Json(new JavaScriptSerializer().Serialize(result.Address));
+			}
+
+			return new HttpStatusCodeResult(HttpStatusCode.BadRequest, result.Message);
 		}
 
         //

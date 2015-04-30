@@ -15,19 +15,41 @@ namespace SPS.Web.Services
 		public PostalCodeService()
 		{
 			this.client = new AtendeClienteClient("AtendeClientePort");
-        }
-
-		public Address GetAdrressFromPostalCodeAsync(string postalCode)
-		{
-			var result = this.client.consultaCEP(postalCode);
-
-			return new Address
-			{
-				City = result.cidade,
-				State = result.uf,
-				Street = result.end,
-				ZipCode = result.cep
-			};
 		}
+
+		public PostalServiceResult GetAdrressFromPostalCode(string postalCode)
+		{
+			try
+			{
+				var result = this.client.consultaCEP(postalCode);
+
+				return new PostalServiceResult
+				{
+					Address = new Address
+					{
+						City = result.cidade,
+						State = result.uf,
+						Street = result.end,
+						ZipCode = result.cep
+					},
+					Message = null
+				};
+			}
+			catch
+			{
+				return new PostalServiceResult
+				{
+					Address = null,
+					Message = "CEP não encontrado"
+				};
+			}
+		}
+	}
+
+	public class PostalServiceResult
+	{
+		public Address Address { get; set; }
+
+		public string Message { get; set; }
 	}
 }
