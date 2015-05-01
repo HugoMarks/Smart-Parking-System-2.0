@@ -4,6 +4,7 @@
 /// <reference path="npm.js" />
 /// <reference path="register.js" />
 /// <reference path="jquery.mask.min.js" />
+/// <reference path="validation.js" />
 
 
 function corrigirFooter(elemento, tamanhoMargem) {

@@ -11,6 +11,9 @@ namespace SPS.Web
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
+			bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
+						"~/Scripts/jquery.validate-vsdoc.js"));
+
 			bundles.Add(new StyleBundle("~/bundles/register").Include(
 						"~/Scripts/register.js"));
 
@@ -25,7 +28,7 @@ namespace SPS.Web
 
 			bundles.Add(new StyleBundle("~/Content/css").Include(
                       //"~/Content/bootstrap.min.css",
-                      "~/Content/site.css"));
+                      "~/Content/Site.css"));
 
             // Definir EnableOptimizations como false para depuração. Para obter mais informações,
             // visite http://go.microsoft.com/fwlink/?LinkId=301862

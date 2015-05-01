@@ -35,7 +35,7 @@ namespace SPS.Web.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("SPS.Web2.0", false)
+            : base("DefaultConnection")
         {
         }
 
