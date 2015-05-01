@@ -371,6 +371,7 @@
     <Content Include="Service References\CorreiosService\SPS.Web.CorreiosService.verificaDisponibilidadeServicoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Views\Root\ParkingManagement.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -393,6 +394,10 @@
     <ProjectReference Include="..\SPS.Model\SPS.Model.csproj">
       <Project>{85d0e54b-f75d-4a18-8c90-d5f7bbfb1915}</Project>
       <Name>SPS.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SPS.Repository\SPS.Repository.csproj">
+      <Project>{75a43f2b-1e8c-4aaf-935b-38391f273957}</Project>
+      <Name>SPS.Repository</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
