@@ -32,15 +32,15 @@ namespace SPS.Repository
         /// <summary>
         /// Initializes a new instance of the <see cref="SPSContext"/> class.
         /// </summary>
-        private SPSContext()
+        public SPSContext()
             : base("DefaultConnection")
-        {
+        {            
         }
 
         /// <summary>
         /// Gets the Root table.
         /// </summary>
-        public DbSet<Root> Root { get; set; }
+        public DbSet<Root> Roots { get; set; }
 
         /// <summary>
         /// Gets the Client table.

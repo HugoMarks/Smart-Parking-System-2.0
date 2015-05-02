@@ -9,10 +9,9 @@ namespace SPS.Web.Models
     public class RootUserViewModel
     {
         [Required]
-        public string Token { get; set; }
+        public string CPF { get; set; }
 
         [Required]
-        [DataType(DataType.Password)]
-        public string Password { get; set; }
+        public string Token { get; set; }
     }
 }

@@ -40,6 +40,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Portable.Desktop">
+      <HintPath>..\packages\PclContrib-API.1.0.0.3-beta\lib\net40\Portable.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Portable.Runtime, Version=0.1.0.0, Culture=neutral, PublicKeyToken=96ab62c35eacf7af, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\PclContrib-API.1.0.0.3-beta\lib\portable-net4+sl4+wp8+win8\Portable.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -398,6 +405,10 @@
     <ProjectReference Include="..\SPS.Repository\SPS.Repository.csproj">
       <Project>{75a43f2b-1e8c-4aaf-935b-38391f273957}</Project>
       <Name>SPS.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SPS.Security\SPS.Security.csproj">
+      <Project>{1636db8c-4aeb-45fd-88d2-660bb127f1b4}</Project>
+      <Name>SPS.Security</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

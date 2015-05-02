@@ -131,7 +131,9 @@ namespace SPS.Web.Controllers
 
                     await UserManager.SendEmailAsync(user.Id, "Confirmar sua Conta Smart Parking System", "Olá "+ model.FirstName +",<br/> Para começar a utilizar sua nova Conta Smart Parking System,<br/> confirme sua conta clicando <a href=\"" + callbackUrl + "\">aqui</a>");
 
-                    return RedirectToAction("Login", "Account");
+                    ViewBag.EmailSent = model.Email;
+
+                    return View("ConfirmationSent");
                 }
                 else
                 {
@@ -141,6 +143,14 @@ namespace SPS.Web.Controllers
 
             // Se chegamos até aqui e houver alguma falha, exiba novamente o formulário
             return View(model);
+        }
+
+        //
+        // GET: /Account/ConfirmationSent
+        [AllowAnonymous]
+        public ActionResult ConfirmationSent()
+        {
+            return View();
         }
 
         //
