@@ -55,6 +55,7 @@
     <Compile Include="ParkingSpace.cs" />
     <Compile Include="Price.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Root.cs" />
     <Compile Include="Tag.cs" />
   </ItemGroup>
   <ItemGroup>

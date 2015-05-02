@@ -14,7 +14,13 @@ textarea {
   background-color: #337cbb;
   color: #ffffff;
 }
+
 .espaco {
     margin-bottom:5em;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
 }
 
