@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPS.Modelo", "SPS.Modelo\SP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPS.Mobile.Root", "SPS.Mobile.Root\SPS.Mobile.Root.csproj", "{F76866A9-38B2-4381-B034-20B686581CB0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPS.Security", "SPS.Security\SPS.Security.csproj", "{1636DB8C-4AEB-45FD-88D2-660BB127F1B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -103,6 +105,14 @@ Global
 		{F76866A9-38B2-4381-B034-20B686581CB0}.Release|x86.ActiveCfg = Release|x86
 		{F76866A9-38B2-4381-B034-20B686581CB0}.Release|x86.Build.0 = Release|x86
 		{F76866A9-38B2-4381-B034-20B686581CB0}.Release|x86.Deploy.0 = Release|x86
+		{1636DB8C-4AEB-45FD-88D2-660BB127F1B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1636DB8C-4AEB-45FD-88D2-660BB127F1B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1636DB8C-4AEB-45FD-88D2-660BB127F1B4}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{1636DB8C-4AEB-45FD-88D2-660BB127F1B4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1636DB8C-4AEB-45FD-88D2-660BB127F1B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1636DB8C-4AEB-45FD-88D2-660BB127F1B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1636DB8C-4AEB-45FD-88D2-660BB127F1B4}.Release|ARM.ActiveCfg = Release|Any CPU
+		{1636DB8C-4AEB-45FD-88D2-660BB127F1B4}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

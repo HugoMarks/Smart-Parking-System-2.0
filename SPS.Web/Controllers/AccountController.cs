@@ -15,6 +15,7 @@ using SPS.BO;
 using SPS.Web.Services;
 using System.Web.Script.Serialization;
 using System.Net;
+using SPS.Repository;
 
 namespace SPS.Web.Controllers
 {
@@ -105,6 +106,8 @@ namespace SPS.Web.Controllers
             {
                 var user = new ApplicationUser() 
                 { 
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
                     UserName = model.Email, 
                     Email = model.Email, 
                     PhoneNumber = model.PhoneNumber,
@@ -131,7 +134,9 @@ namespace SPS.Web.Controllers
 
                     await UserManager.SendEmailAsync(user.Id, "Confirmar sua Conta Smart Parking System", "Olá "+ model.FirstName +",<br/> Para começar a utilizar sua nova Conta Smart Parking System,<br/> confirme sua conta clicando <a href=\"" + callbackUrl + "\">aqui</a>");
 
-                    return RedirectToAction("Login", "Account");
+                    ViewBag.EmailSent = model.Email;
+
+                    return View("ConfirmationSent");
                 }
                 else
                 {
@@ -141,6 +146,14 @@ namespace SPS.Web.Controllers
 
             // Se chegamos até aqui e houver alguma falha, exiba novamente o formulário
             return View(model);
+        }
+
+        //
+        // GET: /Account/ConfirmationSent
+        [AllowAnonymous]
+        public ActionResult ConfirmationSent()
+        {
+            return View();
         }
 
         //
@@ -496,15 +509,23 @@ namespace SPS.Web.Controllers
 		[AllowAnonymous]
 		public ActionResult GetAddress(string postalCode)
 		{
-			var postalService = new PostalCodeService();
-			var result = postalService.GetAdrressFromPostalCode(postalCode);
+            var address = SPSContext.Instance.Addresses.Find(postalCode.Replace("-", ""));
 
-			if (result.Address != null)
-			{
-				return Json(new JavaScriptSerializer().Serialize(result.Address));
-			}
+            if (address != null)
+            {
+                return Json(new JavaScriptSerializer().Serialize(address));
+            }
 
-			return new HttpStatusCodeResult(HttpStatusCode.BadRequest, result.Message);
+            var postalService = new PostalCodeService();
+            var result = postalService.GetAdrressFromPostalCode(postalCode);
+
+            if (result.Address != null)
+            {
+                new AddressBO().Add(result.Address);
+                return Json(new JavaScriptSerializer().Serialize(result.Address));
+            }
+
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest, result.Message);
 		}
 
         //

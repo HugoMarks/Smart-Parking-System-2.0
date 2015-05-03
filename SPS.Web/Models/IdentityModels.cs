@@ -10,6 +10,10 @@ namespace SPS.Web.Models
     /// </summary>
     public class ApplicationUser : IdentityUser
     {
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
         public string CEP { get; set; }
 
         public string Street { get; set; }
@@ -29,6 +33,11 @@ namespace SPS.Web.Models
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
 
             return userIdentity;
+        }
+
+        public override string ToString()
+        {
+            return this.FirstName + " " + this.LastName;
         }
     }
 

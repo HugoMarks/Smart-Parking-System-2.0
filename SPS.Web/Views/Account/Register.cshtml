@@ -51,11 +51,18 @@
 			@Html.TextBoxFor(m => m.CEP, new { @class = "form-control", id = "cepTextBox" })
 			@Html.ValidationMessageFor(m => m.CEP, "", new { @class = "text-danger" })
 		</div>
+
 		<div class="form-group address">
 			@Html.LabelFor(m => m.Street, new { @class = "control-label" })
 			@Html.TextBoxFor(m => m.Street, new { @class = "form-control", id = "streetTextBox", @readonly = "readonly" })
 			@Html.ValidationMessageFor(m => m.Street, "", new { @class = "text-danger" })
 		</div>
+
+        <div class="form-group address">
+            @Html.LabelFor(m => m.Square, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Square, new { @class = "form-control", id = "squareTextBox", @readonly = "readonly" })
+            @Html.ValidationMessageFor(m => m.Square, "", new { @class = "text-danger" })
+        </div>
 
 		<div class="form-group address">
 			@Html.LabelFor(m => m.City, new { @class = "control-label" })

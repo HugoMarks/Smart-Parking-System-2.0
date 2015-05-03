@@ -1,4 +1,4 @@
-﻿
+﻿@using Microsoft.AspNet.Identity
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,11 +9,9 @@
         <div class="col-md-12">
             <div class="page-header">
                 <h1>
-                    Olá Mensalista,
-                    <font color="#777777">
-                        <span style="font-size: 23px; line-height: 23.3999996185303px;">escolha uma opção:</span>
-                    </font>
+                    Olá, @User.Identity.GetApplicationUser().FirstName
                 </h1>
+                <h2 style="color:#777777; font-size: 23px; line-height: 23.3999996185303px;">Escolha uma opção abaixo</h2>
             </div>
             <div class="row">
                 <div class="col-md-3">
