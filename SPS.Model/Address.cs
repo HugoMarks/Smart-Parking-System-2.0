@@ -10,19 +10,13 @@ namespace SPS.Model
     public class Address
     {
         [Key]
-        public virtual int Id
+        public virtual string PostalCode
         {
             get;
             set;
         }
 
         public virtual string Street
-        {
-            get;
-            set;
-        }
-
-        public virtual string ZipCode
         {
             get;
             set;
@@ -35,6 +29,12 @@ namespace SPS.Model
         }
 
         public virtual uint Number
+        {
+            get;
+            set;
+        }
+
+        public virtual string Square
         {
             get;
             set;

@@ -28,9 +28,10 @@ namespace SPS.Web.Services
 					Address = new Address
 					{
 						City = result.cidade,
+                        Square = result.bairro,
 						State = result.uf,
 						Street = result.end,
-						ZipCode = result.cep
+						PostalCode = result.cep
 					},
 					Message = null
 				};

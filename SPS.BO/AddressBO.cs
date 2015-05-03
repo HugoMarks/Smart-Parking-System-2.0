@@ -34,7 +34,7 @@ namespace SPS.BO
 
         public virtual void Update(Address address)
         {
-            var savedAddress = Context.Addresses.SingleOrDefault(a => a.Id == address.Id);
+            var savedAddress = Context.Addresses.SingleOrDefault(a => a.PostalCode == address.PostalCode);
 
             if (savedAddress != null)
             {

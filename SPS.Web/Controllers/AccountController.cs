@@ -15,6 +15,7 @@ using SPS.BO;
 using SPS.Web.Services;
 using System.Web.Script.Serialization;
 using System.Net;
+using SPS.Repository;
 
 namespace SPS.Web.Controllers
 {
@@ -508,15 +509,23 @@ namespace SPS.Web.Controllers
 		[AllowAnonymous]
 		public ActionResult GetAddress(string postalCode)
 		{
-			var postalService = new PostalCodeService();
-			var result = postalService.GetAdrressFromPostalCode(postalCode);
+            var address = SPSContext.Instance.Addresses.Find(postalCode.Replace("-", ""));
 
-			if (result.Address != null)
-			{
-				return Json(new JavaScriptSerializer().Serialize(result.Address));
-			}
+            if (address != null)
+            {
+                return Json(new JavaScriptSerializer().Serialize(address));
+            }
 
-			return new HttpStatusCodeResult(HttpStatusCode.BadRequest, result.Message);
+            var postalService = new PostalCodeService();
+            var result = postalService.GetAdrressFromPostalCode(postalCode);
+
+            if (result.Address != null)
+            {
+                new AddressBO().Add(result.Address);
+                return Json(new JavaScriptSerializer().Serialize(result.Address));
+            }
+
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest, result.Message);
 		}
 
         //

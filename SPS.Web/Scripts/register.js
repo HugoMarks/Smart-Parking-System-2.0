@@ -30,15 +30,17 @@ function getAddress() {
 
 	$.post("/Account/GetAddress", { postalCode: cep })
 		.done(function (data) {
-			var address = JSON.parse(data);
+		    var address = JSON.parse(data);
 
 			$("#streetTextBox").val(address.Street);
+			$("#squareTextBox").val(address.Square);
 			$("#cityTextBox").val(address.City);
 			$("#stateTextBox").val(address.State);
 			$(".address").slideDown();
 		})
 		.fail(function (jqXHR, textStatus, message) {
-			$("#streetTextBox").val(null);
+		    $("#streetTextBox").val(null);
+		    $("#squareTextBox").val(null);
 			$("#cityTextBox").val(null);
 			$("#stateTextBox").val(null);
 		});
