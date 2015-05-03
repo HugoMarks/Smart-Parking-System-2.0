@@ -8,7 +8,7 @@ namespace SPS.BO
 {
     public class TagBO : IBusiness<Tag>
     {
-        private static SPSContext Context = SPSContext.Instance;
+        private static SPSDb Context = SPSDb.Instance;
 
         public virtual void Add(Tag tag)
         {

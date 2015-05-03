@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SPSContext.cs" />
+    <Compile Include="SPSDb.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

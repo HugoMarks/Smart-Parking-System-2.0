@@ -11,31 +11,37 @@ namespace SPS.Repository
     /// <summary>
     /// The SPS database access layer.
     /// </summary>
-    public class SPSContext : DbContext
+    public class SPSDb : DbContext
     {
-        private static SPSContext _instance;
+        private static SPSDb _instance;
 
         /// <summary>
-        /// Gets an instance of the <see cref="SPSContext"/> class.
+        /// Gets an instance of the <see cref="SPSDb"/> class.
         /// </summary>
-        public static SPSContext Instance
+        public static SPSDb Instance
         {
             get
             {
                 if (_instance == null)
-                    _instance = new SPSContext();
+                    _instance = new SPSDb();
 
                 return _instance;
             }
         }
 
+        public static SPSDb Create()
+        {
+            return new SPSDb();
+        }
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="SPSContext"/> class.
+        /// Initializes a new instance of the <see cref="SPSDb"/> class.
         /// </summary>
-        private SPSContext()
+        private SPSDb()
             : base("DefaultConnection")
         {
         }
+
 
         /// <summary>
         /// Gets the Root table.
@@ -77,24 +83,7 @@ namespace SPS.Repository
         /// </summary>
         public DbSet<Address> Addresses { get; set; }
 
-        public static SPSContext Create()
-        {
-            return new SPSContext();
-        }
     }
 
-    /// <summary>
-    /// Provides custom initialization for the <see cref="SPSContext"/> class.
-    /// </summary>
-    public class SPSContextInitializer : DropCreateDatabaseAlways<SPSContext>
-    {
-        /// <summary>
-        /// A method that should be overridden to actually add data to the context for seeding.
-        /// </summary>
-        /// <param name="context">The context to seed.</param>
-        protected override void Seed(SPSContext context)
-        {
-            base.Seed(context);
-        }
-    }
+   
 }

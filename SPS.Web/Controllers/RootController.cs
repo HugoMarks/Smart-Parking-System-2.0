@@ -23,7 +23,7 @@ namespace SPS.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(RootUserViewModel rootUser)
         {
-            var user = SPSContext.Instance.Root.Find(rootUser.Token);
+            var user = SPSDb.Instance.Root.Find(rootUser.Token);
 
             if (user == null)
             {

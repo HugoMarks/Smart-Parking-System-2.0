@@ -16,40 +16,42 @@
 
 </head>
 <body>
-    <div class="navbar navbar-default navbar-static-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">
-                    <span>
-                        @Html.ActionLink("SPS", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                    </span><br>
-                </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar-ex-collapse">
-                <ul class="nav navbar-nav navbar-left">
-                    <li>@Html.ActionLink("Início", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Sobre", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contato", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-    </div>
-    <div class="section">
-        <div class="container">
+    <div id="geral">
+        <div id="topo" class="navbar navbar-default navbar-static-top">
             <div class="container">
-                @RenderBody()
-                <hr />
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">
+                        <span>
+                            @Html.ActionLink("SPS", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                        </span><br>
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li class="btn-default">@Html.ActionLink("Início", "Index", "Home")</li>
+                        <li class="btn-default">@Html.ActionLink("Sobre", "About", "Home")</li>
+                        <li class="btn-default">@Html.ActionLink("Contato", "Contact", "Home")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </div>
+        <div id="conteudo" class="section">
+            <div class="container">
+                <div class="container">
+                    @RenderBody()
+                    <hr />
+                </div>
             </div>
         </div>
     </div>
-    <footer class="section section-primary">
+    <footer id="rodape" class="section section-primary">
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
@@ -57,7 +59,7 @@
                 </div>
                 <div class="col-sm-6">
                     <p class="text-info text-right">
-                        <br> 
+                        <br>
                         <br>
                     </p>
                     <div class="row">
@@ -65,7 +67,6 @@
                             <a href="#"><i class="fa fa-3x fa-fw fa-instagram text-inverse"></i></a>
                             <a href="#"><i class="fa fa-3x fa-fw fa-twitter text-inverse"></i></a>
                             <a href="#"><i class="fa fa-3x fa-fw fa-facebook text-inverse"></i></a>
-                            <a href="#"><i class="fa fa-3x fa-fw fa-github text-inverse"></i></a>
                         </div>
                     </div>
                     <div class="row">
@@ -73,14 +74,12 @@
                             <a href="#"><i class="fa fa-3x fa-fw fa-instagram text-inverse"></i></a>
                             <a href="#"><i class="fa fa-3x fa-fw fa-twitter text-inverse"></i></a>
                             <a href="#"><i class="fa fa-3x fa-fw fa-facebook text-inverse"></i></a>
-                            <a href="#"><i class="fa fa-3x fa-fw fa-github text-inverse"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
-
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js"></script>
 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.22/jquery-ui.js"></script>

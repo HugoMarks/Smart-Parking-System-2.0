@@ -8,7 +8,7 @@ namespace SPS.BO
 {
     public class ClientBO : IBusiness<Client>
     {
-        private static SPSContext Context = SPSContext.Instance;
+        private static SPSDb Context = SPSDb.Instance;
 
         public virtual void Add(Client client)
         {

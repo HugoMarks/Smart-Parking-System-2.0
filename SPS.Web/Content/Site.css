@@ -2,6 +2,28 @@
     margin: 0 auto;
 }
 
+/* ------------------- formatação para a utilização do footer sempre dinamico-------------------------*/
+html, body, #geral { 
+    height: 100%; 
+
+}
+body > #geral { 
+    height: auto; 
+    min-height: 100%; 
+
+}
+#conteudo { 
+    padding-bottom: 180px; /* O padding, deve ser o mesmo valor da altura do rodapé */
+
+} 
+#rodape {
+   position: relative;
+   margin-top: -180px; /* Este margin, tem que ser o mesmo valor da altura do rodapé, só que negativo */
+   height: 180px; /* E aqui, fica a altura do rodapé */
+   clear: both;
+}
+/* ---------------------------------------------------------------------------------------------------*/
+
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
@@ -13,10 +35,6 @@ textarea {
 .section-primary {
   background-color: #337cbb;
   color: #ffffff;
-}
-
-.espaco {
-    margin-bottom:5em;
 }
 
 .col-centered{
