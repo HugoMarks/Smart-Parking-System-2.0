@@ -16,6 +16,8 @@ using SPS.Web.Services;
 using System.Web.Script.Serialization;
 using System.Net;
 using SPS.Repository;
+using SPS.Web.Extensions;
+using SPS.Model;
 
 namespace SPS.Web.Controllers
 {
@@ -104,35 +106,20 @@ namespace SPS.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() 
-                { 
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
-                    UserName = model.Email, 
-                    Email = model.Email, 
-                    PhoneNumber = model.PhoneNumber,
-                    CEP = model.CEP,
-                    Street = model.Street,
-                    Square = model.Square,
-                    Number = model.Number,
-                    Complement = model.Complement,
-                    City = model.City,
-                    State = model.State
-                };
-
+                ApplicationUser user = model.ToApplicationUser();
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)
                 {
-                    //await SignInAsync(user, isPersistent: false);
+                    MonthlyClient client = model.ToMonthlyClient(user.PasswordHash);
 
-                    // Para obter mais informações sobre como ativar a confirmação de senha e a redefinição de senha, visite http://go.microsoft.com/fwlink/?LinkID=320771
-                   
+                    BusinessManager.Instance.MontlyClients.Add(client);
+
                     // Enviar um email com este link
                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
 
-                    await UserManager.SendEmailAsync(user.Id, "Confirmar sua Conta Smart Parking System", "Olá "+ model.FirstName +",<br/> Para começar a utilizar sua nova Conta Smart Parking System,<br/> confirme sua conta clicando <a href=\"" + callbackUrl + "\">aqui</a>");
+                    await UserManager.SendEmailAsync(user.Id, "Confirmar sua conta Smart Parking System", "Olá, "+ model.FirstName +"!<br/> Para começar a utilizar sua nova conta Smart Parking System,<br/> clique <a href=\"" + callbackUrl + "\">aqui</a>");
 
                     ViewBag.EmailSent = model.Email;
 

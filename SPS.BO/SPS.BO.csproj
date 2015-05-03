@@ -47,9 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddressBO.cs" />
+    <Compile Include="BusinessManager.cs" />
     <Compile Include="ClientBO.cs" />
     <Compile Include="CollaboratorBO.cs" />
+    <Compile Include="GlobalManagerBO.cs" />
     <Compile Include="IBusiness.cs" />
+    <Compile Include="LocalManagerBO.cs" />
     <Compile Include="ParkingBO.cs" />
     <Compile Include="ParkingSpaceBO.cs" />
     <Compile Include="PriceBO.cs" />

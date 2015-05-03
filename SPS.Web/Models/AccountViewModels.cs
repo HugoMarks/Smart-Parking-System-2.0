@@ -68,7 +68,7 @@ namespace SPS.Web.Models
         [Required(ErrorMessage = "O CEP é obrigatório")]
         [Display(Name = "CEP*")]
         [StringLength(9)]
-        public string CEP { get; set; }
+        public string PostalCode { get; set; }
 
         [Display(Name = "Rua")]
         public string Street { get; set; }

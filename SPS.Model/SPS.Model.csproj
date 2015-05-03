@@ -47,15 +47,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Address.cs" />
-    <Compile Include="Client.cs" />
+    <Compile Include="GlobalManager.cs" />
+    <Compile Include="LocalManager.cs" />
+    <Compile Include="MontlyClient.cs" />
     <Compile Include="Collaborator.cs" />
+    <Compile Include="DailyClient.cs" />
     <Compile Include="IUser.cs" />
     <Compile Include="ParkingSpaceState.cs" />
     <Compile Include="Parking.cs" />
     <Compile Include="ParkingSpace.cs" />
     <Compile Include="Price.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Root.cs" />
     <Compile Include="Tag.cs" />
   </ItemGroup>
   <ItemGroup>

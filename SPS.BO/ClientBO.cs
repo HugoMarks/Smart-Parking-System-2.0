@@ -6,33 +6,33 @@ using System.Linq;
 
 namespace SPS.BO
 {
-    public class ClientBO : IBusiness<Client>
+    public class MontlyClientBO : IBusiness<MonthlyClient>
     {
         private static SPSDb Context = SPSDb.Instance;
 
-        public virtual void Add(Client client)
+        public virtual void Add(MonthlyClient client)
         {
             Context.Clients.Add(client);
             Context.SaveChanges();
         }
 
-        public virtual Client Find(int id)
+        public virtual MonthlyClient Find(int id)
         {
             return Context.Clients.Find(id);
         }
 
-        public virtual IList<Client> FindAll()
+        public virtual IList<MonthlyClient> FindAll()
         {
             return Context.Clients.ToList();
         }
 
-        public virtual void Remove(Client client)
+        public virtual void Remove(MonthlyClient client)
         {
             Context.Clients.Remove(client);
             Context.SaveChanges();
         }
 
-        public virtual void Update(Client client)
+        public virtual void Update(MonthlyClient client)
         {
             var savedClient = Context.Clients.SingleOrDefault(c => c.Id == client.Id);
 
