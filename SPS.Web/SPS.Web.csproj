@@ -191,6 +191,7 @@
     <Compile Include="Controllers\LocalAdminController.cs" />
     <Compile Include="Controllers\RootController.cs" />
     <Compile Include="Extensions\IdentityExtensions.cs" />
+    <Compile Include="Extensions\RegisterViewModelExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -22,6 +22,12 @@ namespace SPS.Web.Extensions
             };
         }
 
+        /// <summary>
+        /// Converts an <see cref="RegisterViewModel"/> in a <see cref="MonthlyClient"/>.
+        /// </summary>
+        /// <param name="registerModel">The RegisterViewModel to be converted.</param>
+        /// <param name="passwordHash">The hashed password to be saved in the database.</param>
+        /// <returns>An instance of the <see cref="MonthlyClient"/> class.</returns>
         public static MonthlyClient ToMonthlyClient(this RegisterViewModel registerModel, string passwordHash)
         {
             var address = BusinessManager.Instance.Addresses.FindAll().
