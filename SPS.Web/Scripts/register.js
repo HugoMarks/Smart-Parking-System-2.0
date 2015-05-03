@@ -18,16 +18,17 @@
 	$("#phoneTextBox").mask(SPMaskBehavior, spOptions);
 
 	$("#cepTextBox").blur(getAddress);
-	$("#cpfTextBox").on("keyup", onCPFTextBoxKeyUp);
+	$("#cpfTextBox").blur(onCPFTextBoxChanged);
+	$("#cpfTextBox").on("keyup", onCPFTextBoxChanged);
 });
 
-function onCPFTextBoxKeyUp(event) {
-    if (validateCPF()) {
-        addError(this);
+function onCPFTextBoxChanged(event) {
+    if (!validateCPF()) {
+        addError(event.target);
         return;
     }
 
-    
+    addSuccess(event.target);
 }
 
 function getAddress() {
@@ -112,4 +113,9 @@ function validateCPF() {
 function addError(element) {
     $(element).closest(".form-group").addClass("has-error");
     $(element).closest(".form-group").removeClass("has-success");
+}
+
+function addSuccess(element) {
+    $(element).closest(".form-group").addClass("has-success");
+    $(element).closest(".form-group").removeClass("has-error");
 }
