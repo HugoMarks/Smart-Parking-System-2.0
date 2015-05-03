@@ -509,7 +509,7 @@ namespace SPS.Web.Controllers
 		[AllowAnonymous]
 		public ActionResult GetAddress(string postalCode)
 		{
-            var address = SPSContext.Instance.Addresses.Find(postalCode.Replace("-", ""));
+            var address = SPSDb.Instance.Addresses.Find(postalCode.Replace("-", ""));
 
             if (address != null)
             {

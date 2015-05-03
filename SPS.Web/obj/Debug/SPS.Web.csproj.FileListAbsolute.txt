@@ -226,3 +226,10 @@ C:\Users\Hugo\Source\Repos\SPS\SPS.Web\bin\SPS.Repository.dll
 C:\Users\Hugo\Source\Repos\SPS\SPS.Web\bin\SPS.BO.pdb
 C:\Users\Hugo\Source\Repos\SPS\SPS.Web\bin\SPS.Model.pdb
 C:\Users\Hugo\Source\Repos\SPS\SPS.Web\bin\SPS.Repository.pdb
+C:\Users\Hugo\Source\Repos\SPS\SPS.Web\bin\Portable.Desktop.dll
+C:\Users\Hugo\Source\Repos\SPS\SPS.Web\bin\Portable.Runtime.dll
+C:\Users\Hugo\Source\Repos\SPS\SPS.Web\bin\SPS.Security.dll
+C:\Users\Hugo\Source\Repos\SPS\SPS.Web\bin\crypto.dll
+C:\Users\Hugo\Source\Repos\SPS\SPS.Web\bin\Portable.Security.Cryptography.dll
+C:\Users\Hugo\Source\Repos\SPS\SPS.Web\bin\SPS.Security.pdb
+C:\Users\Hugo\Source\Repos\SPS\SPS.Web\bin\crypto.xml
