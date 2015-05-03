@@ -6,15 +6,15 @@
   <MessageClass Name="Error" Label="Error" Option="Show errors" />
   <MessageClass Name="Property" Label="Property" Option="Show metadata" />
   <MessageClass Name="Diagnostic" Label="Message" Option="Show diagnostic messages" />
-  <Message Timestamp="2015-04-04T11:49:39" Importance="High" Text="Code generation or text transformation started." />
-  <Message Timestamp="2015-04-04T11:49:39" Importance="Diagnostic" Text="Name = InterfaceTemplate" />
-  <Message Timestamp="2015-04-04T11:49:39" Importance="Diagnostic" Text="Overwrite = True" />
-  <Message Timestamp="2015-04-04T11:49:39" Importance="Diagnostic" Text="ProjectPath = ..\SPS.Model\SPS.Model.csproj" />
-  <Message Timestamp="2015-04-04T11:49:39" Importance="Diagnostic" Text="TargetDirectory = {PackageStructure}" />
-  <Message Timestamp="2015-04-04T11:49:39" Importance="Diagnostic" Text="TargetName = {Name}" />
-  <Message Timestamp="2015-04-04T11:49:39" Importance="Diagnostic" Text="TemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 12.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\InterfaceTemplate.t4" />
-  <Message Timestamp="2015-04-04T11:49:39" Importance="Diagnostic" Text="ResolvedTemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 12.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\InterfaceTemplate.t4" />
-  <Message Timestamp="2015-04-04T11:49:39" Importance="Medium" Text="SPS.Architeture's Text Template Binding: 'InterfaceTemplate' will apply InterfaceTemplate.t4 to: 'SPS.Architeture::IBusiness' -  (Interface) " />
-  <Message Timestamp="2015-04-04T11:49:40" Importance="Medium" Text="'SPS.Architeture::IBusiness' -  (Interface) : success (file created) - C:\Users\André\Documents\Visual Studio 2013\Projects\SPS\SPS.Model\IBusiness.cs" />
-  <Message Timestamp="2015-04-04T11:49:40" Importance="High" Text="Code generation complete. Errors: 0. Warnings: 0." />
+  <Message Timestamp="2015-05-03T11:24:18" Importance="High" Text="Code generation or text transformation started." />
+  <Message Timestamp="2015-05-03T11:24:18" Importance="Diagnostic" Text="Name = InterfaceTemplate" />
+  <Message Timestamp="2015-05-03T11:24:18" Importance="Diagnostic" Text="Overwrite = True" />
+  <Message Timestamp="2015-05-03T11:24:18" Importance="Diagnostic" Text="ProjectPath = ..\SPS.Model\SPS.Model.csproj" />
+  <Message Timestamp="2015-05-03T11:24:18" Importance="Diagnostic" Text="TargetDirectory = {PackageStructure}" />
+  <Message Timestamp="2015-05-03T11:24:18" Importance="Diagnostic" Text="TargetName = {Name}" />
+  <Message Timestamp="2015-05-03T11:24:18" Importance="Diagnostic" Text="TemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 12.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\InterfaceTemplate.t4" />
+  <Message Timestamp="2015-05-03T11:24:18" Importance="Diagnostic" Text="ResolvedTemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 12.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\InterfaceTemplate.t4" />
+  <Message Timestamp="2015-05-03T11:24:18" Importance="Medium" Text="SPS.Architeture's Text Template Binding: 'InterfaceTemplate' will apply InterfaceTemplate.t4 to: 'SPS.Architeture::IUser' -  (Interface) " />
+  <Message Timestamp="2015-05-03T11:24:34" Importance="Medium" Text="'SPS.Architeture::IUser' -  (Interface) : success (file replaced) - C:\Users\Hugo\Source\Repos\SPS\SPS.Model\IUser.cs" />
+  <Message Timestamp="2015-05-03T11:24:37" Importance="High" Text="Code generation complete. Errors: 0. Warnings: 0." />
 </Log>

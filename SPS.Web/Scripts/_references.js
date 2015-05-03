@@ -7,6 +7,3 @@
 /// <reference path="validation.js" />
 
 
-function corrigirFooter(elemento, tamanhoMargem) {
-    $(elemento).css("margin-bottom") = tamanhoMargem + "em";
-}
