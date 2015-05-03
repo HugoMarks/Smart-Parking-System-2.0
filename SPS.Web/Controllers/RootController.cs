@@ -1,4 +1,5 @@
-﻿using SPS.Repository;
+﻿using SPS.BO;
+using SPS.Repository;
 using SPS.Security;
 using SPS.Web.Models;
 using System;
@@ -26,7 +27,7 @@ namespace SPS.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(RootUserViewModel rootUser)
         {
-            var user = SPSDb.Instance.Roots.Find(rootUser.CPF);
+            var user = BusinessManager.Instance.GlobalManagers.FindAll().Where(gm => gm.CPF == rootUser.CPF).FirstOrDefault();
 
             if (user == null)
             {
@@ -34,7 +35,7 @@ namespace SPS.Web.Controllers
                 return View("Index", rootUser);
             }
 
-            if (!SPS.Security.TokenGeneratorService.IsTokenValid(user.PasswordHash, rootUser.Token, TokenExpirationTimeSeconds))
+            if (!SPS.Security.TokenGeneratorService.IsTokenValid(user.Password, rootUser.Token, TokenExpirationTimeSeconds))
             {
                 ModelState.AddModelError("", "Token inválido ou expirado!");
                 return View("Index", rootUser);

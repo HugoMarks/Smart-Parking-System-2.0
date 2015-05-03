@@ -18,8 +18,17 @@
 	$("#phoneTextBox").mask(SPMaskBehavior, spOptions);
 
 	$("#cepTextBox").blur(getAddress);
-	$("#cpfTextBox").on("keyup", validateCPF);
+	$("#cpfTextBox").on("keyup", onCPFTextBoxKeyUp);
 });
+
+function onCPFTextBoxKeyUp(event) {
+    if (validateCPF()) {
+        addError(this);
+        return;
+    }
+
+    
+}
 
 function getAddress() {
 	var cep = $("#cepTextBox").val();
@@ -98,4 +107,9 @@ function validateCPF() {
 	}
 
 	return true;
+}
+
+function addError(element) {
+    $(element).closest(".form-group").addClass("has-error");
+    $(element).closest(".form-group").removeClass("has-success");
 }

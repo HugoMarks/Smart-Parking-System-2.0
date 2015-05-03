@@ -191,6 +191,7 @@
     <Compile Include="Controllers\LocalAdminController.cs" />
     <Compile Include="Controllers\RootController.cs" />
     <Compile Include="Extensions\IdentityExtensions.cs" />
+    <Compile Include="Extensions\RegisterViewModelExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -383,6 +384,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Views\Root\ParkingManagement.cshtml" />
+    <Content Include="Views\Account\ConfirmationSent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

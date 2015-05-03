@@ -40,17 +40,22 @@ namespace SPS.Repository
         /// <summary>
         /// Gets the Root table.
         /// </summary>
-        public DbSet<Root> Roots { get; set; }
+        public DbSet<GlobalManager> GlobalManagers { get; set; }
 
         /// <summary>
         /// Gets the Client table.
         /// </summary>
-        public DbSet<Client> Clients { get; set; }
+        public DbSet<MonthlyClient> Clients { get; set; }
 
         /// <summary>
         /// Gets the Collaborator table.
         /// </summary>
         public DbSet<Collaborator> Collaborators { get; set; }
+
+        /// <summary>
+        /// Gets the LocalManager table.
+        /// </summary>
+        public DbSet<LocalManager> LocalManagers { get; set; }
 
         /// <summary>
         /// Gets the Parking table.

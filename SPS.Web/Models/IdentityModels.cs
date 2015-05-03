@@ -14,19 +14,6 @@ namespace SPS.Web.Models
 
         public string LastName { get; set; }
 
-        public string CEP { get; set; }
-
-        public string Street { get; set; }
-
-        public string Number { get; set; }
-
-        public string Complement { get; set; }
-
-        public string Square { get; set; }
-
-        public string City { get; set; }
-
-        public string State { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Observe que o authenticationType deve corresponder àquele definido em CookieAuthenticationOptions.AuthenticationType
