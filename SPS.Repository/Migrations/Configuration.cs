@@ -5,14 +5,14 @@ namespace SPS.Repository.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<SPS.Repository.SPSContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<SPS.Repository.SPSDb>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(SPS.Repository.SPSContext context)
+        protected override void Seed(SPS.Repository.SPSDb context)
         {
             //  This method will be called after migrating to the latest version.
 
