@@ -1,5 +1,4 @@
-﻿using SPS.Web.DataAnnotations;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace SPS.Web.Models
 {
@@ -94,7 +93,6 @@ namespace SPS.Web.Models
         [Display(Name = "RG*")]
         public string RG { get; set; }
 
-        [CPF]
         [Required(ErrorMessage = "O CPF é obrigatório")]
         [Display(Name = "CPF*")]
         public string CPF { get; set; }
