@@ -32,11 +32,10 @@
             <StackPanel>
                 <TextBox x:Name="CPFTextBox"
                          Header="CPF"
-                         InputScope="Number"
+                         InputScope="TelephoneNumber"
                          PlaceholderText="Digite seu CPF"/>
-                <TextBox x:Name="PassTextBox"
+                <PasswordBox x:Name="PassTextBox"
                          Header="Senha"
-                         InputScope="Number"
                          PlaceholderText="Digite sua senha"/>
                 <Button x:Name="GenerateTokenButton"
                         Content="Gerar token"

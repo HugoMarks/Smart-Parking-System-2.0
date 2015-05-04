@@ -28,7 +28,7 @@ namespace SPS.Mobile.Root.Pages
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private const int TokenExpirationTimeSeconds = 60;
+        private const int TokenExpirationTimeSeconds = 30;
 
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
@@ -125,7 +125,7 @@ namespace SPS.Mobile.Root.Pages
                 return;
             }
 
-            if (string.IsNullOrEmpty(this.PassTextBox.Text))
+            if (string.IsNullOrEmpty(this.PassTextBox.Password))
             {
                 await new MessageDialog("Você precisa digitar sua senha!", "Senha inválida").ShowAsync();
                 return;
@@ -133,13 +133,13 @@ namespace SPS.Mobile.Root.Pages
 
             string token;
             string cpf = this.CPFTextBox.Text;
-            string rawPass = this.PassTextBox.Text;
+            string rawPass = this.PassTextBox.Password;
 
             token = await Task.Run(() =>
             {
                 string pass = HashServices.HashPassword(rawPass, cpf);
 
-                return TokenGeneratorService.GenerateToken(pass, TokenExpirationTimeSeconds);
+                return TokenGeneratorService.GenerateToken(pass);
             });
 
             this.TokenTextBlock.Text = token;
@@ -150,7 +150,7 @@ namespace SPS.Mobile.Root.Pages
         public void OnCleanTimerTicked(object sender, object e)
         {
             this.CPFTextBox.Text = 
-            this.PassTextBox.Text =
+            this.PassTextBox.Password =
             this.TokenTextBlock.Text = 
             this.TokenExpirationTextBlock.Text = string.Empty;
             this.cleanTimer.Stop();

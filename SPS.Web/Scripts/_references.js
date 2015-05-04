@@ -5,5 +5,6 @@
 /// <reference path="npm.js" />
 /// <reference path="register.js" />
 /// <reference path="validation.js" />
+/// <reference path="root.js" />
 
 

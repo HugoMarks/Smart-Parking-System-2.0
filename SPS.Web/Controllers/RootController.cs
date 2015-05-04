@@ -27,7 +27,7 @@ namespace SPS.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(RootUserViewModel rootUser)
         {
-            var user = BusinessManager.Instance.GlobalManagers.FindAll().Where(gm => gm.CPF == rootUser.CPF).FirstOrDefault();
+            var user = BusinessManager.Instance.GlobalManagers.FindAll().Where(gm => gm.CPF == rootUser.CPF.Replace(".", "").Replace("-", "")).FirstOrDefault();
 
             if (user == null)
             {
@@ -35,7 +35,7 @@ namespace SPS.Web.Controllers
                 return View("Index", rootUser);
             }
 
-            if (!SPS.Security.TokenGeneratorService.IsTokenValid(user.Password, rootUser.Token, TokenExpirationTimeSeconds))
+            if (!SPS.Security.TokenGeneratorService.IsTokenValid(user.Password, rootUser.Token))
             {
                 ModelState.AddModelError("", "Token inválido ou expirado!");
                 return View("Index", rootUser);
@@ -49,6 +49,12 @@ namespace SPS.Web.Controllers
         public ActionResult ParkingManagement()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult GenerateKey()
+        {
+            return Json(new { key = Security.TimeAuthenticator.GenerateKey() });
         }
     }
 }
