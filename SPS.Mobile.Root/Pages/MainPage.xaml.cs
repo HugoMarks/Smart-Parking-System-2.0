@@ -143,7 +143,7 @@ namespace SPS.Mobile.Root.Pages
             });
 
             this.TokenTextBlock.Text = token;
-            this.TokenExpirationTextBlock.Text = "Válido até " + DateTime.Now.AddSeconds(TokenExpirationTimeSeconds).ToString("hh:mm:ss dd/MM/yyyy");
+            this.TokenExpirationTextBlock.Text = "Válido por " + TokenExpirationTimeSeconds + " segundos";
             this.cleanTimer.Start();
         }
 

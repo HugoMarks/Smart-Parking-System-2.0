@@ -12,8 +12,6 @@ namespace SPS.Web.Controllers
 {
     public class RootController : Controller
     {
-        private const int TokenExpirationTimeSeconds = 60;
-
         // GET: Root
         public ActionResult Index()
         {
