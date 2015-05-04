@@ -127,7 +127,15 @@ namespace SPS.Web.Controllers
                 }
                 else
                 {
-                    AddErrors(result);
+                    var emailErrors = result.Errors.Where(e => e.Contains("email"));
+
+                    if (emailErrors.Count() > 0)
+                    {
+                        foreach (var error in emailErrors)
+                        {
+                            ModelState["Email"].Errors.Add(error);
+                        }
+                    }
                 }
             }
 

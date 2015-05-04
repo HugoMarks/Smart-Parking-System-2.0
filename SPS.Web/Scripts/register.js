@@ -10,7 +10,9 @@
 		}
 	};
 
-	$(".address").hide();
+	if ($("#cepTextBox").val() == null || $("#cepTextBox").val() == "") {
+	    $(".address").hide();
+	}
 
 	$("#cepTextBox").mask("00000-000");
 	$("#cpfTextBox").mask('000.000.000-00', { reverse: true });
@@ -42,18 +44,20 @@ function getAddress() {
 		.done(function (data) {
 		    var address = JSON.parse(data);
 
-			$("#streetTextBox").val(address.Street);
-			$("#squareTextBox").val(address.Square);
-			$("#cityTextBox").val(address.City);
-			$("#stateTextBox").val(address.State);
-			$(".address").slideDown();
+		    $("#streetTextBox").val(address.Street).attr("readonly", "readonly");
+		    $("#squareTextBox").val(address.Square).attr("readonly", "readonly");
+		    $("#cityTextBox").val(address.City).attr("readonly", "readonly");
+		    $("#stateTextBox").val(address.State).attr("readonly", "readonly");
 		})
 		.fail(function (jqXHR, textStatus, message) {
-		    $("#streetTextBox").val(null);
-		    $("#squareTextBox").val(null);
-			$("#cityTextBox").val(null);
-			$("#stateTextBox").val(null);
-		});
+		    $("#streetTextBox").val(null).removeAttr("readonly");
+		    $("#squareTextBox").val(null).removeAttr("readonly");
+		    $("#cityTextBox").val(null).removeAttr("readonly");
+		    $("#stateTextBox").val(null).removeAttr("readonly");
+		})
+        .always(function () {
+            $(".address").slideDown();
+        });
 }
 
 function validateCPF() {
