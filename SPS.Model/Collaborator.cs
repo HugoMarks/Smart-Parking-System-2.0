@@ -79,6 +79,10 @@ namespace SPS.Model
             set;
         }
 
+        public UserType Type
+        {
+            get { return UserType.Collaborator; }
+        }
     }
 }
 

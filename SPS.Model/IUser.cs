@@ -28,5 +28,7 @@ public interface IUser
 
 	string Password { get;set; }
 
+    UserType Type { get; }
+
 }
 

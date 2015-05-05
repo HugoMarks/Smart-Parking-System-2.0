@@ -119,7 +119,9 @@ namespace SPS.Web.Controllers
                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
 
-                    await UserManager.SendEmailAsync(user.Id, "Confirmar sua conta Smart Parking System", "Olá, "+ model.FirstName +"!<br/> Para começar a utilizar sua nova conta Smart Parking System,<br/> clique <a href=\"" + callbackUrl + "\">aqui</a>");
+                    await UserManager.SendEmailAsync(user.Id, "Confirmar sua conta Smart Parking System", "Olá, " + 
+                        model.FirstName + "!<br/> Para começar a utilizar sua nova conta Smart Parking System,<br/> clique <a href=\"" + 
+                        callbackUrl + "\">aqui</a>");
 
                     ViewBag.EmailSent = model.Email;
 
@@ -370,57 +372,6 @@ namespace SPS.Web.Controllers
         }
 
         //
-        // POST: /Account/ExternalLogin
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult ExternalLogin(string provider, string returnUrl)
-        {
-            // Solicitar um redirecionamento para o provedor de logon externo
-            return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
-        }
-
-        //
-        // GET: /Account/ExternalLoginCallback
-        [AllowAnonymous]
-        public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
-        {
-            var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
-
-            if (loginInfo == null)
-            {
-                return RedirectToAction("Login");
-            }
-
-            // Faça logon do usuário com este provedor de logon externo se o usuário já tiver um logon
-            var user = await UserManager.FindAsync(loginInfo.Login);
-
-            if (user != null)
-            {
-                await SignInAsync(user, isPersistent: false);
-                return RedirectToLocal(returnUrl);
-            }
-            else
-            {
-                // Se o usuário não tiver uma conta, solicite que o usuário crie uma conta
-                ViewBag.ReturnUrl = returnUrl;
-                ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
-
-                return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
-            }
-        }
-
-        //
-        // POST: /Account/LinkLogin
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult LinkLogin(string provider)
-        {
-            // Solicite um redirecionamento para o provedor de logon externo para vincular um logon para o usuário atual
-            return new ChallengeResult(provider, Url.Action("LinkLoginCallback", "Account"), User.Identity.GetUserId());
-        }
-
-        //
         // GET: /Account/LinkLoginCallback
         public async Task<ActionResult> LinkLoginCallback()
         {
@@ -439,53 +390,6 @@ namespace SPS.Web.Controllers
             }
 
             return RedirectToAction("Manage", new { Message = ManageMessageId.Error });
-        }
-
-        //
-        // POST: /Account/ExternalLoginConfirmation
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl)
-        {
-            if (User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Manage");
-            }
-
-            if (ModelState.IsValid)
-            {
-                // Obter as informações sobre o usuário do provedor de logon externo
-                var info = await AuthenticationManager.GetExternalLoginInfoAsync();
-                if (info == null)
-                {
-                    return View("ExternalLoginFailure");
-                }
-
-                var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
-                IdentityResult result = await UserManager.CreateAsync(user);
-
-                if (result.Succeeded)
-                {
-                    result = await UserManager.AddLoginAsync(user.Id, info.Login);
-                    if (result.Succeeded)
-                    {
-                        await SignInAsync(user, isPersistent: false);
-
-                        // Para obter mais informações sobre como habilitar a confirmação de conta e a redefinição de senha, visite http://go.microsoft.com/fwlink/?LinkID=320771
-                        // Enviar um email com este link
-                        // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                        // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                        // SendEmail(user.Email, callbackUrl, "Confirmar sua conta", "Confirme sua conta clicando neste link");
-
-                        return RedirectToLocal(returnUrl);
-                    }
-                }
-                AddErrors(result);
-            }
-
-            ViewBag.ReturnUrl = returnUrl;
-            return View(model);
         }
 
         //

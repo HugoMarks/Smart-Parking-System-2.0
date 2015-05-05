@@ -40,7 +40,7 @@ namespace SPS.Web.Controllers
             }
 
             HttpContext.GetOwinContext().Authentication.SignOut();
-            return RedirectToAction("ParkingManagement", "Root");
+            return RedirectToAction("Index", "GlobalAdmin");
         }
 
         // GET: Root/ParkingManagement
