@@ -3,20 +3,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SPS.Web.Models
 {
-    public class ExternalLoginConfirmationViewModel
-    {
-        [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
-    }
-
-    public class ExternalLoginListViewModel
-    {
-        public string Action { get; set; }
-        public string ReturnUrl { get; set; }
-    }
-
     public class ManageUserViewModel
     {
         [Required]

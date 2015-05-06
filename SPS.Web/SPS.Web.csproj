@@ -200,6 +200,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\RootUserViewModel.cs" />
+    <Compile Include="Models\UserType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\CorreiosService\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -385,7 +386,6 @@
     <Content Include="Service References\CorreiosService\SPS.Web.CorreiosService.verificaDisponibilidadeServicoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Views\Root\ParkingManagement.cshtml" />
     <Content Include="Views\GlobalAdmin\Index.cshtml" />
     <Content Include="Views\LocalAdmin\Index.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
