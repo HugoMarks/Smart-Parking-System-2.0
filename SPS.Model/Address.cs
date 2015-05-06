@@ -45,6 +45,12 @@ namespace SPS.Model
             get;
             set;
         }
+
+        public LocalManager LocalManager
+        {
+            get;
+            set;
+        }
     }
 }
 

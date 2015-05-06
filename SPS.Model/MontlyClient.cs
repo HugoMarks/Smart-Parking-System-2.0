@@ -11,7 +11,7 @@ using System.Text;
 
 namespace SPS.Model
 {
-    public class MonthlyClient : IUser
+    public class MonthlyClient : User
     {
         public virtual IList<Tag> Tags
         {

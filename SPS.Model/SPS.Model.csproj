@@ -52,7 +52,7 @@
     <Compile Include="MontlyClient.cs" />
     <Compile Include="Collaborator.cs" />
     <Compile Include="DailyClient.cs" />
-    <Compile Include="IUser.cs" />
+    <Compile Include="User.cs" />
     <Compile Include="ParkingSpaceState.cs" />
     <Compile Include="Parking.cs" />
     <Compile Include="ParkingSpace.cs" />

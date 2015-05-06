@@ -69,14 +69,23 @@ namespace SPS.Web.Controllers
 
                 if (user != null)
                 {
-                    if (!user.EmailConfirmed)
+                    if (user.UserType == UserType.Client && !user.EmailConfirmed)
                     {
                         ModelState.AddModelError("", "Email não confirmado. Por favor, verifique sua caixa de entrada e valide seu registro.");
                     }
                     else
                     {
                         await SignInAsync(user, model.RememberMe);
-                        return RedirectToLocal("/Client/Index");
+
+                        switch (user.UserType)
+                        {
+                            case UserType.Client:
+                                return RedirectToLocal("/Client/Index");
+                            case UserType.LocalAdmin:
+                                return RedirectToLocal("GlobalAdmin/Index");
+                            default:
+                                break;
+                        }
                     }
                 }
                 else
@@ -106,12 +115,12 @@ namespace SPS.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                ApplicationUser user = model.ToApplicationUser();
+                ApplicationUser user = model.ToApplicationUser(UserType.Client);
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)
                 {
-                    MonthlyClient client = model.ToMonthlyClient(user.PasswordHash);
+                    MonthlyClient client = model.ToUser<MonthlyClient>(user.PasswordHash);
 
                     BusinessManager.Instance.MontlyClients.Add(client);
 
@@ -126,6 +135,44 @@ namespace SPS.Web.Controllers
                     ViewBag.EmailSent = model.Email;
 
                     return View("ConfirmationSent");
+                }
+                else
+                {
+                    var emailErrors = result.Errors.Where(e => e.Contains("email"));
+
+                    if (emailErrors.Count() > 0)
+                    {
+                        foreach (var error in emailErrors)
+                        {
+                            ModelState["Email"].Errors.Add(error);
+                        }
+                    }
+                }
+            }
+
+            // Se chegamos até aqui e houver alguma falha, exiba novamente o formulário
+            return View(model);
+        }
+
+        //
+        // POST: /Account/RegisterLocalManager
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> RegisterLocalManager(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                ApplicationUser user = model.ToApplicationUser(UserType.LocalAdmin);
+                IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+
+                if (result.Succeeded)
+                {
+                    LocalManager client = model.ToUser<LocalManager>(user.PasswordHash);
+
+                    BusinessManager.Instance.LocalManagers.Add(client);
+
+                    return View("Index");
                 }
                 else
                 {
@@ -372,27 +419,6 @@ namespace SPS.Web.Controllers
         }
 
         //
-        // GET: /Account/LinkLoginCallback
-        public async Task<ActionResult> LinkLoginCallback()
-        {
-            var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync(XsrfKey, User.Identity.GetUserId());
-
-            if (loginInfo == null)
-            {
-                return RedirectToAction("Manage", new { Message = ManageMessageId.Error });
-            }
-
-            IdentityResult result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
-
-            if (result.Succeeded)
-            {
-                return RedirectToAction("Manage");
-            }
-
-            return RedirectToAction("Manage", new { Message = ManageMessageId.Error });
-        }
-
-        //
         // POST: /Account/LogOff
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -426,14 +452,6 @@ namespace SPS.Web.Controllers
 
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest, result.Message);
 		}
-
-        //
-        // GET: /Account/ExternalLoginFailure
-        [AllowAnonymous]
-        public ActionResult ExternalLoginFailure()
-        {
-            return View();
-        }
 
         [ChildActionOnly]
         public ActionResult RemoveAccountList()

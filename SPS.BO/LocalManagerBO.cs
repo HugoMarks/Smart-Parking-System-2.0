@@ -9,25 +9,25 @@ namespace SPS.BO
     {
         private static SPSDb Context = SPSDb.Instance;
 
-        public virtual void Add(LocalManager collaborator)
+        public virtual void Add(LocalManager localManager)
         {
-            Context.LocalManagers.Add(collaborator);
+            Context.LocalManagers.Add(localManager);
             Context.SaveChanges();
         }
 
-        public virtual void Remove(LocalManager collaborator)
+        public virtual void Remove(LocalManager localManager)
         {
-            Context.LocalManagers.Remove(collaborator);
+            Context.LocalManagers.Remove(localManager);
             Context.SaveChanges();
         }
 
-        public virtual void Update(LocalManager collaborator)
+        public virtual void Update(LocalManager localManager)
         {
-            var savedCollaborator = Context.LocalManagers.SingleOrDefault(c => c.Id == collaborator.Id);
+            var savedCollaborator = Context.LocalManagers.SingleOrDefault(c => c.Id == localManager.Id);
 
             if (savedCollaborator != null)
             {
-                savedCollaborator = collaborator;
+                savedCollaborator = localManager;
                 Context.SaveChanges();
             }
         }

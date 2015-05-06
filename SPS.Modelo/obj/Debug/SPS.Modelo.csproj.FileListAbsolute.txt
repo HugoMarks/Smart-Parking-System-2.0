@@ -106,12 +106,9 @@ C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
 C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\Microsoft.Web.WebPages.OAuth.dll
 C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\Newtonsoft.Json.dll
-C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\System.Net.Http.Formatting.dll
 C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\System.Spatial.dll
 C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\System.Web.Helpers.dll
-C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\System.Web.Http.dll
 C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\System.Web.Http.OData.dll
-C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\System.Web.Http.WebHost.dll
 C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\System.Web.Mvc.dll
 C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\System.Web.Optimization.dll
 C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\System.Web.Razor.dll
@@ -123,10 +120,7 @@ C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\WebMatrix.Data.dll
 C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\WebMatrix.WebData.dll
 C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\EntityFramework.xml
 C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\Newtonsoft.Json.xml
-C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\System.Net.Http.Formatting.xml
 C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\System.Web.Helpers.xml
-C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\System.Web.Http.xml
-C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\System.Web.Http.WebHost.xml
 C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\System.Web.Mvc.xml
 C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\System.Web.Razor.xml
 C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\System.Web.WebPages.xml
@@ -145,10 +139,7 @@ C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\System.Web.Http.OData.xml
 C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\Microsoft.Data.Edm.xml
 C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\Microsoft.Data.OData.xml
 C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\System.Spatial.xml
-C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\pt-br\System.Net.Http.Formatting.resources.dll
 C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\pt-br\System.Web.Helpers.resources.dll
-C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\pt-br\System.Web.Http.resources.dll
-C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\pt-br\System.Web.Http.WebHost.resources.dll
 C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\pt-br\System.Web.Mvc.resources.dll
 C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\pt-br\System.Web.Optimization.resources.dll
 C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\pt-br\System.Web.Razor.resources.dll

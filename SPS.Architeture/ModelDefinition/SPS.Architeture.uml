@@ -1576,7 +1576,7 @@
             isAbstract="false">
             <classMoniker
               Id="559e958e-f777-4c13-a035-434fac7097a0"
-              LastKnownName="LocalManager"
+              LastKnownName="LocalAdministrator"
               LastKnownLocation="SPS.Architeture.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -3491,7 +3491,7 @@
             <type_NamedElement>
               <classMoniker
                 Id="559e958e-f777-4c13-a035-434fac7097a0"
-                LastKnownName="LocalManager"
+                LastKnownName="LocalAdministrator"
                 LastKnownLocation="SPS.Architeture.uml" />
             </type_NamedElement>
           </property>
@@ -9200,7 +9200,7 @@
     <packageHasNamedElement>
       <class
         Id="559e958e-f777-4c13-a035-434fac7097a0"
-        name="LocalManager"
+        name="LocalAdministrator"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
@@ -9884,7 +9884,7 @@
                   <type_NamedElement>
                     <classMoniker
                       Id="559e958e-f777-4c13-a035-434fac7097a0"
-                      LastKnownName="LocalManager"
+                      LastKnownName="LocalAdministrator"
                       LastKnownLocation="SPS.Architeture.uml" />
                   </type_NamedElement>
                 </parameter>

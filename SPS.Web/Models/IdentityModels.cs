@@ -14,6 +14,8 @@ namespace SPS.Web.Models
 
         public string LastName { get; set; }
 
+        public UserType UserType { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Observe que o authenticationType deve corresponder àquele definido em CookieAuthenticationOptions.AuthenticationType
@@ -39,5 +41,7 @@ namespace SPS.Web.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<SPS.Model.LocalManager> LocalManagers { get; set; }
     }
 }

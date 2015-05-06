@@ -2,9 +2,9 @@
 {
     public enum UserType
     {
-        Client,
-        Collaborator,
-        LocalAdmin,
-        GlobalAdmin
+        Client = 1,
+        Collaborator = 2,
+        LocalAdmin = 3,
+        GlobalAdmin = 4
     }
 }

@@ -25,7 +25,7 @@ namespace SPS.Model
             set;
         }
 
-        public virtual IUser IUser
+        public virtual User IUser
         {
             get;
             set;
