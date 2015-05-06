@@ -1,4 +1,4 @@
-﻿namespace SPS.Model
+﻿namespace SPS.Web.Models
 {
     public enum UserType
     {

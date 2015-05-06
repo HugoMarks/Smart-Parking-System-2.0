@@ -79,13 +79,5 @@ namespace SPS.Model
             get;
             set;
         }
-
-        public UserType Type
-        {
-            get
-            {
-                return UserType.Client;
-            }
-        }
     }
 }

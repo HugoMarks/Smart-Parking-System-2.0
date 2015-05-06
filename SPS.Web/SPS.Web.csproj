@@ -200,6 +200,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\RootUserViewModel.cs" />
+    <Compile Include="Models\UserType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\CorreiosService\Reference.cs">
       <AutoGen>True</AutoGen>

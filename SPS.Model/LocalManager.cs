@@ -21,13 +21,5 @@
         public string Password { get; set; }
 
         public Parking Parking { get; set; }
-
-        public UserType Type
-        {
-            get
-            {
-                return UserType.LocalAdmin;
-            }
-        }
     }
 }
