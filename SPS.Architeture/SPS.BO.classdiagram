@@ -4017,6 +4017,160 @@
         <elementDefinition Id="62a02854-31c8-45eb-99b8-9e8eec9dfe41" />
       </referencedType>
     </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="f6444120-ecb1-4935-af59-bc3e40681836" name="BusinessManager" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <appliedStereotypesInternal>
+          <stereotypeInstance Id="32936260-2599-4b14-a484-49e9eb690675" name="class" profile="CSharpProfile">
+            <elementDefinition Id="945e8706-60cf-4b70-bdbb-c1ad74a18fdf" />
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances Id="d75523bc-81ff-4694-a5de-5ff3ba10a30d">
+                <propertyInstance Id="7d4a5dbf-6cd4-4188-a896-ee016bf2a7ae" name="ClrAttributes">
+                  <elementDefinition Id="7c28b3f9-c6b6-428c-ba33-e93afae8b5f3" />
+                </propertyInstance>
+                <elementDefinition Id="21593378-e183-4cab-b863-ba38c80690dc" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances Id="7fd80f6d-b383-4e50-8339-674a3c58a124">
+                <propertyInstance Id="223cec09-32bb-4ef1-98b0-5386b199968f" name="IsPartial" value="false">
+                  <elementDefinition Id="55a57c88-750b-4d49-89ed-6aea312e1223" />
+                </propertyInstance>
+                <elementDefinition Id="213fd9f4-6517-41ff-b1e1-6e03c92cf15c" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances Id="1b4dc42d-539b-4f4d-b751-150339955cc6">
+                <propertyInstance Id="2cb0b211-0aeb-4a34-b3c5-740cc7f451f7" name="IsStatic" value="false">
+                  <elementDefinition Id="20ef7578-9ed6-4810-bac7-1ef82bc6bfc5" />
+                </propertyInstance>
+                <elementDefinition Id="a4df492b-0884-4a35-92f1-4b847bb1f642" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances Id="159716bd-18d0-42fd-a10f-d621599bf771">
+                <propertyInstance Id="07262c0a-78cf-490b-b6a1-bf9a651a12df" name="IsUnsafe" value="false">
+                  <elementDefinition Id="de07701b-e85d-4a0a-9995-858fa80ddeff" />
+                </propertyInstance>
+                <elementDefinition Id="ddc01993-5316-458a-98b0-ed1cd71ed6e0" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances Id="8dcd7b7e-2c12-458f-b1e6-96184b04c9fa">
+                <propertyInstance Id="c2ef2e09-232a-4753-a708-d7731334e568" name="PackageVisibility" value="internal">
+                  <elementDefinition Id="7fa088ee-b5f9-41fc-88a2-b4659f4c25a5" />
+                </propertyInstance>
+                <elementDefinition Id="e5c0db95-d69d-4448-b878-1eb4cebf466a" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <elementDefinition Id="140b742d-ae74-4d0c-96d6-714b556856f4" />
+        <ownedAttributesInternal>
+          <property Id="649354cc-f597-44e3-acfa-5b6f036d61fc" name="Prices" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="71fc3eca-10fc-4399-a161-64211a6daeed" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="2bc39b8d-3dfb-41f8-8638-24b40877815c" LastKnownName="PriceBO" />
+            </type_NamedElement>
+          </property>
+          <property Id="1774bddd-26d4-4757-843c-51b49860b513" name="LocalManagers" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="7e819d82-c36b-46ab-81e7-0fdce791e634" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="d3b17154-0974-49cb-85a4-1d71211db4d9" LastKnownName="LocalManagerBO" />
+            </type_NamedElement>
+          </property>
+          <property Id="36033a77-913a-41e6-9c18-608528dc43a8" name="Parkings" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="fb515c0b-3c2c-48c7-a90f-412ccc065e22" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="76a06260-99e5-40b0-b2b8-d62cce676155" LastKnownName="ParkingBO" />
+            </type_NamedElement>
+          </property>
+          <property Id="673af251-17cf-4c24-adf4-7d05ecc7f31e" name="Tags" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="5d3ec081-3f1c-4cd0-851c-652367c978d5" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="bcc12dc8-8373-4577-9747-c7ddd40c3f44" LastKnownName="TagBO" />
+            </type_NamedElement>
+          </property>
+          <property Id="99ad7774-e9e7-4f5f-b0a8-75f96840e717" name="Addresses" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="a534da89-8b0f-4792-8859-7dd0dcb61c59" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="c3f30424-462b-4a61-8ac6-8bd3daf10dd3" LastKnownName="AddressBO" />
+            </type_NamedElement>
+          </property>
+          <property Id="0e2ecfdb-a996-44a6-97b0-39d13baf4933" name="MonthlyClients" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="ba1e42a2-4750-4298-8d46-8ae8976b93e9" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="474d04ac-7280-4794-992a-17106eb2744b" LastKnownName="MonthlyClientBO" />
+            </type_NamedElement>
+          </property>
+          <property Id="18485e85-932a-4d98-a32f-c17604ded5ad" name="GlobalManagers" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="386b8049-1ef2-4252-9e3e-cda2faca3ca0" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="1bc7ec30-67b7-464d-ba2a-fdcfa392240b" LastKnownName="GlobalManagerBO" />
+            </type_NamedElement>
+          </property>
+          <property Id="29862ea3-21e4-43c5-bccb-42c56ab64b23" name="DailyClients" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="10d6600b-2afa-41a6-9a3e-109e6f7250b2" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="d6bd3ea1-6059-4b05-ba87-2071d0a69876" LastKnownName="DailyClientBO" />
+            </type_NamedElement>
+          </property>
+          <property Id="b021f13c-90a1-44f3-9e8d-286f7f90545f" name="ParkingSpaces" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="754b3ec2-6f7b-454f-8435-bad4fa6d4df1" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="b5ef39fb-2be7-4c8e-b9d2-c63e1c9abe02" LastKnownName="ParkingSpaceBO" />
+            </type_NamedElement>
+          </property>
+          <property Id="838f0307-f914-4814-857b-d756d54ac0ed" name="Collaborators" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="6588f11f-084b-4a71-8fb3-0b2076a18441" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="05ae9a1c-d573-4727-aab2-160210800f2c" LastKnownName="CollaboratorBO" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="2bc39b8d-3dfb-41f8-8638-24b40877815c" name="PriceBO" isAbstract="false" isLeaf="false" cachedFullName="SPS.Architeture::PriceBO">
+        <elementDefinition Id="9ff7dc92-28f1-4ea7-a023-101e99b21fbd" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="d3b17154-0974-49cb-85a4-1d71211db4d9" name="LocalManagerBO" isAbstract="false" isLeaf="false" cachedFullName="SPS.Architeture::LocalManagerBO">
+        <elementDefinition Id="d870455b-2a53-4ee8-8423-2612c77c6932" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="76a06260-99e5-40b0-b2b8-d62cce676155" name="ParkingBO" isAbstract="false" isLeaf="false" cachedFullName="SPS.Architeture::ParkingBO">
+        <elementDefinition Id="775d716a-ed0f-4850-8881-64f3e1c8313c" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="bcc12dc8-8373-4577-9747-c7ddd40c3f44" name="TagBO" isAbstract="false" isLeaf="false" cachedFullName="SPS.Architeture::TagBO">
+        <elementDefinition Id="245822a4-f0d5-4aee-a993-e3ce610f05b3" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="c3f30424-462b-4a61-8ac6-8bd3daf10dd3" name="AddressBO" isAbstract="false" isLeaf="false" cachedFullName="SPS.Architeture::AddressBO">
+        <elementDefinition Id="2d3064c5-b872-4506-bd2f-de16ce3e2314" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="474d04ac-7280-4794-992a-17106eb2744b" name="MonthlyClientBO" isAbstract="false" isLeaf="false" cachedFullName="SPS.Architeture::MonthlyClientBO">
+        <elementDefinition Id="5e06b33c-1b2c-44eb-80ec-56a7b6a2c1e3" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="1bc7ec30-67b7-464d-ba2a-fdcfa392240b" name="GlobalManagerBO" isAbstract="false" isLeaf="false" cachedFullName="SPS.Architeture::GlobalManagerBO">
+        <elementDefinition Id="71b5454b-4779-4d1c-b9f8-8d062b593445" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="d6bd3ea1-6059-4b05-ba87-2071d0a69876" name="DailyClientBO" isAbstract="false" isLeaf="false" cachedFullName="SPS.Architeture::DailyClientBO">
+        <elementDefinition Id="2f9a58cb-4a27-43a8-8f16-54ea9d3be044" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="b5ef39fb-2be7-4c8e-b9d2-c63e1c9abe02" name="ParkingSpaceBO" isAbstract="false" isLeaf="false" cachedFullName="SPS.Architeture::ParkingSpaceBO">
+        <elementDefinition Id="493c3a49-7cc8-453a-ab99-d7903d0ad86d" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="05ae9a1c-d573-4727-aab2-160210800f2c" name="CollaboratorBO" isAbstract="false" isLeaf="false" cachedFullName="SPS.Architeture::CollaboratorBO">
+        <elementDefinition Id="3ef85fb0-ab49-4e1b-8917-c72b19a573dc" />
+      </referencedType>
+    </packageHasNamedElement>
   </packagedElements>
   <package Id="fb0d14cd-5e70-40af-ba4c-502e84d52de8" name="SPS.Architeture">
     <elementDefinition Id="aee29657-1972-4846-a9f6-d5f0a905d204" />
