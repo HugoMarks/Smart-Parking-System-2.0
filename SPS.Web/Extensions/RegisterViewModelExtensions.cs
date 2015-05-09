@@ -26,7 +26,7 @@ namespace SPS.Web.Extensions
         /// <param name="registerModel">The RegisterViewModel to be converted.</param>
         /// <param name="passwordHash">The hashed password to be saved in the database.</param>
         /// <returns>An instance of the <see cref="MonthlyClient"/> class.</returns>
-        public static T ToUser<T>(this RegisterViewModel registerModel, string passwordHash) where T : class, User
+        public static T ToUser<T>(this RegisterViewModel registerModel, string passwordHash) where T : User
         {
             var userType = typeof(T);
 

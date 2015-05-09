@@ -6,6 +6,7 @@
 //------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 
@@ -31,6 +32,7 @@ namespace SPS.Model
             set;
         }
 
+        [Column("ParkingAddress")]
         public virtual Address Address
         {
             get;
@@ -38,6 +40,12 @@ namespace SPS.Model
         }
 
         public virtual IList<ParkingSpace> Spaces
+        {
+            get;
+            set;
+        }
+
+        public virtual LocalManager LocalManager
         {
             get;
             set;

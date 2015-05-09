@@ -2,13 +2,22 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var greetings = "Usuário não logado";
+    var user = User.Identity.GetApplicationUser();
+
+    if (user != null)
+    {
+        greetings = "Olá, " + user.FirstName + "!";
+    }
 }
+
 <div class="container">
     <div class="row">
         <div class="col-md-12">
             <div class="page-header">
                 <h1>
-                    Olá <!--User.Identity.GetApplicationUser().FirstName-->,
+                    @greetings
                 </h1>
                 <h2 style="color:#777777; font-size: 23px; line-height: 23.3999996185303px;">Escolha uma opção abaixo</h2>
             </div>

@@ -9,7 +9,7 @@ namespace SPS.Repository.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(SPS.Repository.SPSDb context)

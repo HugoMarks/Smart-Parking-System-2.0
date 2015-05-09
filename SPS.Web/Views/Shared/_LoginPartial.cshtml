@@ -6,11 +6,11 @@
     @Html.AntiForgeryToken()
 
     <ul class="nav navbar-nav navbar-right">
-        <li class="btn-default">
+        <li class="panel-btn">
             @Html.ActionLink("Minha conta", "Index", "Client", routeValues: null, htmlAttributes: new { title = "Gerenciar" })
         </li>
-        <li class="btn-default">
-            <a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-fw fa-sign-out"></i>Fazer logoff</a>
+        <li class="panel-btn">
+            <a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-fw fa-sign-out"></i>Sair</a>
         </li>
     </ul>
     }
@@ -18,7 +18,7 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li class="btn-default">@Html.ActionLink("Registre-se", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li class="btn-default">@Html.ActionLink("Logon", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        <li class="panel-btn">@Html.ActionLink("Registre-se", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li class="panel-btn">@Html.ActionLink("Entrar", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
 }

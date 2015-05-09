@@ -81,11 +81,6 @@ namespace SPS.Repository
         /// Gets the Address table.
         /// </summary>
         public DbSet<Address> Addresses { get; set; }
-
-        public static SPSDb Create()
-        {
-            return new SPSDb();
-        }
     }
 
     /// <summary>

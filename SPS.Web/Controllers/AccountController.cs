@@ -80,11 +80,13 @@ namespace SPS.Web.Controllers
                         switch (user.UserType)
                         {
                             case UserType.Client:
-                                return RedirectToLocal("/Client/Index");
+                                return RedirectToAction("Index", "Client");
+                            case UserType.Collaborator:
+                                return RedirectToAction("Index", "Collaborator");
                             case UserType.LocalAdmin:
-                                return RedirectToLocal("GlobalAdmin/Index");
+                                return RedirectToAction("Index", "LocalAdmin");
                             default:
-                                break;
+                                return RedirectToLocal("~/Shared/Error.cshtml");
                         }
                     }
                 }
@@ -172,7 +174,7 @@ namespace SPS.Web.Controllers
 
                     BusinessManager.Instance.LocalManagers.Add(client);
 
-                    return View("Index");
+                    return RedirectToLocal(Url.Action("Index",  "LocalAdmin"));
                 }
                 else
                 {

@@ -11,6 +11,9 @@ namespace Microsoft.AspNet.Identity
     {
         public static ApplicationUser GetApplicationUser(this IIdentity identity)
         {
+            if (identity == null)
+                return null;
+
             return ApplicationDbContext.Create().Users.Find(identity.GetUserId());
         }
     }

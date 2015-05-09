@@ -42,3 +42,11 @@ textarea {
     margin: 0 auto;
 }
 
+.panel-btn {
+    background-color: transparent;
+}
+
+.panel-btn:hover {
+    background-color: white;
+}
+
