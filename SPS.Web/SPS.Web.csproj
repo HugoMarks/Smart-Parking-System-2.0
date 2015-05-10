@@ -397,6 +397,7 @@
     <Content Include="Views\Account\_RegisterLocalManagerPartial.cshtml" />
     <Content Include="Views\TokenGenerator\Index.cshtml" />
     <Content Include="Views\TokenGenerator\GeneratedToken.cshtml" />
+    <Content Include="Views\LocalAdmin\RegisterEmployee.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
