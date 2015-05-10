@@ -16,6 +16,10 @@ namespace SPS.BO
             Context.SaveChanges();
         }
 
+        public virtual Address Find(string CEP)
+        {
+            return Context.Addresses.Find(CEP);
+        }
         public virtual Address Find(int id)
         {
             return Context.Addresses.Find(id);
