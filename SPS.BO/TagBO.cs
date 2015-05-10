@@ -33,9 +33,9 @@ namespace SPS.BO
             }
         }
 
-        public virtual Tag Find(int id)
+        public virtual Tag Find(params object[] keys)
         {
-            return Context.Tags.Find(id);
+            return Context.Tags.Find(keys);
         }
 
         public virtual IList<Tag> FindAll()

@@ -33,9 +33,9 @@ namespace SPS.BO
             }
         }
 
-        public virtual Collaborator Find(int id)
+        public virtual Collaborator Find(params object[] keys)
         {
-            return Context.Collaborators.Find(id);
+            return Context.Collaborators.Find(keys);
         }
 
         public virtual IList<Collaborator> FindAll()

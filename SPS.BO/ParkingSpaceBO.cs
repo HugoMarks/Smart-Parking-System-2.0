@@ -33,9 +33,9 @@ namespace SPS.BO
             }
         }
 
-        public virtual ParkingSpace Find(int id)
+        public virtual ParkingSpace Find(params object[] keys)
         {
-            return Context.ParkingSpaces.Find(id);
+            return Context.ParkingSpaces.Find(keys);
         }
 
         public virtual IList<ParkingSpace> FindAll()

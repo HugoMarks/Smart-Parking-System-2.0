@@ -189,21 +189,24 @@
     <Compile Include="Controllers\GlobalAdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocalAdminController.cs" />
+    <Compile Include="Controllers\ParkingController.cs" />
     <Compile Include="Controllers\RootController.cs" />
     <Compile Include="Controllers\TokenGeneratorController.cs" />
     <Compile Include="DataAnnotations\CPFAttribute.cs" />
     <Compile Include="Extensions\IdentityExtensions.cs" />
+    <Compile Include="Extensions\RegisterParkingViewModelExtensions.cs" />
     <Compile Include="Extensions\RegisterViewModelExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201505061257300_Inheritance.cs" />
-    <Compile Include="Migrations\201505061257300_Inheritance.Designer.cs">
-      <DependentUpon>201505061257300_Inheritance.cs</DependentUpon>
+    <Compile Include="Migrations\201505101707167_Inheritance.cs" />
+    <Compile Include="Migrations\201505101707167_Inheritance.Designer.cs">
+      <DependentUpon>201505101707167_Inheritance.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\RegisterParkingViewModel.cs" />
     <Compile Include="Models\RootUserViewModel.cs" />
     <Compile Include="Models\TokenGeneratorViewModel.cs" />
     <Compile Include="Models\UserType.cs" />
@@ -226,7 +229,9 @@
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.mask.min.js" />
+    <Content Include="Scripts\localManager.js" />
     <Content Include="Scripts\npm.js" />
+    <Content Include="Scripts\parkingRegister.js" />
     <Content Include="Scripts\register.js" />
     <Content Include="Scripts\root.js" />
     <Content Include="Scripts\token.js" />
@@ -397,6 +402,7 @@
     <Content Include="Views\Account\_RegisterLocalManagerPartial.cshtml" />
     <Content Include="Views\TokenGenerator\Index.cshtml" />
     <Content Include="Views\TokenGenerator\GeneratedToken.cshtml" />
+    <Content Include="Views\Parking\_RegisterParkingPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -435,8 +441,8 @@
     <WCFMetadataStorage Include="Service References\CorreiosService\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201505061257300_Inheritance.resx">
-      <DependentUpon>201505061257300_Inheritance.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201505101707167_Inheritance.resx">
+      <DependentUpon>201505101707167_Inheritance.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

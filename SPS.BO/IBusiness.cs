@@ -6,7 +6,7 @@ namespace SPS.BO
     {
         void Add(T obj);
 
-        T Find(int id);
+        T Find(params object[] keys);
 
         IList<T> FindAll();
 

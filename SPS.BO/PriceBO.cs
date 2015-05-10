@@ -16,9 +16,9 @@ namespace SPS.BO
             Context.SaveChanges();
         }
 
-        public virtual Price Find(int id)
+        public virtual Price Find(params object[] keys)
         {
-            return Context.Prices.Find(id);
+            return Context.Prices.Find(keys);
         }
 
         public virtual IList<Price> FindAll()

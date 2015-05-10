@@ -32,9 +32,9 @@ namespace SPS.BO
             }
         }
 
-        public virtual LocalManager Find(int id)
+        public virtual LocalManager Find(params object[] keys)
         {
-            return Context.LocalManagers.Find(id);
+            return Context.LocalManagers.Find(keys);
         }
 
         public virtual IList<LocalManager> FindAll()

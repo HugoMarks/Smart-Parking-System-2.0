@@ -6,6 +6,7 @@
 //------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,14 @@ namespace SPS.Model
 {
     public class Parking
     {
-        public virtual int Id
+        [Key]
+        public virtual string CNPJ
+        {
+            get;
+            set;
+        }
+
+        public virtual string PhoneNumber
         {
             get;
             set;

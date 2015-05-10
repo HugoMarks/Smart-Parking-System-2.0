@@ -36,3 +36,4 @@ C:\Users\André\Source\Repos\SPS\SPS.Repository\obj\Debug\SPS.Repository.dll
 C:\Users\André\Source\Repos\SPS\SPS.Repository\obj\Debug\SPS.Repository.pdb
 C:\Users\André\Source\Repos\SPS\SPS.Repository\obj\Debug\SPS.Repository.Migrations.Inheritance.resources
 C:\Users\André\Source\Repos\SPS\SPS.Repository\obj\Debug\SPS.Repository.csproj.GenerateResource.Cache
+C:\Users\André\Source\Repos\SPS\SPS.Repository\obj\Debug\SPS.Repository.Migrations.Inheritance1.resources

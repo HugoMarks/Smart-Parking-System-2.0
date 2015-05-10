@@ -16,9 +16,9 @@ namespace SPS.BO
             Context.SaveChanges();
         }
 
-        public virtual MonthlyClient Find(int id)
+        public virtual MonthlyClient Find(params object[] keys)
         {
-            return Context.Clients.Find(id);
+            return Context.Clients.Find(keys);
         }
 
         public virtual IList<MonthlyClient> FindAll()

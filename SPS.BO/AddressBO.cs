@@ -16,9 +16,9 @@ namespace SPS.BO
             Context.SaveChanges();
         }
 
-        public virtual Address Find(int id)
+        public virtual Address Find(params object[] keys)
         {
-            return Context.Addresses.Find(id);
+            return Context.Addresses.Find(keys);
         }
 
         public virtual IList<Address> FindAll()

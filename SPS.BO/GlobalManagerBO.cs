@@ -35,9 +35,9 @@ namespace SPS.BO
             }
         }
 
-        public virtual GlobalManager Find(int id)
+        public virtual GlobalManager Find(params object[] keys)
         {
-            return Context.GlobalManagers.Find(id);
+            return Context.GlobalManagers.Find(keys);
         }
 
         public virtual IList<GlobalManager> FindAll()

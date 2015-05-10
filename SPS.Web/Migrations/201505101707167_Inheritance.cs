@@ -6,7 +6,7 @@ namespace SPS.Web.Migrations
     public partial class Inheritance : DbMigration
     {
         public override void Up()
-        {            
+        {
             CreateTable(
                 "dbo.AspNetRoles",
                 c => new

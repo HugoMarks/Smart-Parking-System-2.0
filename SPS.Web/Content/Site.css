@@ -22,6 +22,7 @@ body > #geral {
    height: 180px; /* E aqui, fica a altura do rodapé */
    clear: both;
 }
+
 /* ---------------------------------------------------------------------------------------------------*/
 
 /* Set width on the form input elements since they're 100% wide by default */

@@ -24,7 +24,7 @@ namespace SPS.BO
 
         public virtual void Update(Parking parking)
         {
-            var savedParking = Context.Parkings.SingleOrDefault(p => p.Id == parking.Id);
+            var savedParking = Context.Parkings.SingleOrDefault(p => p.CNPJ == parking.CNPJ);
 
             if (savedParking != null)
             {
@@ -33,9 +33,9 @@ namespace SPS.BO
             }
         }
 
-        public virtual Parking Find(int id)
+        public virtual Parking Find(params object[] keys)
         {
-            return Context.Parkings.Find(id);
+            return Context.Parkings.Find(keys);
         }
 
         public virtual IList<Parking> FindAll()
