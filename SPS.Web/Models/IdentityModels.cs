@@ -41,7 +41,5 @@ namespace SPS.Web.Models
         {
             return new ApplicationDbContext();
         }
-
-        public System.Data.Entity.DbSet<SPS.Model.LocalManager> LocalManagers { get; set; }
     }
 }

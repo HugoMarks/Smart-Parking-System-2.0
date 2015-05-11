@@ -35,7 +35,6 @@ namespace SPS.Repository
         public SPSDb()
             : base("DefaultConnection")
         {
-            Database.SetInitializer<SPSDb>(new SPSContextInitializer());
         }
 
         /// <summary>
@@ -82,20 +81,5 @@ namespace SPS.Repository
         /// Gets the Address table.
         /// </summary>
         public DbSet<Address> Addresses { get; set; }
-    }
-
-    /// <summary>
-    /// Provides custom initialization for the <see cref="SPSDb"/> class.
-    /// </summary>
-    public class SPSContextInitializer : DropCreateDatabaseAlways<SPSDb>
-    {
-        /// <summary>
-        /// A method that should be overridden to actually add data to the context for seeding.
-        /// </summary>
-        /// <param name="context">The context to seed.</param>
-        protected override void Seed(SPSDb context)
-        {
-            base.Seed(context);
-        }
     }
 }
