@@ -256,5 +256,3 @@ C:\Users\André\Source\Repos\SPS\SPS.Web\obj\Debug\SPS.Web.Migrations.Inheritanc
 C:\Users\André\Source\Repos\SPS\SPS.Web\obj\Debug\SPS.Web.csproj.GenerateResource.Cache
 C:\Users\Hugo\Source\Repos\SPS\SPS.Web\obj\Debug\SPS.Web.Migrations.Inheritance.resources
 C:\Users\Hugo\Source\Repos\SPS\SPS.Web\obj\Debug\SPS.Web.csproj.GenerateResource.Cache
-C:\Users\André\Source\Repos\SPS\SPS.Web\obj\Debug\SPS.Web.Migrations.Inheritance.resources
-C:\Users\André\Source\Repos\SPS\SPS.Web\obj\Debug\SPS.Web.csproj.GenerateResource.Cache

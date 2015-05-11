@@ -40,6 +40,7 @@ namespace SPS.Model
             set;
         }
 
+        [Column("ParkingAddress")]
         public virtual Address Address
         {
             get;
