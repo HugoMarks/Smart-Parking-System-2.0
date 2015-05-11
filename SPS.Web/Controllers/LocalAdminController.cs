@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity.Owin;
+using Microsoft.AspNet.Identity;
 
 namespace SPS.Web.Controllers
 {
@@ -25,7 +26,16 @@ namespace SPS.Web.Controllers
         // GET: LocalAdmin
         public ActionResult Index()
         {
-            if (!Request.IsAuthenticated)
+            if (Request.IsAuthenticated)
+            {
+                var user = User.Identity.GetApplicationUser();
+
+                if (user.UserType != Models.UserType.LocalAdmin)
+                {
+                    return RedirectToAction("Login", "Account");
+                }
+            }
+            else
             {
                 return RedirectToAction("Login", "Account");
             }

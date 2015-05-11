@@ -38,7 +38,8 @@ namespace SPS.Web.Controllers
         [HttpPost]
         public ActionResult GenerateToken(TokenGeneratorViewModel model)
         {
-            var token = Security.TokenGeneratorService.GenerateToken(model.CPF);
+            var hash = Security.HashServices.HashPassword(model.Password, model.CPF);
+            var token = Security.TokenGeneratorService.GenerateToken(hash);
 
             ViewBag.GeneratedToken = token;
             return View("GeneratedToken");

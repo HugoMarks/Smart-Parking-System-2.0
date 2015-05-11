@@ -25,7 +25,7 @@ namespace SPS.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(RootUserViewModel rootUser)
         {
-            var user = BusinessManager.Instance.GlobalManagers.FindAll().Where(gm => gm.CPF == rootUser.CPF.Replace(".", "").Replace("-", "")).FirstOrDefault();
+            var user = BusinessManager.Instance.GlobalManagers.FindAll().Where(gm => gm.CPF == rootUser.CPF).FirstOrDefault();
 
             if (user == null)
             {

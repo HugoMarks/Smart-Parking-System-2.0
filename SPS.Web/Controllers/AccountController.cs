@@ -156,43 +156,7 @@ namespace SPS.Web.Controllers
             return View(model);
         }
 
-        //
-        // POST: /Account/RegisterLocalManager
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> RegisterLocalManager(RegisterViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                ApplicationUser user = model.ToApplicationUser(UserType.LocalAdmin);
-                IdentityResult result = await UserManager.CreateAsync(user, model.Password);
-
-                if (result.Succeeded)
-                {
-                    LocalManager client = model.ToUser<LocalManager>(user.PasswordHash);
-
-                    BusinessManager.Instance.LocalManagers.Add(client);
-
-                    return RedirectToLocal(Url.Action("Index",  "LocalAdmin"));
-                }
-                else
-                {
-                    var emailErrors = result.Errors.Where(e => e.Contains("email"));
-
-                    if (emailErrors.Count() > 0)
-                    {
-                        foreach (var error in emailErrors)
-                        {
-                            ModelState["Email"].Errors.Add(error);
-                        }
-                    }
-                }
-            }
-
-            // Se chegamos até aqui e houver alguma falha, exiba novamente o formulário
-            return View(model);
-        }
+        
 
         //
         // GET: /Account/ConfirmationSent

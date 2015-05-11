@@ -3,7 +3,7 @@
 @using (Html.BeginForm("Register", "Parking", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "registerParkingForm" }))
 {
     @Html.AntiForgeryToken()
-    <div class="col-md-6">
+    <div class="container">
         <div class="form-group">
             @Html.LabelFor(m => m.Name, new { @class = "control-label" })
             @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
@@ -23,7 +23,7 @@
         </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="container">
         <div class="form-group">
             @Html.LabelFor(m => m.PostalCode, new { @class = "control-label" })
             @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control", id = "parkingCepTextBox" })

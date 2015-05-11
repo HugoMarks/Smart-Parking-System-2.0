@@ -8,6 +8,10 @@
 		}
 	};
 
+	$("#parkingSelectList").change(function () {
+	    $("#selectParkingBtn").removeAttr("disabled");  
+	});
+
 	if ($("#parkingCepTextBox").val() == null || $("#parkingCepTextBox").val() == "") {
 	    $(".address").hide();
 	}
