@@ -22,7 +22,6 @@ namespace SPS.Web.Controllers
                 _userManager = value;
             }
         }
-
         // GET: LocalAdmin
         public ActionResult Index()
         {
@@ -31,11 +30,6 @@ namespace SPS.Web.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            return View();
-        }
-
-        public ActionResult RegisterEmployee()
-        {
             return View();
         }
     }

@@ -42,3 +42,4 @@ C:\Users\André\Source\Repos\SPS\SPS.Repository\bin\Debug\SPS.Security.pdb
 C:\Users\André\Source\Repos\SPS\SPS.Repository\bin\Debug\crypto.xml
 C:\Users\André\Source\Repos\SPS\SPS.Repository\obj\Debug\SPS.Repository.Migrations.Inheritance.resources
 C:\Users\André\Source\Repos\SPS\SPS.Repository\obj\Debug\SPS.Repository.csproj.GenerateResource.Cache
+C:\Users\André\Source\Repos\SPS\SPS.Repository\obj\Debug\SPS.Repository.Migrations.Inheritance1.resources

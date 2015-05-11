@@ -252,6 +252,8 @@ C:\Users\André\Source\Repos\SPS\SPS.Web\bin\System.Net.Http.Formatting.xml
 C:\Users\André\Source\Repos\SPS\SPS.Web\bin\System.Web.Http.xml
 C:\Users\André\Source\Repos\SPS\SPS.Web\bin\System.Web.Http.WebHost.xml
 C:\Users\André\Source\Repos\SPS\SPS.Web\bin\crypto.xml
+C:\Users\André\Source\Repos\SPS\SPS.Web\obj\Debug\SPS.Web.Migrations.Inheritance.resources
+C:\Users\André\Source\Repos\SPS\SPS.Web\obj\Debug\SPS.Web.csproj.GenerateResource.Cache
 C:\Users\Hugo\Source\Repos\SPS\SPS.Web\obj\Debug\SPS.Web.Migrations.Inheritance.resources
 C:\Users\Hugo\Source\Repos\SPS\SPS.Web\obj\Debug\SPS.Web.csproj.GenerateResource.Cache
 C:\Users\André\Source\Repos\SPS\SPS.Web\obj\Debug\SPS.Web.Migrations.Inheritance.resources

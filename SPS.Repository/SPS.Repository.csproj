@@ -46,9 +46,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201505110206292_Inheritance.cs" />
-    <Compile Include="Migrations\201505110206292_Inheritance.Designer.cs">
-      <DependentUpon>201505110206292_Inheritance.cs</DependentUpon>
+    <Compile Include="Migrations\201505101706076_Inheritance.cs" />
+    <Compile Include="Migrations\201505101706076_Inheritance.Designer.cs">
+      <DependentUpon>201505101706076_Inheritance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505101711127_Inheritance1.cs" />
+    <Compile Include="Migrations\201505101711127_Inheritance1.Designer.cs">
+      <DependentUpon>201505101711127_Inheritance1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -63,14 +67,13 @@
       <Project>{85d0e54b-f75d-4a18-8c90-d5f7bbfb1915}</Project>
       <Name>SPS.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SPS.Security\SPS.Security.csproj">
-      <Project>{1636db8c-4aeb-45fd-88d2-660bb127f1b4}</Project>
-      <Name>SPS.Security</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201505110206292_Inheritance.resx">
-      <DependentUpon>201505110206292_Inheritance.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201505101706076_Inheritance.resx">
+      <DependentUpon>201505101706076_Inheritance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505101711127_Inheritance1.resx">
+      <DependentUpon>201505101711127_Inheritance1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

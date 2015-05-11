@@ -199,9 +199,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201505110209156_Inheritance.cs" />
-    <Compile Include="Migrations\201505110209156_Inheritance.Designer.cs">
-      <DependentUpon>201505110209156_Inheritance.cs</DependentUpon>
+    <Compile Include="Migrations\201505101707167_Inheritance.cs" />
+    <Compile Include="Migrations\201505101707167_Inheritance.Designer.cs">
+      <DependentUpon>201505101707167_Inheritance.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -403,9 +403,6 @@
     <Content Include="Views\TokenGenerator\Index.cshtml" />
     <Content Include="Views\TokenGenerator\GeneratedToken.cshtml" />
     <Content Include="Views\Parking\_RegisterParkingPartial.cshtml" />
-    <Content Include="Views\LocalAdmin\RegisterEmployee.cshtml" />
-    <Content Include="Views\Account\ConfirmationSent.cshtml" />
-    <Content Include="Views\Parking\_SelectParkingPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -444,8 +441,8 @@
     <WCFMetadataStorage Include="Service References\CorreiosService\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201505110209156_Inheritance.resx">
-      <DependentUpon>201505110209156_Inheritance.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201505101707167_Inheritance.resx">
+      <DependentUpon>201505101707167_Inheritance.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
