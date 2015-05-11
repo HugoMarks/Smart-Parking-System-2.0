@@ -34,7 +34,8 @@ namespace SPS.Repository
         /// </summary>
         public SPSDb()
             : base("DefaultConnection")
-        {            
+        {
+            Database.SetInitializer<SPSDb>(new SPSContextInitializer());
         }
 
         /// <summary>

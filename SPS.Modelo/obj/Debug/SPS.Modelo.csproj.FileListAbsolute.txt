@@ -179,3 +179,5 @@ C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\zh-Hant\System.Spatial.resources
 C:\Users\André\Source\Repos\SPS\SPS.Modelo\obj\Debug\SPS.Modelo.csprojResolveAssemblyReference.cache
 C:\Users\André\Source\Repos\SPS\SPS.Modelo\obj\Debug\SPS.Modelo.dll
 C:\Users\André\Source\Repos\SPS\SPS.Modelo\obj\Debug\SPS.Modelo.pdb
+C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\EntityFramework.SqlServer.dll
+C:\Users\André\Source\Repos\SPS\SPS.Modelo\bin\EntityFramework.SqlServer.xml
