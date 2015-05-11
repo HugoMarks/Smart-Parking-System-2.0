@@ -134,7 +134,7 @@ function addSuccess(element) {
 }
 
 function postLocalManagerData() {
-    $.post("/Account/RegisterLocalManager", $("#registerLocalAdminForm").serialize())
+    $.post("/GlobalAdmin/RegisterLocalManager", $("#registerLocalAdminForm").serialize())
     .done(function () {
         $("#addLocalAdminModal").modal('hide');
     });

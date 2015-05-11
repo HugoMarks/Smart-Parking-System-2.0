@@ -9,7 +9,7 @@ namespace SPS.Web.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(SPS.Web.Models.ApplicationDbContext context)

@@ -37,3 +37,11 @@ C:\Users\André\Source\Repos\SPS\SPS.Repository\obj\Debug\SPS.Repository.pdb
 C:\Users\André\Source\Repos\SPS\SPS.Repository\obj\Debug\SPS.Repository.Migrations.Inheritance.resources
 C:\Users\André\Source\Repos\SPS\SPS.Repository\obj\Debug\SPS.Repository.csproj.GenerateResource.Cache
 C:\Users\André\Source\Repos\SPS\SPS.Repository\obj\Debug\SPS.Repository.Migrations.Inheritance1.resources
+C:\Users\Hugo\Source\Repos\SPS\SPS.Repository\bin\Debug\SPS.Security.dll
+C:\Users\Hugo\Source\Repos\SPS\SPS.Repository\bin\Debug\crypto.dll
+C:\Users\Hugo\Source\Repos\SPS\SPS.Repository\bin\Debug\Portable.Security.Cryptography.dll
+C:\Users\Hugo\Source\Repos\SPS\SPS.Repository\bin\Debug\Portable.Runtime.dll
+C:\Users\Hugo\Source\Repos\SPS\SPS.Repository\bin\Debug\SPS.Security.pdb
+C:\Users\Hugo\Source\Repos\SPS\SPS.Repository\bin\Debug\crypto.xml
+C:\Users\Hugo\Source\Repos\SPS\SPS.Repository\obj\Debug\SPS.Repository.Migrations.Inheritance.resources
+C:\Users\Hugo\Source\Repos\SPS\SPS.Repository\obj\Debug\SPS.Repository.csproj.GenerateResource.Cache
