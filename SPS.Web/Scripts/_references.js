@@ -4,7 +4,8 @@
 /// <reference path="jquery.validate.js" />
 /// <reference path="npm.js" />
 /// <reference path="register.js" />
-/// <reference path="validation.js" />
 /// <reference path="root.js" />
+/// <reference path="token.js" />
+/// <reference path="validation.js" />
 
 

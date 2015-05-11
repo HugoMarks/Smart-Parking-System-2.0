@@ -436,7 +436,7 @@ namespace SPS.Web.Controllers
 		[AllowAnonymous]
 		public ActionResult GetAddress(string postalCode)
 		{
-            var address = SPSDb.Instance.Addresses.Find(postalCode.Replace("-", ""));
+            var address = BusinessManager.Instance.Addresses.Find(postalCode); //SPSDb.Instance.Addresses.Find();
 
             if (address != null)
             {
@@ -448,7 +448,8 @@ namespace SPS.Web.Controllers
 
             if (result.Address != null)
             {
-                new AddressBO().Add(result.Address);
+                //BusinessManager.Instance.Addresses.Add(result.Address);
+                //new AddressBO().Add(result.Address);
                 return Json(new JavaScriptSerializer().Serialize(result.Address));
             }
 
