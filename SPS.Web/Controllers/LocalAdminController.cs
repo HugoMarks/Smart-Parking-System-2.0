@@ -22,14 +22,20 @@ namespace SPS.Web.Controllers
                 _userManager = value;
             }
         }
+
         // GET: LocalAdmin
         public ActionResult Index()
         {
-            if (!Request.IsAuthenticated)
-            {
-                return RedirectToAction("Login", "Account");
-            }
+            //if (!Request.IsAuthenticated)
+            //{
+            //    return RedirectToAction("Login", "Account");
+            //}
 
+            return View();
+        }
+
+        public ActionResult RegisterEmployee()
+        {
             return View();
         }
     }
