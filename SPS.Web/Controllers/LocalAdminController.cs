@@ -26,10 +26,10 @@ namespace SPS.Web.Controllers
         // GET: LocalAdmin
         public ActionResult Index()
         {
-            //if (!Request.IsAuthenticated)
-            //{
-            //    return RedirectToAction("Login", "Account");
-            //}
+            if (!Request.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
 
             return View();
         }
