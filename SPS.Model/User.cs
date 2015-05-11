@@ -19,8 +19,6 @@ public abstract class User
 
     public string CPF { get; set; }
 
-
-    [Column("UserAddress")]
     public Address Address { get; set; }
 
     public string Password { get; set; }
