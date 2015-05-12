@@ -37,21 +37,21 @@ namespace SPS.Web.Controllers
             }
         }
 
-        private static bool IsLogged = false;
-
-        // GET: GlobalAdmin
-        public ActionResult Index()
+        // This method is private because only authenticated users can see this view.
+        private ActionResult Index()
         {
-            if (!IsLogged)
-            {
-                IsLogged = false;
-                return View("Login");
-            }
-
-            IsLogged = false;
             return View();
         }
 
+        //
+        // GET: /GlobalAdmin/Login
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        //
+        // POST: /GlobalAdmin/Login
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -62,19 +62,17 @@ namespace SPS.Web.Controllers
             if (user == null)
             {
                 ModelState.AddModelError("", "Esse CPF não tem permissão para acessar essa página.");
-                IsLogged = false;
                 return View(rootUser);
             }
 
             if (!SPS.Security.TokenGeneratorService.IsTokenValid(user.Password, rootUser.Token))
             {
                 ModelState.AddModelError("", "Token inválido ou expirado!");
-                IsLogged = false;
                 return View(rootUser);
             }
 
             HttpContext.GetOwinContext().Authentication.SignOut();
-            IsLogged = true;
+            ViewBag.UserName = user.FirstName;
             return View("Index");
         }
 
@@ -116,6 +114,11 @@ namespace SPS.Web.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// Redirects to a specified URL.
+        /// </summary>
+        /// <param name="returnUrl">The URL to redirect.</param>
+        /// <returns>ActionResult</returns>
         private ActionResult RedirectToLocal(string returnUrl)
         {
             if (Url.IsLocalUrl(returnUrl))
