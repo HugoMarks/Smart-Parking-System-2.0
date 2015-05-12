@@ -190,7 +190,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocalAdminController.cs" />
     <Compile Include="Controllers\ParkingController.cs" />
-    <Compile Include="Controllers\RootController.cs" />
     <Compile Include="Controllers\TokenGeneratorController.cs" />
     <Compile Include="DataAnnotations\CPFAttribute.cs" />
     <Compile Include="Extensions\IdentityExtensions.cs" />
@@ -273,7 +272,6 @@
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Root\Index.cshtml" />
     <Content Include="Views\Client\Index.cshtml" />
     <None Include="Service References\CorreiosService\AtendeClienteService.wsdl" />
     <Content Include="Service References\CorreiosService\SPS.Web.CorreiosService.assuntoPIMaster.datasource">

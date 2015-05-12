@@ -70,7 +70,7 @@ namespace SPS.Web.Controllers
                 ModelState.AddModelError("", "Token inválido ou expirado!");
                 return View(rootUser);
             }
-            //Teste
+
             HttpContext.GetOwinContext().Authentication.SignOut();
             ViewBag.UserName = user.FirstName;
             return View("Index");
