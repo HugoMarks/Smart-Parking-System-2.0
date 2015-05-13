@@ -44,5 +44,10 @@ namespace SPS.Web.Controllers
             ViewBag.GeneratedToken = token;
             return View("GeneratedToken");
         }
+
+        public ActionResult GenerateAntiForgeryToken()
+        {
+            return PartialView("_GenerateAntiForgeryToken");
+        }
     }
 }

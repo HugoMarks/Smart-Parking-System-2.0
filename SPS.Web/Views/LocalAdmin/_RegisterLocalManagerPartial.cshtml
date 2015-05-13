@@ -1,6 +1,6 @@
 ﻿@model SPS.Web.Models.RegisterViewModel
 
-@using (Html.BeginForm("RegisterLocalManager", "GlobalAdmin", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "registerLocalAdminForm" }))
+@using (Html.BeginForm("Register", "LocalAdmin", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "registerLocalAdminForm" }))
 {
     @Html.AntiForgeryToken()
     <h4>Dados pessoais</h4>

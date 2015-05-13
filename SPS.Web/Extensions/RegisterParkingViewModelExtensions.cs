@@ -17,7 +17,8 @@ namespace SPS.Web.Extensions
                 CNPJ = model.CNPJ,
                 Name = model.Name,
                 PhoneNumber = model.PhoneNumber,
-                Address = GetAddress(model)
+                Address = GetAddress(model),
+                LocalManager = BusinessManager.Instance.LocalManagers.Find(int.Parse(model.LocalAdmin))
             };
         }
 

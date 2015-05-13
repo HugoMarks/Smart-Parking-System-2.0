@@ -1,4 +1,13 @@
-﻿@model SPS.Web.Models.RegisterParkingViewModel
+﻿@using SPS.BO
+@model SPS.Web.Models.RegisterParkingViewModel
+
+@{
+    var localAdmins = BusinessManager.Instance.LocalManagers.FindAll()
+        .Select(l => new SelectListItem() 
+        {
+            Text = l.FirstName + " " + l.LastName, Value = l.Id.ToString()
+        });
+}
 
 @using (Html.BeginForm("Register", "Parking", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "registerParkingForm" }))
 {
@@ -57,6 +66,12 @@
         <div class="form-group">
             @Html.LabelFor(m => m.Number, new { @class = "control-label" })
             @Html.TextBoxFor(m => m.Number, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Number, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.LocalAdmin, new { @class = "control-label" })
+            @Html.DropDownListFor(m => m.LocalAdmin, @localAdmins, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.Number, "", new { @class = "text-danger" })
         </div>
     </div>
