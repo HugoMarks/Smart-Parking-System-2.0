@@ -22,6 +22,5 @@ public abstract class User
     public Address Address { get; set; }
 
     public string Password { get; set; }
-
 }
 

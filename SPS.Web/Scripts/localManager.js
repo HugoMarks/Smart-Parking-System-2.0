@@ -134,9 +134,20 @@ function addSuccess(element) {
 }
 
 function postLocalManagerData() {
-    $("#registerLocalAdminForm").validate();
-    $.post("/GlobalAdmin/RegisterLocalManager", $("#registerLocalAdminForm").serialize())
-    .done(function () {
+    var data = $("#registerLocalAdminForm").serialize();
+
+    $.post("/LocalAdmin/Register", data)
+    .done(function (args) {
+        //alert(args);
+
+        $.get("/TokenGenerator/GenerateAntiForgeryToken", function (html) {
+            var tokenValue = $('<div />').html(html).find('input[type="hidden"]').val();
+            $('#registerLocalAdminForm input[type="hidden"]').val(tokenValue);
+        });
+
         $("#addLocalAdminModal").modal('hide');
+    })
+    .fail(function (arg) {
+        alert("Error\n" + data);
     });
 }

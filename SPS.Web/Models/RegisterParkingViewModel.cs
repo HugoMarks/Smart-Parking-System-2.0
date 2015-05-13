@@ -13,6 +13,7 @@ namespace SPS.Web.Models
         public string Name { get; set; }
 
         [Required(ErrorMessage = "O CNPJ é obrigatório")]
+        [Display(Name = "CNPJ*")]
         public string CNPJ { get; set; }
 
         [Required(ErrorMessage = "O telefone é obrigatório")]
@@ -46,5 +47,9 @@ namespace SPS.Web.Models
         [Required(ErrorMessage = "O estado é obrigatório")]
         [Display(Name = "Estado")]
         public string State { get; set; }
+
+        [Required(ErrorMessage = "O estacionamento precisa de um administrador local")]
+        [Display(Name = "Administrador Local")]
+        public string LocalAdmin { get; set; }
     }
 }

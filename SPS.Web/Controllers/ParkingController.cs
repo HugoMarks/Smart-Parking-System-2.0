@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SPS.Web.Extensions;
+using System.Net;
 
 namespace SPS.Web.Controllers
 {
@@ -30,7 +31,7 @@ namespace SPS.Web.Controllers
                     parking = model.ToParking();
                     BusinessManager.Instance.Parkings.Add(parking);
 
-                    return new HttpStatusCodeResult(System.Net.HttpStatusCode.OK);
+                    return new HttpStatusCodeResult(HttpStatusCode.OK);
                 }
 
                 ModelState["CNPJ"].Errors.Add("Já existe um estacionamento com este CNPJ");
