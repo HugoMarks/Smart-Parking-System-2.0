@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace SPS.Web.Controllers
 {
-    public class EmployeeController : Controller
+    public class CollaboratorController : Controller
     {
-        // GET: Employee
+        // GET: Collaborator
         public ActionResult Index()
         {
             return View();
