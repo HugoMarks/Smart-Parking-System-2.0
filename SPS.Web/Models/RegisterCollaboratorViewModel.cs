@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SPS.Web.Models
 {
-    public class RegisterEmployeeViewModel
+    public class RegisterCollaboratorViewModel
     {
         [Required(ErrorMessage = "O nome é obrigatório")]
         [Display(Name = "Primeiro nome*")]
