@@ -226,6 +226,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\DS-DIGI.TTF" />
     <None Include="Properties\PublishProfiles\smartparkingsystem %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\smartparkingsystem.pubxml" />
     <None Include="Properties\PublishProfiles\SPS.pubxml" />
