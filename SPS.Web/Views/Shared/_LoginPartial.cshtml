@@ -6,8 +6,8 @@
     @Html.AntiForgeryToken()
 
     <ul class="nav navbar-nav navbar-right">
-        <li class="panel-btn">
-            @Html.ActionLink("Minha conta", "Index", "Client", routeValues: null, htmlAttributes: new { title = "Gerenciar" })
+        <li class="panel-btn">                 
+                @Html.ActionLink("Minha conta", "Index", "Client", routeValues: null, htmlAttributes: new { title = "Gerenciar" })                 
         </li>
         <li class="panel-btn">
             <a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-fw fa-sign-out"></i>Sair</a>
