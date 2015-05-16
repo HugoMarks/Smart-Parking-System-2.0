@@ -11,6 +11,7 @@ using SPS.BO;
 using SPS.Model;
 using SPS.Web.Extensions;
 using System.Net;
+using System.Web.Routing;
 
 namespace SPS.Web.Controllers
 {
@@ -50,6 +51,11 @@ namespace SPS.Web.Controllers
             return View();
         }
 
+        public ActionResult Register()
+        {
+            return View();
+        }
+
         //
         // POST: /LocalAdmin/Register
         [HttpPost]
@@ -66,9 +72,16 @@ namespace SPS.Web.Controllers
                 {
                     LocalManager client = model.ToUser<LocalManager>(user.PasswordHash);
 
-                    BusinessManager.Instance.LocalManagers.Add(client);
+                    BusinessManager.Instance.LocalManagers.Add(client);                    
 
-                    return new HttpStatusCodeResult(HttpStatusCode.OK);
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = model.Password }, protocol: Request.Url.Scheme);
+                    var message = @"<p>Olá, {0}!</p><p>Segue os dados de acesso para sua conta.</p><p>Usuário: {1}</p><p>Senha: {2}</p>
+                                   <p><b>Nunca compartilhe esses dados com ninguém. Caso contrário, ações admistrativas serão tomadas.</b></p>";
+
+                    message = string.Format(message, client.FirstName, client.Email, model.Password);
+                    await UserManager.SendEmailAsync(user.Id, "Sua conta no Smart Parking System", message);
+
+                    return RedirectToAction("Login", "GlobalAdmin");
                 }
                 else
                 {

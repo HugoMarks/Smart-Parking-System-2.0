@@ -410,7 +410,6 @@
     <Content Include="Views\GlobalAdmin\Index.cshtml" />
     <Content Include="Views\LocalAdmin\Index.cshtml" />
     <Content Include="Views\Collaborator\Index.cshtml" />
-    <Content Include="Views\LocalAdmin\_RegisterLocalManagerPartial.cshtml" />
     <Content Include="Views\TokenGenerator\Index.cshtml" />
     <Content Include="Views\TokenGenerator\GeneratedToken.cshtml" />
     <Content Include="Views\Parking\_RegisterParkingPartial.cshtml" />
@@ -419,6 +418,7 @@
     <Content Include="Views\GlobalAdmin\Login.cshtml" />
     <Content Include="Views\TokenGenerator\_GenerateAntiForgeryToken.cshtml" />
     <Content Include="Views\Collaborator\Register.cshtml" />
+    <Content Include="Views\LocalAdmin\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

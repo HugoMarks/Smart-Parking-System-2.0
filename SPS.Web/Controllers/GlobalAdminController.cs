@@ -23,23 +23,14 @@ namespace SPS.Web.Controllers
 {
     public class GlobalAdminController : Controller
     {
-        private ApplicationUserManager _userManager;
-
-        public ApplicationUserManager UserManager
-        {
-            get
-            {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-            private set
-            {
-                _userManager = value;
-            }
-        }
-
         // This method is private because only authenticated users can see this view.
-        private ActionResult Index()
+        public ActionResult Index()
         {
+            if (!Request.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             return View();
         }
 
@@ -55,7 +46,7 @@ namespace SPS.Web.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(RootUserViewModel rootUser)
+        public async Task<ActionResult> Login(RootUserViewModel rootUser)
         {
             var user = BusinessManager.Instance.GlobalManagers.FindAll().Where(gm => gm.CPF == rootUser.CPF).FirstOrDefault();
 
@@ -65,15 +56,27 @@ namespace SPS.Web.Controllers
                 return View(rootUser);
             }
 
-            if (!SPS.Security.TokenGeneratorService.IsTokenValid(user.Password, rootUser.Token))
+            if (!SPS.Security.TokenGeneratorService.IsTokenValid(user.TokenHash, rootUser.Token))
             {
                 ModelState.AddModelError("", "Token inválido ou expirado!");
                 return View(rootUser);
             }
 
-            HttpContext.GetOwinContext().Authentication.SignOut();
-            ViewBag.UserName = user.FirstName;
-            return View("Index");
+            var email = (string)TempData["GlobalAdminEmail"];
+            var password = (string)TempData["GlobalAdminPassword"];
+
+            await SignInAsync(email, password);
+            return RedirectToAction("Index");
+        }
+
+        private async Task SignInAsync(string email, string password)
+        {
+            var authenticationManager = HttpContext.GetOwinContext().Authentication;
+            var userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var user = await userManager.FindAsync(email, password);
+
+            authenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
+            authenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = false }, await user.GenerateUserIdentityAsync(userManager));
         }
     }
 }

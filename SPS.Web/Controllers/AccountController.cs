@@ -75,7 +75,15 @@ namespace SPS.Web.Controllers
                     }
                     else
                     {
-                        await SignInAsync(user, model.RememberMe);
+                        if (user.UserType != UserType.GlobalAdmin)
+                        {
+                            await SignInAsync(user, model.RememberMe);
+                        }
+                        else
+                        {
+                            TempData["GlobalAdminEmail"] = user.Email;
+                            TempData["GlobalAdminPassword"] = model.Password;
+                        }
 
                         switch (user.UserType)
                         {
@@ -85,8 +93,8 @@ namespace SPS.Web.Controllers
                                 return RedirectToAction("Index", "Collaborator");
                             case UserType.LocalAdmin:
                                 return RedirectToAction("Index", "LocalAdmin");
-                            default:
-                                return RedirectToLocal("~/Shared/Error.cshtml");
+                            case UserType.GlobalAdmin:
+                                return RedirectToAction("Login", "GlobalAdmin");
                         }
                     }
                 }
