@@ -156,7 +156,22 @@ namespace SPS.Web.Controllers
             return View(model);
         }
 
-        
+        public ActionResult RedirectUserToView()
+        {
+            var user = User.Identity.GetApplicationUser();
+
+            switch (user.UserType)
+            {
+                case UserType.Client:
+                    return RedirectToAction("Index", "Client");
+                case UserType.Collaborator:
+                    return RedirectToAction("Index", "Collaborator");
+                case UserType.LocalAdmin:
+                    return RedirectToAction("Index", "LocalAdmin");
+                default:
+                    return RedirectToAction("Index", "Home");
+            }
+        }
 
         //
         // GET: /Account/ConfirmationSent
