@@ -50,11 +50,6 @@ namespace SPS.Web.Controllers
             return View();
         }
 
-        public ActionResult RegisterEmployee()
-        {
-            return null;
-        }
-
         //
         // POST: /LocalAdmin/Register
         [HttpPost]

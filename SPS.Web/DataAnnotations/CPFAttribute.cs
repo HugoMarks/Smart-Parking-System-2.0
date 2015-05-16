@@ -23,6 +23,9 @@ namespace SPS.Web.DataAnnotations
 
         private bool ValidateCPF(string cpf)
         {
+            if (string.IsNullOrEmpty(cpf))
+                return false;
+
             var onlyDigits = new Regex(@"[^\d]");
 
             cpf = onlyDigits.Replace(cpf, "");
