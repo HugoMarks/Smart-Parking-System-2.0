@@ -228,11 +228,17 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\DS-DIGI.TTF" />
     <None Include="Properties\PublishProfiles\smartparkingsystem %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\smartparkingsystem.pubxml" />
     <None Include="Properties\PublishProfiles\SPS.pubxml" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="pictures\Companies_Icon_128.png" />
+    <Content Include="pictures\ControlPanel.png" />
+    <Content Include="pictures\ManageUsers.png" />
+    <Content Include="pictures\Statistics.png" />
+    <Content Include="pictures\Users.png" />
     <Content Include="Scripts\jquery.mask.min.js" />
     <Content Include="Scripts\localManager.js" />
     <Content Include="Scripts\npm.js" />

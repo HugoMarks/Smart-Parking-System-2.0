@@ -55,3 +55,20 @@ textarea {
     background-color: lightgray;
 }
 
+.img-menu{
+     width: 80%;
+     margin-top: 5%;
+}
+
+.center-text{
+     text-align: center;
+}
+
+@font-face {
+    font-family: "ds-digital";
+    src: url("../fonts/DS-DIGI.TTF") format("truetype");
+}
+.numero-de-vagas{
+    font-family : ds-digital;
+    font-size: 6em;
+}
