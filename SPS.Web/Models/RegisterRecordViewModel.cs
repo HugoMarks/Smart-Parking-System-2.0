@@ -9,7 +9,7 @@ namespace SPS.Web.Models
     public class SaveUsageRecordViewModel
     {
         [Required(ErrorMessage = "O número da tag é obrigatório")]
-        [Display(Name = "Total à pagar")]
+        [Display(Name = "Tag")]
         public string Tag { get; set; }
 
         [Required(ErrorMessage = "A data de entrada é obrigatória")]
