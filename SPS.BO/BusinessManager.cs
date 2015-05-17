@@ -25,6 +25,8 @@ namespace SPS.BO
         private ParkingSpaceBO parkingSpaceBO;
         private PriceBO priceBO;
         private AddressBO addressBO;
+        private TagBO tagBO;
+        private UsageRecordBO usageRecordsBO;
 
         private BusinessManager()
         {
@@ -36,6 +38,8 @@ namespace SPS.BO
             this.parkingSpaceBO = new ParkingSpaceBO();
             this.priceBO = new PriceBO();
             this.addressBO = new AddressBO();
+            this.tagBO = new TagBO();
+            this.usageRecordsBO = new UsageRecordBO();
         }
 
         public MontlyClientBO MontlyClients
@@ -101,6 +105,22 @@ namespace SPS.BO
             get
             {
                 return this.addressBO;
+            }
+        }
+
+        public TagBO Tags
+        {
+            get
+            {
+                return this.tagBO;
+            }
+        }
+
+        public UsageRecordBO UsageRecords
+        {
+            get
+            {
+                return this.usageRecordsBO;
             }
         }
     }

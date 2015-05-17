@@ -52,6 +52,7 @@
     <Compile Include="MontlyClient.cs" />
     <Compile Include="Collaborator.cs" />
     <Compile Include="DailyClient.cs" />
+    <Compile Include="UsageRecord.cs" />
     <Compile Include="User.cs" />
     <Compile Include="ParkingSpaceState.cs" />
     <Compile Include="Parking.cs" />
