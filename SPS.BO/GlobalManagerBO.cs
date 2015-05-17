@@ -12,27 +12,30 @@ namespace SPS.BO
     {
         private static SPSDb Context = SPSDb.Instance;
 
-        public virtual void Add(GlobalManager collaborator)
+        public virtual void Add(GlobalManager globalManager)
         {
-            Context.GlobalManagers.Add(collaborator);
+            Context.GlobalManagers.Add(globalManager);
             Context.SaveChanges();
         }
 
-        public virtual void Remove(GlobalManager collaborator)
+        public virtual void Remove(GlobalManager globalManager)
         {
-            Context.GlobalManagers.Remove(collaborator);
+            Context.GlobalManagers.Remove(globalManager);
             Context.SaveChanges();
         }
 
-        public virtual void Update(GlobalManager collaborator)
+        public virtual void Update(GlobalManager globalManager)
         {
-            var savedGlobalManager = Context.GlobalManagers.SingleOrDefault(c => c.Id == collaborator.Id);
+            var entity = Context.GlobalManagers.SingleOrDefault(c => c.Email == globalManager.Email);
 
-            if (savedGlobalManager != null)
-            {
-                savedGlobalManager = collaborator;
-                Context.SaveChanges();
-            }
+            if (entity == null)
+                return;
+
+            globalManager.Id = entity.Id;
+            Context.Entry(entity).CurrentValues.SetValues(globalManager);
+            entity.Address = globalManager.Address;
+
+            Context.SaveChanges();
         }
 
         public virtual GlobalManager Find(params object[] keys)

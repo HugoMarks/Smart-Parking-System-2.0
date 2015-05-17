@@ -34,13 +34,15 @@ namespace SPS.BO
 
         public virtual void Update(Price price)
         {
-            var savedPrice = Context.Prices.SingleOrDefault(p => p.Id == price.Id);
+            var entity = Context.Prices.Find(price.Id);
 
-            if (savedPrice != null)
-            {
-                savedPrice = price;
-                Context.SaveChanges();
-            }
+            if (entity == null)
+                return;
+
+            Context.Entry(entity).CurrentValues.SetValues(price);
+            entity.Parking = price.Parking;
+
+            Context.SaveChanges();
         }
     }
 }

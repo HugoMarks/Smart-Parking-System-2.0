@@ -24,13 +24,15 @@ namespace SPS.BO
 
         public virtual void Update(Tag tag)
         {
-            var savedTag = Context.Tags.SingleOrDefault(t => t.Id == tag.Id);
+            var entity = Context.Tags.Find(tag.Id);
 
-            if (savedTag != null)
-            {
-                savedTag = tag;
-                Context.SaveChanges();
-            }
+            if (entity == null)
+                return;
+
+            Context.Entry(entity).CurrentValues.SetValues(tag);
+            entity.User = tag.User;
+
+            Context.SaveChanges();
         }
 
         public virtual Tag Find(params object[] keys)

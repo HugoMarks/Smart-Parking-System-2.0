@@ -24,13 +24,16 @@ namespace SPS.BO
 
         public virtual void Update(Parking parking)
         {
-            var savedParking = Context.Parkings.SingleOrDefault(p => p.CNPJ == parking.CNPJ);
+            var entity = Context.Parkings.Find(parking.CNPJ);
 
-            if (savedParking != null)
-            {
-                savedParking = parking;
-                Context.SaveChanges();
-            }
+            if (entity == null)
+                return;
+
+            Context.Entry(entity).CurrentValues.SetValues(parking);
+            entity.Address = parking.Address;
+            entity.LocalManager = parking.LocalManager;
+
+            Context.SaveChanges();
         }
 
         public virtual Parking Find(params object[] keys)
