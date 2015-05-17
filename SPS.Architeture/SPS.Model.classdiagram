@@ -388,7 +388,7 @@
             <elementDefinition Id="c2fd53a7-691b-41da-b690-82ad780451b1" />
           </association>
           <association Id="5cf3c041-fa11-468a-a2c7-8f06b23ce5b2" isDerived="false" sourceEndRoleName="Address" targetEndRoleName="LocalManager" isLeaf="false" isAbstract="false">
-            <classMoniker Id="3530d1d2-da71-4b86-80a6-f455dbd1bd17" LastKnownName="LocalManager" />
+            <classMoniker Id="3530d1d2-da71-4b86-80a6-f455dbd1bd17" LastKnownName="LocalAdministrator" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd Id="838cfefd-1f65-4632-b0f6-db15a544596f" name="Address" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
@@ -1752,7 +1752,7 @@
       </referencedType>
     </packageHasNamedElement>
     <logicalClassDesignerModelHasTypes>
-      <class Id="3530d1d2-da71-4b86-80a6-f455dbd1bd17" name="LocalManager" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="3530d1d2-da71-4b86-80a6-f455dbd1bd17" name="LocalAdministrator" isAbstract="false" isLeaf="false" isActiveClass="false">
         <appliedStereotypesInternal>
           <stereotypeInstance Id="a8d63065-f5cb-4858-b592-83c451adacaf" name="class" profile="CSharpProfile">
             <elementDefinition Id="c4f8b6b3-2c02-4e30-adc9-ee8a2ff416e3" />
