@@ -9,7 +9,7 @@
         <div class="col-md-12">
             <div class="page-header">
                 <h1>
-                    Olá @ViewBag.UserName,
+                    Olá @User.Identity.GetApplicationUser().FirstName,
                 </h1>
                 <h2 style="color:#777777; font-size: 23px; line-height: 23.3999996185303px;">Escolha uma opção abaixo</h2>
             </div>
@@ -19,12 +19,12 @@
                         <a id="dLabel" data-target="#" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
                             <img src="~/pictures/ManageUsers.png" class="img-responsive img-menu">
                             <div class="caption center-text">
-                                <h3>Administradores Locais</h3>
+                                <h4><b>Administradores Locais</b></h4>
                             </div>
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                            <li><a data-toggle="modal" data-target="#addLocalAdminModal" class="btn-default" href="#">Adicionar Administrador</a></li>
+                            <li>@Html.ActionLink("Adicionar Administrador", "Register", "LocalAdmin")</li>
                             <li><a class="btn-default" href="#">Gerenciar Administradores</a></li>
                         </ul>
                     </div>
@@ -35,7 +35,7 @@
                         <a id="dLabel" data-target="#" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
                             <img src="~/pictures/Users.png" class="img-responsive img-menu">
                             <div class="caption center-text">
-                                <h3>Conta</h3>
+                                <h4><b>Conta</b></h4>
                             </div>
                             <span class="caret"></span>
                         </a>
@@ -51,7 +51,7 @@
                         <a id="dLabel" data-target="#" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
                             <img src="~/pictures/Companies_Icon_128.png" class="img-responsive img-menu">
                             <div class="caption center-text">
-                                <h3>Estacionamentos</h3>
+                                <h4><b>Estacionamentos</b></h4>
                             </div>
                             <span class="caret"></span>
                         </a>
@@ -66,31 +66,13 @@
                         <a id="dLabel" data-target="#" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
                             <img src="~/pictures/Statistics.png" class="img-responsive img-menu">
                             <div class="caption center-text">
-                                <h3>Faturamento</h3>
+                                <h4><b>Faturamento</b></h4>
                             </div>
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                             <li><a class="btn-default" href="#">Gerenciar Faturamentos</a></li>
                         </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="modal fade" id="addLocalAdminModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">Cadastrar Novo Administrador Local</h4>
-                        </div>
-                        <div id="registerLocalAdminBodyModal" class="modal-body">
-                            @Html.Partial("~/Views/LocalAdmin/_RegisterLocalManagerPartial.cshtml")
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                            <button id="registerLocalAdminSubmitBtn" type="button" class="btn btn-success" data-dismiss="modal">Registrar</button>
-                       </div>
                     </div>
                 </div>
             </div>
@@ -138,8 +120,5 @@
 @section Scripts
 {
     <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.mask.min.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/localManager.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/parkingRegister.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/validation.js")"></script>
 }
 

@@ -1,0 +1,14 @@
+﻿@using SPS.BO
+@{
+    var collaborators = BusinessManager.Instance.Collaborators.FindAll();
+    var listItems = collaborators.Select(c => new SelectListItem 
+    { 
+        Text = c.FirstName + " " + c.LastName + " (" + c.CPF + ")", 
+        Value = c.Id.ToString()
+    });
+}
+
+@using (Html.BeginForm("FullEdit", "Collaborator", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "editCollaboratorForm" }))
+{
+    @Html.DropDownList("CollaboratorsDropDownList", listItems, "Selecione um colaborador")
+}

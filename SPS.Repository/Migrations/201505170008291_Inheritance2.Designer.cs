@@ -7,13 +7,13 @@ namespace SPS.Repository.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Inheritance1 : IMigrationMetadata
+    public sealed partial class Inheritance2 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Inheritance1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Inheritance2));
         
         string IMigrationMetadata.Id
         {
-            get { return "201505101711127_Inheritance1"; }
+            get { return "201505170008291_Inheritance2"; }
         }
         
         string IMigrationMetadata.Source

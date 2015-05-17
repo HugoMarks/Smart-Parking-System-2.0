@@ -24,13 +24,14 @@ namespace SPS.BO
 
         public virtual void Update(Collaborator collaborator)
         {
-            var savedCollaborator = Context.Collaborators.SingleOrDefault(c => c.Id == collaborator.Id);
+            var entity = Context.Collaborators.SingleOrDefault(c => c.Email == collaborator.Email);
 
-            if (savedCollaborator != null)
-            {
-                savedCollaborator = collaborator;
-                Context.SaveChanges();
-            }
+            collaborator.Id = entity.Id;
+            Context.Entry(entity).CurrentValues.SetValues(collaborator);
+            entity.Address = collaborator.Address;
+            entity.Parking = collaborator.Parking;
+
+            Context.SaveChanges();
         }
 
         public virtual Collaborator Find(params object[] keys)

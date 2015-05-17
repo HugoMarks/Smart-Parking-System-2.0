@@ -23,7 +23,7 @@ namespace SPS.Web.Models
         public string PostalCode { get; set; }
 
         [Required(ErrorMessage = "A rua é obrigatória")]
-        [Display(Name = "Rua")]
+        [Display(Name = "Rua*")]
         public string Street { get; set; }
 
         [Required(ErrorMessage = "O número da residência é obrigatório")]
@@ -34,15 +34,15 @@ namespace SPS.Web.Models
         public string Complement { get; set; }
 
         [Required(ErrorMessage = "O bairro é obrigatório")]
-        [Display(Name = "Bairro")]
+        [Display(Name = "Bairro*")]
         public string Square { get; set; }
 
         [Required(ErrorMessage = "A cidade é obrigatória")]
-        [Display(Name = "Cidade")]
+        [Display(Name = "Cidade*")]
         public string City { get; set; }
 
         [Required(ErrorMessage = "O estado é obrigatório")]
-        [Display(Name = "Estado")]
+        [Display(Name = "Estado*")]
         public string State { get; set; }
 
         [Required(ErrorMessage = "O RG é obrigatório")]
@@ -60,7 +60,7 @@ namespace SPS.Web.Models
         public string Email { get; set; }
 
         [Required(ErrorMessage = "A senha é obrigatória")]
-        [StringLength(100, ErrorMessage = "O/A {0} deve ter no mínimo {2} caracteres.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "A senha deve ter no mínimo 6 caracteres.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Senha*")]
         public string Password { get; set; }
@@ -72,7 +72,7 @@ namespace SPS.Web.Models
         public string ConfirmPassword { get; set; }
 
         [Required(ErrorMessage = "O salário do colaborador é obrigatório")]
-        [Display(Name = "Salário")]
+        [Display(Name = "Salário*")]
         public string Salary { get; set; }
     }
 }

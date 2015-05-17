@@ -1,11 +1,20 @@
-﻿@model SPS.Web.Models.RegisterViewModel
+﻿@model SPS.Web.Models.RegisterCollaboratorViewModel
+@{
+    ViewBag.Title = "Cadastre um novo funcionário";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
-@using (Html.BeginForm("Register", "LocalAdmin", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "registerLocalAdminForm" }))
+<h2>@ViewBag.Title.</h2>
+
+<h4>Crie uma nova conta</h4>
+
+@using (Html.BeginForm("Register", "Collaborator", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <h4>Dados pessoais</h4>
+    <hr />
+    <h4>Dados pessoais:</h4>
 
-    <div class="container">
+    <div class="col-md-6">
         <div class="form-group">
             @Html.LabelFor(m => m.FirstName, new { @class = "control-label" })
             @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
@@ -31,13 +40,19 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(m => m.Salary, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Salary, new { @class = "form-control", id = "salaryTextBox" })
+            @Html.ValidationMessageFor(m => m.Salary, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(m => m.PhoneNumber, new { @class = "control-label" })
             @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", id = "phoneTextBox" })
             @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
         </div>
     </div>
 
-    <div class="container">
+    <div class="col-md-6">
         <div class="form-group">
             @Html.LabelFor(m => m.PostalCode, new { @class = "control-label" })
             @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control", id = "cepTextBox" })
@@ -81,8 +96,9 @@
         </div>
     </div>
 
-    <div class="container">
-        <h4 style="margin-left: -15px;">Dados de acesso</h4>
+    <div class="col-md-12">
+        <hr />
+        <h4 style="margin-left: -15px;">Dados de acesso:</h4>
 
         <div class="form-group">
             @Html.LabelFor(m => m.Email, new { @class = "control-label" })
@@ -101,5 +117,18 @@
             @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
         </div>
+
+        <div class="form-group">
+            <input type="submit" class="btn btn-success" value="Registrar" />
+        </div>
     </div>
 }
+
+@section Scripts
+{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.mask.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/validation.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/register.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/registerCollaborator.js")"></script>
+}
+

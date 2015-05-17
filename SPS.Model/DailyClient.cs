@@ -10,6 +10,6 @@ namespace SPS.Model
     {
         public uint Number { get; set; }
 
-        public Parking Parking { get; set; }
+        public virtual Parking Parking { get; set; }
     }
 }

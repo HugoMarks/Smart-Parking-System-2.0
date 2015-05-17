@@ -192,8 +192,12 @@
     <Compile Include="Controllers\LocalAdminController.cs" />
     <Compile Include="Controllers\ParkingController.cs" />
     <Compile Include="Controllers\TokenGeneratorController.cs" />
+    <Compile Include="DataAnnotations\AjaxValidation.cs" />
     <Compile Include="DataAnnotations\CPFAttribute.cs" />
+    <Compile Include="Extensions\CollaboratorExtensions.cs" />
+    <Compile Include="Extensions\EditCollaboratorViewModelExtensions.cs" />
     <Compile Include="Extensions\IdentityExtensions.cs" />
+    <Compile Include="Extensions\RegisterCollaboratorViewModelExtensions.cs" />
     <Compile Include="Extensions\RegisterParkingViewModelExtensions.cs" />
     <Compile Include="Extensions\RegisterViewModelExtensions.cs" />
     <Compile Include="Global.asax.cs">
@@ -205,6 +209,8 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\EditCollaboratorViewModel.cs" />
+    <Compile Include="Models\FullEditCollaboratorViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\RegisterCollaboratorViewModel.cs" />
     <Compile Include="Models\RegisterParkingViewModel.cs" />
@@ -242,7 +248,9 @@
     <Content Include="Scripts\npm.js" />
     <Content Include="Scripts\parkingRegister.js" />
     <Content Include="Scripts\register.js" />
+    <Content Include="Scripts\registerCollaborator.js" />
     <Content Include="Scripts\root.js" />
+    <Content Include="Scripts\selectCollaborators.js" />
     <Content Include="Scripts\token.js" />
     <Content Include="Scripts\validation.js" />
     <Content Include="Scripts\_references.js" />
@@ -407,15 +415,17 @@
     <Content Include="Views\GlobalAdmin\Index.cshtml" />
     <Content Include="Views\LocalAdmin\Index.cshtml" />
     <Content Include="Views\Collaborator\Index.cshtml" />
-    <Content Include="Views\LocalAdmin\_RegisterLocalManagerPartial.cshtml" />
     <Content Include="Views\TokenGenerator\Index.cshtml" />
     <Content Include="Views\TokenGenerator\GeneratedToken.cshtml" />
     <Content Include="Views\Parking\_RegisterParkingPartial.cshtml" />
-    <Content Include="Views\LocalAdmin\RegisterEmployee.cshtml" />
     <Content Include="Views\Account\ConfirmationSent.cshtml" />
     <Content Include="Views\Parking\_SelectParkingPartial.cshtml" />
     <Content Include="Views\GlobalAdmin\Login.cshtml" />
     <Content Include="Views\TokenGenerator\_GenerateAntiForgeryToken.cshtml" />
+    <Content Include="Views\Collaborator\Register.cshtml" />
+    <Content Include="Views\LocalAdmin\Register.cshtml" />
+    <Content Include="Views\Collaborator\FullEdit.cshtml" />
+    <Content Include="Views\Collaborator\_CollaboratorsListPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

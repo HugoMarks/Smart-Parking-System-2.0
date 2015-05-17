@@ -27,7 +27,7 @@
                         <a id="dLabel" data-target="#" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
                             <img src="~/pictures/Users.png" class="img-responsive img-menu">
                             <div class="caption center-text">
-                                <h3>Conta</h3>
+                                <h4><b>Conta</b></h4>
                             </div>
                             <span class="caret"></span>
                         </a>
@@ -42,7 +42,7 @@
                         <a id="dLabel" data-target="#" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
                             <img src="~/pictures/ControlPanel.png" class="img-responsive img-menu">
                             <div class="caption center-text">
-                                <h3>Estacionamento</h3>
+                                <h4><b>Estacionamento</b></h4>
                             </div>
                             <span class="caret"></span>
                         </a>
@@ -59,7 +59,7 @@
                         <a id="dLabel" data-target="#" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
                             <img src="~/pictures/Statistics.png" class="img-responsive img-menu">
                             <div class="caption center-text">
-                                <h3>Faturamento</h3>
+                                <h4><b>Faturamento</b></h4>
                             </div>
                             <span class="caret"></span>
                         </a>
@@ -73,14 +73,33 @@
                         <a id="dLabel" data-target="#" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
                             <img src="~/pictures/ManageUsers.png" class="img-responsive img-menu">
                             <div class="caption center-text">
-                                <h3>Funcionários</h3>
+                                <h4><b>Funcionários</b></h4>
                             </div>
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                            <li><a class="btn-default" href="#"> @Html.ActionLink("Cadastrar Funcionário", "RegisterEmployee")</a></li>
-                            <li><a class="btn-default" href="#">Gerenciar Funcionários</a></li>
+                            <li><a class="btn-default" href="#"> @Html.ActionLink("Cadastrar Funcionário", "Register", "Collaborator")</a></li>
+                            <li><a class="btn-default" data-toggle="modal" data-target="#selectCollaboratorModal" href="#">Gerenciar Funcionários</a></li>
                         </ul>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="selectCollaboratorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Selecione um funcionário para editar</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container" id="selectCollaboratorContainer">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                <button id="selectCollaboratorBtn" type="button" class="btn btn-success" data-dismiss="modal" disabled>Selecionar</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -88,5 +107,9 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+<script type="text/javascript" src="@Url.Content("~/Scripts/selectCollaborators.js")"></script>
+}
 
 

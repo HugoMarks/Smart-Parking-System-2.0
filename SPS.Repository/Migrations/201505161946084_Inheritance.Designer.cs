@@ -13,7 +13,7 @@ namespace SPS.Repository.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201505110026120_Inheritance"; }
+            get { return "201505161946084_Inheritance"; }
         }
         
         string IMigrationMetadata.Source
