@@ -109,5 +109,55 @@ namespace SPS.Web.Controllers
             // Se chegamos até aqui e houver alguma falha, exiba novamente o formulário
             return View(model);
         }
+
+        [HttpPost]
+        public ActionResult FullEdit(FormCollection form)
+        {
+            var selectedId = form["CollaboratorsDropDownList"];
+            var collaborator = BusinessManager.Instance.Collaborators.Find(int.Parse(selectedId));
+            var model = collaborator.ToFullEditCollaboratorViewModel();
+
+            return View(model);
+        }
+
+        public async Task<ActionResult> SaveEditChanges(EditCollaboratorViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                ApplicationUser user = await UserManager.FindByEmailAsync(model.Email);
+                Collaborator collaborator = model.ToCollaborator(user.PasswordHash);
+
+                BusinessManager.Instance.Collaborators.Update(collaborator);
+
+                return RedirectToAction("Index", "LocalAdmin");
+            }
+
+            return View(model);
+        }
+
+        public async Task<ActionResult> SaveFullEditChanges(FullEditCollaboratorViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                ApplicationUser user = await UserManager.FindByEmailAsync(model.Email);
+                Collaborator collaborator = model.ToCollaborator(user.PasswordHash);
+
+                BusinessManager.Instance.Collaborators.Update(collaborator);
+
+                return RedirectToAction("Index", "LocalAdmin");
+            }
+
+            return View(model);
+        }
+
+        public ActionResult FullEdit()
+        {
+            return View();
+        }
+
+        public PartialViewResult GetCollaborators()
+        {
+            return PartialView("_CollaboratorsListPartial");
+        }
     }
 }

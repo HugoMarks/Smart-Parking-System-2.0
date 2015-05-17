@@ -17,11 +17,13 @@ public abstract class User
 
     public uint StreetNumber { get; set; }
 
+    public string Complement { get; set; }
+
     public string RG { get; set; }
 
     public string CPF { get; set; }
 
-    public Address Address { get; set; }
+    public virtual Address Address { get; set; }
 
     public string Password { get; set; }
 }

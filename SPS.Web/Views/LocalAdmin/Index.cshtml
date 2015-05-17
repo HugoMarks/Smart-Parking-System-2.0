@@ -79,8 +79,27 @@
                         </a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                             <li><a class="btn-default" href="#"> @Html.ActionLink("Cadastrar Funcionário", "Register", "Collaborator")</a></li>
-                            <li><a class="btn-default" href="#">Gerenciar Funcionários</a></li>
+                            <li><a class="btn-default" data-toggle="modal" data-target="#selectCollaboratorModal" href="#">Gerenciar Funcionários</a></li>
                         </ul>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="selectCollaboratorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Selecione um funcionário para editar</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container" id="selectCollaboratorContainer">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                <button id="selectCollaboratorBtn" type="button" class="btn btn-success" data-dismiss="modal" disabled>Selecionar</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -88,5 +107,9 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+<script type="text/javascript" src="@Url.Content("~/Scripts/selectCollaborators.js")"></script>
+}
 
 
