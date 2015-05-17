@@ -28,12 +28,6 @@ namespace SPS.Model
             set;
         }
 
-        public virtual uint Number
-        {
-            get;
-            set;
-        }
-
         public virtual string Square
         {
             get;

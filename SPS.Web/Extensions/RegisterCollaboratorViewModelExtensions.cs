@@ -28,6 +28,7 @@ namespace SPS.Web.Extensions
             return new Collaborator
             {
                 Address = GetAddress(model),
+                StreetNumber = int.Parse(model.Number),
                 CPF = model.CPF,
                 Email = model.Email,
                 FirstName = model.FirstName,
@@ -47,7 +48,6 @@ namespace SPS.Web.Extensions
                           new Address
                           {
                               City = registerModel.City,
-                              Number = uint.Parse(registerModel.Number),
                               PostalCode = registerModel.PostalCode,
                               Square = registerModel.Square,
                               State = registerModel.State,

@@ -73,13 +73,12 @@
                         <a id="dLabel" data-target="#" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
                             <img src="~/pictures/Users.png" class="img-responsive" style=" width: 26%;margin-top: 5%;">
                             <div class="caption center-text">
-                                <h4>Conta</h4>
+                                <h3><b>Conta</b></h3>
                             </div>
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                            <li><a class="btn-default" href="#">Alterar Dados Pessoais</a></li>
-                            <li><a class="btn-default" href="#">Alterar Password</a></li>
+                            <li>@Html.ActionLink("Alterar Dados Pessoais", "Edit")</li>
                         </ul>
                     </div>
                 </div>

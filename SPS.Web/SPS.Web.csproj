@@ -426,6 +426,7 @@
     <Content Include="Views\LocalAdmin\Register.cshtml" />
     <Content Include="Views\Collaborator\FullEdit.cshtml" />
     <Content Include="Views\Collaborator\_CollaboratorsListPartial.cshtml" />
+    <Content Include="Views\Collaborator\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
