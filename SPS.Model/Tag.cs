@@ -19,13 +19,7 @@ namespace SPS.Model
             set;
         }
 
-        public virtual MonthlyClient Client
-        {
-            get;
-            set;
-        }
-
-        public virtual User IUser
+        public virtual User User
         {
             get;
             set;

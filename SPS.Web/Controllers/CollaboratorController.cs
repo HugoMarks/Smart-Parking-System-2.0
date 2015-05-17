@@ -120,6 +120,18 @@ namespace SPS.Web.Controllers
             return View(model);
         }
 
+        public ActionResult Edit()
+        {
+            var user = User.Identity.GetApplicationUser();
+            var collaborator = BusinessManager.Instance.Collaborators.FindAll().Where(c => c.Email == user.Email).FirstOrDefault();
+            var model = collaborator.ToFullEditCollaboratorViewModel();
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> SaveEditChanges(EditCollaboratorViewModel model)
         {
             if (ModelState.IsValid)
@@ -129,12 +141,15 @@ namespace SPS.Web.Controllers
 
                 BusinessManager.Instance.Collaborators.Update(collaborator);
 
-                return RedirectToAction("Index", "LocalAdmin");
+                return RedirectToAction("Index", "Collaborator");
             }
 
             return View(model);
         }
 
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> SaveFullEditChanges(FullEditCollaboratorViewModel model)
         {
             if (ModelState.IsValid)
@@ -148,11 +163,6 @@ namespace SPS.Web.Controllers
             }
 
             return View(model);
-        }
-
-        public ActionResult FullEdit()
-        {
-            return View();
         }
 
         public PartialViewResult GetCollaborators()

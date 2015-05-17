@@ -26,6 +26,9 @@ namespace SPS.BO
         {
             var entity = Context.Collaborators.SingleOrDefault(c => c.Email == collaborator.Email);
 
+            if (entity == null)
+                return;
+
             collaborator.Id = entity.Id;
             Context.Entry(entity).CurrentValues.SetValues(collaborator);
             entity.Address = collaborator.Address;

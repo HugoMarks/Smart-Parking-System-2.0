@@ -1,0 +1,63 @@
+﻿@using Microsoft.AspNet.Identity;
+@using SPS.BO
+@using SPS.Web.Models
+
+@{
+    var count = 0;
+    var user = User.Identity.GetApplicationUser();
+    var client = BusinessManager.Instance.MontlyClients.FindAll().SingleOrDefault(c => c.Email == user.Email);
+    var records = client.Records.Select(r => new UsageRecordsViewModel
+    {
+        EnterDateTime = r.EnterDateTime.ToString("dd/MM/yyy hh:mm"),
+        ExitDateTime = r.ExitDateTime.ToString("dd/MM/yyy hh:mm"),
+        ParkingCNPJ = r.Parking.CNPJ,
+        ParkingName = r.Parking.Name,
+        TagNumber = r.Tag.Id.ToString(),
+        TotalCash = r.TotalCash.ToString(),
+        TotalHours = r.TotalHours.ToString()
+    }).OrderBy(r => r.EnterDateTime);
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                Tag
+            </th>
+            <th>
+                Estacionamento
+            </th>
+            <th>
+                Entrada
+            </th>
+            <th>
+                Saída
+            </th>
+            <th>
+                Total de horas
+            </th>
+            <th>
+                Valor total
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var record in records)
+        {
+            count++;     
+                        
+            <tr>
+                <th scope="row">@count</th>
+                <td>@record.TagNumber</td>
+                <td>@record.ParkingName</td>
+                <td>@record.EnterDateTime</td>
+                <td>@record.ExitDateTime</td>
+                <td>@record.TotalHours</td>
+                <td>@record.TotalCash</td>
+            </tr>            
+        }
+    </tbody>
+</table>

@@ -81,5 +81,10 @@ namespace SPS.Repository
         /// Gets the Address table.
         /// </summary>
         public DbSet<Address> Addresses { get; set; }
+
+        /// <summary>
+        /// Gets the UsageRecords table.
+        /// </summary>
+        public DbSet<UsageRecord> UsageRecords { get; set; }
     }
 }

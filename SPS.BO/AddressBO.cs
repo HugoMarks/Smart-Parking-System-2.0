@@ -34,13 +34,14 @@ namespace SPS.BO
 
         public virtual void Update(Address address)
         {
-            var savedAddress = Context.Addresses.SingleOrDefault(a => a.PostalCode == address.PostalCode);
+            var entity = Context.Addresses.Find(address.PostalCode);
 
-            if (savedAddress != null)
-            {
-                savedAddress = address;
-                Context.SaveChanges();
-            }
+            if (entity == null)
+                return;
+
+            Context.Entry(entity).CurrentValues.SetValues(address);
+
+            Context.SaveChanges();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿@using Microsoft.AspNet.Identity
+﻿@model SPS.Web.Models.SaveUsageRecordViewModel
+@using Microsoft.AspNet.Identity
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -26,29 +27,42 @@
                     </h3>
                 </div>
                 <div class="panel-body">
-                    <form role="form">
+                    @using (Html.BeginForm("SaveRecord", "Client", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        
                         <div class="form-group">
-                            <label class="control-label">ID Tag</label>
-                            <input class="form-control" placeholder="Digite o ID  da tag" type="email">
+                            @Html.LabelFor(m => m.Tag, new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.Tag, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Tag, "", new { @class = "text-danger" })
                         </div>
+
                         <div class="form-group">
-                            <label class="control-label">Hora de Entrada</label>
-                            <input class="form-control" placeholder="Hora Entrada" type="text">
+                            @Html.LabelFor(m => m.EnterDateTime, new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.EnterDateTime, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.EnterDateTime, "", new { @class = "text-danger" })
                         </div>
+
                         <div class="form-group">
-                            <label class="control-label">Hora da Saída</label>
-                            <input class="form-control" placeholder="Hora Saída" type="text">
+                            @Html.LabelFor(m => m.ExitDateTime, new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.ExitDateTime, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.ExitDateTime, "", new { @class = "text-danger" })
                         </div>
+
                         <div class="form-group">
-                            <label class="control-label">Hora Total Utilizada</label>
-                            <input class="form-control" placeholder="Hora Total de Consumo" type="text">
+                            @Html.LabelFor(m => m.TotalHours, new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.TotalHours, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.TotalHours, "", new { @class = "text-danger" })
                         </div>
+
                         <div class="form-group">
-                            <label class="control-label"> Valor Total</label>
-                            <input class="form-control" placeholder="Valor utilizado" type="text" disabled>
+                            @Html.LabelFor(m => m.TotalCash, new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.TotalCash, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.TotalCash, "", new { @class = "text-danger" })
                         </div>
+
                         <button type="submit" class="btn btn-lg btn-primary">Realizar Pagamento</button>
-                    </form>
+                    }
                 </div>
             </div>
         </div>
@@ -73,13 +87,12 @@
                         <a id="dLabel" data-target="#" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
                             <img src="~/pictures/Users.png" class="img-responsive" style=" width: 26%;margin-top: 5%;">
                             <div class="caption center-text">
-                                <h4>Conta</h4>
+                                <h3><b>Conta</b></h3>
                             </div>
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                            <li><a class="btn-default" href="#">Alterar Dados Pessoais</a></li>
-                            <li><a class="btn-default" href="#">Alterar Password</a></li>
+                            <li>@Html.ActionLink("Alterar Dados Pessoais", "Edit")</li>
                         </ul>
                     </div>
                 </div>
@@ -97,7 +110,7 @@
                 <div class="panel-body">
                     <form role="form" class="form-inline">
                         <div class="form-group">
-                            <label class="control-label" >Email do Usuário &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            <label class="control-label">Email do Usuário &nbsp;&nbsp;&nbsp;&nbsp;</label>
                             <input class="form-control" placeholder="Enter a Email" type="email" size="100">
                         </div>
                         <button type="submit" class="btn btn-lg btn-primary" style="margin-left:5%">Cadastrar Tag</button>
@@ -105,7 +118,7 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 </div>
 

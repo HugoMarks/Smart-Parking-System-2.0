@@ -22,7 +22,13 @@ namespace SPS.Model
             set;
         }
 
-        public Parking Parking
+        public virtual IList<UsageRecord> Records
+        {
+            get; 
+            set; 
+        }
+
+        public virtual Parking Parking
         {
             get;
             set;

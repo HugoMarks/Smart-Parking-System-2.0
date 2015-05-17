@@ -34,13 +34,27 @@ namespace SPS.BO
 
         public virtual void Update(MonthlyClient client)
         {
-            var savedClient = Context.Clients.SingleOrDefault(c => c.Id == client.Id);
+            MonthlyClient entity;
 
-            if (savedClient != null)
+            if (client.Id > 0)
             {
-                savedClient = client;
-                Context.SaveChanges();
+                entity = Context.Clients.Find(client.Id);
             }
+            else
+            {
+                entity = Context.Clients.SingleOrDefault(c => c.Email == client.Email);
+            }
+
+            if (entity == null)
+                return;
+
+            client.Id = entity.Id;
+            Context.Entry(entity).CurrentValues.SetValues(client);
+            entity.Address = client.Address;
+            entity.Parking = client.Parking;
+            entity.Tags = client.Tags;
+
+            Context.SaveChanges();
         }
     }
 }

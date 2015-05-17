@@ -23,13 +23,16 @@ namespace SPS.BO
 
         public virtual void Update(LocalManager localManager)
         {
-            var savedCollaborator = Context.LocalManagers.SingleOrDefault(c => c.Id == localManager.Id);
+            var entity = Context.LocalManagers.SingleOrDefault(l => l.Email == localManager.Email);
 
-            if (savedCollaborator != null)
-            {
-                savedCollaborator = localManager;
-                Context.SaveChanges();
-            }
+            if (entity == null)
+                return;
+
+            localManager.Id = entity.Id;
+            Context.Entry(entity).CurrentValues.SetValues(localManager);
+            entity.Address = localManager.Address;
+
+            Context.SaveChanges();
         }
 
         public virtual LocalManager Find(params object[] keys)

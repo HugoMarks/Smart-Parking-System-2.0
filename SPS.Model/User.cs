@@ -15,7 +15,7 @@ public abstract class User
 
     public string Telephone { get; set; }
 
-    public uint StreetNumber { get; set; }
+    public virtual int StreetNumber { get; set; }
 
     public string Complement { get; set; }
 
