@@ -199,6 +199,7 @@
     <Compile Include="Extensions\EditCollaboratorViewModelExtensions.cs" />
     <Compile Include="Extensions\IdentityExtensions.cs" />
     <Compile Include="Extensions\LocalAdminExtensions.cs" />
+    <Compile Include="Extensions\ParkingExtensions.cs" />
     <Compile Include="Extensions\RegisterCollaboratorViewModelExtensions.cs" />
     <Compile Include="Extensions\RegisterParkingViewModelExtensions.cs" />
     <Compile Include="Extensions\RegisterViewModelExtensions.cs" />
@@ -261,6 +262,7 @@
     <Content Include="Scripts\root.js" />
     <Content Include="Scripts\selectCollaborators.js" />
     <Content Include="Scripts\selectLocalAdmins.js" />
+    <Content Include="Scripts\selectParking.js" />
     <Content Include="Scripts\token.js" />
     <Content Include="Scripts\validation.js" />
     <Content Include="Scripts\_references.js" />
@@ -442,6 +444,8 @@
     <Content Include="Views\LocalAdmin\_LocalAdminsListPartial.cshtml" />
     <Content Include="Views\LocalAdmin\FullEdit.cshtml" />
     <Content Include="Views\LocalAdmin\Edit.cshtml" />
+    <Content Include="Views\Parking\Register.cshtml" />
+    <Content Include="Views\Parking\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

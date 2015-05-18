@@ -120,12 +120,22 @@ namespace SPS.Web.Controllers
             return View(model);
         }
 
+        private ActionResult FullEdit(FullEditCollaboratorViewModel model)
+        {
+            return View(model);
+        }
+
         public ActionResult Edit()
         {
             var user = User.Identity.GetApplicationUser();
             var collaborator = BusinessManager.Instance.Collaborators.FindAll().Where(c => c.Email == user.Email).FirstOrDefault();
             var model = collaborator.ToFullEditCollaboratorViewModel();
 
+            return View(model);
+        }
+
+        private ActionResult Edit(EditCollaboratorViewModel model)
+        {
             return View(model);
         }
 
@@ -137,14 +147,32 @@ namespace SPS.Web.Controllers
             if (ModelState.IsValid)
             {
                 ApplicationUser user = await UserManager.FindByEmailAsync(model.Email);
-                Collaborator collaborator = model.ToCollaborator(user.PasswordHash);
+                bool error = false;
 
-                BusinessManager.Instance.Collaborators.Update(collaborator);
+                if (!string.IsNullOrEmpty(model.NewPassword))
+                {
+                    var result = UserManager.ChangePassword(user.Id, model.Password, model.NewPassword);
 
-                return RedirectToAction("Index", "Collaborator");
+                    if (!result.Succeeded)
+                    {
+                        ModelState["Password"].Errors.Add("Senha incorreta");
+                        error = true;
+                    }
+                }
+
+                user = await UserManager.FindByEmailAsync(model.Email);
+
+                if(!error)
+                {
+                    Collaborator collaborator = model.ToCollaborator(user.PasswordHash);
+
+                    BusinessManager.Instance.Collaborators.Update(collaborator);
+
+                    return RedirectToAction("Index", "Collaborator");
+                }
             }
 
-            return View(model);
+            return View("Edit", model);
         }
 
         [HttpPost]
@@ -155,14 +183,30 @@ namespace SPS.Web.Controllers
             if (ModelState.IsValid)
             {
                 ApplicationUser user = await UserManager.FindByEmailAsync(model.Email);
-                Collaborator collaborator = model.ToCollaborator(user.PasswordHash);
+                bool error = false;
 
-                BusinessManager.Instance.Collaborators.Update(collaborator);
+                if (string.IsNullOrEmpty(model.NewPassword))
+                {
+                    var result = UserManager.ChangePassword(user.Id, model.Password, model.NewPassword);
 
-                return RedirectToAction("Index", "LocalAdmin");
+                    if (!result.Succeeded)
+                    {
+                        ModelState["Password"].Errors.Add("Senha incorreta");
+                        error = true;
+                    }
+                }
+
+                if (!error)
+                {
+                    Collaborator collaborator = model.ToCollaborator(user.PasswordHash);
+
+                    BusinessManager.Instance.Collaborators.Update(collaborator);
+
+                    return RedirectToAction("Index", "LocalAdmin");
+                }
             }
 
-            return View(model);
+            return View("FullEdit", model);
         }
 
         public PartialViewResult GetCollaborators()

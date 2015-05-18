@@ -8,6 +8,7 @@ namespace SPS.BO
 {
     public class ParkingBO : IBusiness<Parking>
     {
+        private static object LockObj = new object();
         private static SPSDb Context = SPSDb.Instance;
 
         public virtual void Add(Parking parking)
@@ -38,12 +39,18 @@ namespace SPS.BO
 
         public virtual Parking Find(params object[] keys)
         {
-            return Context.Parkings.Find(keys);
+            lock (LockObj)
+            {
+                return Context.Parkings.Find(keys);
+            }
         }
 
         public virtual IList<Parking> FindAll()
         {
-            return Context.Parkings.ToList();
+            lock (LockObj)
+            {
+                return Context.Parkings.ToList();
+            }
         }
     }
 }

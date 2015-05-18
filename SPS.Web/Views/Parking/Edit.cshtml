@@ -1,7 +1,7 @@
 ﻿@using SPS.BO
 @model SPS.Web.Models.RegisterParkingViewModel
 @{
-    ViewBag.Title = "Cadastre um novo estacionamento";
+    ViewBag.Title = "Edite um estacionamento";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
     var localAdmins = BusinessManager.Instance.LocalManagers.FindAll()
@@ -14,7 +14,9 @@
 
 <h2>@ViewBag.Title.</h2>
 
-@using (Html.BeginForm("Register", "Parking", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+<h4>Crie uma nova conta</h4>
+
+@using (Html.BeginForm("SaveChanges", "Parking", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     <hr />
@@ -83,7 +85,7 @@
         </div>
 
         <div class="form-group">
-            <input type="submit" class="btn btn-success" value="Registrar" />
+            <input type="submit" class="btn btn-success" value="Salvar" />
         </div>
     </div>
 }

@@ -63,5 +63,23 @@ namespace SPS.Web.Controllers
 
             return View(model);
         }
+
+        public ActionResult SaveChanges(RegisterParkingViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Parking parking = BusinessManager.Instance.Parkings.Find(model.CNPJ);
+
+                if (parking != null)
+                {
+                    parking = model.ToParking();
+                    BusinessManager.Instance.Parkings.Update(parking);
+
+                    return RedirectToAction("Index", "GlobalAdmin");
+                }
+            }
+
+            return View(model);
+        }
     }
 }

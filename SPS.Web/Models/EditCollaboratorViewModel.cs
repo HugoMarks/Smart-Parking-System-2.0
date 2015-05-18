@@ -51,7 +51,6 @@ namespace SPS.Web.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [StringLength(100, ErrorMessage = "A senha deve ter no mínimo 6 caracteres.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Senha Atual")]
         public string Password { get; set; }
