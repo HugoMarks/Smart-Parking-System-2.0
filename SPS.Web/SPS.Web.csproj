@@ -247,6 +247,8 @@
     <None Include="Properties\PublishProfiles\SPS.pubxml" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="pictures\Balance.png" />
+    <Content Include="pictures\Car.png" />
     <Content Include="pictures\Companies_Icon_128.png" />
     <Content Include="pictures\ControlPanel.png" />
     <Content Include="pictures\ManageUsers.png" />
