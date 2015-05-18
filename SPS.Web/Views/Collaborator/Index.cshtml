@@ -12,7 +12,7 @@
                 <h1>
                     Olá @User.Identity.GetApplicationUser().FirstName,
                 </h1>
-                <h2 style="color:#777777; font-size: 23px; line-height: 23.3999996185303px;">Escolha uma opção abaixo</h2>
+                <h2>Escolha uma opção abaixo</h2>
             </div>
         </div>
     </div>
@@ -61,7 +61,7 @@
                             @Html.ValidationMessageFor(m => m.TotalCash, "", new { @class = "text-danger" })
                         </div>
 
-                        <button type="submit" class="btn btn-lg btn-primary" style="margin-left:-2.5%">Realizar Pagamento</button>
+                        <button type="submit" class="btn btn-primary" style="margin-left:-2.5%">Realizar Pagamento</button>
                     }
                 </div>
             </div>
@@ -117,7 +117,7 @@
                             <input class="form-control" placeholder="Enter a Email" type="email" name="UserEmail">
                         </div>
 
-                        <button type="submit" class="btn btn-lg btn-primary" style="margin-left:-1.5%">Cadastrar Tag</button>
+                        <button type="submit" class="btn btn-primary" style="margin-left:-1.5%">Cadastrar Tag</button>
                     }
                 </div>
             </div>

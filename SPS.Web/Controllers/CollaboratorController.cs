@@ -196,6 +196,8 @@ namespace SPS.Web.Controllers
                     }
                 }
 
+                user = await UserManager.FindByEmailAsync(model.Email);
+
                 if (!error)
                 {
                     Collaborator collaborator = model.ToCollaborator(user.PasswordHash);
