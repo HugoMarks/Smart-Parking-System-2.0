@@ -28,6 +28,8 @@ namespace SPS.Repository.Migrations
                         LastName = c.String(),
                         Email = c.String(),
                         Telephone = c.String(),
+                        StreetNumber = c.Int(nullable: false),
+                        Complement = c.String(),
                         RG = c.String(),
                         CPF = c.String(),
                         Password = c.String(),
@@ -66,18 +68,39 @@ namespace SPS.Repository.Migrations
                 .Index(t => t.Parking_CNPJ);
             
             CreateTable(
+                "dbo.UsageRecords",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        EnterDateTime = c.DateTime(nullable: false),
+                        ExitDateTime = c.DateTime(nullable: false),
+                        TotalHours = c.Long(nullable: false),
+                        TotalCash = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Parking_CNPJ = c.String(maxLength: 128),
+                        Tag_Id = c.Int(),
+                        MonthlyClient_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Parkings", t => t.Parking_CNPJ)
+                .ForeignKey("dbo.Tags", t => t.Tag_Id)
+                .ForeignKey("dbo.Clients", t => t.MonthlyClient_Id)
+                .Index(t => t.Parking_CNPJ)
+                .Index(t => t.Tag_Id)
+                .Index(t => t.MonthlyClient_Id);
+            
+            CreateTable(
                 "dbo.Tags",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Client_Id = c.Int(),
-                        IUser_Id = c.Int(),
+                        User_Id = c.Int(),
+                        MonthlyClient_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Clients", t => t.Client_Id)
-                .ForeignKey("dbo.Users", t => t.IUser_Id)
-                .Index(t => t.Client_Id)
-                .Index(t => t.IUser_Id);
+                .ForeignKey("dbo.Users", t => t.User_Id)
+                .ForeignKey("dbo.Clients", t => t.MonthlyClient_Id)
+                .Index(t => t.User_Id)
+                .Index(t => t.MonthlyClient_Id);
             
             CreateTable(
                 "dbo.Prices",
@@ -123,6 +146,7 @@ namespace SPS.Repository.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false),
+                        TokenHash = c.String(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Users", t => t.Id)
@@ -149,9 +173,12 @@ namespace SPS.Repository.Migrations
             DropForeignKey("dbo.Clients", "Parking_CNPJ", "dbo.Parkings");
             DropForeignKey("dbo.Clients", "Id", "dbo.Users");
             DropForeignKey("dbo.Prices", "Parking_CNPJ", "dbo.Parkings");
-            DropForeignKey("dbo.Tags", "IUser_Id", "dbo.Users");
+            DropForeignKey("dbo.Tags", "MonthlyClient_Id", "dbo.Clients");
+            DropForeignKey("dbo.UsageRecords", "MonthlyClient_Id", "dbo.Clients");
+            DropForeignKey("dbo.UsageRecords", "Tag_Id", "dbo.Tags");
+            DropForeignKey("dbo.Tags", "User_Id", "dbo.Users");
             DropForeignKey("dbo.Users", "Address_PostalCode", "dbo.Addresses");
-            DropForeignKey("dbo.Tags", "Client_Id", "dbo.Clients");
+            DropForeignKey("dbo.UsageRecords", "Parking_CNPJ", "dbo.Parkings");
             DropForeignKey("dbo.ParkingSpaces", "Parking_CNPJ", "dbo.Parkings");
             DropForeignKey("dbo.Parkings", "LocalManager_Id", "dbo.LocalManagers");
             DropForeignKey("dbo.Parkings", "Address_PostalCode", "dbo.Addresses");
@@ -162,8 +189,11 @@ namespace SPS.Repository.Migrations
             DropIndex("dbo.Clients", new[] { "Parking_CNPJ" });
             DropIndex("dbo.Clients", new[] { "Id" });
             DropIndex("dbo.Prices", new[] { "Parking_CNPJ" });
-            DropIndex("dbo.Tags", new[] { "IUser_Id" });
-            DropIndex("dbo.Tags", new[] { "Client_Id" });
+            DropIndex("dbo.Tags", new[] { "MonthlyClient_Id" });
+            DropIndex("dbo.Tags", new[] { "User_Id" });
+            DropIndex("dbo.UsageRecords", new[] { "MonthlyClient_Id" });
+            DropIndex("dbo.UsageRecords", new[] { "Tag_Id" });
+            DropIndex("dbo.UsageRecords", new[] { "Parking_CNPJ" });
             DropIndex("dbo.ParkingSpaces", new[] { "Parking_CNPJ" });
             DropIndex("dbo.Parkings", new[] { "LocalManager_Id" });
             DropIndex("dbo.Parkings", new[] { "Address_PostalCode" });
@@ -174,6 +204,7 @@ namespace SPS.Repository.Migrations
             DropTable("dbo.Clients");
             DropTable("dbo.Prices");
             DropTable("dbo.Tags");
+            DropTable("dbo.UsageRecords");
             DropTable("dbo.ParkingSpaces");
             DropTable("dbo.Parkings");
             DropTable("dbo.Users");

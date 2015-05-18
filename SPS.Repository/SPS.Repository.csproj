@@ -46,49 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201505161946084_Inheritance.cs" />
-    <Compile Include="Migrations\201505161946084_Inheritance.Designer.cs">
-      <DependentUpon>201505161946084_Inheritance.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505162107006_Inheritance1.cs" />
-    <Compile Include="Migrations\201505162107006_Inheritance1.Designer.cs">
-      <DependentUpon>201505162107006_Inheritance1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505170008291_Inheritance2.cs" />
-    <Compile Include="Migrations\201505170008291_Inheritance2.Designer.cs">
-      <DependentUpon>201505170008291_Inheritance2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505170111223_Inheritance3.cs" />
-    <Compile Include="Migrations\201505170111223_Inheritance3.Designer.cs">
-      <DependentUpon>201505170111223_Inheritance3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505171409260_Inheritance4.cs" />
-    <Compile Include="Migrations\201505171409260_Inheritance4.Designer.cs">
-      <DependentUpon>201505171409260_Inheritance4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505171422077_Inheritance5.cs" />
-    <Compile Include="Migrations\201505171422077_Inheritance5.Designer.cs">
-      <DependentUpon>201505171422077_Inheritance5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505171439543_Inheritance6.cs" />
-    <Compile Include="Migrations\201505171439543_Inheritance6.Designer.cs">
-      <DependentUpon>201505171439543_Inheritance6.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505171559426_Inheritance7.cs" />
-    <Compile Include="Migrations\201505171559426_Inheritance7.Designer.cs">
-      <DependentUpon>201505171559426_Inheritance7.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505171602088_Inheritance8.cs" />
-    <Compile Include="Migrations\201505171602088_Inheritance8.Designer.cs">
-      <DependentUpon>201505171602088_Inheritance8.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505171722280_Inheritance9.cs" />
-    <Compile Include="Migrations\201505171722280_Inheritance9.Designer.cs">
-      <DependentUpon>201505171722280_Inheritance9.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505171728127_Inheritance10.cs" />
-    <Compile Include="Migrations\201505171728127_Inheritance10.Designer.cs">
-      <DependentUpon>201505171728127_Inheritance10.cs</DependentUpon>
+    <Compile Include="Migrations\201505172057220_Inheritance.cs" />
+    <Compile Include="Migrations\201505172057220_Inheritance.Designer.cs">
+      <DependentUpon>201505172057220_Inheritance.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -109,38 +69,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201505161946084_Inheritance.resx">
-      <DependentUpon>201505161946084_Inheritance.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505162107006_Inheritance1.resx">
-      <DependentUpon>201505162107006_Inheritance1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505170008291_Inheritance2.resx">
-      <DependentUpon>201505170008291_Inheritance2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505170111223_Inheritance3.resx">
-      <DependentUpon>201505170111223_Inheritance3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505171409260_Inheritance4.resx">
-      <DependentUpon>201505171409260_Inheritance4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505171422077_Inheritance5.resx">
-      <DependentUpon>201505171422077_Inheritance5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505171439543_Inheritance6.resx">
-      <DependentUpon>201505171439543_Inheritance6.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505171559426_Inheritance7.resx">
-      <DependentUpon>201505171559426_Inheritance7.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505171602088_Inheritance8.resx">
-      <DependentUpon>201505171602088_Inheritance8.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505171722280_Inheritance9.resx">
-      <DependentUpon>201505171722280_Inheritance9.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505171728127_Inheritance10.resx">
-      <DependentUpon>201505171728127_Inheritance10.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201505172057220_Inheritance.resx">
+      <DependentUpon>201505172057220_Inheritance.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

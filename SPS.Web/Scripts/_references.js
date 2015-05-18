@@ -7,9 +7,10 @@
 /// <reference path="parkingregister.js" />
 /// <reference path="register.js" />
 /// <reference path="registercollaborator.js" />
+/// <reference path="registerlocaladmin.js" />
 /// <reference path="root.js" />
 /// <reference path="selectcollaborators.js" />
-/// <reference path="selectparking.js" />
+/// <reference path="selectlocaladmins.js" />
 /// <reference path="token.js" />
 /// <reference path="validation.js" />
 

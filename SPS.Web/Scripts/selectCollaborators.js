@@ -7,7 +7,6 @@
         $("#selectCollaboratorContainer").html(html);
 
         $("#CollaboratorsDropDownList").on('change', function () {
-            debugger;
             if (this.value == null || this.value == "") {
                 $("#selectCollaboratorBtn").attr('disabled', 'disabled');
             } else {

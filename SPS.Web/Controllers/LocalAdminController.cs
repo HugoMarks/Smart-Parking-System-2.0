@@ -12,6 +12,14 @@ using SPS.Model;
 using SPS.Web.Extensions;
 using System.Net;
 using System.Web.Routing;
+using System.Security.Claims;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Owin.Security;
+using Owin;
+using SPS.Web.Services;
+using System.Web.Script.Serialization;
+using SPS.Repository;
+
 
 namespace SPS.Web.Controllers
 {
@@ -100,5 +108,65 @@ namespace SPS.Web.Controllers
             // Se chegamos até aqui e houver alguma falha, exiba novamente o formulário
             return View(model);
         }
+        public PartialViewResult GetLocalAdmins()
+        {
+            return PartialView("_LocalAdminsListPartial");
+        }
+
+        [HttpPost]
+        public ActionResult FullEdit(FormCollection form)
+        {
+            var selectedId = form["LocalAdminsDropDownList"];
+            var localAdmin = BusinessManager.Instance.LocalManagers.Find(int.Parse(selectedId));
+            var model = localAdmin.ToFullEditLocalAdminViewModel();
+
+            return View(model);
+        }
+
+        public ActionResult Edit()
+        {
+            var user = User.Identity.GetApplicationUser();
+            var localAdmin = BusinessManager.Instance.LocalManagers.FindAll().Where(c => c.Email == user.Email).FirstOrDefault();
+            var model = localAdmin.ToFullEditLocalAdminViewModel();
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> SaveEditChanges(EditLocalAdminViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                ApplicationUser user = await UserManager.FindByEmailAsync(model.Email);
+                LocalManager localAdmin = model.ToLocalAdmin(user.PasswordHash);
+
+                BusinessManager.Instance.LocalManagers.Update(localAdmin);
+
+                return RedirectToAction("Index", "LocalAdmin");
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> SaveFullEditChanges(FullEditLocalAdminViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                ApplicationUser user = await UserManager.FindByEmailAsync(model.Email);
+                LocalManager localAdmin = model.ToLocalAdmin(user.PasswordHash);
+
+                BusinessManager.Instance.LocalManagers.Update(localAdmin);
+
+                return RedirectToAction("Index", "GlobalAdmin");
+            }
+
+            return View(model);
+        }
+
     }
 }

@@ -7,7 +7,7 @@ using System.Web;
 
 namespace SPS.Web.Models
 {
-    public class EditCollaboratorViewModel
+    public class EditLocalAdminViewModel
     {
         [Display(Name = "Primeiro nome")]
         public string FirstName { get; set; }

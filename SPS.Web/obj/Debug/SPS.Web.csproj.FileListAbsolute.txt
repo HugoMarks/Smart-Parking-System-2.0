@@ -254,8 +254,8 @@ C:\Users\André\Source\Repos\SPS\SPS.Web\bin\System.Web.Http.WebHost.xml
 C:\Users\André\Source\Repos\SPS\SPS.Web\bin\crypto.xml
 C:\Users\André\Source\Repos\SPS\SPS.Web\obj\Debug\SPS.Web.Migrations.Inheritance.resources
 C:\Users\André\Source\Repos\SPS\SPS.Web\obj\Debug\SPS.Web.csproj.GenerateResource.Cache
-C:\Users\Hugo\Source\Repos\SPS\SPS.Web\obj\Debug\SPS.Web.Migrations.Inheritance.resources
-C:\Users\Hugo\Source\Repos\SPS\SPS.Web\obj\Debug\SPS.Web.csproj.GenerateResource.Cache
 C:\Users\André\Source\Repos\SPS\SPS.Web\obj\Debug\SPS.Web.Migrations.Inheritance1.resources
 C:\Users\André\Source\Repos\SPS\SPS.Web\obj\Debug\SPS.Web.Migrations.Inheritance2.resources
 C:\Users\André\Source\Repos\SPS\SPS.Web\obj\Debug\SPS.Web.Migrations.Inheritance3.resources
+C:\Users\Hugo\Source\Repos\SPS\SPS.Web\obj\Debug\SPS.Web.Migrations.Inheritance.resources
+C:\Users\Hugo\Source\Repos\SPS\SPS.Web\obj\Debug\SPS.Web.csproj.GenerateResource.Cache

@@ -195,9 +195,10 @@
     <Compile Include="DataAnnotations\AjaxValidation.cs" />
     <Compile Include="DataAnnotations\CPFAttribute.cs" />
     <Compile Include="Extensions\CollaboratorExtensions.cs" />
+    <Compile Include="Extensions\EditLocalAdminViewModelExtensions.cs" />
     <Compile Include="Extensions\EditCollaboratorViewModelExtensions.cs" />
     <Compile Include="Extensions\IdentityExtensions.cs" />
-    <Compile Include="Extensions\ParkingExtensions.cs" />
+    <Compile Include="Extensions\LocalAdminExtensions.cs" />
     <Compile Include="Extensions\RegisterCollaboratorViewModelExtensions.cs" />
     <Compile Include="Extensions\RegisterParkingViewModelExtensions.cs" />
     <Compile Include="Extensions\RegisterViewModelExtensions.cs" />
@@ -205,27 +206,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201505110447283_Inheritance.cs" />
-    <Compile Include="Migrations\201505110447283_Inheritance.Designer.cs">
-      <DependentUpon>201505110447283_Inheritance.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505171714305_Inheritance1.cs" />
-    <Compile Include="Migrations\201505171714305_Inheritance1.Designer.cs">
-      <DependentUpon>201505171714305_Inheritance1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505171716312_Inheritance2.cs" />
-    <Compile Include="Migrations\201505171716312_Inheritance2.Designer.cs">
-      <DependentUpon>201505171716312_Inheritance2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505171718539_Inheritance3.cs" />
-    <Compile Include="Migrations\201505171718539_Inheritance3.Designer.cs">
-      <DependentUpon>201505171718539_Inheritance3.cs</DependentUpon>
+    <Compile Include="Migrations\201505172056253_Inheritance.cs" />
+    <Compile Include="Migrations\201505172056253_Inheritance.Designer.cs">
+      <DependentUpon>201505172056253_Inheritance.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\EditLocalAdminViewModel.cs" />
     <Compile Include="Models\EditCollaboratorViewModel.cs" />
+    <Compile Include="Models\FullEditLocalAdminViewModel.cs" />
     <Compile Include="Models\FullEditCollaboratorViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\RegisterLocalAdminViewModel.cs" />
     <Compile Include="Models\RegisterCollaboratorViewModel.cs" />
     <Compile Include="Models\RegisterParkingViewModel.cs" />
     <Compile Include="Models\RegisterRecordViewModel.cs" />
@@ -264,10 +256,11 @@
     <Content Include="Scripts\npm.js" />
     <Content Include="Scripts\parkingRegister.js" />
     <Content Include="Scripts\register.js" />
+    <Content Include="Scripts\registerLocalAdmin.js" />
     <Content Include="Scripts\registerCollaborator.js" />
     <Content Include="Scripts\root.js" />
     <Content Include="Scripts\selectCollaborators.js" />
-    <Content Include="Scripts\selectParking.js" />
+    <Content Include="Scripts\selectLocalAdmins.js" />
     <Content Include="Scripts\token.js" />
     <Content Include="Scripts\validation.js" />
     <Content Include="Scripts\_references.js" />
@@ -446,7 +439,9 @@
     <Content Include="Views\Collaborator\Edit.cshtml" />
     <Content Include="Views\Client\UsageRecords.cshtml" />
     <Content Include="Views\Client\_UsageRecordsPartial.cshtml" />
-    <Content Include="Views\Parking\Register.cshtml" />
+    <Content Include="Views\LocalAdmin\_LocalAdminsListPartial.cshtml" />
+    <Content Include="Views\LocalAdmin\FullEdit.cshtml" />
+    <Content Include="Views\LocalAdmin\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -485,17 +480,8 @@
     <WCFMetadataStorage Include="Service References\CorreiosService\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201505110447283_Inheritance.resx">
-      <DependentUpon>201505110447283_Inheritance.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505171714305_Inheritance1.resx">
-      <DependentUpon>201505171714305_Inheritance1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505171716312_Inheritance2.resx">
-      <DependentUpon>201505171716312_Inheritance2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505171718539_Inheritance3.resx">
-      <DependentUpon>201505171718539_Inheritance3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201505172056253_Inheritance.resx">
+      <DependentUpon>201505172056253_Inheritance.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
