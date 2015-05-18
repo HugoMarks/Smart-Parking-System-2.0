@@ -6,7 +6,10 @@
 /// <reference path="npm.js" />
 /// <reference path="parkingregister.js" />
 /// <reference path="register.js" />
+/// <reference path="registercollaborator.js" />
 /// <reference path="root.js" />
+/// <reference path="selectcollaborators.js" />
+/// <reference path="selectparking.js" />
 /// <reference path="token.js" />
 /// <reference path="validation.js" />
 

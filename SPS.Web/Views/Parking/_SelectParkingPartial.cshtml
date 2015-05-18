@@ -5,8 +5,13 @@
 
     if (parkings.Count > 0)
     {
-        @Html.DropDownList("ParkingSelectList",
-        parkings.Select(p => new SelectListItem() { Text = p.Name + " (" + p.CNPJ + ")", Value = p.CNPJ }), new { id = "parkingSelectList" })
+        @using (Html.BeginForm("Edit", "Parking", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "editParkingForm" }))
+        {
+            @Html.DropDownList("ParkingSelectList",
+            parkings.Select(p => new SelectListItem() { Text = p.Name + " (" + p.CNPJ + ")", Value = p.CNPJ }),
+            "Selecione um estacionamento", 
+            new { id = "parkingSelectList" })
+        }
     }
     else
     {

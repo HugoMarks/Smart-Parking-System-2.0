@@ -19,7 +19,14 @@ namespace SPS.Web.Controllers
             return View();
         }
 
+        public ActionResult Register()
+        {
+            return View();
+        }
+
         [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterParkingViewModel model)
         {
             if(ModelState.IsValid)
@@ -31,11 +38,28 @@ namespace SPS.Web.Controllers
                     parking = model.ToParking();
                     BusinessManager.Instance.Parkings.Add(parking);
 
-                    return new HttpStatusCodeResult(HttpStatusCode.OK);
+                    return RedirectToAction("Index", "GlobalAdmin");
                 }
 
                 ModelState["CNPJ"].Errors.Add("Já existe um estacionamento com este CNPJ");
             }
+
+            return View(model);
+        }
+
+        public ActionResult Edit()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(FormCollection form)
+        {
+            var selectedCNPJ = form["ParkingSelectList"];
+            var parking = BusinessManager.Instance.Parkings.Find(selectedCNPJ);
+            var model = parking.ToRegisterParkingViewModel();
 
             return View(model);
         }

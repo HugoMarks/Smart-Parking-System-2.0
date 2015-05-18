@@ -1,0 +1,100 @@
+﻿@using SPS.BO
+@model SPS.Web.Models.RegisterParkingViewModel
+@{
+    ViewBag.Title = "Cadastre um novo estacionamento";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var localAdmins = BusinessManager.Instance.LocalManagers.FindAll()
+        .Select(l => new SelectListItem()
+        {
+            Text = l.FirstName + " " + l.LastName + " (" + l.CPF + ")",
+            Value = l.Id.ToString()
+        });
+}
+
+<h2>@ViewBag.Title.</h2>
+
+<h4>Crie uma nova conta</h4>
+
+@using (Html.BeginForm("Register", "Parking", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <hr />
+    <h4>Dados pessoais:</h4>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            @Html.LabelFor(m => m.Name, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.CNPJ, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.CNPJ, new { @class = "form-control", id = "rgTextBox" })
+            @Html.ValidationMessageFor(m => m.CNPJ, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.PhoneNumber, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", id = "phoneTextBox" })
+            @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.LocalAdmin, new { @class = "control-label" })
+            @Html.DropDownListFor(m => m.LocalAdmin, @localAdmins, "Selecione um admistrador local", new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.LocalAdmin, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            @Html.LabelFor(m => m.PostalCode, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control", id = "cepTextBox" })
+            @Html.ValidationMessageFor(m => m.PostalCode, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group address">
+            @Html.LabelFor(m => m.Street, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Street, new { @class = "form-control", id = "streetTextBox", @readonly = "readonly" })
+            @Html.ValidationMessageFor(m => m.Street, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group address">
+            @Html.LabelFor(m => m.Square, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Square, new { @class = "form-control", id = "squareTextBox", @readonly = "readonly" })
+            @Html.ValidationMessageFor(m => m.Square, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group address">
+            @Html.LabelFor(m => m.City, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.City, new { @class = "form-control", id = "cityTextBox", @readonly = "readonly" })
+            @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group address">
+            @Html.LabelFor(m => m.State, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.State, new { @class = "form-control", id = "stateTextBox", @readonly = "readonly" })
+            @Html.ValidationMessageFor(m => m.State, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Number, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Number, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Number, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <input type="submit" class="btn btn-success" value="Registrar" />
+        </div>
+    </div>
+}
+
+@section Scripts
+{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.mask.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/validation.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/parkingRegister.js")"></script>
+}
+

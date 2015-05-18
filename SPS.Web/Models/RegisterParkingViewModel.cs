@@ -33,9 +33,6 @@ namespace SPS.Web.Models
         [Display(Name = "Número*")]
         public string Number { get; set; }
 
-        [Display(Name = "Complemento")]
-        public string Complement { get; set; }
-
         [Required(ErrorMessage = "O bairro é obrigatório")]
         [Display(Name = "Bairro")]
         public string Square { get; set; }

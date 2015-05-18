@@ -8,33 +8,23 @@
 		}
 	};
 
-	$("#parkingSelectList").change(function () {
-	    $("#selectParkingBtn").removeAttr("disabled");  
-	});
-
-	if ($("#parkingCepTextBox").val() == null || $("#parkingCepTextBox").val() == "") {
+	if ($("#cepTextBox").val() == null || $("#cepTextBox").val() == "") {
 	    $(".address").hide();
 	}
-
-	$("#registerParkingSubmitBtn").click(function (event) {
-	    event.preventDefault();
-	    event.stopImmediatePropagation();
-	    postParkingData();
-	});
 
 	$("#addParkingModal").on('hidden.bs.modal', function () {
 	    $(this).find("input").val(null).closest(".form-group").removeClass("has-success").removeClass("has-error");
 	    $(".address").slideUp();
 	});
 
-	$("#parkingCepTextBox").mask("00000-000");
-	$("#parkingPhoneTextBox").mask(SPMaskBehavior, spOptions);
+	$("#cepTextBox").mask("00000-000");
+	$("#phoneTextBox").mask(SPMaskBehavior, spOptions);
 
-	$("#parkingCepTextBox").blur(getParkingAddress);
+	$("#cepTextBox").blur(getParkingAddress);
 });
 
 function getParkingAddress() {
-	var cep = $("#parkingCepTextBox").val();
+	var cep = $("#cepTextBox").val();
 
 	if (cep == null || cep == "") {
 		return;
@@ -44,25 +34,18 @@ function getParkingAddress() {
 		.done(function (data) {
 		    var address = JSON.parse(data);
 
-		    $("#parkingStreetTextBox").val(address.Street).attr("readonly", "readonly");
-		    $("#parkingSquareTextBox").val(address.Square).attr("readonly", "readonly");
-		    $("#parkingCityTextBox").val(address.City).attr("readonly", "readonly");
-		    $("#parkingStateTextBox").val(address.State).attr("readonly", "readonly");
+		    $("#streetTextBox").val(address.Street).attr("readonly", "readonly");
+		    $("#squareTextBox").val(address.Square).attr("readonly", "readonly");
+		    $("#cityTextBox").val(address.City).attr("readonly", "readonly");
+		    $("#stateTextBox").val(address.State).attr("readonly", "readonly");
 		})
 		.fail(function (jqXHR, textStatus, message) {
-		    $("#parkingStreetTextBox").val(null).removeAttr("readonly");
-		    $("#parkingSquareTextBox").val(null).removeAttr("readonly");
-		    $("#parkingCityTextBox").val(null).removeAttr("readonly");
-		    $("#parkingStateTextBox").val(null).removeAttr("readonly");
+		    $("#streetTextBox").val(null).removeAttr("readonly");
+		    $("#squareTextBox").val(null).removeAttr("readonly");
+		    $("#cityTextBox").val(null).removeAttr("readonly");
+		    $("#stateTextBox").val(null).removeAttr("readonly");
 		})
         .always(function () {
             $(".address").slideDown();
         });
-}
-
-function postParkingData() {
-    $.post("/Parking/Register", $("#registerParkingForm").serialize())
-    .done(function () {
-        $("#addParkingModal").modal('hide');
-    });
 }
