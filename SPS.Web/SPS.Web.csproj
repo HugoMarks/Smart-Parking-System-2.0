@@ -252,6 +252,7 @@
     <Content Include="pictures\ManageUsers.png" />
     <Content Include="pictures\Statistics.png" />
     <Content Include="pictures\Users.png" />
+    <Content Include="Scripts\collaboratorAddRecord.js" />
     <Content Include="Scripts\jquery.mask.min.js" />
     <Content Include="Scripts\localManager.js" />
     <Content Include="Scripts\npm.js" />

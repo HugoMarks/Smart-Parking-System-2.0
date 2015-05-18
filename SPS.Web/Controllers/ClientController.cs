@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using SPS.Web.Models;
 using SPS.Web.Extensions;
 using SPS.BO;
+using SPS.Model;
 
 namespace SPS.Web.Controllers
 {
@@ -56,6 +57,20 @@ namespace SPS.Web.Controllers
             }
 
             return View(model);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult AttachTag(FormCollection form)
+        {
+            var userEmail = form["UserEmail"];
+            var client = BusinessManager.Instance.MontlyClients.FindAll().SingleOrDefault(u => u.Email == userEmail);
+
+            client.Tags.Add(new Tag { User = client });
+            BusinessManager.Instance.MontlyClients.Update(client);
+
+            return RedirectToAction("Index", "Collaborator");
         }
     }
 }

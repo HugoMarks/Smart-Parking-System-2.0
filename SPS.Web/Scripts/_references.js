@@ -14,5 +14,6 @@
 /// <reference path="token.js" />
 /// <reference path="validation.js" />
 /// <reference path="selectparking.js" />
+/// <reference path="collaboratoraddrecord.js" />
 
 
