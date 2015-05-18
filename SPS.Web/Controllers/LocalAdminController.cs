@@ -123,12 +123,22 @@ namespace SPS.Web.Controllers
             return View(model);
         }
 
+        private ActionResult FullEdit(FullEditCollaboratorViewModel model)
+        {
+            return View(model);
+        }
+
         public ActionResult Edit()
         {
             var user = User.Identity.GetApplicationUser();
             var localAdmin = BusinessManager.Instance.LocalManagers.FindAll().Where(c => c.Email == user.Email).FirstOrDefault();
             var model = localAdmin.ToFullEditLocalAdminViewModel();
 
+            return View(model);
+        }
+
+        private ActionResult Edit(EditCollaboratorViewModel model)
+        {
             return View(model);
         }
 
@@ -140,14 +150,31 @@ namespace SPS.Web.Controllers
             if (ModelState.IsValid)
             {
                 ApplicationUser user = await UserManager.FindByEmailAsync(model.Email);
-                LocalManager localAdmin = model.ToLocalAdmin(user.PasswordHash);
+                bool error = false;
 
-                BusinessManager.Instance.LocalManagers.Update(localAdmin);
+                if (!string.IsNullOrEmpty(model.NewPassword))
+                {
+                    var result = UserManager.ChangePassword(user.Id, model.Password, model.NewPassword);
 
-                return RedirectToAction("Index", "LocalAdmin");
+                    if (!result.Succeeded)
+                    {
+                        ModelState["Password"].Errors.Add("Senha incorreta");
+                        error = true;
+                    }
+                }
+
+                user = await UserManager.FindByEmailAsync(model.Email);
+
+                if (!error)
+                {
+                    LocalManager localAdmin = model.ToLocalAdmin(user.PasswordHash);
+                    BusinessManager.Instance.LocalManagers.Update(localAdmin);
+
+                    return RedirectToAction("Index", "LocalAdmin");
+                }
             }
 
-            return View(model);
+            return View("Edit", model);
         }
 
         [HttpPost]
@@ -158,14 +185,31 @@ namespace SPS.Web.Controllers
             if (ModelState.IsValid)
             {
                 ApplicationUser user = await UserManager.FindByEmailAsync(model.Email);
-                LocalManager localAdmin = model.ToLocalAdmin(user.PasswordHash);
+                bool error = false;
 
-                BusinessManager.Instance.LocalManagers.Update(localAdmin);
+                if (!string.IsNullOrEmpty(model.NewPassword))
+                {
+                    var result = UserManager.ChangePassword(user.Id, model.Password, model.NewPassword);
 
-                return RedirectToAction("Index", "GlobalAdmin");
+                    if (!result.Succeeded)
+                    {
+                        ModelState["Password"].Errors.Add("Senha incorreta");
+                        error = true;
+                    }
+                }
+
+                user = await UserManager.FindByEmailAsync(model.Email);
+
+                if (!error)
+                {
+                    LocalManager localAdmin = model.ToLocalAdmin(user.PasswordHash);
+                    BusinessManager.Instance.LocalManagers.Update(localAdmin);
+
+                    return RedirectToAction("Index", "GlobalAdmin");
+                }
             }
 
-            return View(model);
+            return View("FullEdit", model);
         }
 
     }

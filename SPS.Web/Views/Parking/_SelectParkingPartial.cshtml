@@ -2,14 +2,23 @@
 
 @{
     var parkings = BusinessManager.Instance.Parkings.FindAll();
+    var items = parkings.Select(p => new SelectListItem() { Text = p.Name + " (" + p.CNPJ + ")", Value = p.CNPJ }).ToList();
 
-    if (parkings.Count > 0)
+    if (items.Count > 0)
     {
-        @Html.DropDownList("ParkingSelectList",
-        parkings.Select(p => new SelectListItem() { Text = p.Name + " (" + p.CNPJ + ")", Value = p.CNPJ }), new { id = "parkingSelectList" })
+        <div class="container">
+            @using (Html.BeginForm("Edit", "Parking", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "editParkingForm" }))
+            {
+                @Html.AntiForgeryToken();
+
+                <div class="form-group">
+                    @Html.DropDownList("ParkingSelectList", items, "Selecione um estacionamento")
+                </div>
+            }
+        </div>
     }
     else
     {
-        @Html.Label("Não há estacionamentos cadastrados");
+        Html.Label("Não há estacionamentos cadastrados");
     }
 }
