@@ -1,14 +1,14 @@
-﻿@model SPS.Web.Models.FullEditCollaboratorViewModel
+﻿@model SPS.Web.Models.EditLocalAdminViewModel
 @{
-    ViewBag.Title = "Edite um funcionário";
+    ViewBag.Title = "Edite seu cadastro";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>@ViewBag.Title.</h2>
 
-<h4>Realize as alterações disponíveis</h4>
+<h4>Crie uma nova conta</h4>
 
-@using (Html.BeginForm("SaveFullEditChanges", "Collaborator", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("SaveEditChanges", "LocalAdmin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     <hr />
@@ -37,12 +37,6 @@
             @Html.LabelFor(m => m.CPF, new { @class = "control-label" })
             @Html.TextBoxFor(m => m.CPF, new { @class = "form-control", id = "cpfTextBox" })
             @Html.ValidationMessageFor(m => m.CPF, "", new { @class = "text-danger" })
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(m => m.Salary, new { @class = "control-label" })
-            @Html.TextBoxFor(m => m.Salary, new { @class = "form-control", id = "salaryTextBox" })
-            @Html.ValidationMessageFor(m => m.Salary, "", new { @class = "text-danger" })
         </div>
 
         <div class="form-group">
@@ -135,6 +129,6 @@
     <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.mask.min.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/validation.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/register.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/registerCollaborator.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/registerLocalAdmin.js")"></script>
 }
 
