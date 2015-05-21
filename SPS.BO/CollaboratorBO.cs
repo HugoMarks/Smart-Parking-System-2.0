@@ -1,4 +1,5 @@
-﻿using SPS.Model;
+﻿using SPS.BO.Exceptions;
+using SPS.Model;
 using SPS.Repository;
 using System;
 using System.Collections.Generic;
@@ -6,45 +7,70 @@ using System.Linq;
 
 namespace SPS.BO
 {
-    public class CollaboratorBO : IBusiness<Collaborator>
+    public class CollaboratorBO : IBusiness<Collaborator, string>
     {
-        private static SPSDb Context = SPSDb.Instance;
-
         public virtual void Add(Collaborator collaborator)
         {
-            Context.Collaborators.Add(collaborator);
-            Context.SaveChanges();
+            using (var context = new SPSDb())
+            {
+                if (this.Find(collaborator.CPF) != null)
+                {
+                    throw new UniqueKeyViolationException(string.Format("There is already a collaborator with CPF {0}.", collaborator.CPF));
+                }
+
+                context.Collaborators.Add(collaborator);
+                context.SaveChanges();
+            }
         }
 
         public virtual void Remove(Collaborator collaborator)
         {
-            Context.Collaborators.Remove(collaborator);
-            Context.SaveChanges();
+            using (var context = new SPSDb())
+            {
+                context.Collaborators.Remove(collaborator);
+                context.SaveChanges();
+            }
         }
 
         public virtual void Update(Collaborator collaborator)
         {
-            var entity = Context.Collaborators.SingleOrDefault(c => c.Email == collaborator.Email);
+            using (var context = new SPSDb())
+            {
+                var entity = context.Collaborators.SingleOrDefault(c => c.Email == collaborator.Email);
 
-            if (entity == null)
-                return;
+                if (entity == null)
+                    return;
 
-            collaborator.Id = entity.Id;
-            Context.Entry(entity).CurrentValues.SetValues(collaborator);
-            entity.Address = collaborator.Address;
-            entity.Parking = collaborator.Parking;
+                collaborator.Id = entity.Id;
+                context.Entry(entity).CurrentValues.SetValues(collaborator);
+                entity.Address = collaborator.Address;
+                entity.Parking = collaborator.Parking;
 
-            Context.SaveChanges();
+                context.SaveChanges();
+            }
         }
 
-        public virtual Collaborator Find(params object[] keys)
+        public virtual Collaborator Find(string cpf)
         {
-            return Context.Collaborators.Find(keys);
+            Collaborator collaborator = null;
+
+            using (var context = new SPSDb())
+            {
+                collaborator = context.Collaborators
+                    .Include("Parking")
+                    .Include("Address")
+                    .SingleOrDefault(c => c.CPF == cpf);
+            }
+
+            return collaborator;
         }
 
         public virtual IList<Collaborator> FindAll()
         {
-            return Context.Collaborators.ToList();
+            using (var context = new SPSDb())
+            {
+                return context.Collaborators.ToList();
+            }
         }
     }
 }

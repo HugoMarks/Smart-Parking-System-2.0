@@ -18,6 +18,7 @@ using System.Net;
 using SPS.Repository;
 using SPS.Web.Extensions;
 using SPS.Model;
+using SPS.Security;
 
 namespace SPS.Web.Controllers
 {
@@ -48,7 +49,7 @@ namespace SPS.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(RootUserViewModel rootUser)
         {
-            var user = BusinessManager.Instance.GlobalManagers.FindAll().Where(gm => gm.CPF == rootUser.CPF).FirstOrDefault();
+            var user = BusinessManager.Instance.GlobalManagers.FindAll().SingleOrDefault(gm => gm.CPF == rootUser.CPF);
 
             if (user == null)
             {
@@ -67,6 +68,77 @@ namespace SPS.Web.Controllers
 
             await SignInAsync(email, password);
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Edit()
+        {
+            var user = User.Identity.GetApplicationUser();
+            var globalAdmin = BusinessManager.Instance.GlobalManagers.FindAll().SingleOrDefault(g => g.Email == user.Email);
+            var model = globalAdmin.ToEditGlobalAdminViewModel();
+
+            return View(model);
+        }
+
+        public async Task<ActionResult> SaveChanges(EditGlobalAdminViewModel model)
+        {
+            var userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+
+            if (ModelState.IsValid)
+            {
+                ApplicationUser user = await userManager.FindByEmailAsync(model.Email);
+                bool error = false;
+                string tokenHash = null;
+
+                if (!string.IsNullOrEmpty(model.NewPassword))
+                {
+                    var result = userManager.ChangePassword(user.Id, model.Password, model.NewPassword);
+
+                    if (!result.Succeeded)
+                    {
+                        ModelState["Password"].Errors.Add("Senha incorreta");
+                        error = true;
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(model.Token))
+                {
+                    if (string.IsNullOrEmpty(model.Password))
+                    {
+                        ModelState["Token"].Errors.Add("O token só pode ser alterado se a senha for digitada");
+                        error = true;
+                    }
+                    else
+                    {
+                        if (!userManager.CheckPassword(user, model.Password))
+                        {
+                            ModelState["Password"].Errors.Add("Senha incorreta");
+                            error = true;
+                        }
+                        else
+                        {
+                            tokenHash = HashServices.HashPassword(model.Token, model.CPF);
+                        }
+                    }
+                }
+
+                if (!error)
+                {
+                    user = await userManager.FindByEmailAsync(model.Email);
+
+                    if (tokenHash == null)
+                    {
+                        tokenHash = BusinessManager.Instance.GlobalManagers.FindAll().SingleOrDefault(g => g.Email == user.Email).TokenHash;
+                    }
+
+                    GlobalManager globalAdmin = model.ToGlobalManager(user.PasswordHash, tokenHash);
+
+                    BusinessManager.Instance.GlobalManagers.Update(globalAdmin);
+
+                    return RedirectToAction("Index", "GlobalAdmin");
+                }
+            }
+
+            return View("Edit", model);
         }
 
         private async Task SignInAsync(string email, string password)

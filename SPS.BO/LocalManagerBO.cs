@@ -1,48 +1,73 @@
-﻿using SPS.Model;
+﻿using SPS.BO.Exceptions;
+using SPS.Model;
 using SPS.Repository;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace SPS.BO
 {
-    public class LocalManagerBO : IBusiness<LocalManager>
+    public class LocalManagerBO : IBusiness<LocalManager, string>
     {
-        private static SPSDb Context = SPSDb.Instance;
-
         public virtual void Add(LocalManager localManager)
         {
-            Context.LocalManagers.Add(localManager);
-            Context.SaveChanges();
+            using (var context = new SPSDb())
+            {
+                if (this.Find(localManager.CPF) != null)
+                {
+                    throw new UniqueKeyViolationException(string.Format("There is already a local manager with CPF {0}.", localManager.CPF));
+                }
+
+                context.LocalManagers.Add(localManager);
+                context.SaveChanges();
+            }
         }
 
         public virtual void Remove(LocalManager localManager)
         {
-            Context.LocalManagers.Remove(localManager);
-            Context.SaveChanges();
+            using (var context = new SPSDb())
+            {
+                context.LocalManagers.Remove(localManager);
+                context.SaveChanges();
+            }
         }
 
         public virtual void Update(LocalManager localManager)
         {
-            var entity = Context.LocalManagers.SingleOrDefault(l => l.Email == localManager.Email);
+            using (var context = new SPSDb())
+            {
+                var entity = context.LocalManagers.SingleOrDefault(l => l.Email == localManager.Email);
 
-            if (entity == null)
-                return;
+                if (entity == null)
+                    return;
 
-            localManager.Id = entity.Id;
-            Context.Entry(entity).CurrentValues.SetValues(localManager);
-            entity.Address = localManager.Address;
+                localManager.Id = entity.Id;
+                context.Entry(entity).CurrentValues.SetValues(localManager);
+                entity.Address = localManager.Address;
 
-            Context.SaveChanges();
+                context.SaveChanges();
+            }
         }
 
-        public virtual LocalManager Find(params object[] keys)
+        public virtual LocalManager Find(string cpf)
         {
-            return Context.LocalManagers.Find(keys);
+            LocalManager localManager = null;
+
+            using (var context = new SPSDb())
+            {
+                localManager = context.LocalManagers
+                    .Include("Address")
+                    .SingleOrDefault(c => c.CPF == cpf);
+            }
+
+            return localManager;
         }
 
         public virtual IList<LocalManager> FindAll()
         {
-            return Context.LocalManagers.ToList();
+            using (var context = new SPSDb())
+            {
+                return context.LocalManagers.ToList();
+            }
         }
     }
 }

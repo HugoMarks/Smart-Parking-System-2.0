@@ -36,7 +36,8 @@ namespace SPS.Web.Extensions
                 Password = passwordHash,
                 RG = model.RG,
                 Salary = decimal.Parse(model.Salary),
-                Telephone = model.PhoneNumber
+                Telephone = model.PhoneNumber,
+                Complement = model.Complement
             };
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SPS.Web.DataAnnotations;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace SPS.Web.Models
 
         [Required(ErrorMessage = "O CNPJ é obrigatório")]
         [Display(Name = "CNPJ*")]
+        [CNPJ]
         public string CNPJ { get; set; }
 
         [Required(ErrorMessage = "O telefone é obrigatório")]

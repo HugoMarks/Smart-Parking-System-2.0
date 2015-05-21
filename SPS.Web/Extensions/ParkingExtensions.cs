@@ -15,7 +15,9 @@ namespace SPS.Web.Extensions
             {
                 CNPJ = parking.CNPJ,
                 LocalAdmin = parking.LocalManager.CPF,
-                Name = parking.Name
+                Name = parking.Name,
+                Number = parking.StreetNumber.ToString(),
+                PhoneNumber = parking.PhoneNumber
             };
 
             SetAddress(parking.Address, model);

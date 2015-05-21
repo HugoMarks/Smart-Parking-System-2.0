@@ -1,14 +1,20 @@
-﻿@model SPS.Web.Models.FullEditCollaboratorViewModel
+﻿@using SPS.BO
+@model SPS.Web.Models.EditGlobalAdminViewModel
 @{
-    ViewBag.Title = "Edite um funcionário";
+    ViewBag.Title = "Edite seus dados";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var localAdmins = BusinessManager.Instance.LocalManagers.FindAll()
+        .Select(l => new SelectListItem()
+        {
+            Text = l.FirstName + " " + l.LastName + " (" + l.CPF + ")",
+            Value = l.Id.ToString()
+        });
 }
 
 <h2>@ViewBag.Title.</h2>
 
-<h4>Realize as alterações disponíveis</h4>
-
-@using (Html.BeginForm("SaveFullEditChanges", "Collaborator", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("SaveChanges", "GlobalAdmin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     <hr />
@@ -37,12 +43,6 @@
             @Html.LabelFor(m => m.CPF, new { @class = "control-label" })
             @Html.TextBoxFor(m => m.CPF, new { @class = "form-control", id = "cpfTextBox", @readonly = "readonly" })
             @Html.ValidationMessageFor(m => m.CPF, "", new { @class = "text-danger" })
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(m => m.Salary, new { @class = "control-label" })
-            @Html.TextBoxFor(m => m.Salary, new { @class = "form-control", id = "salaryTextBox" })
-            @Html.ValidationMessageFor(m => m.Salary, "", new { @class = "text-danger" })
         </div>
 
         <div class="form-group">
@@ -107,6 +107,12 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(m => m.Token, new { @class = "control-label" })
+            @Html.PasswordFor(m => m.Token, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Token, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(m => m.Password, new { @class = "control-label" })
             @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
@@ -125,36 +131,15 @@
         </div>
 
         <div class="form-group">
-            <input type="submit" class="btn btn-success" value="Salvar" style="margin-right:1%"/>
-            <input type="button" data-toggle="modal" data-target="#deleteCollaboratorModal" class="btn btn-danger" value="Desvincular" />
+            <input type="submit" class="btn btn-success" value="Salvar" style="margin-right:1%" />
         </div>
     </div>
 }
-
-<div class="modal fade" id="deleteCollaboratorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Você tem certeza disso?</h4>
-            </div>
-            <div class="modal-body">
-                Esta operação não poderá mais ser desfeita. Deseja mesmo continuar?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
-                <button id="confirmDeleteButton" type="button" class="btn btn-primary" data-dismiss="modal">Sim</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 @section Scripts
 {
     <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.mask.min.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/validation.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/register.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/registerCollaborator.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/deleteCollaborator.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/globalAdminEdit.js")"></script>
 }
 

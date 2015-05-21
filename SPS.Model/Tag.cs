@@ -4,16 +4,14 @@
 //     Changes to this file will be lost if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel.DataAnnotations;
 
 namespace SPS.Model
 {
     public class Tag
     {
-        public virtual int Id
+        [Key]
+        public virtual string Id
         {
             get;
             set;

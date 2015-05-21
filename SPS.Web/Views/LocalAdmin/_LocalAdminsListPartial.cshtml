@@ -4,7 +4,7 @@
     var listItems = localAdmin.Select(c => new SelectListItem 
     { 
         Text = c.FirstName + " " + c.LastName + " (" + c.CPF + ")", 
-        Value = c.Id.ToString()
+        Value = c.CPF
     });
 }
 

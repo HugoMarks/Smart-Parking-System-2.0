@@ -192,11 +192,12 @@
     <Compile Include="Controllers\LocalAdminController.cs" />
     <Compile Include="Controllers\ParkingController.cs" />
     <Compile Include="Controllers\TokenGeneratorController.cs" />
-    <Compile Include="DataAnnotations\AjaxValidation.cs" />
+    <Compile Include="DataAnnotations\CNPJAttribute.cs" />
     <Compile Include="DataAnnotations\CPFAttribute.cs" />
     <Compile Include="Extensions\CollaboratorExtensions.cs" />
     <Compile Include="Extensions\EditLocalAdminViewModelExtensions.cs" />
     <Compile Include="Extensions\EditCollaboratorViewModelExtensions.cs" />
+    <Compile Include="Extensions\EditGlobalAdminViewModelExtensions.cs" />
     <Compile Include="Extensions\IdentityExtensions.cs" />
     <Compile Include="Extensions\LocalAdminExtensions.cs" />
     <Compile Include="Extensions\ParkingExtensions.cs" />
@@ -207,12 +208,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201505172056253_Inheritance.cs" />
-    <Compile Include="Migrations\201505172056253_Inheritance.Designer.cs">
-      <DependentUpon>201505172056253_Inheritance.cs</DependentUpon>
+    <Compile Include="Migrations\201505202347140_Inheritance.cs" />
+    <Compile Include="Migrations\201505202347140_Inheritance.Designer.cs">
+      <DependentUpon>201505202347140_Inheritance.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\EditGlobalAdminViewModel.cs" />
     <Compile Include="Models\EditLocalAdminViewModel.cs" />
     <Compile Include="Models\EditCollaboratorViewModel.cs" />
     <Compile Include="Models\FullEditLocalAdminViewModel.cs" />
@@ -255,6 +257,8 @@
     <Content Include="pictures\Statistics.png" />
     <Content Include="pictures\Users.png" />
     <Content Include="Scripts\collaboratorAddRecord.js" />
+    <Content Include="Scripts\deleteCollaborator.js" />
+    <Content Include="Scripts\editParking.js" />
     <Content Include="Scripts\jquery.mask.min.js" />
     <Content Include="Scripts\localManager.js" />
     <Content Include="Scripts\npm.js" />
@@ -432,7 +436,6 @@
     <Content Include="Views\Collaborator\Index.cshtml" />
     <Content Include="Views\TokenGenerator\Index.cshtml" />
     <Content Include="Views\TokenGenerator\GeneratedToken.cshtml" />
-    <Content Include="Views\Parking\_RegisterParkingPartial.cshtml" />
     <Content Include="Views\Account\ConfirmationSent.cshtml" />
     <Content Include="Views\Parking\_SelectParkingPartial.cshtml" />
     <Content Include="Views\GlobalAdmin\Login.cshtml" />
@@ -449,6 +452,7 @@
     <Content Include="Views\LocalAdmin\Edit.cshtml" />
     <Content Include="Views\Parking\Register.cshtml" />
     <Content Include="Views\Parking\Edit.cshtml" />
+    <Content Include="Views\GlobalAdmin\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -487,8 +491,8 @@
     <WCFMetadataStorage Include="Service References\CorreiosService\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201505172056253_Inheritance.resx">
-      <DependentUpon>201505172056253_Inheritance.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201505202347140_Inheritance.resx">
+      <DependentUpon>201505202347140_Inheritance.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

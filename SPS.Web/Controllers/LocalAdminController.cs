@@ -19,6 +19,7 @@ using Owin;
 using SPS.Web.Services;
 using System.Web.Script.Serialization;
 using SPS.Repository;
+using SPS.BO.Exceptions;
 
 
 namespace SPS.Web.Controllers
@@ -80,7 +81,14 @@ namespace SPS.Web.Controllers
                 {
                     LocalManager client = model.ToUser<LocalManager>(user.PasswordHash);
 
-                    BusinessManager.Instance.LocalManagers.Add(client);                    
+                    try
+                    {
+                        BusinessManager.Instance.LocalManagers.Add(client);
+                    }
+                    catch (UniqueKeyViolationException ex)
+                    {
+                        ModelState["CPF"].Errors.Add(ex.Message);
+                    }                 
 
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = model.Password }, protocol: Request.Url.Scheme);
                     var message = @"<p>Olá, {0}!</p><p>Segue os dados de acesso para sua conta.</p><p>Usuário: {1}</p><p>Senha: {2}</p>
@@ -116,8 +124,8 @@ namespace SPS.Web.Controllers
         [HttpPost]
         public ActionResult FullEdit(FormCollection form)
         {
-            var selectedId = form["LocalAdminsDropDownList"];
-            var localAdmin = BusinessManager.Instance.LocalManagers.Find(int.Parse(selectedId));
+            var selectedLocalAdmin = form["LocalAdminsDropDownList"];
+            var localAdmin = BusinessManager.Instance.LocalManagers.Find(selectedLocalAdmin);
             var model = localAdmin.ToFullEditLocalAdminViewModel();
 
             return View(model);
@@ -162,11 +170,10 @@ namespace SPS.Web.Controllers
                         error = true;
                     }
                 }
-
-                user = await UserManager.FindByEmailAsync(model.Email);
-
                 if (!error)
                 {
+                    user = await UserManager.FindByEmailAsync(model.Email);
+
                     LocalManager localAdmin = model.ToLocalAdmin(user.PasswordHash);
                     BusinessManager.Instance.LocalManagers.Update(localAdmin);
 
@@ -197,11 +204,10 @@ namespace SPS.Web.Controllers
                         error = true;
                     }
                 }
-
-                user = await UserManager.FindByEmailAsync(model.Email);
-
                 if (!error)
                 {
+                    user = await UserManager.FindByEmailAsync(model.Email);
+
                     LocalManager localAdmin = model.ToLocalAdmin(user.PasswordHash);
                     BusinessManager.Instance.LocalManagers.Update(localAdmin);
 

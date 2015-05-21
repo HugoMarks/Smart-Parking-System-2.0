@@ -6,50 +6,64 @@ using System.Linq;
 
 namespace SPS.BO
 {
-    public class ParkingBO : IBusiness<Parking>
+    public class ParkingBO : IBusiness<Parking, string>
     {
-        private static object LockObj = new object();
-        private static SPSDb Context = SPSDb.Instance;
-
         public virtual void Add(Parking parking)
         {
-            Context.Parkings.Add(parking);
-            Context.SaveChanges();
+            using (var context = new SPSDb())
+            {
+                context.Parkings.Add(parking);
+                context.SaveChanges();
+            }
         }
 
         public virtual void Remove(Parking parking)
         {
-            Context.Parkings.Remove(parking);
-            Context.SaveChanges();
+            using (var context = new SPSDb())
+            {
+                context.Parkings.Remove(parking);
+                context.SaveChanges();
+            }
         }
 
         public virtual void Update(Parking parking)
         {
-            var entity = Context.Parkings.Find(parking.CNPJ);
+            using (var context = new SPSDb())
+            {
+                var entity = context.Parkings.Find(parking.CNPJ);
 
-            if (entity == null)
-                return;
+                if (entity == null)
+                    return;
 
-            Context.Entry(entity).CurrentValues.SetValues(parking);
-            entity.Address = parking.Address;
-            entity.LocalManager = parking.LocalManager;
+                context.Entry(entity).CurrentValues.SetValues(parking);
+                entity.Address = parking.Address;
+                entity.LocalManager = parking.LocalManager;
 
-            Context.SaveChanges();
+                context.SaveChanges();
+            }
         }
 
-        public virtual Parking Find(params object[] keys)
+        public virtual Parking Find(string key)
         {
-            lock (LockObj)
+            Parking parking = null;
+
+            using (var context = new SPSDb())
             {
-                return Context.Parkings.Find(keys);
+                parking = context.Parkings.Include("Collaborators")
+                    .Include("LocalManager")
+                    .Include("Address")
+                    .Include("Spaces")
+                    .SingleOrDefault(p => p.CNPJ == key);
             }
+
+            return parking;
         }
 
         public virtual IList<Parking> FindAll()
         {
-            lock (LockObj)
+            using (var context = new SPSDb())
             {
-                return Context.Parkings.ToList();
+                return new List<Parking>(context.Parkings.ToList());
             }
         }
     }
