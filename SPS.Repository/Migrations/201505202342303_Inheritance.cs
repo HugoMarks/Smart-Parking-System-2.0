@@ -46,6 +46,7 @@ namespace SPS.Repository.Migrations
                         CNPJ = c.String(nullable: false, maxLength: 128),
                         PhoneNumber = c.String(),
                         Name = c.String(),
+                        StreetNumber = c.Int(nullable: false),
                         Address_PostalCode = c.String(maxLength: 128),
                         LocalManager_Id = c.Int(),
                     })
@@ -77,7 +78,7 @@ namespace SPS.Repository.Migrations
                         TotalHours = c.Long(nullable: false),
                         TotalCash = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Parking_CNPJ = c.String(maxLength: 128),
-                        Tag_Id = c.Int(),
+                        Tag_Id = c.String(maxLength: 128),
                         MonthlyClient_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
@@ -92,7 +93,7 @@ namespace SPS.Repository.Migrations
                 "dbo.Tags",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.String(nullable: false, maxLength: 128),
                         User_Id = c.Int(),
                         MonthlyClient_Id = c.Int(),
                     })

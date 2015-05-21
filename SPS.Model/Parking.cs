@@ -46,6 +46,12 @@ namespace SPS.Model
             set;
         }
 
+        public virtual int StreetNumber
+        {
+            get;
+            set;
+        }
+
         public virtual IList<ParkingSpace> Spaces
         {
             get;

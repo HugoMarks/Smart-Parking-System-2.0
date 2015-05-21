@@ -6,42 +6,49 @@ using System.Linq;
 
 namespace SPS.BO
 {
-    public class ParkingSpaceBO : IBusiness<ParkingSpace>
+    public class ParkingSpaceBO : IBusiness<ParkingSpace, int>
     {
-        private static SPSDb Context = SPSDb.Instance;
-
         public virtual void Add(ParkingSpace parkingSpace)
         {
-            Context.ParkingSpaces.Add(parkingSpace);
-            Context.SaveChanges();
+            using (var context = new SPSDb())
+            {
+                context.ParkingSpaces.Add(parkingSpace);
+                context.SaveChanges();
+            }
         }
 
         public virtual void Remove(ParkingSpace parkingSpace)
         {
-            Context.ParkingSpaces.Remove(parkingSpace);
-            Context.SaveChanges();
+            using (var context = new SPSDb())
+            {
+                context.ParkingSpaces.Remove(parkingSpace);
+                context.SaveChanges();
+            }
         }
 
         public virtual void Update(ParkingSpace parkingSpace)
         {
-            var entity = Context.ParkingSpaces.Find(parkingSpace.Number);
+            using (var context = new SPSDb())
+            {
+                var entity = context.ParkingSpaces.Find(parkingSpace.Number);
 
-            if (entity == null)
-                return;
+                if (entity == null)
+                    return;
 
-            Context.Entry(entity).CurrentValues.SetValues(parkingSpace);
-            entity.Parking = parkingSpace.Parking;
-            Context.SaveChanges();
+                context.Entry(entity).CurrentValues.SetValues(parkingSpace);
+                entity.Parking = parkingSpace.Parking;
+                context.SaveChanges();
+            }
         }
 
-        public virtual ParkingSpace Find(params object[] keys)
+        public virtual ParkingSpace Find(int number)
         {
-            return Context.ParkingSpaces.Find(keys);
+            throw new NotImplementedException();
         }
 
         public virtual IList<ParkingSpace> FindAll()
         {
-            return Context.ParkingSpaces.ToList();
+            throw new NotImplementedException();
         }
     }
 }

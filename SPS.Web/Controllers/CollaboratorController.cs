@@ -18,13 +18,13 @@ using System.Net;
 using SPS.Repository;
 using SPS.Web.Extensions;
 using SPS.Model;
+using SPS.BO.Exceptions;
 
 namespace SPS.Web.Controllers
 {
     public class CollaboratorController : Controller
     {
         private ApplicationUserManager _userManager;
-
 
         public ApplicationUserManager UserManager
         {
@@ -66,7 +66,6 @@ namespace SPS.Web.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        [ValidateAjax]
         public async Task<ActionResult> Register(RegisterCollaboratorViewModel model)
         {
             if (ModelState.IsValid)
@@ -78,7 +77,14 @@ namespace SPS.Web.Controllers
                 {
                     Collaborator collaborator = model.ToCollaborator(user.PasswordHash);
 
-                    BusinessManager.Instance.Collaborators.Add(collaborator);
+                    try
+                    {
+                        BusinessManager.Instance.Collaborators.Add(collaborator);
+                    }
+                    catch (UniqueKeyViolationException ex)
+                    {
+                        ModelState["CPF"].Errors.Add(ex.Message);
+                    }
 
                     // Enviar um email com este link
                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
@@ -114,7 +120,7 @@ namespace SPS.Web.Controllers
         public ActionResult FullEdit(FormCollection form)
         {
             var selectedId = form["CollaboratorsDropDownList"];
-            var collaborator = BusinessManager.Instance.Collaborators.Find(int.Parse(selectedId));
+            var collaborator = BusinessManager.Instance.Collaborators.Find(selectedId);
             var model = collaborator.ToFullEditCollaboratorViewModel();
 
             return View(model);
@@ -160,10 +166,10 @@ namespace SPS.Web.Controllers
                     }
                 }
 
-                user = await UserManager.FindByEmailAsync(model.Email);
-
                 if(!error)
                 {
+                    user = await UserManager.FindByEmailAsync(model.Email);
+
                     Collaborator collaborator = model.ToCollaborator(user.PasswordHash);
 
                     BusinessManager.Instance.Collaborators.Update(collaborator);
@@ -185,7 +191,7 @@ namespace SPS.Web.Controllers
                 ApplicationUser user = await UserManager.FindByEmailAsync(model.Email);
                 bool error = false;
 
-                if (string.IsNullOrEmpty(model.NewPassword))
+                if (!string.IsNullOrEmpty(model.NewPassword))
                 {
                     var result = UserManager.ChangePassword(user.Id, model.Password, model.NewPassword);
 
@@ -196,10 +202,10 @@ namespace SPS.Web.Controllers
                     }
                 }
 
-                user = await UserManager.FindByEmailAsync(model.Email);
-
                 if (!error)
                 {
+                    user = await UserManager.FindByEmailAsync(model.Email);
+
                     Collaborator collaborator = model.ToCollaborator(user.PasswordHash);
 
                     BusinessManager.Instance.Collaborators.Update(collaborator);
@@ -214,6 +220,26 @@ namespace SPS.Web.Controllers
         public PartialViewResult GetCollaborators()
         {
             return PartialView("_CollaboratorsListPartial");
+        }
+
+        [HttpPost]
+        public ActionResult Delete(string email)
+        {
+            var user = UserManager.FindByEmail(email);
+
+            if (user != null)
+            {
+                var collaborator = BusinessManager.Instance.Collaborators.FindAll().SingleOrDefault(c => c.Email == user.Email);
+
+                if (collaborator != null)
+                {
+                    BusinessManager.Instance.Collaborators.Remove(collaborator);
+                    UserManager.Delete(user);
+                    return new HttpStatusCodeResult(HttpStatusCode.OK);
+                }
+            }
+
+            return new HttpStatusCodeResult(HttpStatusCode.NotFound);
         }
     }
 }

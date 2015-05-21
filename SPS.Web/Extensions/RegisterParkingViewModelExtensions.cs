@@ -18,7 +18,8 @@ namespace SPS.Web.Extensions
                 Name = model.Name,
                 PhoneNumber = model.PhoneNumber,
                 Address = GetAddress(model),
-                LocalManager = BusinessManager.Instance.LocalManagers.Find(int.Parse(model.LocalAdmin))
+                StreetNumber = int.Parse(model.Number),
+                LocalManager = BusinessManager.Instance.LocalManagers.Find(model.LocalAdmin)
             };
         }
 

@@ -8,49 +8,69 @@ using System.Threading.Tasks;
 
 namespace SPS.BO
 {
-    public class UsageRecordBO : IBusiness<UsageRecord>
+    public class UsageRecordBO : IBusiness<UsageRecord, int>
     {
-        private readonly SPSDb Context = SPSDb.Instance;
-
         public void Add(UsageRecord usageRecord)
         {
-            var client = Context.Clients.Find(usageRecord.Tag.User.Id);
+            using (var context = new SPSDb())
+            {
+                var client = context.Clients.Find(usageRecord.Tag.User.Id);
 
-            client.Records.Add(usageRecord);
-            BusinessManager.Instance.MontlyClients.Update(client);
+                client.Records.Add(usageRecord);
+                BusinessManager.Instance.MontlyClients.Update(client);
 
-            Context.UsageRecords.Add(usageRecord);
-            Context.SaveChanges();
+                context.UsageRecords.Add(usageRecord);
+                context.SaveChanges();
+            }
         }
 
-        public UsageRecord Find(params object[] keys)
+        public UsageRecord Find(int id)
         {
-            return Context.UsageRecords.Find(keys);
+            UsageRecord usageRecord = null;
+
+            using (var context = new SPSDb())
+            {
+                usageRecord = context.UsageRecords
+                    .Include("Tag")
+                    .Include("Parking")
+                    .SingleOrDefault(c => c.Id == id);
+            }
+
+            return usageRecord;
         }
 
         public IList<UsageRecord> FindAll()
         {
-            return Context.UsageRecords.ToList();
+            using (var context = new SPSDb())
+            {
+                return context.UsageRecords.ToList();
+            }
         }
 
         public void Remove(UsageRecord usageRecord)
         {
-            Context.UsageRecords.Remove(usageRecord);
-            Context.SaveChanges();
+            using (var context = new SPSDb())
+            {
+                context.UsageRecords.Remove(usageRecord);
+                context.SaveChanges();
+            }
         }
 
         public void Update(UsageRecord usageRecord)
         {
-            var entity = Context.UsageRecords.Find(usageRecord.Id);
+            using (var context = new SPSDb())
+            {
+                var entity = context.UsageRecords.Find(usageRecord.Id);
 
-            if (entity == null)
-                return;
+                if (entity == null)
+                    return;
 
-            Context.Entry(entity).CurrentValues.SetValues(usageRecord);
-            entity.Parking = usageRecord.Parking;
-            entity.Tag = usageRecord.Tag;
+                context.Entry(entity).CurrentValues.SetValues(usageRecord);
+                entity.Parking = usageRecord.Parking;
+                entity.Tag = usageRecord.Tag;
 
-            Context.SaveChanges();
+                context.SaveChanges();
+            }
         }
     }
 }

@@ -6,42 +6,58 @@ using System.Linq;
 
 namespace SPS.BO
 {
-    public class AddressBO : IBusiness<Address>
+    public class AddressBO : IBusiness<Address, string>
     {
-        private static SPSDb Context = SPSDb.Instance;
-
         public virtual void Add(Address address)
         {
-            Context.Addresses.Add(address);
-            Context.SaveChanges();
+            using (var context = new SPSDb())
+            {
+                context.Addresses.Add(address);
+                context.SaveChanges();
+            }
         }
 
-        public virtual Address Find(params object[] keys)
+        public virtual Address Find(string cep)
         {
-            return Context.Addresses.Find(keys);
-        }
+            Address address = null;
 
+            using (var context = new SPSDb())
+            {
+                address = context.Addresses.SingleOrDefault(a => a.PostalCode == cep);
+            }
+
+            return address;
+        }
         public virtual IList<Address> FindAll()
         {
-            return Context.Addresses.ToList();
+            using (var context = new SPSDb())
+            {
+                return context.Addresses.ToList();
+            }
         }
 
         public virtual void Remove(Address address)
         {
-            Context.Addresses.Remove(address);
-            Context.SaveChanges();
+            using (var context = new SPSDb())
+            {
+                context.Addresses.Remove(address);
+                context.SaveChanges();
+            }
         }
 
         public virtual void Update(Address address)
         {
-            var entity = Context.Addresses.Find(address.PostalCode);
+            using (var context = new SPSDb())
+            {
+                var entity = context.Addresses.Find(address.PostalCode);
 
-            if (entity == null)
-                return;
+                if (entity == null)
+                    return;
 
-            Context.Entry(entity).CurrentValues.SetValues(address);
+                context.Entry(entity).CurrentValues.SetValues(address);
 
-            Context.SaveChanges();
+                context.SaveChanges();
+            }
         }
     }
 }

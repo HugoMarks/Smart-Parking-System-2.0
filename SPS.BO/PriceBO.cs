@@ -6,43 +6,56 @@ using System.Linq;
 
 namespace SPS.BO
 {
-    public class PriceBO : IBusiness<Price>
+    public class PriceBO : IBusiness<Price, int>
     {
-        private static SPSDb Context = SPSDb.Instance;
-
         public virtual void Add(Price price)
         {
-            Context.Prices.Add(price);
-            Context.SaveChanges();
+            using (var context = new SPSDb())
+            {
+                context.Prices.Add(price);
+                context.SaveChanges();
+            }
         }
 
         public virtual Price Find(params object[] keys)
         {
-            return Context.Prices.Find(keys);
+            using (var context = new SPSDb())
+            {
+                return context.Prices.Find(keys);
+            }
         }
 
         public virtual IList<Price> FindAll()
         {
-            return Context.Prices.ToList();
+            using (var context = new SPSDb())
+            {
+                return context.Prices.ToList();
+            }
         }
 
         public virtual void Remove(Price price)
         {
-            Context.Prices.Remove(price);
-            Context.SaveChanges();
+            using (var context = new SPSDb())
+            {
+                context.Prices.Remove(price);
+                context.SaveChanges();
+            }
         }
 
         public virtual void Update(Price price)
         {
-            var entity = Context.Prices.Find(price.Id);
+            using (var context = new SPSDb())
+            {
+                var entity = context.Prices.Find(price.Id);
 
-            if (entity == null)
-                return;
+                if (entity == null)
+                    return;
 
-            Context.Entry(entity).CurrentValues.SetValues(price);
-            entity.Parking = price.Parking;
+                context.Entry(entity).CurrentValues.SetValues(price);
+                entity.Parking = price.Parking;
 
-            Context.SaveChanges();
+                context.SaveChanges();
+            }
         }
     }
 }

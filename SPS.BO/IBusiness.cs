@@ -2,17 +2,17 @@
 
 namespace SPS.BO
 {
-    public interface IBusiness<T>
+    public interface IBusiness<TModel, TKey>
     {
-        void Add(T obj);
+        void Add(TModel obj);
 
-        T Find(params object[] keys);
+        TModel Find(TKey key);
 
-        IList<T> FindAll();
+        IList<TModel> FindAll();
 
-        void Remove(T obj);
+        void Remove(TModel obj);
 
-        void Update(T obj);
+        void Update(TModel obj);
     }
 }
 

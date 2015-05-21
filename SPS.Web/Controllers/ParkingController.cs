@@ -64,6 +64,9 @@ namespace SPS.Web.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [AllowAnonymous]
         public ActionResult SaveChanges(RegisterParkingViewModel model)
         {
             if (ModelState.IsValid)

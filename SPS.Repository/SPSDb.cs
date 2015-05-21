@@ -13,22 +13,6 @@ namespace SPS.Repository
     /// </summary>
     public class SPSDb : DbContext
     {
-        private static SPSDb _instance;
-
-        /// <summary>
-        /// Gets an instance of the <see cref="SPSDb"/> class.
-        /// </summary>
-        public static SPSDb Instance
-        {
-            get
-            {
-                if (_instance == null)
-                    _instance = new SPSDb();
-
-                return _instance;
-            }
-        }
-
         /// <summary>
         /// Initializes a new instance of the <see cref="SPSDb"/> class.
         /// </summary>

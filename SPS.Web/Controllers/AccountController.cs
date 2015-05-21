@@ -18,6 +18,7 @@ using System.Net;
 using SPS.Repository;
 using SPS.Web.Extensions;
 using SPS.Model;
+using SPS.BO.Exceptions;
 
 namespace SPS.Web.Controllers
 {
@@ -132,7 +133,14 @@ namespace SPS.Web.Controllers
                 {
                     MonthlyClient client = model.ToUser<MonthlyClient>(user.PasswordHash);
 
-                    BusinessManager.Instance.MontlyClients.Add(client);
+                    try
+                    {
+                        BusinessManager.Instance.MontlyClients.Add(client);
+                    }
+                    catch (UniqueKeyViolationException ex)
+                    {
+                        ModelState["CPF"].Errors.Add(ex.Message);
+                    }
 
                     // Enviar um email com este link
                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
@@ -176,6 +184,8 @@ namespace SPS.Web.Controllers
                     return RedirectToAction("Index", "Collaborator");
                 case UserType.LocalAdmin:
                     return RedirectToAction("Index", "LocalAdmin");
+                case UserType.GlobalAdmin:
+                    return RedirectToAction("Index", "GlobalAdmin");
                 default:
                     return RedirectToAction("Index", "Home");
             }

@@ -6,43 +6,62 @@ using System.Linq;
 
 namespace SPS.BO
 {
-    public class TagBO : IBusiness<Tag>
+    public class TagBO : IBusiness<Tag, string>
     {
-        private static SPSDb Context = SPSDb.Instance;
-
         public virtual void Add(Tag tag)
         {
-            Context.Tags.Add(tag);
-            Context.SaveChanges();
+            using (var context = new SPSDb())
+            {
+                context.Tags.Add(tag);
+                context.SaveChanges();
+            }
         }
 
         public virtual void Remove(Tag tag)
         {
-            Context.Tags.Remove(tag);
-            Context.SaveChanges();
+            using (var context = new SPSDb())
+            {
+                context.Tags.Remove(tag);
+                context.SaveChanges();
+            }
         }
 
         public virtual void Update(Tag tag)
         {
-            var entity = Context.Tags.Find(tag.Id);
+            using (var context = new SPSDb())
+            {
+                var entity = context.Tags.Find(tag.Id);
 
-            if (entity == null)
-                return;
+                if (entity == null)
+                    return;
 
-            Context.Entry(entity).CurrentValues.SetValues(tag);
-            entity.User = tag.User;
+                context.Entry(entity).CurrentValues.SetValues(tag);
+                entity.User = tag.User;
 
-            Context.SaveChanges();
+                context.SaveChanges();
+            }
         }
 
-        public virtual Tag Find(params object[] keys)
+        public virtual Tag Find(string id)
         {
-            return Context.Tags.Find(keys);
+            Tag tag = null;
+
+            using (var context = new SPSDb())
+            {
+                tag = context.Tags
+                    .Include("User")
+                    .SingleOrDefault(c => c.Id == id);
+            }
+
+            return tag;
         }
 
         public virtual IList<Tag> FindAll()
         {
-            return Context.Tags.ToList();
+            using (var context = new SPSDb())
+            {
+                return context.Tags.ToList();
+            }
         }
 
     }
