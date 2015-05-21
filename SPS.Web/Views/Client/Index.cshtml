@@ -40,11 +40,11 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                            <li><a class="btn-default" href="#">Dados Pessoais</a></li>
+                            <li>@Html.ActionLink("Alterar Dados Pessoais", "Edit")</li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-3 ">
+                @*<div class="col-md-3 ">
                     <div class="thumbnail btn-default dropdown">
                         <a id="dLabel" data-target="#" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
                             <img src="~/pictures/Car.png" class="img-responsive img-menu">
@@ -57,7 +57,21 @@
                             <li><a class="btn-default" href="#">Gerenciar Veículos</a></li>
                         </ul>
                     </div>
-                </div>
+                </div>*@
+                <div class="col-md-3 ">
+                    <div class="thumbnail btn-default dropdown">
+                        <a id="dLabel" data-target="#" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+                            <img src="~/pictures/ControlPanel.png" class="img-responsive img-menu">
+                            <div class="caption center-text">
+                                <h4><b>Estacionamento</b></h4>
+                            </div>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                            <li><a class="btn-default" href="#">Solicitar Vinculo</a></li>
+                        </ul>
+                    </div>
+                </div>*
                 
             </div>
         </div>
