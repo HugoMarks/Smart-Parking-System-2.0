@@ -17,9 +17,15 @@ namespace SPS.Model
             set;
         }
 
-        public virtual User User
+        public virtual int SpaceNumber
         {
             get;
+            set;
+        }
+
+        public virtual MonthlyClient Client 
+        { 
+            get; 
             set;
         }
     }

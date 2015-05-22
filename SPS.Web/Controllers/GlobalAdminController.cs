@@ -27,6 +27,38 @@ namespace SPS.Web.Controllers
         // This method is private because only authenticated users can see this view.
         public ActionResult Index()
         {
+            if (BusinessManager.Instance.GlobalManagers.FindAll().Count == 0)
+            {
+                ApplicationUserManager userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                ApplicationUser user = new ApplicationUser
+                {
+                    Email = "ricardo@sps.com",
+                    FirstName = "Ricardo",
+                    LastName = "Souza",
+                    EmailConfirmed = true,
+                    UserName = "ricardo@sps.com",
+                    PhoneNumber = "(19) 99856-0989",
+                    UserType = UserType.GlobalAdmin
+                };
+
+                userManager.Create(user, "Ricardo12__");
+
+                string cpf = "000.000.000-00";
+                GlobalManager globalManager = new GlobalManager
+                {
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    CPF = cpf,
+                    Email = user.Email,
+                    Password = user.PasswordHash,
+                    Telephone = user.PhoneNumber,
+                    TokenHash = HashServices.HashPassword("547458", cpf),
+                    StreetNumber = 123
+                };
+
+                BusinessManager.Instance.GlobalManagers.Add(globalManager);
+            }
+
             if (!Request.IsAuthenticated)
             {
                 return RedirectToAction("Login", "Account");

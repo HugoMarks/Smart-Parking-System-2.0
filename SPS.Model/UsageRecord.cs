@@ -16,8 +16,10 @@ namespace SPS.Model
 
         public virtual DateTime ExitDateTime { get; set; }
 
-        public virtual long TotalHours { get; set; }
+        public virtual float TotalHours { get; set; }
 
         public virtual decimal TotalCash { get; set; }
+
+        public virtual PaymentStatus PaymentStatus { get; set; }
     }
 }

@@ -4,12 +4,14 @@
     ViewBag.Title = "Edite um estacionamento";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-    var localAdmins = BusinessManager.Instance.LocalManagers.FindAll()
-        .Select(l => new SelectListItem()
-        {
-            Text = l.FirstName + " " + l.LastName + " (" + l.CPF + ")",
-            Value = l.Id.ToString()
-        });
+    var localAdmins = BusinessManager.Instance.LocalManagers.FindAll();
+    var items = localAdmins.Select(l => new SelectListItem()
+    {
+        Text = l.FirstName + " " + l.LastName + " (" + l.CPF + ")",
+        Value = l.CPF
+    }).ToList();
+
+    items[ViewBag.LocalAdminIndex].Selected = true;
 }
 
 <h2>@ViewBag.Title.</h2>
@@ -42,7 +44,7 @@
 
         <div class="form-group">
             @Html.LabelFor(m => m.LocalAdmin, new { @class = "control-label" })
-            @Html.DropDownListFor(m => m.LocalAdmin, @localAdmins, "Selecione um admistrador local", new { @class = "form-control" })
+            @Html.DropDownListFor(m => m.LocalAdmin, @items, "Selecione um admistrador local", new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.LocalAdmin, "", new { @class = "text-danger" })
         </div>
     </div>

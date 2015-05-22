@@ -67,7 +67,7 @@ namespace SPS.Web.Controllers
             var userEmail = form["UserEmail"];
             var client = BusinessManager.Instance.MontlyClients.FindAll().SingleOrDefault(u => u.Email == userEmail);
 
-            client.Tags.Add(new Tag { User = client });
+            client.Tags.Add(new Tag { Client = client });
             BusinessManager.Instance.MontlyClients.Update(client);
 
             return RedirectToAction("Index", "Collaborator");

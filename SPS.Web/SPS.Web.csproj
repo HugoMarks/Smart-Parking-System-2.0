@@ -208,9 +208,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201505202347140_Inheritance.cs" />
-    <Compile Include="Migrations\201505202347140_Inheritance.Designer.cs">
-      <DependentUpon>201505202347140_Inheritance.cs</DependentUpon>
+    <Compile Include="Migrations\201505220300558_Inheritance.cs" />
+    <Compile Include="Migrations\201505220300558_Inheritance.Designer.cs">
+      <DependentUpon>201505220300558_Inheritance.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -491,8 +491,8 @@
     <WCFMetadataStorage Include="Service References\CorreiosService\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201505202347140_Inheritance.resx">
-      <DependentUpon>201505202347140_Inheritance.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201505220300558_Inheritance.resx">
+      <DependentUpon>201505220300558_Inheritance.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

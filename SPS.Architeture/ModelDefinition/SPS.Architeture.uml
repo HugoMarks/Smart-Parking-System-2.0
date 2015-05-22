@@ -1715,7 +1715,7 @@
           </property>
           <property
             Id="042e82df-0f5f-47b0-b755-bbca18bbb887"
-            name="ZipCode"
+            name="PostalCode"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
@@ -1938,24 +1938,6 @@
                 LastKnownLocation="SPS.Architeture.uml" />
             </type_NamedElement>
           </property>
-          <property
-            Id="b7ad73e3-6575-4910-bf8c-fae4491e9c90"
-            name="Id"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false">
-            <type_NamedElement>
-              <undefinedTypeMoniker
-                Id="6afe4206-2814-44fd-abac-3f2d82857e56"
-                LastKnownName="uint"
-                LastKnownLocation="SPS.Architeture.uml" />
-            </type_NamedElement>
-          </property>
         </ownedAttributesInternal>
       </class>
     </packageHasNamedElement>
@@ -2087,7 +2069,7 @@
           </property>
           <property
             Id="5c1ad5b7-0274-4730-b0bc-8a35f8fe5744"
-            name="User"
+            name="Number"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
@@ -2534,24 +2516,6 @@
                 LastKnownLocation="SPS.Architeture.uml" />
             </type_NamedElement>
           </property>
-          <property
-            Id="dbcf514d-2dfc-4209-a552-b33c223cdd54"
-            name="Id"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false">
-            <type_NamedElement>
-              <undefinedTypeMoniker
-                Id="6afe4206-2814-44fd-abac-3f2d82857e56"
-                LastKnownName="uint"
-                LastKnownLocation="SPS.Architeture.uml" />
-            </type_NamedElement>
-          </property>
         </ownedAttributesInternal>
       </class>
     </packageHasNamedElement>
@@ -2610,6 +2574,47 @@
             </propertyInstances>
           </stereotypeInstance>
         </appliedStereotypesInternal>
+        <targetEnds>
+          <association
+            Id="51c21c6e-b865-4d26-8585-736193a8e46c"
+            isDerived="false"
+            sourceEndRoleName="ParkingSpace"
+            targetEndRoleName="Tag"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="b613f7fb-9712-4ed9-862f-ff2ab98f96e2"
+              LastKnownName="Tag"
+              LastKnownLocation="SPS.Architeture.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="cc353657-de82-4b10-8658-e6dd4024821d"
+                  name="ParkingSpace"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f5075e28-463a-489e-9a7f-39237903080a"
+                  name="Tag"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
         <ownedAttributesInternal>
           <property
             Id="47d1d863-83b6-4ced-b8d4-56938c81b97f"
@@ -3204,7 +3209,7 @@
         <ownedAttributesInternal>
           <property
             Id="b68bdfe6-c8ff-4fa7-8530-f2d2e52216d7"
-            name="Id"
+            name="CNPJ"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
@@ -3272,8 +3277,8 @@
             </appliedStereotypesInternal>
             <type_NamedElement>
               <undefinedTypeMoniker
-                Id="6afe4206-2814-44fd-abac-3f2d82857e56"
-                LastKnownName="uint"
+                Id="96049581-dffc-44c4-98f1-e535599dccf4"
+                LastKnownName="string"
                 LastKnownLocation="SPS.Architeture.uml" />
             </type_NamedElement>
           </property>
@@ -3460,6 +3465,60 @@
               <classMoniker
                 Id="559e958e-f777-4c13-a035-434fac7097a0"
                 LastKnownName="LocalAdministrator"
+                LastKnownLocation="SPS.Architeture.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="c9e5efd8-efcd-458a-a1ca-ddb0bf5198f5"
+            name="Collaborators"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="1c9f5712-11d1-4d63-bc80-99065d3d1f78"
+                LastKnownName="IList&lt;Collaborator&gt;"
+                LastKnownLocation="SPS.Architeture.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="5d55791f-1f4d-4a5a-982e-652de2e9fb5f"
+            name="Spaces"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="5ff6a078-aff5-481e-94d3-fe2d2e545406"
+                LastKnownName="IList&lt;ParkingSpace&gt;"
+                LastKnownLocation="SPS.Architeture.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="8f7ae194-b905-4530-bae4-ff2ecf1f053f"
+            name="Prices"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="083df9e0-cd8d-420b-abb2-bf4a4f74d843"
+                LastKnownName="IList&lt;Price&gt;"
                 LastKnownLocation="SPS.Architeture.uml" />
             </type_NamedElement>
           </property>
@@ -9490,6 +9549,26 @@
               LastKnownLocation="SPS.Architeture.uml" />
           </generalization>
         </generalsInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="92f6d357-c961-44fe-9f6a-e160e4786b12"
+            name="TokenHash"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="96049581-dffc-44c4-98f1-e535599dccf4"
+                LastKnownName="string"
+                LastKnownLocation="SPS.Architeture.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -10750,6 +10829,42 @@
               <classMoniker
                 Id="c4dbfe17-40cb-4011-9d07-5ff7e037693d"
                 LastKnownName="Parking"
+                LastKnownLocation="SPS.Architeture.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="50f1c94e-98c6-4543-893e-b0b8604bca47"
+            name="Records"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="aea7fe40-7b81-4124-b6fb-0d22fb584517"
+                LastKnownName="IList&lt;UsageRecord&gt;"
+                LastKnownLocation="SPS.Architeture.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="caa2a86f-cc37-4754-bac7-056909114ed5"
+            name="Tags"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="4d5c1070-5af0-49f6-8713-65809b932764"
+                LastKnownName="IList&lt;Tag&gt;"
                 LastKnownLocation="SPS.Architeture.uml" />
             </type_NamedElement>
           </property>
@@ -12422,6 +12537,256 @@
           </property>
         </ownedAttributesInternal>
       </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="b955cc43-2e4c-4c8a-ae60-bf7aa633e146"
+        name="UsageRecord" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="aea7fe40-7b81-4124-b6fb-0d22fb584517"
+        name="IList&lt;UsageRecord&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="84209957-6704-464e-ae76-1784eb559bb9"
+        name="UsageRecord"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <property
+            Id="291f1ed2-3bec-4fc6-903c-092849aa32e2"
+            name="Tag"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <classMoniker
+                Id="b613f7fb-9712-4ed9-862f-ff2ab98f96e2"
+                LastKnownName="Tag"
+                LastKnownLocation="SPS.Architeture.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="335e0da0-74ab-4be0-ab18-1cc490bc6f28"
+            name="Parking"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <classMoniker
+                Id="c4dbfe17-40cb-4011-9d07-5ff7e037693d"
+                LastKnownName="Parking"
+                LastKnownLocation="SPS.Architeture.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="5428f784-c351-48fe-a93b-f9c30a37ccf2"
+            name="EnterDateTime"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="862a4a20-e3d1-416d-93db-cf5edb70d098"
+                LastKnownName="DateTime"
+                LastKnownLocation="SPS.Architeture.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="497e979a-9274-4f74-9dc6-a4a3707eefbc"
+            name="ExitDateTime"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="862a4a20-e3d1-416d-93db-cf5edb70d098"
+                LastKnownName="DateTime"
+                LastKnownLocation="SPS.Architeture.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="58f3fbed-affa-4b8f-a489-d5eddb68ca01"
+            name="TotalHours"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="d6cfbcf0-ecae-4eef-b524-e4d1827325ea"
+                LastKnownName="float"
+                LastKnownLocation="SPS.Architeture.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="cbf8cd6b-48db-4e61-a318-6d8f905faac8"
+            name="TotalPrice"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="32fdbf07-9cc6-4c4f-af10-a00f27335efe"
+                LastKnownName="decimal"
+                LastKnownLocation="SPS.Architeture.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="a43fe5a7-4d97-4d92-a26d-efadd8075676"
+            name="Id"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="2e0542c1-5be3-4047-bb5b-a02d33fb0762"
+                LastKnownName="int"
+                LastKnownLocation="SPS.Architeture.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="8af5dd99-d72a-4da5-b239-337a804b3467"
+            name="PaymentStatus"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="540ee750-17b6-4650-87d2-a27608581c94"
+                LastKnownName="PayementStatus"
+                LastKnownLocation="SPS.Architeture.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="862a4a20-e3d1-416d-93db-cf5edb70d098"
+        name="DateTime" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="d6cfbcf0-ecae-4eef-b524-e4d1827325ea"
+        name="float" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <enumeration
+        Id="effbc45a-e4fe-418f-81ac-410353524e82"
+        name="PaymentStatus"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="a709b988-c95f-48e7-8329-ececce1c8bdd"
+            isDerived="false"
+            sourceEndRoleName="PaymentStatus"
+            targetEndRoleName="UsageRecord"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="84209957-6704-464e-ae76-1784eb559bb9"
+              LastKnownName="UsageRecord"
+              LastKnownLocation="SPS.Architeture.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c1a78392-4b90-4e8e-b440-ae19e5af925b"
+                  name="PaymentStatus"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="64df63b1-4ecb-42a0-88f8-465fc693887c"
+                  name="UsageRecord"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="fce4f2c2-78af-4bb6-bd74-9cf3325989ce"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="16dccc5d-1d97-4059-a2bd-afb67ba9db6c"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedLiterals>
+          <enumerationLiteral
+            Id="4ddce6a0-bac1-4185-85e1-e18837e9a65e"
+            name="Paid" />
+          <enumerationLiteral
+            Id="e52e6eb6-c3b0-4405-9fff-e974abaf13ee"
+            name="NotPaid" />
+        </ownedLiterals>
+      </enumeration>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="540ee750-17b6-4650-87d2-a27608581c94"
+        name="PayementStatus" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

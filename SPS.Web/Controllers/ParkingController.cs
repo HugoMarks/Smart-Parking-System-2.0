@@ -60,6 +60,9 @@ namespace SPS.Web.Controllers
             var selectedCNPJ = form["ParkingSelectList"];
             var parking = BusinessManager.Instance.Parkings.Find(selectedCNPJ);
             var model = parking.ToRegisterParkingViewModel();
+            var index = BusinessManager.Instance.LocalManagers.FindAll().ToList().FindIndex(l => l.CPF == model.LocalAdmin);
+
+            ViewBag.LocalAdminIndex = index;
 
             return View(model);
         }

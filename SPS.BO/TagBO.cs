@@ -36,7 +36,7 @@ namespace SPS.BO
                     return;
 
                 context.Entry(entity).CurrentValues.SetValues(tag);
-                entity.User = tag.User;
+                entity.Client = tag.Client;
 
                 context.SaveChanges();
             }

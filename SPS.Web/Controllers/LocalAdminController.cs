@@ -97,7 +97,7 @@ namespace SPS.Web.Controllers
                     message = string.Format(message, client.FirstName, client.Email, model.Password);
                     await UserManager.SendEmailAsync(user.Id, "Sua conta no Smart Parking System", message);
 
-                    return RedirectToAction("Login", "GlobalAdmin");
+                    return RedirectToAction("Index", "GlobalAdmin");
                 }
                 else
                 {

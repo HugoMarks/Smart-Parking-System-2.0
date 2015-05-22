@@ -1,4 +1,5 @@
-﻿using SPS.Model;
+﻿using SPS.BO.Exceptions;
+using SPS.Model;
 using SPS.Repository;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,11 @@ namespace SPS.BO
         {
             using (var context = new SPSDb())
             {
+                if (context.Parkings.Any(p => p.LocalManager.CPF == parking.LocalManager.CPF))
+                {
+                    throw new UniqueKeyViolationException("Esse admistrador já está associado a um estacionamento.");
+                }
+
                 context.Parkings.Add(parking);
                 context.SaveChanges();
             }

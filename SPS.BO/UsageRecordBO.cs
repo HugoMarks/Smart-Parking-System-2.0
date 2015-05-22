@@ -14,10 +14,13 @@ namespace SPS.BO
         {
             using (var context = new SPSDb())
             {
-                var client = context.Clients.Find(usageRecord.Tag.User.Id);
+                if (usageRecord.Tag.Client != null)
+                {
+                    var client = context.Clients.Find(usageRecord.Tag.Client.Id);
 
-                client.Records.Add(usageRecord);
-                BusinessManager.Instance.MontlyClients.Update(client);
+                    client.Records.Add(usageRecord);
+                    BusinessManager.Instance.MontlyClients.Update(client);
+                }
 
                 context.UsageRecords.Add(usageRecord);
                 context.SaveChanges();
