@@ -1,0 +1,31 @@
+﻿@using Microsoft.AspNet.Identity;
+@using SPS.BO
+@using SPS.Web.Models
+
+@{
+    var parkings = BusinessManager.Instance.Parkings.FindAll();
+}
+
+<div class="row">
+    <input id="filter" type="text" class="form-control" placeholder="Filtre por nome">
+</div>
+
+<br />
+
+<div class="row">
+    <table class="table table-hover">
+        <tbody class="searchable">
+            @foreach (var parking in parkings)
+            {
+                <tr data-parking="@parking.CNPJ" class="mouse-hand">
+                    <td>
+                        <p><b>@parking.Name</b></p>
+                        <p>@parking.Address.Street, @parking.StreetNumber - @parking.Address.Square</p>
+                        <p>@parking.Address.PostalCode - @parking.Address.City - @parking.Address.State</p>
+                        <p>@parking.PhoneNumber</p>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

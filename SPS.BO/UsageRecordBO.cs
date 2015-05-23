@@ -27,6 +27,11 @@ namespace SPS.BO
                     usageRecord.Tag = context.Tags.Find(usageRecord.Tag.Id);
                 }
 
+                if (usageRecord.Parking != null)
+                {
+                    usageRecord.Parking = context.Parkings.Find(usageRecord.Parking.CNPJ);
+                }
+
                 context.UsageRecords.Add(usageRecord);
                 context.SaveChanges();
             }
@@ -74,8 +79,16 @@ namespace SPS.BO
                     return;
 
                 context.Entry(entity).CurrentValues.SetValues(usageRecord);
-                entity.Parking = usageRecord.Parking;
-                entity.Tag = usageRecord.Tag;
+
+                if (usageRecord.Tag != null)
+                {
+                    entity.Tag = context.Tags.Find(usageRecord.Tag.Id);
+                }
+
+                if (usageRecord.Parking != null)
+                {
+                    entity.Parking = context.Parkings.Find(usageRecord.Parking.CNPJ);
+                }
 
                 context.SaveChanges();
             }

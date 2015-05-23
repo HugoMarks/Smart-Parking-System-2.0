@@ -25,7 +25,7 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                            <li>@Html.ActionLink("Histórico de Consumo", "UsageRecords")</li>
+                            <li>@Html.ActionLink("Histórico de Consumo", "UsageRecords", null, new { @class = "btn-default" })</li>
                             <li><a class="btn-default" href="#">Realizar Pagamento </a></li>
                         </ul>
                     </div>
@@ -40,7 +40,7 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                            <li>@Html.ActionLink("Alterar Dados Pessoais", "Edit")</li>
+                            <li>@Html.ActionLink("Alterar Dados Pessoais", "Edit", null, new { @class = "btn-default" })</li>
                         </ul>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                            <li><a class="btn-default" href="#" id="requestParkingLink">Solicitar Vínculo</a></li>
+                            <li>@Html.ActionLink("Vincular a um estacionamento", "Finder", "Parking", null, new { @class = "btn-default" })</li>
                         </ul>
                     </div>
                 </div>*

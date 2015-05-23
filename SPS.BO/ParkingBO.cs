@@ -73,7 +73,8 @@ namespace SPS.BO
 
             using (var context = new SPSDb())
             {
-                parking = context.Parkings.Include("Collaborators")
+                parking = context.Parkings
+                    .Include("Collaborators")
                     .Include("LocalManager")
                     .Include("Address")
                     .Include("Spaces")
@@ -87,7 +88,11 @@ namespace SPS.BO
         {
             using (var context = new SPSDb())
             {
-                return new List<Parking>(context.Parkings.ToList());
+                return new List<Parking>(context.Parkings
+                    .Include("Collaborators")
+                    .Include("LocalManager")
+                    .Include("Address")
+                    .Include("Spaces"));
             }
         }
     }

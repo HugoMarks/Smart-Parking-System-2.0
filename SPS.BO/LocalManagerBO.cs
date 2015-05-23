@@ -47,7 +47,11 @@ namespace SPS.BO
 
                 localManager.Id = entity.Id;
                 context.Entry(entity).CurrentValues.SetValues(localManager);
-                entity.Address = localManager.Address;
+
+                if (localManager.Address != null)
+                {
+                    entity.Address = context.Addresses.SingleOrDefault(a => a.PostalCode == localManager.Address.PostalCode);
+                }
 
                 context.SaveChanges();
             }
@@ -71,7 +75,9 @@ namespace SPS.BO
         {
             using (var context = new SPSDb())
             {
-                return context.LocalManagers.ToList();
+                return context.LocalManagers
+                    .Include("Address")
+                    .ToList();
             }
         }
     }

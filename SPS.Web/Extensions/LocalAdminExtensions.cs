@@ -15,7 +15,8 @@ namespace SPS.Web.Extensions
                 LastName = localAdmin.LastName,
                 Number = localAdmin.StreetNumber.ToString(),
                 PhoneNumber = localAdmin.Telephone,
-                RG = localAdmin.RG
+                RG = localAdmin.RG,
+                Complement = localAdmin.Complement
             };
 
             SetAddress(localAdmin.Address, localAdminViewModel);
@@ -33,7 +34,8 @@ namespace SPS.Web.Extensions
                 LastName = localAdmin.LastName,
                 Number = localAdmin.StreetNumber.ToString(),
                 PhoneNumber = localAdmin.Telephone,
-                RG = localAdmin.RG
+                RG = localAdmin.RG,
+                Complement = localAdmin.Complement
             };
 
             SetAddress(localAdmin.Address, localAdminViewModel);
@@ -51,7 +53,8 @@ namespace SPS.Web.Extensions
                 LastName = localAdmin.LastName,
                 Number = localAdmin.StreetNumber.ToString(),
                 PhoneNumber = localAdmin.Telephone,
-                RG = localAdmin.RG
+                RG = localAdmin.RG,
+                Complement = localAdmin.Complement
             };
 
             SetAddress(localAdmin.Address, localAdminViewModel);

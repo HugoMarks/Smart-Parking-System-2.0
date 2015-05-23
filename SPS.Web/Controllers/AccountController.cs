@@ -445,7 +445,8 @@ namespace SPS.Web.Controllers
 
             if (result.Address != null)
             {
-                //BusinessManager.Instance.Addresses.Add(result.Address);
+                result.Address.PostalCode = postalCode;
+                BusinessManager.Instance.Addresses.Add(result.Address);
                 //new AddressBO().Add(result.Address);
                 return Json(new JavaScriptSerializer().Serialize(result.Address));
             }
