@@ -72,3 +72,7 @@ textarea {
     font-family : ds-digital;
     font-size: 6em;
 }
+
+.mouse-hand:hover {
+    cursor: pointer;
+}

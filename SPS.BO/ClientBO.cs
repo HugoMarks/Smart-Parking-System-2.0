@@ -23,6 +23,11 @@ namespace SPS.BO
                     client.Address = context.Addresses.SingleOrDefault(a => a.PostalCode == client.Address.PostalCode);
                 }
 
+                if (client.Parking != null)
+                {
+                    client.Parking = context.Parkings.Find(client.Parking.CNPJ);
+                }
+
                 context.Clients.Add(client);
                 context.SaveChanges();
             }

@@ -86,7 +86,14 @@ namespace SPS.Web
                         EnableSsl = true
                     };
 
-                    smtpClient.Send(msg);
+                    try
+                    {
+                        smtpClient.Send(msg);
+                    }
+                    catch
+                    {
+
+                    }
                 });
         }
     }

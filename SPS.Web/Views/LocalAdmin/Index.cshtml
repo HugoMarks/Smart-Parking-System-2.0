@@ -46,10 +46,9 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                            <li><a class="btn-default" href="#">Alterar Dados do Estacionamento</a></li>
-                            <li><a class="btn-default" href="#">Alterar Dados do Estacionamento</a></li>
-                            <li><a class="btn-default" href="#">Gerenciar Preços</a></li>
-                            <li><a class="btn-default" href="#">Gerenciar Vagas</a></li>
+                            <li>@Html.ActionLink("Alterar Dados do Estacionamento", "Edit", "Parking", null, new { @class = "btn-default" })</li>
+                            <li>@Html.ActionLink("Gerenciar Preços", "ManagePrices", "Parking", null, new { @class = "btn-default" })</li>
+                            <li>@Html.ActionLink("Gerenciar Vagas", "ManageSpaces", "Parking", null, new { @class = "btn-default" })</li>
                         </ul>
                     </div>
                 </div>

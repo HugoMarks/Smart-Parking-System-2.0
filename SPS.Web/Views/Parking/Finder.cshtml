@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Encontre um estacionamento perto de você!";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<br/>
+<div class="container">
+    <div class="col-md-12">
+        @Html.Partial("~/Views/Parking/_FinderPartial.cshtml")
+    </div>
+
+    <div class="modal fade" id="parkingDetailsModal" tabindex="-1" role="dialog" aria-labelledby="parkingDetailsModalTitle" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="parkingDetailsModalTitle"></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container" id="parkingDetailsModalContent">
+                    </div>
+                </div>
+                @if (Request.IsAuthenticated)
+                {
+                    <div class="modal-footer">
+                        <button id="attachToParkingBtn" type="button" class="btn btn-success" data-dismiss="modal">Vincular-se</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    @if (Request.IsAuthenticated)
+    {
+        <div class="modal fade" id="confirmAttachModal" tabindex="-1" role="dialog" aria-labelledby="confirmAttachModalTitle" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="confirmAttachModalTitle">Você realmente deseja se vincular a esse estacionamento?</h4>
+                    </div>
+                    <div class="modal-body">
+                        Uma solicitação será enviada ao admistrador do estacionamento para análise.
+                        Caso seu vínculo seja confirmado, qualquer outro vínculo existente será removido.
+                        <br />
+                        Deseja continuar?
+                    </div>
+                    <div class="modal-footer">
+                        <button id="confirmAttachBtn" type="button" class="btn btn-success" data-dismiss="modal">Sim</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/parkingFinder.js")"></script>
+}
+

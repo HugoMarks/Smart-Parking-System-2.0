@@ -53,8 +53,16 @@ namespace SPS.BO
 
                 collaborator.Id = entity.Id;
                 context.Entry(entity).CurrentValues.SetValues(collaborator);
-                entity.Address = collaborator.Address;
-                entity.Parking = collaborator.Parking;
+
+                if (collaborator.Address != null)
+                {
+                    entity.Address = context.Addresses.SingleOrDefault(a => a.PostalCode == collaborator.Address.PostalCode);
+                }
+
+                if (collaborator.Parking != null)
+                {
+                    entity.Parking = context.Parkings.SingleOrDefault(p => p.CNPJ == collaborator.Parking.CNPJ);
+                }
 
                 context.SaveChanges();
             }
@@ -79,7 +87,10 @@ namespace SPS.BO
         {
             using (var context = new SPSDb())
             {
-                return context.Collaborators.ToList();
+                return context.Collaborators
+                    .Include("Parking")
+                    .Include("Address")
+                    .ToList();
             }
         }
     }

@@ -35,7 +35,8 @@ namespace SPS.Web.Extensions
                 LastName = model.LastName,
                 Password = passwordHash,
                 RG = model.RG,
-                Telephone = model.PhoneNumber
+                Telephone = model.PhoneNumber,
+                Complement = model.Complement
             };
         }
 
@@ -51,7 +52,8 @@ namespace SPS.Web.Extensions
                 LastName = model.LastName,
                 Password = passwordHash,
                 RG = model.RG,
-                Telephone = model.PhoneNumber
+                Telephone = model.PhoneNumber,
+                Complement = model.Complement
             };
         }
 

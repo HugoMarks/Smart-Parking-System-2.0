@@ -38,7 +38,7 @@ namespace SPS.Web.Controllers
         public ActionResult Edit()
         {
             var user = User.Identity.GetApplicationUser();
-            var client = BusinessManager.Instance.MontlyClients.FindAll().SingleOrDefault(c => c.Email == c.Email);
+            var client = BusinessManager.Instance.MontlyClients.FindAll().SingleOrDefault(c => c.Email == user.Email);
             var model = client.ToEditClientViewModel();
 
             return View(model);
@@ -117,40 +117,6 @@ namespace SPS.Web.Controllers
             BusinessManager.Instance.MontlyClients.Update(client);
 
             return RedirectToAction("Index", "Collaborator");
-        }
-
-        [HttpPost]
-        public ActionResult RequestParking(string parkingCNPJ)
-        {
-            try
-            {
-                var userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-                var user = User.Identity.GetApplicationUser();
-                var client = BusinessManager.Instance.MontlyClients.FindAll().SingleOrDefault(c => c.Email == c.Email);
-                var parking = BusinessManager.Instance.Parkings.Find(parkingCNPJ);
-
-                if (parking == null)
-                {
-                    return new HttpStatusCodeResult(HttpStatusCode.NotFound);
-                }
-
-                var localManagerUser = userManager.FindByEmail(parking.LocalManager.Email);
-                var message = @"Olá, {0}! O cliente {1} {2} gostaria de fazer parte de nossa rede!<br/> 
-                                Ele tem interesse no estacionamento {3} (CNPJ {4}).<br/>
-                                Por favor, responda o client no email {5} o mais rápido possível!
-                                <br/><br/>
-                                <b>Equipe Smart Parking System</b>";
-
-                message = string.Format(message, parking.LocalManager.FirstName, client.FirstName, client.LastName, parking.Name, parking.CNPJ, client.Email);
-
-                userManager.SendEmail(localManagerUser.Id, "Requisição de Vínculo", message);
-                return new HttpStatusCodeResult(HttpStatusCode.OK);
-            }
-            catch
-            {                
-            }
-
-            return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
         }
     }
 }
