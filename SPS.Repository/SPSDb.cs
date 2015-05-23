@@ -19,6 +19,7 @@ namespace SPS.Repository
         public SPSDb()
             : base("DefaultConnection")
         {
+            this.Configuration.LazyLoadingEnabled = false;
         }
 
         /// <summary>

@@ -17,6 +17,11 @@ namespace SPS.BO
                     throw new UniqueKeyViolationException(string.Format("There is already a local manager with CPF {0}.", localManager.CPF));
                 }
 
+                if (localManager.Address != null)
+                {
+                    localManager.Address = context.Addresses.SingleOrDefault(a => a.PostalCode == localManager.Address.PostalCode);
+                }
+
                 context.LocalManagers.Add(localManager);
                 context.SaveChanges();
             }

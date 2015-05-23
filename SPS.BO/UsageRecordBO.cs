@@ -22,6 +22,11 @@ namespace SPS.BO
                     BusinessManager.Instance.MontlyClients.Update(client);
                 }
 
+                if (usageRecord.Tag != null)
+                {
+                    usageRecord.Tag = context.Tags.Find(usageRecord.Tag.Id);
+                }
+
                 context.UsageRecords.Add(usageRecord);
                 context.SaveChanges();
             }

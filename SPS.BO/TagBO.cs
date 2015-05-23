@@ -12,6 +12,11 @@ namespace SPS.BO
         {
             using (var context = new SPSDb())
             {
+                if (tag.Client != null)
+                {
+                    tag.Client = context.Clients.SingleOrDefault(c => c.CPF == tag.Client.CPF);
+                }
+
                 context.Tags.Add(tag);
                 context.SaveChanges();
             }

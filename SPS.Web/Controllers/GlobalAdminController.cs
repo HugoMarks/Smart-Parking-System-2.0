@@ -30,18 +30,23 @@ namespace SPS.Web.Controllers
             if (BusinessManager.Instance.GlobalManagers.FindAll().Count == 0)
             {
                 ApplicationUserManager userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-                ApplicationUser user = new ApplicationUser
-                {
-                    Email = "ricardo@sps.com",
-                    FirstName = "Ricardo",
-                    LastName = "Souza",
-                    EmailConfirmed = true,
-                    UserName = "ricardo@sps.com",
-                    PhoneNumber = "(19) 99856-0989",
-                    UserType = UserType.GlobalAdmin
-                };
+                ApplicationUser user;
 
-                userManager.Create(user, "Ricardo12__");
+                if ((user = userManager.FindByEmail("ricardo@sps.com")) == null)
+                {
+                    user = new ApplicationUser
+                    {
+                        Email = "ricardo@sps.com",
+                        FirstName = "Ricardo",
+                        LastName = "Souza",
+                        EmailConfirmed = true,
+                        UserName = "ricardo@sps.com",
+                        PhoneNumber = "(19) 99856-0989",
+                        UserType = UserType.GlobalAdmin
+                    };
+
+                    userManager.Create(user, "Ricardo12__");
+                }
 
                 string cpf = "000.000.000-00";
                 GlobalManager globalManager = new GlobalManager

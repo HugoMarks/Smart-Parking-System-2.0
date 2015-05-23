@@ -18,6 +18,16 @@ namespace SPS.BO
                     throw new UniqueKeyViolationException(string.Format("There is already a collaborator with CPF {0}.", collaborator.CPF));
                 }
 
+                if (collaborator.Address != null)
+                {
+                    collaborator.Address = context.Addresses.SingleOrDefault(a => a.PostalCode == collaborator.Address.PostalCode);
+                }
+
+                if (collaborator.Parking != null)
+                {
+                    collaborator.Parking = context.Parkings.SingleOrDefault(p => p.CNPJ == collaborator.Parking.CNPJ);
+                }
+
                 context.Collaborators.Add(collaborator);
                 context.SaveChanges();
             }

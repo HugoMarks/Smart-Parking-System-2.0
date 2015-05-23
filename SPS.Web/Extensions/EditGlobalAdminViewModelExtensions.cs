@@ -54,18 +54,14 @@ namespace SPS.Web.Extensions
 
         private static Address GetAddress(EditGlobalAdminViewModel registerModel)
         {
-            return BusinessManager.Instance.Addresses.FindAll().
-                          SingleOrDefault(a => a.PostalCode == registerModel.PostalCode)
-                          ??
-                          new Address
-                          {
-                              City = registerModel.City,
-                              PostalCode = registerModel.PostalCode,
-                              Square = registerModel.Square,
-                              State = registerModel.State,
-                              Street = registerModel.Street
-                          };
-
+            return new Address
+            {
+                City = registerModel.City,
+                PostalCode = registerModel.PostalCode,
+                Square = registerModel.Square,
+                State = registerModel.State,
+                Street = registerModel.Street
+            };
         }
     }
 }

@@ -15,7 +15,7 @@
             </div>
             <div class="row">
                 
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="thumbnail btn-default dropdown">
                         <a id="dLabel" data-target="#" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
                             <img src="~/pictures/Balance.png" class="img-responsive img-menu">
@@ -30,7 +30,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="thumbnail btn-default dropdown">
                         <a id="dLabel" data-target="#" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
                             <img src="~/pictures/Users.png" class="img-responsive img-menu">
@@ -44,7 +44,7 @@
                         </ul>
                     </div>
                 </div>
-                @*<div class="col-md-3 ">
+                <!--<div class="col-md-3 ">
                     <div class="thumbnail btn-default dropdown">
                         <a id="dLabel" data-target="#" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
                             <img src="~/pictures/Car.png" class="img-responsive img-menu">
@@ -57,8 +57,8 @@
                             <li><a class="btn-default" href="#">Gerenciar Veículos</a></li>
                         </ul>
                     </div>
-                </div>*@
-                <div class="col-md-3 ">
+                </div>-->
+                <div class="col-md-4">
                     <div class="thumbnail btn-default dropdown">
                         <a id="dLabel" data-target="#" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
                             <img src="~/pictures/ControlPanel.png" class="img-responsive img-menu">
@@ -68,7 +68,7 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                            <li><a class="btn-default" href="#">Solicitar Vinculo</a></li>
+                            <li><a class="btn-default" href="#" id="requestParkingLink">Solicitar Vínculo</a></li>
                         </ul>
                     </div>
                 </div>*
@@ -77,3 +77,7 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script type="text/javascript" src="@Url.Content("~/Scripts/requestParking.js")"></script>
+}
