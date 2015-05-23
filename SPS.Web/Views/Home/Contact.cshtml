@@ -1,25 +1,59 @@
-﻿@{
-    ViewBag.Title = "Contato";
+﻿@model SPS.Web.Models.ContactViewModel
+@{
+    ViewBag.Title = "Fale Conosco";
 }
 
 <div class="row">
     <div class="col-md-12">
         <h2>@ViewBag.Title</h2>
-        <p>Informações</p>
+        <h4>Envie sua dúvida ou solicitação e responderemos o quanto antes!</h4>
     </div>
 </div>
 <div class="row">
-    <div class="col-md-12 hidden-xs">
-        <address>
-            <!-- One Microsoft Way<br />
-        Redmond, WA 98052-6399<br />
-        <abbr title="Phone">P:</abbr>
-        425.555.0100-->
-        </address>
-
-        <address>
-            <!-- <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-         <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>-->
-        </address>
-    </div>
+    @using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <hr />
+        <h5>
+            Através deste serviço, você poderá tirar qualquer tipo de dúvida à respeito de serviços, prazos, formas de pagamento entre outros assuntos. <br />
+            Sinta-se à vontade para expor sua dificuldade. Estamos prontos para atendê-lo de forma rápida e fácil.
+        </h5>
+        <hr />
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Name, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.PhoneNumber, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", id = "phoneTextBox" })
+                @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Subject, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.Subject, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Subject, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Message, new { @class = "control-label" })
+                @Html.TextAreaFor(m => m.Message, 10, 40, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Message, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-success" value="Enviar" />
+            </div>
+        </div>
+    }
 </div>
+  @section Scripts
+{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.mask.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/ContactRegister.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/validation.js")"></script>
+}

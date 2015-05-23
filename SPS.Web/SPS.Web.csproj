@@ -222,6 +222,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\RegisterLocalAdminViewModel.cs" />
     <Compile Include="Models\RegisterCollaboratorViewModel.cs" />
+    <Compile Include="Models\ContactViewModel.cs" />
     <Compile Include="Models\RegisterParkingViewModel.cs" />
     <Compile Include="Models\RegisterRecordViewModel.cs" />
     <Compile Include="Models\RootUserViewModel.cs" />
@@ -260,6 +261,7 @@
     <Content Include="Scripts\deleteCollaborator.js" />
     <Content Include="Scripts\editParking.js" />
     <Content Include="Scripts\jquery.mask.min.js" />
+    <Content Include="Scripts\ContactRegister.js" />
     <Content Include="Scripts\localManager.js" />
     <Content Include="Scripts\npm.js" />
     <Content Include="Scripts\parkingRegister.js" />
