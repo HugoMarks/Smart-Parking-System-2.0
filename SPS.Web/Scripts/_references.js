@@ -15,5 +15,8 @@
 /// <reference path="validation.js" />
 /// <reference path="selectparking.js" />
 /// <reference path="collaboratoraddrecord.js" />
+/// <reference path="deletecollaborator.js" />
+/// <reference path="editparking.js" />
+/// <reference path="requestparking.js" />
 
 

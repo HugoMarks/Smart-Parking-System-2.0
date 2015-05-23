@@ -18,6 +18,16 @@ namespace SPS.BO
                     throw new UniqueKeyViolationException("Esse admistrador já está associado a um estacionamento.");
                 }
 
+                if (parking.LocalManager != null)
+                {
+                    parking.LocalManager = context.LocalManagers.SingleOrDefault(lm => lm.CPF == parking.LocalManager.CPF);
+                }
+
+                if (parking.Address != null)
+                {
+                    parking.Address = context.Addresses.SingleOrDefault(a => a.PostalCode == parking.Address.PostalCode);
+                }
+
                 context.Parkings.Add(parking);
                 context.SaveChanges();
             }
@@ -42,8 +52,16 @@ namespace SPS.BO
                     return;
 
                 context.Entry(entity).CurrentValues.SetValues(parking);
-                entity.Address = parking.Address;
-                entity.LocalManager = parking.LocalManager;
+
+                if (parking.Address != null)
+                {
+                    entity.Address = context.Addresses.SingleOrDefault(a => a.PostalCode == parking.Address.PostalCode);
+                }
+
+                if (parking.LocalManager != null)
+                {
+                    entity.LocalManager = context.LocalManagers.SingleOrDefault(l => l.CPF == parking.LocalManager.CPF);
+                }
 
                 context.SaveChanges();
             }

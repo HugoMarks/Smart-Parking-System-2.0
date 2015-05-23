@@ -194,7 +194,9 @@
     <Compile Include="Controllers\TokenGeneratorController.cs" />
     <Compile Include="DataAnnotations\CNPJAttribute.cs" />
     <Compile Include="DataAnnotations\CPFAttribute.cs" />
+    <Compile Include="Extensions\ClientExtensions.cs" />
     <Compile Include="Extensions\CollaboratorExtensions.cs" />
+    <Compile Include="Extensions\EditClientViewModelExtenions.cs" />
     <Compile Include="Extensions\EditLocalAdminViewModelExtensions.cs" />
     <Compile Include="Extensions\EditCollaboratorViewModelExtensions.cs" />
     <Compile Include="Extensions\EditGlobalAdminViewModelExtensions.cs" />
@@ -208,12 +210,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201505220300558_Inheritance.cs" />
-    <Compile Include="Migrations\201505220300558_Inheritance.Designer.cs">
-      <DependentUpon>201505220300558_Inheritance.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\EditClientViewModel.cs" />
     <Compile Include="Models\EditGlobalAdminViewModel.cs" />
     <Compile Include="Models\EditLocalAdminViewModel.cs" />
     <Compile Include="Models\EditCollaboratorViewModel.cs" />
@@ -266,6 +264,7 @@
     <Content Include="Scripts\register.js" />
     <Content Include="Scripts\registerLocalAdmin.js" />
     <Content Include="Scripts\registerCollaborator.js" />
+    <Content Include="Scripts\requestParking.js" />
     <Content Include="Scripts\root.js" />
     <Content Include="Scripts\selectCollaborators.js" />
     <Content Include="Scripts\selectLocalAdmins.js" />
@@ -453,6 +452,7 @@
     <Content Include="Views\Parking\Register.cshtml" />
     <Content Include="Views\Parking\Edit.cshtml" />
     <Content Include="Views\GlobalAdmin\Edit.cshtml" />
+    <Content Include="Views\Client\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -489,11 +489,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\CorreiosService\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201505220300558_Inheritance.resx">
-      <DependentUpon>201505220300558_Inheritance.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -20,6 +20,11 @@ namespace SPS.BO
                     throw new UniqueKeyViolationException(string.Format("There is already a global manager with CPF {0}.", globalManager.CPF));
                 }
 
+                if (globalManager.Address != null)
+                {
+                    globalManager.Address = context.Addresses.SingleOrDefault(a => a.PostalCode == globalManager.Address.PostalCode);
+                }
+
                 context.GlobalManagers.Add(globalManager);
                 context.SaveChanges();
             }

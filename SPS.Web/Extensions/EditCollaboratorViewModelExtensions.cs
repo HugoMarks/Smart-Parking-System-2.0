@@ -58,18 +58,14 @@ namespace SPS.Web.Extensions
 
         private static Address GetAddress(EditCollaboratorViewModel registerModel)
         {
-            return BusinessManager.Instance.Addresses.FindAll().
-                          Where(a => a.PostalCode == registerModel.PostalCode)
-                          .FirstOrDefault() ??
-                          new Address
-                          {
-                              City = registerModel.City,
-                              PostalCode = registerModel.PostalCode,
-                              Square = registerModel.Square,
-                              State = registerModel.State,
-                              Street = registerModel.Street
-                          };
-
+            return new Address
+            {
+                City = registerModel.City,
+                PostalCode = registerModel.PostalCode,
+                Square = registerModel.Square,
+                State = registerModel.State,
+                Street = registerModel.Street
+            };
         }
     }
 }

@@ -18,6 +18,11 @@ namespace SPS.BO
                     throw new UniqueKeyViolationException(string.Format("There is already a client with CPF {0}.", client.CPF));
                 }
 
+                if (client.Address != null)
+                {
+                    client.Address = context.Addresses.SingleOrDefault(a => a.PostalCode == client.Address.PostalCode);
+                }
+
                 context.Clients.Add(client);
                 context.SaveChanges();
             }
@@ -44,7 +49,12 @@ namespace SPS.BO
         {
             using (var context = new SPSDb())
             {
-                return context.Clients.ToList();
+                return context.Clients
+                    .Include("Tags")
+                    .Include("Records")
+                    .Include("Parking")
+                    .Include("Address")
+                    .ToList();
             }
         }
 
@@ -77,9 +87,21 @@ namespace SPS.BO
 
                 client.Id = entity.Id;
                 context.Entry(entity).CurrentValues.SetValues(client);
-                entity.Address = client.Address;
-                entity.Parking = client.Parking;
-                entity.Tags = client.Tags;
+
+                if (client.Address != null)
+                {
+                    entity.Address = context.Addresses.SingleOrDefault(a => a.PostalCode == client.Address.PostalCode);
+                }
+
+                if (client.Parking != null)
+                {
+                    entity.Parking = context.Parkings.Find(client.Parking.CNPJ);
+                }
+
+                if (client.Tags != null)
+                {
+                    entity.Tags = client.Tags;
+                }
 
                 context.SaveChanges();
             }

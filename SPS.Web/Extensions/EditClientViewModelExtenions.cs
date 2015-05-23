@@ -8,22 +8,25 @@ using System.Web;
 
 namespace SPS.Web.Extensions
 {
-    public static class RegisterParkingViewModelExtensions
+    public static class EditClientViewModelExtenions
     {
-        public static Parking ToParking(this RegisterParkingViewModel model)
+        public static MonthlyClient ToClient(this EditClientViewModel model, string passwordHash)
         {
-            return new Parking
+            return new MonthlyClient
             {
-                CNPJ = model.CNPJ,
-                Name = model.Name,
-                PhoneNumber = model.PhoneNumber,
                 Address = GetAddress(model),
                 StreetNumber = int.Parse(model.Number),
-                LocalManager = new LocalManager { CPF = model.LocalAdmin }
+                CPF = model.CPF,
+                Email = model.Email,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Password = passwordHash,
+                RG = model.RG,
+                Telephone = model.PhoneNumber
             };
         }
 
-        private static Address GetAddress(RegisterParkingViewModel registerModel)
+        private static Address GetAddress(EditClientViewModel registerModel)
         {
             return new Address
             {
@@ -33,6 +36,7 @@ namespace SPS.Web.Extensions
                 State = registerModel.State,
                 Street = registerModel.Street
             };
+
         }
     }
 }
