@@ -211,6 +211,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ContactViewModel.cs" />
     <Compile Include="Models\EditClientViewModel.cs" />
     <Compile Include="Models\EditGlobalAdminViewModel.cs" />
     <Compile Include="Models\EditLocalAdminViewModel.cs" />
@@ -255,6 +256,7 @@
     <Content Include="pictures\Statistics.png" />
     <Content Include="pictures\Users.png" />
     <Content Include="Scripts\collaboratorAddRecord.js" />
+    <Content Include="Scripts\ContactRegister.js" />
     <Content Include="Scripts\deleteCollaborator.js" />
     <Content Include="Scripts\editParking.js" />
     <Content Include="Scripts\globalAdminEdit.js" />
