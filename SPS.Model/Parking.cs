@@ -58,6 +58,12 @@ namespace SPS.Model
             set;
         }
 
+        public virtual IList<Price> Prices
+        {
+            get;
+            set;
+        }
+
         public virtual LocalManager LocalManager
         {
             get;

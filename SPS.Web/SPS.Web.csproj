@@ -191,6 +191,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocalAdminController.cs" />
     <Compile Include="Controllers\ParkingController.cs" />
+    <Compile Include="Controllers\PriceController.cs" />
     <Compile Include="Controllers\TokenGeneratorController.cs" />
     <Compile Include="DataAnnotations\CNPJAttribute.cs" />
     <Compile Include="DataAnnotations\CPFAttribute.cs" />
@@ -203,6 +204,7 @@
     <Compile Include="Extensions\IdentityExtensions.cs" />
     <Compile Include="Extensions\LocalAdminExtensions.cs" />
     <Compile Include="Extensions\ParkingExtensions.cs" />
+    <Compile Include="Extensions\PriceExtensions.cs" />
     <Compile Include="Extensions\RegisterCollaboratorViewModelExtensions.cs" />
     <Compile Include="Extensions\RegisterParkingViewModelExtensions.cs" />
     <Compile Include="Extensions\RegisterViewModelExtensions.cs" />
@@ -219,6 +221,7 @@
     <Compile Include="Models\FullEditLocalAdminViewModel.cs" />
     <Compile Include="Models\FullEditCollaboratorViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\PriceViewModel.cs" />
     <Compile Include="Models\RegisterLocalAdminViewModel.cs" />
     <Compile Include="Models\RegisterCollaboratorViewModel.cs" />
     <Compile Include="Models\RegisterParkingViewModel.cs" />
@@ -237,6 +240,9 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-datetimepicker.css" />
+    <Content Include="Content\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\timepicker.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -258,6 +264,8 @@
     <Content Include="pictures\ManageUsers.png" />
     <Content Include="pictures\Statistics.png" />
     <Content Include="pictures\Users.png" />
+    <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\collaboratorAddRecord.js" />
     <Content Include="Scripts\ContactRegister.js" />
     <Content Include="Scripts\deleteCollaborator.js" />
@@ -266,6 +274,12 @@
     <Content Include="Scripts\gmaps.js" />
     <Content Include="Scripts\jquery.mask.min.js" />
     <Content Include="Scripts\localManager.js" />
+    <Content Include="Scripts\managePrice.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\priceList.js" />
     <Content Include="Scripts\npm.js" />
     <Content Include="Scripts\parkingFinder.js" />
     <Content Include="Scripts\parkingRegister.js" />
@@ -277,6 +291,7 @@
     <Content Include="Scripts\selectCollaborators.js" />
     <Content Include="Scripts\selectLocalAdmins.js" />
     <Content Include="Scripts\selectParking.js" />
+    <Content Include="Scripts\timepicker.js" />
     <Content Include="Scripts\token.js" />
     <Content Include="Scripts\validation.js" />
     <Content Include="Scripts\_references.js" />
@@ -463,6 +478,9 @@
     <Content Include="Views\Client\Edit.cshtml" />
     <Content Include="Views\Parking\Finder.cshtml" />
     <Content Include="Views\Parking\_FinderPartial.cshtml" />
+    <Content Include="Views\Price\Manage.cshtml" />
+    <Content Include="Views\Price\Add.cshtml" />
+    <Content Include="Views\Price\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

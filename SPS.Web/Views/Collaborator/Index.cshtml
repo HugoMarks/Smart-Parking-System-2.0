@@ -1,4 +1,6 @@
-﻿@model SPS.Web.Models.SaveUsageRecordViewModel
+﻿<link rel="stylesheet" href="~/Content/bootstrap-datetimepicker.min.css" />
+
+@model SPS.Web.Models.SaveUsageRecordViewModel
 @using Microsoft.AspNet.Identity
 @{
     ViewBag.Title = "Index";
@@ -130,5 +132,7 @@
 {
     <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.mask.min.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/validation.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/moment-with-locales.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/bootstrap-datetimepicker.min.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/collaboratorAddRecord.js")"></script>
 }

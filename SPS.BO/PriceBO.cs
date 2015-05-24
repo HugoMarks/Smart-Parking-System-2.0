@@ -1,4 +1,5 @@
-﻿using SPS.Model;
+﻿using SPS.BO.Exceptions;
+using SPS.Model;
 using SPS.Repository;
 using System;
 using System.Collections.Generic;
@@ -12,16 +13,28 @@ namespace SPS.BO
         {
             using (var context = new SPSDb())
             {
+                if (price.Parking.Prices.Any(p => ContainsPrice(p, price)))
+                {
+                    throw new UniqueKeyViolationException("Já existe um preço nesse intervalo de tempo");
+                }
+
+                if (price.Parking != null)
+                {
+                    price.Parking = context.Parkings.Find(price.Parking.CNPJ);
+                }
+
                 context.Prices.Add(price);
                 context.SaveChanges();
             }
         }
 
-        public virtual Price Find(params object[] keys)
+        public virtual Price Find(int id)
         {
             using (var context = new SPSDb())
             {
-                return context.Prices.Find(keys);
+                return context.Prices
+                    .Include("Parking")
+                    .SingleOrDefault(p => p.Id == id);
             }
         }
 
@@ -29,7 +42,9 @@ namespace SPS.BO
         {
             using (var context = new SPSDb())
             {
-                return context.Prices.ToList();
+                return context.Prices
+                    .Include("Parking")
+                    .ToList();
             }
         }
 
@@ -51,11 +66,22 @@ namespace SPS.BO
                 if (entity == null)
                     return;
 
+                price.Id = entity.Id;
                 context.Entry(entity).CurrentValues.SetValues(price);
-                entity.Parking = price.Parking;
+
+                if (price.Parking != null)
+                {
+                    entity.Parking = context.Parkings.Find(entity.Parking.CNPJ);
+                }
 
                 context.SaveChanges();
             }
+        }
+
+        private bool ContainsPrice(Price price1, Price price2)
+        {
+            return (price1.StartTime == price2.StartTime && price1.EndTime == price2.EndTime) || 
+                (price2.StartTime >= price1.StartTime && price2.EndTime <= price1.EndTime);
         }
     }
 }
