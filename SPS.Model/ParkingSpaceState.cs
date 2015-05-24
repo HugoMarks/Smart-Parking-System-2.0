@@ -15,5 +15,6 @@ namespace SPS.Model
     {
         Busy,
         Free,
+        Maintenance
     }
 }

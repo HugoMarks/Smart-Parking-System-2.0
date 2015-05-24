@@ -191,6 +191,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocalAdminController.cs" />
     <Compile Include="Controllers\ParkingController.cs" />
+    <Compile Include="Controllers\ParkingSpaceController.cs" />
     <Compile Include="Controllers\PriceController.cs" />
     <Compile Include="Controllers\TokenGeneratorController.cs" />
     <Compile Include="DataAnnotations\CNPJAttribute.cs" />
@@ -204,6 +205,8 @@
     <Compile Include="Extensions\IdentityExtensions.cs" />
     <Compile Include="Extensions\LocalAdminExtensions.cs" />
     <Compile Include="Extensions\ParkingExtensions.cs" />
+    <Compile Include="Extensions\ParkingSpaceStateExtensions.cs" />
+    <Compile Include="Extensions\ParkingSpaceViewModelExtensions.cs" />
     <Compile Include="Extensions\PriceExtensions.cs" />
     <Compile Include="Extensions\RegisterCollaboratorViewModelExtensions.cs" />
     <Compile Include="Extensions\RegisterParkingViewModelExtensions.cs" />
@@ -221,6 +224,7 @@
     <Compile Include="Models\FullEditLocalAdminViewModel.cs" />
     <Compile Include="Models\FullEditCollaboratorViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ParkingSpaceViewModel.cs" />
     <Compile Include="Models\PriceViewModel.cs" />
     <Compile Include="Models\RegisterLocalAdminViewModel.cs" />
     <Compile Include="Models\RegisterCollaboratorViewModel.cs" />
@@ -292,6 +296,7 @@
     <Content Include="Scripts\selectCollaborators.js" />
     <Content Include="Scripts\selectLocalAdmins.js" />
     <Content Include="Scripts\selectParking.js" />
+    <Content Include="Scripts\spaceList.js" />
     <Content Include="Scripts\timepicker.js" />
     <Content Include="Scripts\token.js" />
     <Content Include="Scripts\validation.js" />
@@ -482,6 +487,9 @@
     <Content Include="Views\Price\Manage.cshtml" />
     <Content Include="Views\Price\Add.cshtml" />
     <Content Include="Views\Price\Edit.cshtml" />
+    <Content Include="Views\ParkingSpace\Add.cshtml" />
+    <Content Include="Views\ParkingSpace\Edit.cshtml" />
+    <Content Include="Views\ParkingSpace\Manage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
