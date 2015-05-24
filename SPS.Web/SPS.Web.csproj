@@ -264,6 +264,7 @@
     <Content Include="pictures\Car.png" />
     <Content Include="pictures\Companies_Icon_128.png" />
     <Content Include="pictures\ControlPanel.png" />
+    <Content Include="pictures\fundoSobre.jpg" />
     <Content Include="pictures\logo.png" />
     <Content Include="pictures\ManageUsers.png" />
     <Content Include="pictures\Statistics.png" />
