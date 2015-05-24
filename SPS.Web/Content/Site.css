@@ -76,3 +76,13 @@ textarea {
 .mouse-hand:hover {
     cursor: pointer;
 }
+@media screen and (max-width: 768px) {
+   .textoSobre {
+        color: black; 
+   }
+}
+@media screen and (min-width: 769px) {
+   .textoSobre {
+        color: white; 
+   }
+}
