@@ -1,0 +1,55 @@
+﻿@using SPS.Web.Extensions
+@using SPS.Model
+@model SPS.Web.Models.ParkingSpaceViewModel
+@{
+    ViewBag.Title = "Edite uma vaga";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var names = new List<Tuple<string, string>>()
+    {
+        new Tuple<string, string>(ParkingSpaceState.Free.GetName(), ((int)ParkingSpaceState.Free).ToString()),
+        new Tuple<string, string>(ParkingSpaceState.Busy.GetName(), ((int)ParkingSpaceState.Busy).ToString()),
+        new Tuple<string, string>(ParkingSpaceState.Maintenance.GetName(), ((int)ParkingSpaceState.Maintenance).ToString())
+    };
+
+    var items = names.Select(pair => new SelectListItem { Value = pair.Item2, Text = pair.Item1 });
+}
+
+<h2>@ViewBag.Title.</h2>
+
+@Html.ValidationSummary()
+
+@using (Html.BeginForm("Save", "ParkingSpace", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.Id)
+    <hr />
+
+    <div class="col-md-6">
+        <div class="form-group">
+            @Html.LabelFor(m => m.Number, new { @class = "control-label" })
+            <div class="bootstrap-timepicker">
+                @Html.TextBoxFor(m => m.Number, new { @class = "form-control input-time" })
+            </div>
+            @Html.ValidationMessageFor(m => m.Number, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Status, new { @class = "control-label" })
+            <div class="bootstrap-timepicker">
+                @Html.DropDownListFor(m => m.Status, @items, "Selecione um estado para a vaga", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Status, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" class="btn btn-success" value="Salvar" />
+        </div>
+    </div>
+}
+
+@section Scripts {
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.mask.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/validation.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/managePrice.js")"></script>
+}

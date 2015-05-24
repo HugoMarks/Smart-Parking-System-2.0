@@ -1,0 +1,41 @@
+﻿@using SPS.BO
+@using SPS.Web.Extensions
+@{
+    ViewBag.Title = "Gerencie as vagas do seu estacionamento";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var spaces = BusinessManager.Instance.ParkingsSpaces.FindAll().OrderBy(s => s.Number);
+}
+
+<h2>@ViewBag.Title.</h2>
+
+
+<div class="container">
+    <h4>@Html.ActionLink("+ Adicione uma nova vaga", "Add", null, new { @class = "btn-default" })</h4>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    #
+                </th>
+                <th>
+                    Estado
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var space in spaces)
+            {
+                <tr data-space-number="@space.Number" class="mouse-hand">
+                    <th scope="row">@space.Number</th>
+                    <td>@space.Status.GetName()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script type="text/javascript" src="@Url.Content("~/Scripts/spaceList.js")"></script>
+}

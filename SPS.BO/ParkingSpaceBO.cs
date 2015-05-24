@@ -1,4 +1,5 @@
-﻿using SPS.Model;
+﻿using SPS.BO.Exceptions;
+using SPS.Model;
 using SPS.Repository;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,16 @@ namespace SPS.BO
         {
             using (var context = new SPSDb())
             {
+                if (parkingSpace.Parking.Spaces.Any(ps => ps.Number == parkingSpace.Number))
+                {
+                    throw new UniqueKeyViolationException("O estacionamento da vaga já contém uma vaga com o número especificado");
+                }
+
+                if (parkingSpace.Parking != null)
+                {
+                    parkingSpace.Parking = context.Parkings.Find(parkingSpace.Parking.CNPJ);
+                }
+
                 context.ParkingSpaces.Add(parkingSpace);
                 context.SaveChanges();
             }
@@ -36,19 +47,34 @@ namespace SPS.BO
                     return;
 
                 context.Entry(entity).CurrentValues.SetValues(parkingSpace);
-                entity.Parking = parkingSpace.Parking;
+
+                if (parkingSpace.Parking != null)
+                {
+                    parkingSpace.Parking = context.Parkings.Find(parkingSpace.Parking.CNPJ);
+                }
+
                 context.SaveChanges();
             }
         }
 
-        public virtual ParkingSpace Find(int number)
+        public virtual ParkingSpace Find(int id)
         {
-            throw new NotImplementedException();
+            using (var context = new SPSDb())
+            {
+                return context.ParkingSpaces
+                    .Include("Parking")
+                    .SingleOrDefault(ps => ps.Id == id);
+            }
         }
 
         public virtual IList<ParkingSpace> FindAll()
         {
-            throw new NotImplementedException();
+            using (var context = new SPSDb())
+            {
+                return context.ParkingSpaces
+                    .Include("Parking")
+                    .ToList();
+            }
         }
     }
 }
