@@ -1,0 +1,52 @@
+﻿@using SPS.BO
+@{
+    ViewBag.Title = "Gerencie os preços do seu estacionamento";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var count = 0;
+    var prices = BusinessManager.Instance.Prices.FindAll().OrderBy(p => p.StartTime);
+}
+
+<h2>@ViewBag.Title.</h2>
+
+
+<div class="container">    
+    <h4>@Html.ActionLink("+ Adicione um novo preço", "Add", null, new { @class = "btn-default" })</h4>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    #
+                </th>
+                <th>
+                    Início
+                </th>
+                <th>
+                    Término
+                </th>
+                <th>
+                    Valor
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var price in prices)
+            {
+                count++;
+
+                <tr data-price="@price.Id" class="mouse-hand">
+                    <th scope="row">@count</th>
+                    <td>@price.StartTime.ToString(@"hh\:mm")</td>
+                    <td>@price.EndTime.ToString(@"hh\:mm")</td>
+                    <td>@price.Value</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script type="text/javascript" src="@Url.Content("~/Scripts/priceList.js")"></script>
+}
+

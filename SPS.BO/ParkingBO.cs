@@ -63,6 +63,7 @@ namespace SPS.BO
                     entity.LocalManager = context.LocalManagers.SingleOrDefault(l => l.CPF == parking.LocalManager.CPF);
                 }
 
+                entity.Prices = parking.Prices;
                 context.SaveChanges();
             }
         }
@@ -89,6 +90,7 @@ namespace SPS.BO
             using (var context = new SPSDb())
             {
                 return new List<Parking>(context.Parkings
+                    .Include("Prices")
                     .Include("Collaborators")
                     .Include("LocalManager")
                     .Include("Address")

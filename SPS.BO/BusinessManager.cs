@@ -23,7 +23,7 @@ namespace SPS.BO
         private GlobalManagerBO globalManagerBO;
         private ParkingBO parkingBO;
         //private ParkingSpaceBO parkingSpaceBO;
-        //private PriceBO priceBO;
+        private PriceBO priceBO;
         private AddressBO addressBO;
         private TagBO tagBO;
         private UsageRecordBO usageRecordsBO;
@@ -36,7 +36,7 @@ namespace SPS.BO
             this.globalManagerBO = new GlobalManagerBO();
             this.parkingBO = new ParkingBO();
             //this.parkingSpaceBO = new ParkingSpaceBO();
-            //this.priceBO = new PriceBO();
+            this.priceBO = new PriceBO();
             this.addressBO = new AddressBO();
             this.tagBO = new TagBO();
             this.usageRecordsBO = new UsageRecordBO();
@@ -91,13 +91,13 @@ namespace SPS.BO
         //}
 
 
-        //public PriceBO Prices
-        //{
-        //    get
-        //    {
-        //        return this.priceBO;
-        //    }
-        //}
+        public PriceBO Prices
+        {
+            get
+            {
+                return this.priceBO;
+            }
+        }
 
 
         public AddressBO Addresses

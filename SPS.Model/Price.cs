@@ -6,6 +6,8 @@
 //------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 
@@ -13,6 +15,8 @@ namespace SPS.Model
 {
     public class Price
     {
+        [Index]
+        [Key]
         public int Id 
         { 
             get; 
@@ -25,7 +29,7 @@ namespace SPS.Model
             set;
         }
 
-        public virtual uint MinHours
+        public virtual TimeSpan StartTime
         {
             get;
             set;
@@ -37,7 +41,7 @@ namespace SPS.Model
             set;
         }
 
-        public virtual uint MaxHours
+        public virtual TimeSpan EndTime
         {
             get;
             set;

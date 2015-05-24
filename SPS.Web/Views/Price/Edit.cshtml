@@ -1,0 +1,53 @@
+﻿<link href="~/Content/timepicker.css" rel="stylesheet" type="text/css">
+
+@model SPS.Web.Models.PriceViewModel
+@{
+    ViewBag.Title = "Edite um preço";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+@Html.ValidationSummary()
+
+@using (Html.BeginForm("Save", "Price", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.Id);
+    <hr />
+
+    <div class="col-md-6">
+        <div class="form-group">
+            @Html.LabelFor(m => m.StartTime, new { @class = "control-label" })
+            <div class="bootstrap-timepicker">
+                @Html.TextBoxFor(m => m.StartTime, new { @class = "form-control input-time" })
+            </div>
+            @Html.ValidationMessageFor(m => m.StartTime, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.EndTime, new { @class = "control-label" })
+            <div class="bootstrap-timepicker">
+                @Html.TextBoxFor(m => m.EndTime, new { @class = "form-control input-time" })
+                @Html.ValidationMessageFor(m => m.EndTime, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Price, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Price, new { @class = "form-control input-price" })
+            @Html.ValidationMessageFor(m => m.Price, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <input type="submit" class="btn btn-success" value="Salvar" />
+        </div>
+    </div>
+}
+
+@section Scripts {
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.mask.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/validation.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/timepicker.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/managePrice.js")"></script>
+}
