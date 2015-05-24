@@ -80,6 +80,9 @@ textarea {
    .textoSobre {
         color: black; 
    }
+   #rodape{
+       margin-top: 10em;
+   }
 }
 @media screen and (min-width: 769px) {
    .textoSobre {

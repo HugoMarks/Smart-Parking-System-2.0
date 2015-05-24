@@ -3,18 +3,19 @@
 }
 
 <!--<h3>@ViewBag.Message</h3>-->
-<div class="row">
-    <div class="col-md-12">
-        <h2>@ViewBag.Title</h2>
-        <hr/>
-    </div>
-</div>
-<div class="col-md-12">
+
+<div class="container" style="position:relative; clear: both;">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>@ViewBag.Title</h2>
+                <hr />
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-12  col-sm-12 hidden-xs " style="position:relative; top:0em; left:0em; min-height:50%; min-width:50%;">
                 <img src="~/pictures/fundoSobre.jpg" alt="SPS" class="img-responsive img-rounded">
             </div>
-            <div class="col-md-6  col-sm-6 col-xs-8 textoSobre" style="position:absolute; top:2em; left:2.5em; font-size: 100%;">
+            <div class="col-md-6  col-sm-6 col-xs-8 textoSobre" style="position:absolute; top:8em; left:2.5em; font-size: 100%; margin-bottom: 100px;">
                 <span>
                     Smart Parking System é uma companhia brasileira de gestão de estacionamento
                     para empresas de todos os tamanhos a pequenos estacionamentos privados
@@ -29,6 +30,29 @@
                     <br /><br />
                     <b>Smart Parking System. A gente trabalha em seu benefício.</b>
                 </span>
+                <div class="hidden-sm">
+                    <span>
+                        <br /><br />
+                        <p><b>Desenvolvedores: </b></p>
+                    </span>
+                    <div class="hidden-sm">
+                        <img src="~/pictures/dev2.png" alt="SPS" class="img-responsive" style="float: left; max-width:20%;">
+                    </div>
+                    <span><br /><br />André Matheus Nicoletti</span>
+                    <div class="hidden-sm">
+                        <img src="~/pictures/dev1.png" alt="SPS" class="img-responsive" style="float: left; max-width:20%;">
+                    </div>
+                    <span><br /><br />Hugo Marques Casarini</span>
+                    <div class="hidden-sm">
+                        <img src="~/pictures/dev3.png" alt="SPS" class="img-responsive" style="float: left; max-width:20%;">
+
+                    </div>
+                    <span><br /><br />Thamer El Ayssami </span>
+                    @*<div class="hidden-sm">
+                        <img src="~/pictures/dev4.png" alt="SPS" class="img-responsive" style="float: left; width:20%;">
+                    </div>
+                    <span><br /><br />Yago Elias</span>*@
+                </div>
             </div>
         </div>
         <hr />
