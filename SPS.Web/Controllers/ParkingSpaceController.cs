@@ -51,7 +51,9 @@ namespace SPS.Web.Controllers
                 return View(model);
             }
 
-            return View("Manage");
+            var spaces = GetParkingFromCurrentLocalAdmin().Spaces;
+
+            return View("Manage", spaces);
         }
 
         public ActionResult Edit(string id)
@@ -72,7 +74,10 @@ namespace SPS.Web.Controllers
 
             space.Parking = GetParkingFromCurrentLocalAdmin();
             BusinessManager.Instance.ParkingsSpaces.Update(space);
-            return View("Manage");
+
+            var spaces = GetParkingFromCurrentLocalAdmin().Spaces;
+
+            return View("Manage", spaces);
         }
 
         private Parking GetParkingFromCurrentLocalAdmin()

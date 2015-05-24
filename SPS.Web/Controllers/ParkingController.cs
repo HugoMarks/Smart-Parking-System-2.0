@@ -133,7 +133,7 @@ namespace SPS.Web.Controllers
                 var localManagerUser = userManager.FindByEmail(parking.LocalManager.Email);
                 var message = @"Olá, {0}! {1} {2} gostaria de fazer parte de nossa rede!<br/>
                                 Ele(a) tem interesse no estacionamento ""{3}"" ({4}).<br/>
-                                Por favor, responda o cliente o mais rápido possível!
+                                Por favor, responda o(a) cliente o mais rápido possível!
                                 <br/><br/>
                                 Dados do(a) cliente para contato:
                                 <br />

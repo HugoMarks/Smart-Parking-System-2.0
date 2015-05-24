@@ -41,7 +41,7 @@ namespace SPS.BO
         {
             using (var context = new SPSDb())
             {
-                var entity = context.ParkingSpaces.Find(parkingSpace.Number);
+                var entity = context.ParkingSpaces.Find(parkingSpace.Id);
 
                 if (entity == null)
                     return;

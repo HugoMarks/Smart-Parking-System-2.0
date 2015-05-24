@@ -28,7 +28,7 @@
         <tbody>
             @foreach (var space in Model)
             {
-                <tr data-space-number="@space.Number" class="mouse-hand">
+                <tr data-space-number="@space.Id" class="mouse-hand">
                     <th scope="row">@space.Number</th>
                     <td>@space.Status.GetName()</td>
                 </tr>
