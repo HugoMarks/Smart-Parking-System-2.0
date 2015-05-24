@@ -501,6 +501,7 @@
     <Content Include="Views\ParkingSpace\Manage.cshtml" />
     <Content Include="Views\GlobalAdmin\Billing.cshtml" />
     <Content Include="Views\GlobalAdmin\_BillingPartial.cshtml" />
+    <Content Include="Views\Parking\EditLocal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

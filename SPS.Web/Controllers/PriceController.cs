@@ -16,7 +16,14 @@ namespace SPS.Web.Controllers
     {
         public ActionResult Manage()
         {
-            return View();
+            if (Request.IsAuthenticated)
+            {
+                var prices = GetParkingFromCurrentLocalAdmin().Prices;
+
+                return View(prices);
+            }
+
+            return RedirectToAction("Login", "Account");
         }
 
         public ActionResult Add()
@@ -43,8 +50,8 @@ namespace SPS.Web.Controllers
                 ModelState.AddModelError("", "Já existe um preço nesse intervalo de horário");
                 return View(model);
             }
-
-            return View("Manage");
+            var prices = GetParkingFromCurrentLocalAdmin().Prices;
+            return View("Manage", prices);
         }
 
         public ActionResult Edit(string id)
@@ -66,7 +73,10 @@ namespace SPS.Web.Controllers
 
             price.Id = model.Id;
             BusinessManager.Instance.Prices.Update(price);
-            return View("Manage");
+
+            var prices = GetParkingFromCurrentLocalAdmin().Prices;
+
+            return View("Manage",prices);
         }
 
         private Parking GetParkingFromCurrentLocalAdmin()

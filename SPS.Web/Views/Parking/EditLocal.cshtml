@@ -4,20 +4,21 @@
     ViewBag.Title = "Edite um estacionamento";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-    var parkings = BusinessManager.Instance.Parkings.FindAll();
-    var localAdmins = BusinessManager.Instance.LocalManagers.FindAll().Where(l => !parkings.Any(p => p.LocalManager.CPF == l.CPF) || l.CPF == ViewBag.LocalAdminCPF);
+    var localAdmins = BusinessManager.Instance.LocalManagers.FindAll();
     var items = localAdmins.Select(l => new SelectListItem()
-        {
-            Text = l.FirstName + " " + l.LastName + " (" + l.CPF + ")",
-            Value = l.CPF               
-        });
+    {
+        Text = l.FirstName + " " + l.LastName + " (" + l.CPF + ")",
+        Value = l.CPF
+    }).ToList();
+
+    items[ViewBag.LocalAdminIndex].Selected = true;
 }
 
 <h2>@ViewBag.Title.</h2>
 
 <h4>Crie uma nova conta</h4>
 
-@using (Html.BeginForm("SaveChanges", "Parking", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("SaveChangesLocal", "Parking", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     <hr />
@@ -97,4 +98,3 @@
     <script type="text/javascript" src="@Url.Content("~/Scripts/validation.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/parkingRegister.js")"></script>
 }
-

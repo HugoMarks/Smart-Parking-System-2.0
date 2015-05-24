@@ -1,10 +1,12 @@
 ﻿@using SPS.BO
+@using SPS.Web.Extensions
+@using SPS.Model
+@model IList<Price>
 @{
     ViewBag.Title = "Gerencie os preços do seu estacionamento";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
     var count = 0;
-    var prices = BusinessManager.Instance.Prices.FindAll().OrderBy(p => p.StartTime);
 }
 
 <h2>@ViewBag.Title.</h2>
@@ -31,7 +33,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var price in prices)
+            @foreach (var price in Model)
             {
                 count++;
 

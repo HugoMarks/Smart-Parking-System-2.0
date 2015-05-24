@@ -50,19 +50,44 @@ namespace SPS.Web.Controllers
             return View(model);
         }
 
-        public ActionResult Edit()
+        
+         [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(FormCollection form)
         {
-            var user = User.Identity.GetApplicationUser();
+            //obtem o estacionamento procurado
+            var selectedCNPJ = form["ParkingSelectList"];
+            var parking = BusinessManager.Instance.Parkings.Find(selectedCNPJ);
+            
+            //obtem o dono deste estcionamento
+            var user = BusinessManager.Instance.LocalManagers.Find(parking.LocalManager.CPF);
+
+             //obtem o index deste administrador para preencher futuramente o combobox
             var localAdmins = BusinessManager.Instance.LocalManagers.FindAll().ToList();
-            var localAdmin = localAdmins.SingleOrDefault(l => l.Email == user.Email);
             var index = localAdmins.FindIndex(l => l.Email == user.Email);
-            var parking = BusinessManager.Instance.Parkings.FindAll().SingleOrDefault(p => p.LocalManager.CPF == localAdmin.CPF);
+
+             //transforma para model as irformações a serem alteradas
             var model = parking.ToRegisterParkingViewModel();
+ 
+             ViewBag.LocalAdminCPF = user.CPF;
 
-            ViewBag.LocalAdminIndex = index;
+             return View(model);
+         }
 
-            return View(model);
-        }
+         public ActionResult EditLocal()
+         {
+             var user = User.Identity.GetApplicationUser();
+             var localAdmins = BusinessManager.Instance.LocalManagers.FindAll().ToList();
+             var localAdmin = localAdmins.SingleOrDefault(l => l.Email == user.Email);
+             var index = localAdmins.FindIndex(l => l.Email == user.Email);
+             var parking = BusinessManager.Instance.Parkings.FindAll().SingleOrDefault(p => p.LocalManager.CPF == localAdmin.CPF);
+             var model = parking.ToRegisterParkingViewModel();
+
+             ViewBag.LocalAdminIndex = index;
+
+             return View(model);
+         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -79,6 +104,31 @@ namespace SPS.Web.Controllers
                     BusinessManager.Instance.Parkings.Update(parking);
 
                     return RedirectToAction("Index", "GlobalAdmin");
+                }
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [AllowAnonymous]
+        public ActionResult SaveChangesLocal(RegisterParkingViewModel model)
+        {
+            //var user = User.Identity.GetApplicationUser();
+            //var localAdmin = BusinessManager.Instance.LocalManagers.FindAll().SingleOrDefault(c => c.Email == user.Email);
+            //model.LocalAdmin = localAdmin.CPF;
+
+            if (ModelState.IsValid)
+            {
+                Parking parking = BusinessManager.Instance.Parkings.Find(model.CNPJ);
+
+                if (parking != null)
+                {
+                    parking = model.ToParking();
+                    BusinessManager.Instance.Parkings.Update(parking);
+
+                    return RedirectToAction("Index", "LocalAdmin");
                 }
             }
 
