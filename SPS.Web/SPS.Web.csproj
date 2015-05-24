@@ -264,6 +264,7 @@
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\collaboratorAddRecord.js" />
+    <Content Include="Scripts\ContactRegister.js" />
     <Content Include="Scripts\deleteCollaborator.js" />
     <Content Include="Scripts\editParking.js" />
     <Content Include="Scripts\globalAdminEdit.js" />
