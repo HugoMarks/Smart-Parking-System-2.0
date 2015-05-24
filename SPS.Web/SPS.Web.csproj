@@ -184,6 +184,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Common\ApplicationConfig.cs" />
+    <Compile Include="Common\BillingHelper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\CollaboratorController.cs" />
@@ -196,6 +197,7 @@
     <Compile Include="Controllers\TokenGeneratorController.cs" />
     <Compile Include="DataAnnotations\CNPJAttribute.cs" />
     <Compile Include="DataAnnotations\CPFAttribute.cs" />
+    <Compile Include="Extensions\BillingExtensions.cs" />
     <Compile Include="Extensions\ClientExtensions.cs" />
     <Compile Include="Extensions\CollaboratorExtensions.cs" />
     <Compile Include="Extensions\EditClientViewModelExtenions.cs" />
@@ -216,6 +218,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BillingViewModel.cs" />
+    <Compile Include="Models\GenerateBillingViewModel.cs" />
     <Compile Include="Models\ContactViewModel.cs" />
     <Compile Include="Models\EditClientViewModel.cs" />
     <Compile Include="Models\EditGlobalAdminViewModel.cs" />
@@ -275,6 +279,7 @@
     <Content Include="Scripts\ContactRegister.js" />
     <Content Include="Scripts\deleteCollaborator.js" />
     <Content Include="Scripts\editParking.js" />
+    <Content Include="Scripts\generateBilling.js" />
     <Content Include="Scripts\globalAdminEdit.js" />
     <Content Include="Scripts\gmaps.js" />
     <Content Include="Scripts\jquery.mask.min.js" />
@@ -490,6 +495,8 @@
     <Content Include="Views\ParkingSpace\Add.cshtml" />
     <Content Include="Views\ParkingSpace\Edit.cshtml" />
     <Content Include="Views\ParkingSpace\Manage.cshtml" />
+    <Content Include="Views\GlobalAdmin\Billing.cshtml" />
+    <Content Include="Views\GlobalAdmin\_BillingPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

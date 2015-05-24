@@ -19,6 +19,7 @@ using SPS.Repository;
 using SPS.Web.Extensions;
 using SPS.Model;
 using SPS.Security;
+using SPS.Web.Common;
 
 namespace SPS.Web.Controllers
 {
@@ -176,6 +177,20 @@ namespace SPS.Web.Controllers
             }
 
             return View("Edit", model);
+        }
+
+        public ActionResult Billing()
+        {
+            return View();
+        }
+
+        public ActionResult GenerateBilling(GenerateBillingViewModel model)
+        {
+            var start = DateTime.Parse(model.StartDateTime);
+            var end = DateTime.Parse(model.EndDateTime);
+            var billings = BillingHelper.GetBillingsGrouppedByParking(start, end);
+
+            return PartialView("_BillingPartial", billings);
         }
 
         private async Task SignInAsync(string email, string password)

@@ -4,7 +4,8 @@
     ViewBag.Title = "Cadastre um novo estacionamento";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-    var localAdmins = BusinessManager.Instance.LocalManagers.FindAll()
+    var parkings = BusinessManager.Instance.Parkings.FindAll();
+    var localAdmins = BusinessManager.Instance.LocalManagers.FindAll().Where(l => !parkings.Any(p => p.LocalManager.CPF == l.CPF))
         .Select(l => new SelectListItem()
         {
             Text = l.FirstName + " " + l.LastName + " (" + l.CPF + ")",

@@ -56,7 +56,10 @@ namespace SPS.BO
         {
             using (var context = new SPSDb())
             {
-                return context.UsageRecords.ToList();
+                return context.UsageRecords
+                    .Include("Tag")
+                    .Include("Parking")
+                    .ToList();
             }
         }
 

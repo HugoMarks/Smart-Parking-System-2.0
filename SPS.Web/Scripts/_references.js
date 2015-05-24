@@ -18,5 +18,17 @@
 /// <reference path="deletecollaborator.js" />
 /// <reference path="editparking.js" />
 /// <reference path="requestparking.js" />
+/// <reference path="bootstrap-datetimepicker.js" />
+/// <reference path="contactregister.js" />
+/// <reference path="globaladminedit.js" />
+/// <reference path="gmaps.js" />
+/// <reference path="manageprice.js" />
+/// <reference path="moment-with-locales.js" />
+/// <reference path="moment.js" />
+/// <reference path="parkingfinder.js" />
+/// <reference path="pricelist.js" />
+/// <reference path="spacelist.js" />
+/// <reference path="timepicker.js" />
+/// <reference path="generatebilling.js" />
 
 

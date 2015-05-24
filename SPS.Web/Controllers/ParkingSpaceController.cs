@@ -16,7 +16,14 @@ namespace SPS.Web.Controllers
     {
         public ActionResult Manage()
         {
-            return View();
+            if (Request.IsAuthenticated)
+            {
+                var spaces = GetParkingFromCurrentLocalAdmin().Spaces;
+
+                return View(spaces);
+            }
+
+            return RedirectToAction("Login", "Account");
         }
 
         public ActionResult Add()

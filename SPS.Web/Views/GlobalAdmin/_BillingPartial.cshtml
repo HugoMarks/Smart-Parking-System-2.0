@@ -1,0 +1,54 @@
+﻿@using SPS.Web.Common
+@model IList<IGrouping<string, Billing>>
+
+@{
+    var count = 0;
+}
+
+@if (Model.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    #
+                </th>
+                <th>
+                    Estacionamento
+                </th>
+                <th>
+                    Data
+                </th>
+                <th>
+                    Total de horas
+                </th>
+                <th>
+                    Valor total (R$)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var group in Model)
+            {
+                count++;
+
+                <tr>
+                    <th scope="row">@count</th>
+                    <td>@group.Key</td>
+                    <td>@group.FirstOrDefault().DateTime.ToString("dd/MM/yyyy")</td>
+                    <td>@group.Sum(b => b.TotalHours)</td>
+                    <td>@group.Sum(b => b.TotalValue)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    
+    <hr />
+    
+    <h4>Faturamento de R$@Model.Sum(g => g.Sum(b => b.TotalValue))</h4>
+    <h4>@Model.Sum(g => g.Sum(b => b.TotalHours)) horas no total</h4>
+}
+else
+{
+    <h4>Não existem registros nesse período.</h4>
+}

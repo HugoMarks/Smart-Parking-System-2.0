@@ -10,6 +10,7 @@ using SPS.Web.Extensions;
 using System.Net;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity;
+using System.Threading.Tasks;
 
 namespace SPS.Web.Controllers
 {
@@ -51,18 +52,12 @@ namespace SPS.Web.Controllers
 
         public ActionResult Edit()
         {
-            return View();
-        }
-
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(FormCollection form)
-        {
-            var selectedCNPJ = form["ParkingSelectList"];
-            var parking = BusinessManager.Instance.Parkings.Find(selectedCNPJ);
+            var user = User.Identity.GetApplicationUser();
+            var localAdmins = BusinessManager.Instance.LocalManagers.FindAll().ToList();
+            var localAdmin = localAdmins.SingleOrDefault(l => l.Email == user.Email);
+            var index = localAdmins.FindIndex(l => l.Email == user.Email);
+            var parking = BusinessManager.Instance.Parkings.FindAll().SingleOrDefault(p => p.LocalManager.CPF == localAdmin.CPF);
             var model = parking.ToRegisterParkingViewModel();
-            var index = BusinessManager.Instance.LocalManagers.FindAll().ToList().FindIndex(l => l.CPF == model.LocalAdmin);
 
             ViewBag.LocalAdminIndex = index;
 
@@ -121,7 +116,7 @@ namespace SPS.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult RequestAttach(string cnpj)
+        public async Task<ActionResult> RequestAttach(string cnpj)
         {
             try
             {
@@ -136,15 +131,23 @@ namespace SPS.Web.Controllers
                 }
 
                 var localManagerUser = userManager.FindByEmail(parking.LocalManager.Email);
-                var message = @"Olá, {0}! O cliente {1} {2} gostaria de fazer parte de nossa rede!<br/>
-                                Ele tem interesse no estacionamento ""{3}"" ({4}).<br/>
-                                Por favor, responda o cliente no email {5} o mais rápido possível!
+                var message = @"Olá, {0}! {1} {2} gostaria de fazer parte de nossa rede!<br/>
+                                Ele(a) tem interesse no estacionamento ""{3}"" ({4}).<br/>
+                                Por favor, responda o cliente o mais rápido possível!
                                 <br/><br/>
+                                Dados do(a) cliente para contato:
+                                <br />
+                                Telefone: {5}
+                                <br />
+                                Email: {6}
+                                <br />
+                                <br />
                                 <b>Equipe Smart Parking System®</b>";
 
-                message = string.Format(message, parking.LocalManager.FirstName, client.FirstName, client.LastName, parking.Name, parking.CNPJ, client.Email);
+                message = string.Format(message, parking.LocalManager.FirstName, client.FirstName, client.LastName, 
+                    parking.Name, parking.CNPJ, client.Telephone, client.Email);
 
-                userManager.SendEmail(localManagerUser.Id, "Requisição de Vínculo", message);
+                await userManager.SendEmailAsync(localManagerUser.Id, "Requisição de Vínculo", message);
                 return new HttpStatusCodeResult(HttpStatusCode.OK);
             }
             catch

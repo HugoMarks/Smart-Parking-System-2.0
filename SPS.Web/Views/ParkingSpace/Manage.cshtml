@@ -1,10 +1,11 @@
 ﻿@using SPS.BO
 @using SPS.Web.Extensions
+@using SPS.Model
+@model IList<ParkingSpace>
+
 @{
     ViewBag.Title = "Gerencie as vagas do seu estacionamento";
     Layout = "~/Views/Shared/_Layout.cshtml";
-
-    var spaces = BusinessManager.Instance.ParkingsSpaces.FindAll().OrderBy(s => s.Number);
 }
 
 <h2>@ViewBag.Title.</h2>
@@ -25,7 +26,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var space in spaces)
+            @foreach (var space in Model)
             {
                 <tr data-space-number="@space.Number" class="mouse-hand">
                     <th scope="row">@space.Number</th>
