@@ -28,7 +28,7 @@
             $("#parkingDetailsModal").modal('hide');
         })
         .fail(function (data) {
-            alert('Erro');
+            alert('Erro! Você já está vinculado a um estacionamento.');
             $("#parkingDetailsModal").modal('hide');
         });
     });

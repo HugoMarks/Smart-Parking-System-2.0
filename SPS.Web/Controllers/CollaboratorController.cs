@@ -41,9 +41,9 @@ namespace SPS.Web.Controllers
         // GET: Collaborator
         public ActionResult Index()
         {
+            var user = User.Identity.GetApplicationUser();
             if (Request.IsAuthenticated)
             {
-                var user = User.Identity.GetApplicationUser();
 
                 if (user.UserType != Models.UserType.Collaborator)
                 {
@@ -54,6 +54,11 @@ namespace SPS.Web.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
+
+            var collaborators = BusinessManager.Instance.Collaborators.FindAll().ToList();
+            var collaborator = collaborators.SingleOrDefault(l => l.Email == user.Email);
+            var parking = BusinessManager.Instance.Parkings.FindAll().SingleOrDefault(p => p.CNPJ == collaborator.Parking.CNPJ);
+            ViewBag.spaces = parking.Spaces.Count();
 
             return View();
         }
