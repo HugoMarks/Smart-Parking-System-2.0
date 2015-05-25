@@ -1,10 +1,12 @@
-﻿<link rel="stylesheet" href="~/Content/bootstrap-datetimepicker.min.css" />
+﻿
+<link rel="stylesheet" href="~/Content/bootstrap-datetimepicker.min.css" />
 
 @model SPS.Web.Models.SaveUsageRecordViewModel
 @using Microsoft.AspNet.Identity
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var spaces = ViewBag.spaces;
 }
 
 <div class="container">
@@ -78,7 +80,7 @@
                             </h3>
                         </div>
                         <div class="panel-body center-text">
-                            <span class="numero-de-vagas">0</span>
+                            <span class="numero-de-vagas">@spaces</span>
                         </div>
                     </div>
                 </div>

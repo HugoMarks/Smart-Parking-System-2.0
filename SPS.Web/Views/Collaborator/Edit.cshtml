@@ -35,7 +35,7 @@
 
         <div class="form-group">
             @Html.LabelFor(m => m.CPF, new { @class = "control-label" })
-            @Html.TextBoxFor(m => m.CPF, new { @class = "form-control", id = "cpfTextBox" })
+            @Html.TextBoxFor(m => m.CPF, new { @class = "form-control", id = "cpfTextBox", @readonly = "readonly" })
             @Html.ValidationMessageFor(m => m.CPF, "", new { @class = "text-danger" })
         </div>
 
@@ -50,6 +50,7 @@
         <div class="form-group">
             @Html.LabelFor(m => m.PostalCode, new { @class = "control-label" })
             @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control", id = "cepTextBox" })
+            <a href="http://www.buscacep.correios.com.br/servicos/dnec/menuAction.do?Metodo=menuLogradouro" target="_blank">Esqueceu seu CEP?</a>
             @Html.ValidationMessageFor(m => m.PostalCode, "", new { @class = "text-danger" })
         </div>
 
@@ -96,7 +97,7 @@
 
         <div class="form-group">
             @Html.LabelFor(m => m.Email, new { @class = "control-label" })
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @readonly = "readonly" })
             @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
         </div>
 

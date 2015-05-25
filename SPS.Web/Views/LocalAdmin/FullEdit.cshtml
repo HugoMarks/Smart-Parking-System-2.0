@@ -50,6 +50,7 @@
         <div class="form-group">
             @Html.LabelFor(m => m.PostalCode, new { @class = "control-label" })
             @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control", id = "cepTextBox" })
+            <a href="http://www.buscacep.correios.com.br/servicos/dnec/menuAction.do?Metodo=menuLogradouro" target="_blank">Esqueceu seu CEP?</a>
             @Html.ValidationMessageFor(m => m.PostalCode, "", new { @class = "text-danger" })
         </div>
 
