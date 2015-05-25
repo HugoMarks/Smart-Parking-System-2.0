@@ -10,6 +10,8 @@ namespace SPS.Model
 
         public virtual Tag Tag { get; set; }
 
+        public virtual MonthlyClient Client { get; set; }
+
         public virtual Parking Parking { get; set; }
 
         public virtual DateTime EnterDateTime { get; set; }

@@ -54,7 +54,7 @@ namespace SPS.BO
             using (var context = new SPSDb())
             {
                 tag = context.Tags
-                    .Include("User")
+                    .Include("Client")
                     .SingleOrDefault(c => c.Id == id);
             }
 
@@ -65,7 +65,9 @@ namespace SPS.BO
         {
             using (var context = new SPSDb())
             {
-                return context.Tags.ToList();
+                return context.Tags
+                    .Include("Client").
+                    ToList();
             }
         }
 
