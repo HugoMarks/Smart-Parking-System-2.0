@@ -32,6 +32,11 @@ namespace SPS.BO
                     usageRecord.Parking = context.Parkings.Find(usageRecord.Parking.CNPJ);
                 }
 
+                if (usageRecord.Client != null)
+                {
+                    usageRecord.Client = context.Clients.Find(usageRecord.Client.Id);
+                }
+
                 context.UsageRecords.Add(usageRecord);
                 context.SaveChanges();
             }
@@ -46,6 +51,7 @@ namespace SPS.BO
                 usageRecord = context.UsageRecords
                     .Include("Tag")
                     .Include("Parking")
+                    .Include("Client")
                     .SingleOrDefault(c => c.Id == id);
             }
 
@@ -59,6 +65,7 @@ namespace SPS.BO
                 return context.UsageRecords
                     .Include("Tag")
                     .Include("Parking")
+                    .Include("Client")
                     .ToList();
             }
         }

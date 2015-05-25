@@ -94,11 +94,14 @@ namespace SPS.Web.Controllers
             {
                 var user = User.Identity.GetApplicationUser();
                 var collaborator = BusinessManager.Instance.Collaborators.FindAll().SingleOrDefault(c => c.Email == user.Email);
+                var tag = BusinessManager.Instance.Tags.Find(model.Tag);
+                var client = BusinessManager.Instance.MontlyClients.Find(tag.Client.CPF);
 
                 model.ParkingCNPJ = collaborator.Parking.CNPJ;
 
                 var record = model.ToUsageRecord();
 
+                record.Client = client;
                 BusinessManager.Instance.UsageRecords.Add(record);
                 return RedirectToAction("Index", "Collaborator");
             }
