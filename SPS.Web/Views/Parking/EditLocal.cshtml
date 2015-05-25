@@ -45,6 +45,7 @@
         <div class="form-group">
             @Html.LabelFor(m => m.LocalAdmin, new { @class = "control-label" })
             @Html.DropDownListFor(m => m.LocalAdmin, @items, "Selecione um admistrador local", new { @class = "form-control", @disabled = "disabled" })
+            @Html.HiddenFor(m => m.LocalAdmin)
             @Html.ValidationMessageFor(m => m.LocalAdmin, "", new { @class = "text-danger" })
         </div>
     </div>

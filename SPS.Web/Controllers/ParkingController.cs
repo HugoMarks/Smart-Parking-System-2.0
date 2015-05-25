@@ -115,10 +115,6 @@ namespace SPS.Web.Controllers
         [AllowAnonymous]
         public ActionResult SaveChangesLocal(RegisterParkingViewModel model)
         {
-            //var user = User.Identity.GetApplicationUser();
-            //var localAdmin = BusinessManager.Instance.LocalManagers.FindAll().SingleOrDefault(c => c.Email == user.Email);
-            //model.LocalAdmin = localAdmin.CPF;
-
             if (ModelState.IsValid)
             {
                 Parking parking = BusinessManager.Instance.Parkings.Find(model.CNPJ);
