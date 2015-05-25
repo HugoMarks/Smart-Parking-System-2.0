@@ -22,6 +22,20 @@ namespace SPS.Web.Common
 
             return billings.GroupBy(b => b.ParkingName).ToList();
         }
+        public static IList<Billing> GetBillingsForParking(string parkingCNPJ, DateTime start, DateTime end)
+        {
+            var records = BusinessManager.Instance.UsageRecords.FindAll();
+            var billings = records.Where(r => r.Parking.CNPJ == parkingCNPJ && (r.EnterDateTime.Date >= start.Date && r.EnterDateTime.Date <= end.Date))
+                .Select(r => new Billing
+                {
+                    DateTime = r.EnterDateTime.Date,
+                    ParkingName = r.Parking.Name,
+                    TotalHours = r.TotalHours,
+                    TotalValue = r.TotalCash
+                }).ToList();
+
+            return billings.ToList();
+        }
     }
 
     public class Billing

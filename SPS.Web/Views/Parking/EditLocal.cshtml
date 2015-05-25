@@ -32,7 +32,7 @@
 
         <div class="form-group">
             @Html.LabelFor(m => m.CNPJ, new { @class = "control-label" })
-            @Html.TextBoxFor(m => m.CNPJ, new { @class = "form-control", id = "rgTextBox", @readonly = "readonly" })
+            @Html.TextBoxFor(m => m.CNPJ, new { @class = "form-control", id = "rgTextBox" })
             @Html.ValidationMessageFor(m => m.CNPJ, "", new { @class = "text-danger" })
         </div>
 
@@ -44,7 +44,7 @@
 
         <div class="form-group">
             @Html.LabelFor(m => m.LocalAdmin, new { @class = "control-label" })
-            @Html.DropDownListFor(m => m.LocalAdmin, @items, "Selecione um admistrador local", new { @class = "form-control" })
+            @Html.DropDownListFor(m => m.LocalAdmin, @items, "Selecione um admistrador local", new { @class = "form-control", @disabled = "disabled" })
             @Html.ValidationMessageFor(m => m.LocalAdmin, "", new { @class = "text-danger" })
         </div>
     </div>

@@ -18,7 +18,7 @@
 
         var data = form.serialize();
 
-        $.get('/GlobalAdmin/GenerateBilling', data)
+        $.get('/LocalAdmin/GenerateBilling', data)
         .done(function (partial) {
             $('#billingContainer').html(partial).fadeIn();
         });
