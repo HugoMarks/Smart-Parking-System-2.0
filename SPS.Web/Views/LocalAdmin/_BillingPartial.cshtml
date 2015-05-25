@@ -1,0 +1,54 @@
+﻿@using SPS.Web.Common
+@model IList<Billing>
+
+@{
+    var count = 0;
+}
+
+@if (Model.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    #
+                </th>
+                <th>
+                    Estacionamento
+                </th>
+                <th>
+                    Data
+                </th>
+                <th>
+                    Total de horas
+                </th>
+                <th>
+                    Valor total (R$)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var billing in Model)
+            {
+                count++;
+
+                <tr>
+                    <th scope="row">@count</th>
+                    <td>@billing.ParkingName</td>
+                    <td>@billing.DateTime.ToString("dd/MM/yyyy")</td>
+                    <td>@billing.TotalHours</td>
+                    <td>@billing.TotalValue</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    
+    <hr />
+    
+    <h4>Faturamento de R$@Model.Sum(b => b.TotalValue)</h4>
+    <h4>@Model.Sum(b => b.TotalHours) horas no total</h4>
+}
+else
+{
+    <h4>Não existem registros nesse período.</h4>
+}

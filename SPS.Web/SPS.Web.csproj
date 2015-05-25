@@ -284,6 +284,7 @@
     <Content Include="Scripts\deleteCollaborator.js" />
     <Content Include="Scripts\editParking.js" />
     <Content Include="Scripts\generateBilling.js" />
+    <Content Include="Scripts\generateBillingLocalAdmin.js" />
     <Content Include="Scripts\globalAdminEdit.js" />
     <Content Include="Scripts\gmaps.js" />
     <Content Include="Scripts\jquery.mask.min.js" />
@@ -502,6 +503,8 @@
     <Content Include="Views\GlobalAdmin\Billing.cshtml" />
     <Content Include="Views\GlobalAdmin\_BillingPartial.cshtml" />
     <Content Include="Views\Parking\EditLocal.cshtml" />
+    <Content Include="Views\LocalAdmin\Billing.cshtml" />
+    <Content Include="Views\LocalAdmin\_BillingPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

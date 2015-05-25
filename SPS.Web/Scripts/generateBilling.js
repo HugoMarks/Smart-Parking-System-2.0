@@ -20,7 +20,6 @@
 
         $.get('/GlobalAdmin/GenerateBilling', data)
         .done(function (partial) {
-            debugger;
             $('#billingContainer').html(partial).fadeIn();
         });
     });

@@ -20,6 +20,7 @@ using SPS.Web.Services;
 using System.Web.Script.Serialization;
 using SPS.Repository;
 using SPS.BO.Exceptions;
+using SPS.Web.Common;
 
 
 namespace SPS.Web.Controllers
@@ -218,5 +219,21 @@ namespace SPS.Web.Controllers
             return View("FullEdit", model);
         }
 
+        public ActionResult Billing()
+        {
+            return View();
+        }
+
+        public ActionResult GenerateBilling(GenerateBillingViewModel model)
+        {
+            var user = User.Identity.GetApplicationUser();
+            var localAdmin = BusinessManager.Instance.LocalManagers.FindAll().SingleOrDefault(l => l.Email == user.Email);
+            var parking = BusinessManager.Instance.Parkings.FindAll().SingleOrDefault(p => p.LocalManager.CPF == localAdmin.CPF);
+            var start = DateTime.Parse(model.StartDateTime);
+            var end = DateTime.Parse(model.EndDateTime);
+            var billings = BillingHelper.GetBillingsForParking(parking.CNPJ, start, end);
+
+            return PartialView("_BillingPartial", billings);
+        }
     }
 }
