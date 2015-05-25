@@ -76,9 +76,12 @@ namespace SPS.Web.Controllers
                 if (result.Succeeded)
                 {
                     Collaborator collaborator = model.ToCollaborator(user.PasswordHash);
+                    ApplicationUser localUser = User.Identity.GetApplicationUser();
+                    LocalManager localManager = BusinessManager.Instance.LocalManagers.FindAll().SingleOrDefault(l => localUser.Email == l.Email);
 
                     try
                     {
+                        collaborator.Parking = BusinessManager.Instance.Parkings.FindAll().SingleOrDefault(p => p.LocalManager.CPF == localManager.CPF);
                         BusinessManager.Instance.Collaborators.Add(collaborator);
                     }
                     catch (UniqueKeyViolationException ex)
@@ -240,6 +243,65 @@ namespace SPS.Web.Controllers
             }
 
             return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+        }
+
+
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult AttachTag(AttachTagViewModel model)
+        {
+            var client = BusinessManager.Instance.MontlyClients.FindAll().SingleOrDefault(u => u.Email == model.UserEmail);
+            var user = User.Identity.GetApplicationUser();
+            var collaborator = BusinessManager.Instance.Collaborators.FindAll().SingleOrDefault(c => c.Email == user.Email);
+
+            client.Parking = collaborator.Parking;
+            BusinessManager.Instance.MontlyClients.Update(client);
+            BusinessManager.Instance.Tags.Add(new Tag { Id = model.TagId.ToUpper(), Client = client });
+
+            return RedirectToAction("Index", "Collaborator");
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<ActionResult> RequestNewTag()
+        {
+            try
+            {
+                var userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                var user = User.Identity.GetApplicationUser();
+                var client = BusinessManager.Instance.MontlyClients.FindAll().SingleOrDefault(c => c.Email == user.Email);
+                var parking = BusinessManager.Instance.Parkings.Find(client.Parking.CNPJ);
+
+                if (parking == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+                }
+
+                var localManagerUser = userManager.FindByEmail(parking.LocalManager.Email);
+                var message = @"Olá, {0}! {1} {2} gostaria de solicitar uma nova tag!<br/>                                
+                                Por favor, responda o(a) cliente o mais rápido possível!
+                                <br/><br/>
+                                Dados do(a) cliente para contato:
+                                <br />
+                                Telefone: {3}
+                                <br />
+                                Email: {4}
+                                <br />
+                                <br />
+                                <b>Equipe Smart Parking System®</b>";
+
+                message = string.Format(message, parking.LocalManager.FirstName, client.FirstName, client.LastName, client.Telephone, client.Email);
+
+                await userManager.SendEmailAsync(localManagerUser.Id, "Requisição de Nova Tag", message);
+                return new HttpStatusCodeResult(HttpStatusCode.OK);
+            }
+            catch
+            {
+            }
+
+            return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
         }
     }
 }

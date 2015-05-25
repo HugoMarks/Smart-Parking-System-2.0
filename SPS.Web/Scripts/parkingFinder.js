@@ -23,7 +23,7 @@
     });
 
     $("#confirmAttachBtn").click(function () {
-        $.post("/Parking/RequestAttach", { cnpj: currentCPNJ })
+        $.post("/Collaborator/RequestAttach", { cnpj: currentCPNJ })
         .done(function (data) {
             $("#parkingDetailsModal").modal('hide');
         })

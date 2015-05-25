@@ -74,5 +74,7 @@ namespace SPS.Web.Models
         [Required(ErrorMessage = "O salário do colaborador é obrigatório")]
         [Display(Name = "Salário*")]
         public string Salary { get; set; }
+
+        public string ParkingCNPJ { get; set; }
     }
 }

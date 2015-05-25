@@ -89,12 +89,12 @@ namespace SPS.BO
         {
             using (var context = new SPSDb())
             {
-                return new List<Parking>(context.Parkings
+                return context.Parkings
                     .Include("Prices")
                     .Include("Collaborators")
                     .Include("LocalManager")
                     .Include("Address")
-                    .Include("Spaces"));
+                    .Include("Spaces").ToList();
             }
         }
     }

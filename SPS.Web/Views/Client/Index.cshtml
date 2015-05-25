@@ -13,9 +13,8 @@
                 </h1>
                 <h2 style="color:#777777; font-size: 23px; line-height: 23.3999996185303px;">Escolha uma opção abaixo</h2>
             </div>
-            <div class="row">
-                
-                <div class="col-md-4">
+            <div class="row">                
+                <div class="col-md-3">
                     <div class="thumbnail btn-default dropdown">
                         <a id="dLabel" data-target="#" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
                             <img src="~/pictures/Balance.png" class="img-responsive img-menu">
@@ -30,7 +29,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="thumbnail btn-default dropdown">
                         <a id="dLabel" data-target="#" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
                             <img src="~/pictures/Users.png" class="img-responsive img-menu">
@@ -58,7 +57,7 @@
                         </ul>
                     </div>
                 </div>-->
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="thumbnail btn-default dropdown">
                         <a id="dLabel" data-target="#" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
                             <img src="~/pictures/ControlPanel.png" class="img-responsive img-menu">
@@ -71,13 +70,47 @@
                             <li>@Html.ActionLink("Vincular a um estacionamento", "Finder", "Parking", null, new { @class = "btn-default" })</li>
                         </ul>
                     </div>
-                </div>*
-                
+                </div>                
+
+                <div class="col-md-3">
+                    <div class="thumbnail btn-default dropdown">
+                        <a id="dLabel" data-target="#" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+                            <img src="~/pictures/ControlPanel.png" class="img-responsive img-menu">
+                            <div class="caption center-text">
+                                <h4><b>Tag</b></h4>
+                            </div>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                            <li><a id="requestTagLink" class="btn-default">Solicitar nova tag</a></li>
+                        </ul>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="confirmRequestModal" tabindex="-1" role="dialog" aria-labelledby="confirmRequestModalTitle" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="confirmRequestModalTitle">Você realmente deseja solicitar uma nova tag?</h4>
+            </div>
+            <div class="modal-body">
+                Uma solicitação será enviada ao admistrador do estacionamento para análise.
+                <br />
+                Deseja continuar?
+            </div>
+            <div class="modal-footer">
+                <button id="confirmRequestBtn" type="button" class="btn btn-success" data-dismiss="modal">Sim</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
             </div>
         </div>
     </div>
 </div>
 
 @section Scripts {
-    <script type="text/javascript" src="@Url.Content("~/Scripts/requestParking.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/requestNewTag.js")"></script>
 }

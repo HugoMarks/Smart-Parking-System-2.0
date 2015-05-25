@@ -1,0 +1,19 @@
+﻿@model SPS.Web.Models.AttachTagViewModel
+
+<form id="attachTagForm" class="form-horizontal" role="form">
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.UserEmail, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.UserEmail, new { @class = "form-control", placeholder = "Email do cliente" })
+        @Html.ValidationMessageFor(m => m.UserEmail, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.TagId, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.TagId, new { @class = "form-control tag-id", placeholder = "Tag para vincular" })
+        @Html.ValidationMessageFor(m => m.TagId, "", new { @class = "text-danger" })
+    </div>
+
+    <button id="attachTagButton" type="button" class="btn btn-primary" style="margin-left:-1.5%">Vincular</button>
+</form>

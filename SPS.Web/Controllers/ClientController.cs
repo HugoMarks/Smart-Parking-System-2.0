@@ -10,6 +10,7 @@ using SPS.BO;
 using SPS.Model;
 using Microsoft.AspNet.Identity.Owin;
 using System.Net;
+using System.Threading.Tasks;
 
 namespace SPS.Web.Controllers
 {
@@ -103,20 +104,6 @@ namespace SPS.Web.Controllers
             }
 
             return View(model);
-        }
-
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult AttachTag(FormCollection form)
-        {
-            var userEmail = form["UserEmail"];
-            var client = BusinessManager.Instance.MontlyClients.FindAll().SingleOrDefault(u => u.Email == userEmail);
-
-            client.Tags.Add(new Tag { Client = client });
-            BusinessManager.Instance.MontlyClients.Update(client);
-
-            return RedirectToAction("Index", "Collaborator");
         }
     }
 }
