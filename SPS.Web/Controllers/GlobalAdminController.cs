@@ -50,9 +50,13 @@ namespace SPS.Web.Controllers
                 }
 
                 string cpf = "000.000.000-00";
+                Address address = new PostalCodeService().GetAdrressFromPostalCode("13024-420").Address;
+
+                address.State = Common.StateTranslator.GetStateName(address.State);
+
                 GlobalManager globalManager = new GlobalManager
                 {
-                    Address = new PostalCodeService().GetAdrressFromPostalCode("13024-420").Address,
+                    Address = address,
                     FirstName = user.FirstName,
                     LastName = user.LastName,
                     CPF = cpf,

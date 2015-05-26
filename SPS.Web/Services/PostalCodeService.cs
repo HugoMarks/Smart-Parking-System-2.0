@@ -31,7 +31,7 @@ namespace SPS.Web.Services
                         Square = result.bairro,
 						State = result.uf,
 						Street = result.end,
-						PostalCode = result.cep
+						PostalCode = postalCode
 					},
 					Message = null
 				};

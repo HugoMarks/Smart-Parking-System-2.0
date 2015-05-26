@@ -19,6 +19,7 @@ using SPS.Repository;
 using SPS.Web.Extensions;
 using SPS.Model;
 using SPS.BO.Exceptions;
+using SPS.Web.Common;
 
 namespace SPS.Web.Controllers
 {
@@ -445,7 +446,7 @@ namespace SPS.Web.Controllers
 
             if (result.Address != null)
             {
-                result.Address.PostalCode = postalCode;
+                result.Address.State = StateTranslator.GetStateName(result.Address.State);
                 BusinessManager.Instance.Addresses.Add(result.Address);
                 //new AddressBO().Add(result.Address);
                 return Json(new JavaScriptSerializer().Serialize(result.Address));

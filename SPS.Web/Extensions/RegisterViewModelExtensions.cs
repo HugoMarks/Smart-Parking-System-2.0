@@ -59,7 +59,8 @@ namespace SPS.Web.Extensions
                 LastName = registerModel.LastName,
                 Password = passwordHash,
                 RG = registerModel.RG,
-                Telephone = registerModel.PhoneNumber
+                Telephone = registerModel.PhoneNumber,
+                Complement = registerModel.Complement
             };
         }
 
@@ -80,7 +81,8 @@ namespace SPS.Web.Extensions
                 LastName = registerModel.LastName,
                 Password = passwordHash,
                 RG = registerModel.RG,
-                Telephone = registerModel.PhoneNumber
+                Telephone = registerModel.PhoneNumber,
+                Complement = registerModel.Complement
             };
         }
 
