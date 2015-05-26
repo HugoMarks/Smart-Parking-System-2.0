@@ -18,7 +18,7 @@ namespace SPS.Web.Extensions
                 ExitDateTime = DateTime.Parse(model.ExitDateTime),
                 Parking = new Parking { CNPJ = model.ParkingCNPJ },
                 Tag = new Tag { Id = model.Tag },
-                TotalCash = decimal.Parse(model.TotalCash),
+                TotalValue = decimal.Parse(model.TotalCash),
                 TotalHours = long.Parse(model.TotalHours)
             };
         }

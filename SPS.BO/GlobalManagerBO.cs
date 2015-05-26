@@ -22,7 +22,12 @@ namespace SPS.BO
 
                 if (globalManager.Address != null)
                 {
-                    globalManager.Address = context.Addresses.SingleOrDefault(a => a.PostalCode == globalManager.Address.PostalCode);
+                    var address = context.Addresses.SingleOrDefault(a => a.PostalCode == globalManager.Address.PostalCode);
+
+                    if (address != null)
+                    {
+                        globalManager.Address = address;
+                    }
                 }
 
                 context.GlobalManagers.Add(globalManager);

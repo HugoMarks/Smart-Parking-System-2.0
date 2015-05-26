@@ -9,7 +9,7 @@ namespace SPS.Web.Extensions
 {
     public static class ClientExtensions
     {
-        public static EditClientViewModel ToEditClientViewModel(this MonthlyClient client)
+        public static EditClientViewModel ToEditClientViewModel(this Client client)
         {
             var model = new EditClientViewModel
             {

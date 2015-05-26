@@ -39,7 +39,7 @@ namespace SPS.Web.Controllers
         public ActionResult Edit()
         {
             var user = User.Identity.GetApplicationUser();
-            var client = BusinessManager.Instance.MontlyClients.FindAll().SingleOrDefault(c => c.Email == user.Email);
+            var client = BusinessManager.Instance.Clients.FindAll().SingleOrDefault(c => c.Email == user.Email);
             var model = client.ToEditClientViewModel();
 
             return View(model);
@@ -70,8 +70,8 @@ namespace SPS.Web.Controllers
                 {
                     user = userManager.FindByEmail(model.Email);
 
-                    MonthlyClient client = model.ToClient(user.PasswordHash);
-                    BusinessManager.Instance.MontlyClients.Update(client);
+                    Client client = model.ToClient(user.PasswordHash);
+                    BusinessManager.Instance.Clients.Update(client);
 
                     return RedirectToAction("Index", "Client");
                 }
@@ -95,7 +95,7 @@ namespace SPS.Web.Controllers
                 var user = User.Identity.GetApplicationUser();
                 var collaborator = BusinessManager.Instance.Collaborators.FindAll().SingleOrDefault(c => c.Email == user.Email);
                 var tag = BusinessManager.Instance.Tags.Find(model.Tag);
-                var client = BusinessManager.Instance.MontlyClients.Find(tag.Client.CPF);
+                var client = BusinessManager.Instance.Clients.Find(tag.Client.CPF);
 
                 model.ParkingCNPJ = collaborator.Parking.CNPJ;
 

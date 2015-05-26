@@ -21,16 +21,16 @@ namespace SPS.Web.Extensions
         }
 
         /// <summary>
-        /// Converts an <see cref="RegisterViewModel"/> in a <see cref="MonthlyClient"/>.
+        /// Converts an <see cref="RegisterViewModel"/> in a <see cref="Client"/>.
         /// </summary>
         /// <param name="registerModel">The RegisterViewModel to be converted.</param>
         /// <param name="passwordHash">The hashed password to be saved in the database.</param>
-        /// <returns>An instance of the <see cref="MonthlyClient"/> class.</returns>
+        /// <returns>An instance of the <see cref="Client"/> class.</returns>
         public static T ToUser<T>(this RegisterViewModel registerModel, string passwordHash) where T : User
         {
             var userType = typeof(T);
 
-            if (userType == typeof(MonthlyClient))
+            if (userType == typeof(Client))
             {
                 return ToMonthlyClient(registerModel, passwordHash) as T;
             }
@@ -43,14 +43,14 @@ namespace SPS.Web.Extensions
         }
 
         /// <summary>
-        /// Converts an <see cref="RegisterViewModel"/> in a <see cref="MonthlyClient"/>.
+        /// Converts an <see cref="RegisterViewModel"/> in a <see cref="Client"/>.
         /// </summary>
         /// <param name="registerModel">The RegisterViewModel to be converted.</param>
         /// <param name="passwordHash">The hashed password to be saved in the database.</param>
-        /// <returns>An instance of the <see cref="MonthlyClient"/> class.</returns>
-        private static MonthlyClient ToMonthlyClient(this RegisterViewModel registerModel, string passwordHash)
+        /// <returns>An instance of the <see cref="Client"/> class.</returns>
+        private static Client ToMonthlyClient(this RegisterViewModel registerModel, string passwordHash)
         {
-            return new MonthlyClient
+            return new Client
             {
                 Address = GetAddress(registerModel),
                 CPF = registerModel.CPF,

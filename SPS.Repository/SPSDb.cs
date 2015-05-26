@@ -30,7 +30,7 @@ namespace SPS.Repository
         /// <summary>
         /// Gets the Client table.
         /// </summary>
-        public DbSet<MonthlyClient> Clients { get; set; }
+        public DbSet<Client> Clients { get; set; }
 
         /// <summary>
         /// Gets the Collaborator table.

@@ -17,7 +17,7 @@ namespace SPS.BO
             }
         }
         
-        private MontlyClientBO montlyClientBO;
+        private ClientBO montlyClientBO;
         private CollaboratorBO collaboratorBO;
         private LocalManagerBO localManagerBO;
         private GlobalManagerBO globalManagerBO;
@@ -30,7 +30,7 @@ namespace SPS.BO
 
         private BusinessManager()
         {
-            this.montlyClientBO = new MontlyClientBO();
+            this.montlyClientBO = new ClientBO();
             this.collaboratorBO = new CollaboratorBO();
             this.localManagerBO = new LocalManagerBO();
             this.globalManagerBO = new GlobalManagerBO();
@@ -42,7 +42,7 @@ namespace SPS.BO
             this.usageRecordsBO = new UsageRecordBO();
         }
 
-        public MontlyClientBO MontlyClients
+        public ClientBO Clients
         {
             get
             {

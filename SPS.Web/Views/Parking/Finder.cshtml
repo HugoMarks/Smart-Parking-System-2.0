@@ -1,7 +1,15 @@
-﻿
+﻿@using Microsoft.AspNet.Identity
+@using SPS.BO
 @{
     ViewBag.Title = "Encontre um estacionamento perto de você!";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    //var user = User.Identity.GetApplicationUser();
+    
+    //if (user.UserType == SPS.Web.Models.UserType.Client)
+    //{
+    //    var client = BusinessManager.Instance.MontlyClients.FindAll().SingleOrDefault(c => c.Email == user.Email);
+    //}
 }
 
 <h2>@ViewBag.Title</h2>

@@ -49,7 +49,7 @@
     <Compile Include="Address.cs" />
     <Compile Include="GlobalManager.cs" />
     <Compile Include="LocalManager.cs" />
-    <Compile Include="MontlyClient.cs" />
+    <Compile Include="Client.cs" />
     <Compile Include="Collaborator.cs" />
     <Compile Include="PaymentStatus.cs" />
     <Compile Include="UsageRecord.cs" />

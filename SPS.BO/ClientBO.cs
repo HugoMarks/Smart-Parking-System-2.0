@@ -7,9 +7,9 @@ using System.Linq;
 
 namespace SPS.BO
 {
-    public class MontlyClientBO : IBusiness<MonthlyClient, string>
+    public class ClientBO : IBusiness<Client, string>
     {
-        public virtual void Add(MonthlyClient client)
+        public virtual void Add(Client client)
         {
             using (var context = new SPSDb())
             {
@@ -23,26 +23,21 @@ namespace SPS.BO
                     client.Address = context.Addresses.SingleOrDefault(a => a.PostalCode == client.Address.PostalCode);
                 }
 
-                if (client.Parking != null)
-                {
-                    client.Parking = context.Parkings.Find(client.Parking.CNPJ);
-                }
-
                 context.Clients.Add(client);
                 context.SaveChanges();
             }
         }
 
-        public virtual MonthlyClient Find(string cpf)
+        public virtual Client Find(string cpf)
         {
-            MonthlyClient client = null;
+            Client client = null;
 
             using (var context = new SPSDb())
             {
                 client = context.Clients
                     .Include("Tags")
                     .Include("Records")
-                    .Include("Parking")
+                    .Include("Parkings")
                     .Include("Address")
                     .SingleOrDefault(c => c.CPF == cpf);
             }
@@ -50,20 +45,20 @@ namespace SPS.BO
             return client;
         }
 
-        public virtual IList<MonthlyClient> FindAll()
+        public virtual IList<Client> FindAll()
         {
             using (var context = new SPSDb())
             {
                 return context.Clients
                     .Include("Tags")
                     .Include("Records")
-                    .Include("Parking")
+                    .Include("Parkings")
                     .Include("Address")
                     .ToList();
             }
         }
 
-        public virtual void Remove(MonthlyClient client)
+        public virtual void Remove(Client client)
         {
             using (var context = new SPSDb())
             {
@@ -72,11 +67,11 @@ namespace SPS.BO
             }
         }
 
-        public virtual void Update(MonthlyClient client)
+        public virtual void Update(Client client)
         {
             using (var context = new SPSDb())
             {
-                MonthlyClient entity;
+                Client entity;
 
                 if (client.Id > 0)
                 {
@@ -98,16 +93,32 @@ namespace SPS.BO
                     entity.Address = context.Addresses.SingleOrDefault(a => a.PostalCode == client.Address.PostalCode);
                 }
 
-                if (client.Parking != null)
-                {
-                    entity.Parking = context.Parkings.Find(client.Parking.CNPJ);
-                }
-
                 if (client.Tags != null)
                 {
                     entity.Tags = client.Tags;
                 }
 
+                context.SaveChanges();
+            }
+        }
+
+        public void AttachToParking(Client client, string parkingCNPJ)
+        {
+            using (var context = new SPSDb())
+            {
+                Client dbClient;
+                Parking dbParking = context.Parkings.SingleOrDefault(p => p.CNPJ == parkingCNPJ);
+
+                if (!string.IsNullOrEmpty(client.CPF))
+                {
+                    dbClient = context.Clients.Include("Parkings").SingleOrDefault(c => c.CPF == client.CPF);
+                }
+                else
+                {
+                    dbClient = context.Clients.Include("Parkings").SingleOrDefault(c => c.Email == client.Email);
+                }
+
+                dbClient.Parkings.Add(dbParking);
                 context.SaveChanges();
             }
         }

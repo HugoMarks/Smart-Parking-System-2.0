@@ -19,7 +19,7 @@ namespace SPS.BO
                     var client = context.Clients.Find(usageRecord.Tag.Client.Id);
 
                     client.Records.Add(usageRecord);
-                    BusinessManager.Instance.MontlyClients.Update(client);
+                    BusinessManager.Instance.Clients.Update(client);
                 }
 
                 if (usageRecord.Tag != null)

@@ -131,11 +131,11 @@ namespace SPS.Web.Controllers
 
                 if (result.Succeeded)
                 {
-                    MonthlyClient client = model.ToUser<MonthlyClient>(user.PasswordHash);
+                    Client client = model.ToUser<Client>(user.PasswordHash);
 
                     try
                     {
-                        BusinessManager.Instance.MontlyClients.Add(client);
+                        BusinessManager.Instance.Clients.Add(client);
                     }
                     catch (UniqueKeyViolationException ex)
                     {

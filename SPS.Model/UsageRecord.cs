@@ -10,9 +10,11 @@ namespace SPS.Model
 
         public virtual Tag Tag { get; set; }
 
-        public virtual MonthlyClient Client { get; set; }
+        public virtual Client Client { get; set; }
 
         public virtual Parking Parking { get; set; }
+
+        public virtual int SpaceNumber { get; set; }
 
         public virtual DateTime EnterDateTime { get; set; }
 
@@ -20,7 +22,7 @@ namespace SPS.Model
 
         public virtual float TotalHours { get; set; }
 
-        public virtual decimal TotalCash { get; set; }
+        public virtual decimal TotalValue { get; set; }
 
         public virtual PaymentStatus PaymentStatus { get; set; }
     }

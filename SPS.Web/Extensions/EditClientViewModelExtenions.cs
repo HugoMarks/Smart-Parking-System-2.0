@@ -10,9 +10,9 @@ namespace SPS.Web.Extensions
 {
     public static class EditClientViewModelExtenions
     {
-        public static MonthlyClient ToClient(this EditClientViewModel model, string passwordHash)
+        public static Client ToClient(this EditClientViewModel model, string passwordHash)
         {
-            return new MonthlyClient
+            return new Client
             {
                 Address = GetAddress(model),
                 StreetNumber = int.Parse(model.Number),

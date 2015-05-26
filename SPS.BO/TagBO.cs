@@ -1,4 +1,5 @@
-﻿using SPS.Model;
+﻿using SPS.BO.Exceptions;
+using SPS.Model;
 using SPS.Repository;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,11 @@ namespace SPS.BO
         {
             using (var context = new SPSDb())
             {
+                if (context.Tags.Any(t => t.Id == tag.Id))
+                {
+                    throw new UniqueKeyViolationException("Tag já vinculada");
+                }
+
                 if (tag.Client != null)
                 {
                     tag.Client = context.Clients.SingleOrDefault(c => c.CPF == tag.Client.CPF);

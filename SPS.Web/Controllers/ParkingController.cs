@@ -38,8 +38,14 @@ namespace SPS.Web.Controllers
 
                 if (parking == null)
                 {
+                    Client dailyClient = new Client();
+
                     parking = model.ToParking();
                     BusinessManager.Instance.Parkings.Add(parking);
+                    dailyClient.Email = "daily@" + parking.Name + ".com";
+                    BusinessManager.Instance.Clients.Add(dailyClient);
+
+                    BusinessManager.Instance.Clients.AttachToParking(dailyClient, parking.CNPJ);
 
                     return RedirectToAction("Index", "GlobalAdmin");
                 }
@@ -168,7 +174,7 @@ namespace SPS.Web.Controllers
             {
                 var userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
                 var user = User.Identity.GetApplicationUser();
-                var client = BusinessManager.Instance.MontlyClients.FindAll().SingleOrDefault(c => c.Email == user.Email);
+                var client = BusinessManager.Instance.Clients.FindAll().SingleOrDefault(c => c.Email == user.Email);
                 var parking = BusinessManager.Instance.Parkings.Find(cnpj);
 
                 if (parking == null)

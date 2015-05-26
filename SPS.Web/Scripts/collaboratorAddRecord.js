@@ -17,7 +17,13 @@
 
         $.post("/Collaborator/AttachTag", form.serialize())
         .done(function (data) {
-
+            $('#attachResultModalContainer').html('<p>' + data.Message + '<p>');
+            $('#attachResultModal').modal('show');
+            
+            if (data.Success) {
+                $('#UserEmail').val('');
+                $('#TagId').val('');
+            }
         });
     });
 });

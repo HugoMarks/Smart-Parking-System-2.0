@@ -257,27 +257,33 @@ namespace SPS.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AttachTag(AttachTagViewModel model)
         {
-            var client = BusinessManager.Instance.MontlyClients.FindAll().SingleOrDefault(u => u.Email == model.UserEmail);
-            var user = User.Identity.GetApplicationUser();
-            var collaborator = BusinessManager.Instance.Collaborators.FindAll().SingleOrDefault(c => c.Email == user.Email);
+            try
+            {
+                var client = BusinessManager.Instance.Clients.FindAll().SingleOrDefault(u => u.Email == model.UserEmail);
+                var user = User.Identity.GetApplicationUser();
+                var collaborator = BusinessManager.Instance.Collaborators.FindAll().SingleOrDefault(c => c.Email == user.Email);
 
-            client.Parking = collaborator.Parking;
-            BusinessManager.Instance.MontlyClients.Update(client);
-            BusinessManager.Instance.Tags.Add(new Tag { Id = model.TagId.ToUpper(), Client = client });
+                client.Parkings.Add(collaborator.Parking);
+                BusinessManager.Instance.Tags.Add(new Tag { Id = model.TagId.ToUpper(), Client = client });
 
-            return RedirectToAction("Index", "Collaborator");
+                return Json(new { Message = string.Format("Tag {0} vinculada com sucesso!", model.TagId), Success = true });
+            }
+            catch (UniqueKeyViolationException)
+            {
+                return Json(new { Message = "Tag já associada à um usuário.", Success = false });
+            }
         }
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<ActionResult> RequestNewTag()
+        public async Task<ActionResult> RequestNewTag(string parkingCNPJ)
         {
             try
             {
                 var userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
                 var user = User.Identity.GetApplicationUser();
-                var client = BusinessManager.Instance.MontlyClients.FindAll().SingleOrDefault(c => c.Email == user.Email);
-                var parking = BusinessManager.Instance.Parkings.Find(client.Parking.CNPJ);
+                var client = BusinessManager.Instance.Clients.FindAll().SingleOrDefault(c => c.Email == user.Email);
+                var parking = BusinessManager.Instance.Parkings.Find(parkingCNPJ);
 
                 if (parking == null)
                 {

@@ -17,7 +17,7 @@ namespace SPS.Web.Common
                     DateTime = r.EnterDateTime.Date,
                     ParkingName = r.Parking.Name,
                     TotalHours = r.TotalHours,
-                    TotalValue = r.TotalCash
+                    TotalValue = r.TotalValue
                 }).ToList();
 
             return billings.GroupBy(b => b.ParkingName).ToList();
@@ -31,7 +31,7 @@ namespace SPS.Web.Common
                     DateTime = r.EnterDateTime.Date,
                     ParkingName = r.Parking.Name,
                     TotalHours = r.TotalHours,
-                    TotalValue = r.TotalCash
+                    TotalValue = r.TotalValue
                 }).ToList();
 
             return billings.ToList();
