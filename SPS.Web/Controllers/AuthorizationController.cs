@@ -36,36 +36,13 @@ namespace SPS.Web.Controllers
                 return MakeErrorResponse();
             }
 
-            UsageRecord lastRecord = BusinessManager.Instance.UsageRecords.FindAll()
-                                        .Where(r => r.EnterDateTime.Date == DateTime.Now.Date && r.IsDirty)
-                                        .OrderBy(r => r.EnterDateTime)
-                                        .LastOrDefault();
+            bool isNew;
+            byte control;
 
-            if (lastRecord == null)
-            {
-                lastRecord = new UsageRecord()
-                {
-                    Client = tag.Client,
-                    EnterDateTime = DateTime.Now,
-                    ExitDateTime = DateTime.Now,
-                    IsDirty = true,
-                    Parking = parking,
-                    Tag = tag
-                };
+            BusinessManager.Instance.AddOrUpdateRecord(tag, parking, out isNew);
+            control = Convert.ToByte(isNew);
 
-                BusinessManager.Instance.UsageRecords.Add(lastRecord);
-
-                return MakeSuccessResponse(tag.Client.FirstName, (byte)0);
-            }
-            else
-            {
-                lastRecord.IsDirty = false;
-                lastRecord.ExitDateTime = DateTime.Now;
-
-                BusinessManager.Instance.UsageRecords.Update(lastRecord);
-
-                return MakeSuccessResponse(tag.Client.FirstName, (byte)1);
-            }
+            return MakeSuccessResponse(tag.Client.FirstName, control);
         }
 
         private HttpResponseMessage MakeSuccessResponse(string userName, byte control)

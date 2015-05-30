@@ -1,4 +1,7 @@
-﻿using System;
+﻿using SPS.Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SPS.BO
 {
@@ -122,6 +125,55 @@ namespace SPS.BO
             {
                 return this.usageRecordsBO;
             }
+        }
+
+        public void AddOrUpdateRecord(Tag tag, Parking parking, out bool isNew)
+        {
+            UsageRecord lastRecord = BusinessManager.Instance.UsageRecords.FindAll()
+                                           .Where(r => r.EnterDateTime.Date == DateTime.Now.Date && r.Client.CPF == tag.Client.CPF && r.IsDirty)
+                                           .OrderBy(r => r.EnterDateTime)
+                                           .LastOrDefault();
+
+            if (lastRecord == null)
+            {
+                lastRecord = new UsageRecord()
+                {
+                    Client = tag.Client,
+                    EnterDateTime = DateTime.Now,
+                    ExitDateTime = DateTime.Now,
+                    IsDirty = true,
+                    Parking = parking,
+                    Tag = tag
+                };
+
+                isNew = true;
+                BusinessManager.Instance.UsageRecords.Add(lastRecord);
+            }
+            else
+            {
+                lastRecord.IsDirty = false;
+                lastRecord.ExitDateTime = DateTime.Now;
+                lastRecord.TotalHours = Convert.ToSingle((lastRecord.ExitDateTime - lastRecord.EnterDateTime).TotalHours);
+                lastRecord.TotalValue = CalculatePrice(parking.CNPJ, lastRecord.EnterDateTime.TimeOfDay, lastRecord.ExitDateTime.TimeOfDay);
+
+                isNew = false;
+                BusinessManager.Instance.UsageRecords.Update(lastRecord);
+            }
+        }
+
+        public decimal CalculatePrice(string parkingCNPJ, TimeSpan startTime, TimeSpan endTime)
+        {
+            Parking parking = Parkings.Find(parkingCNPJ);
+
+            if (parking == null)
+            {
+                throw new ArgumentException("No parking with the provided CNPJ");
+            }
+
+            Price price = parking.Prices.SingleOrDefault(p => p.StartTime >= startTime && endTime <= p.EndTime);
+            decimal priceValue = price.Value * Convert.ToDecimal((endTime - startTime).TotalHours);
+
+            return priceValue;
         }
     }
 }

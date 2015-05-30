@@ -4,6 +4,7 @@ using SPS.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 
 namespace SPS.BO
 {
@@ -75,11 +76,12 @@ namespace SPS.BO
             using (var context = new SPSDb())
             {
                 parking = context.Parkings
-                    .Include("Clients")
-                    .Include("Collaborators")
-                    .Include("LocalManager")
-                    .Include("Address")
-                    .Include("Spaces")
+                    .Include(p => p.Clients)
+                    .Include(p => p.Collaborators)
+                    .Include(p => p.LocalManager)
+                    .Include(p => p.Address)
+                    .Include(p => p.Spaces)
+                    .Include(p => p.Prices)
                     .SingleOrDefault(p => p.CNPJ == key);
             }
 
@@ -91,12 +93,13 @@ namespace SPS.BO
             using (var context = new SPSDb())
             {
                 return context.Parkings
-                    .Include("Clients")
-                    .Include("Prices")
-                    .Include("Collaborators")
-                    .Include("LocalManager")
-                    .Include("Address")
-                    .Include("Spaces").ToList();
+                    .Include(p => p.Clients)
+                    .Include(p => p.Collaborators)
+                    .Include(p => p.LocalManager)
+                    .Include(p => p.Address)
+                    .Include(p => p.Spaces)
+                    .Include(p => p.Prices)
+                    .ToList();
             }
         }
     }
