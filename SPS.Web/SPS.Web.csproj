@@ -222,6 +222,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AttachTagViewModel.cs" />
+    <Compile Include="Models\AuthorizationModel.cs" />
     <Compile Include="Models\BillingViewModel.cs" />
     <Compile Include="Models\GenerateBillingViewModel.cs" />
     <Compile Include="Models\ContactViewModel.cs" />

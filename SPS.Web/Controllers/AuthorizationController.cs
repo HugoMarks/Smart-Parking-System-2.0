@@ -1,6 +1,7 @@
 ﻿using SPS.BO;
 using SPS.Model;
 using SPS.Web.Api;
+using SPS.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,23 +14,24 @@ namespace SPS.Web.Controllers
     [Route("api/authorize")]
     public class AuthorizationController : ApiController
     {
-        public HttpResponseMessage Get(string tagId, string parkingCNPJ)
+        [HttpPost]
+        public HttpResponseMessage Post([FromBody] AuthorizationModel model)
         {
-            Tag tag = BusinessManager.Instance.Tags.Find(tagId);
+            Tag tag = BusinessManager.Instance.Tags.Find(model.TagId);
 
             if (tag == null)
             {
                 return MakeErrorResponse();
             }
 
-            Parking parking = BusinessManager.Instance.Parkings.Find(parkingCNPJ);
+            Parking parking = BusinessManager.Instance.Parkings.Find(model.ParkingCNPJ);
 
             if (parking == null)
             {
                 return MakeErrorResponse();
             }
 
-            if (!tag.Client.Parkings.Any(p => p.CNPJ == parkingCNPJ))
+            if (!tag.Client.Parkings.Any(p => p.CNPJ == model.ParkingCNPJ))
             {
                 return MakeErrorResponse();
             }
@@ -83,7 +85,11 @@ namespace SPS.Web.Controllers
         {
             return new HttpResponseMessage()
             {
-                StatusCode = HttpStatusCode.Unauthorized
+                StatusCode = HttpStatusCode.Unauthorized,
+                Content = new JsonContent(new 
+                {
+                    Message = "Unauthorized"
+                })
             };
         }
     }
