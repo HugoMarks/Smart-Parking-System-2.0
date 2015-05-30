@@ -25,5 +25,7 @@ namespace SPS.Model
         public virtual decimal TotalValue { get; set; }
 
         public virtual PaymentStatus PaymentStatus { get; set; }
+
+        public virtual bool IsDirty { get; set; }
     }
 }

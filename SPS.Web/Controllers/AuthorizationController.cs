@@ -19,59 +19,71 @@ namespace SPS.Web.Controllers
 
             if (tag == null)
             {
-                return MakeErrorResponse(AuthorizationStatusCode.InvalidTag);
+                return MakeErrorResponse();
             }
 
             Parking parking = BusinessManager.Instance.Parkings.Find(parkingCNPJ);
 
             if (parking == null)
             {
-                return MakeErrorResponse(AuthorizationStatusCode.InvalidParking);
+                return MakeErrorResponse();
             }
 
             if (!tag.Client.Parkings.Any(p => p.CNPJ == parkingCNPJ))
             {
-                return MakeErrorResponse(AuthorizationStatusCode.InvalidTagParking);
+                return MakeErrorResponse();
             }
 
-            //List<UsageRecord> records = BusinessManager.Instance.UsageRecords.FindAll()
-            //                            .Where(r => r.EnterDateTime.Date == DateTime.Now.Date)
-            //                            .ToList();
-            
-            //UsageRecord record = new UsageRecord()
-            //{
-            //    Client = tag.Client,
-            //    EnterDateTime = DateTime.Now,
-            //    Parking = parking,
-            //    Tag = tag
-            //};
+            UsageRecord lastRecord = BusinessManager.Instance.UsageRecords.FindAll()
+                                        .Where(r => r.EnterDateTime.Date == DateTime.Now.Date && r.IsDirty)
+                                        .OrderBy(r => r.EnterDateTime)
+                                        .LastOrDefault();
 
-            //BusinessManager.Instance.UsageRecords.Add(record);
+            if (lastRecord == null)
+            {
+                lastRecord = new UsageRecord()
+                {
+                    Client = tag.Client,
+                    EnterDateTime = DateTime.Now,
+                    ExitDateTime = DateTime.Now,
+                    IsDirty = true,
+                    Parking = parking,
+                    Tag = tag
+                };
 
-            return MakeSuccessResponse(AuthorizationStatusCode.Ok, "Teste", (byte)1);
+                BusinessManager.Instance.UsageRecords.Add(lastRecord);
+
+                return MakeSuccessResponse(tag.Client.FirstName, (byte)0);
+            }
+            else
+            {
+                lastRecord.IsDirty = false;
+                lastRecord.ExitDateTime = DateTime.Now;
+
+                BusinessManager.Instance.UsageRecords.Update(lastRecord);
+
+                return MakeSuccessResponse(tag.Client.FirstName, (byte)1);
+            }
         }
 
-        private HttpResponseMessage MakeSuccessResponse(AuthorizationStatusCode code, string userName, byte control)
+        private HttpResponseMessage MakeSuccessResponse(string userName, byte control)
         {
             return new HttpResponseMessage()
             {
+                StatusCode = HttpStatusCode.OK,
                 Content = new JsonContent(new
                 {
-                    StatusCode = (byte)code,
                     Control = control,
                     UserName = userName
                 })
             };
         }
 
-        private HttpResponseMessage MakeErrorResponse(AuthorizationStatusCode code)
+        private HttpResponseMessage MakeErrorResponse()
         {
             return new HttpResponseMessage()
             {
-                Content = new JsonContent(new 
-                {
-                    StatusCode = (byte)code
-                })
+                StatusCode = HttpStatusCode.Unauthorized
             };
         }
     }

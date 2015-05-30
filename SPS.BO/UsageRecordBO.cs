@@ -14,14 +14,6 @@ namespace SPS.BO
         {
             using (var context = new SPSDb())
             {
-                if (usageRecord.Tag.Client != null)
-                {
-                    var client = context.Clients.Find(usageRecord.Tag.Client.Id);
-
-                    client.Records.Add(usageRecord);
-                    BusinessManager.Instance.Clients.Update(client);
-                }
-
                 if (usageRecord.Tag != null)
                 {
                     usageRecord.Tag = context.Tags.Find(usageRecord.Tag.Id);
