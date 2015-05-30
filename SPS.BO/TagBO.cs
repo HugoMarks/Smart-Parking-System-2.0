@@ -4,6 +4,7 @@ using SPS.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 
 namespace SPS.BO
 {
@@ -60,7 +61,7 @@ namespace SPS.BO
             using (var context = new SPSDb())
             {
                 tag = context.Tags
-                    .Include("Client")
+                    .Include(t => t.Client.Parkings.Select(p => p.Clients.Select(c => c.Tags)))
                     .SingleOrDefault(c => c.Id == id);
             }
 
@@ -72,8 +73,8 @@ namespace SPS.BO
             using (var context = new SPSDb())
             {
                 return context.Tags
-                    .Include("Client").
-                    ToList();
+                    .Include(t => t.Client.Parkings.Select(p => p.Clients.Select(c => c.Tags)))
+                    .ToList();
             }
         }
 

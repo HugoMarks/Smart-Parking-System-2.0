@@ -17,6 +17,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using Owin;
 using SPS.Web.Services;
+using System.ServiceModel;
 
 
 namespace SPS.Web.Controllers
@@ -56,6 +57,9 @@ namespace SPS.Web.Controllers
 
                 systemUserManager.Create(systemUser, "System12__");
             }
+
+             
+
             return View();
         }
 

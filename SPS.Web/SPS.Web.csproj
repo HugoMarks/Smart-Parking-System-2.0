@@ -177,6 +177,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\AuthorizationStatusCode.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -185,8 +186,10 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Common\ApplicationConfig.cs" />
     <Compile Include="Common\BillingHelper.cs" />
+    <Compile Include="Api\JsonContent.cs" />
     <Compile Include="Common\StateTranslator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AuthorizationController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\CollaboratorController.cs" />
     <Compile Include="Controllers\GlobalAdminController.cs" />

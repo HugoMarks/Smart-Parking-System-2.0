@@ -4,6 +4,7 @@ using SPS.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 
 namespace SPS.BO
 {
@@ -35,10 +36,10 @@ namespace SPS.BO
             using (var context = new SPSDb())
             {
                 client = context.Clients
-                    .Include("Tags")
-                    .Include("Records")
-                    .Include("Parkings")
-                    .Include("Address")
+                    .Include(c => c.Tags)
+                    .Include(c => c.Records)
+                    .Include(c => c.Parkings)
+                    .Include(c => c.Address)
                     .SingleOrDefault(c => c.CPF == cpf);
             }
 
@@ -50,10 +51,10 @@ namespace SPS.BO
             using (var context = new SPSDb())
             {
                 return context.Clients
-                    .Include("Tags")
-                    .Include("Records")
-                    .Include("Parkings")
-                    .Include("Address")
+                    .Include(c => c.Tags)
+                    .Include(c => c.Records)
+                    .Include(c => c.Parkings)
+                    .Include(c => c.Address)
                     .ToList();
             }
         }
