@@ -42,7 +42,7 @@ namespace SPS.Web.Controllers
 
                     parking = model.ToParking();
                     BusinessManager.Instance.Parkings.Add(parking);
-                    dailyClient.Email = "daily@" + parking.Name + ".com";
+                    dailyClient.Email = "daily@" + parking.Name.Replace(" ", "_").ToLower() + ".com";
                     BusinessManager.Instance.Clients.Add(dailyClient);
 
                     BusinessManager.Instance.Clients.AttachToParking(dailyClient, parking.CNPJ);

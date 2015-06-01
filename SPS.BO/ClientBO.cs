@@ -14,7 +14,7 @@ namespace SPS.BO
         {
             using (var context = new SPSDb())
             {
-                if (this.Find(client.CPF) != null)
+                if (client.CPF != null && this.Find(client.CPF) != null)
                 {
                     throw new UniqueKeyViolationException(string.Format("There is already a client with CPF {0}.", client.CPF));
                 }
