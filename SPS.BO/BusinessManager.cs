@@ -1,4 +1,5 @@
-﻿using SPS.Model;
+﻿using SPS.BO.Exceptions;
+using SPS.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -129,13 +130,20 @@ namespace SPS.BO
 
         public void AddOrUpdateRecord(Tag tag, Parking parking, out bool isNew)
         {
-            UsageRecord lastRecord = BusinessManager.Instance.UsageRecords.FindAll()
-                                           .Where(r => r.EnterDateTime.Date == DateTime.Now.Date && r.Client.CPF == tag.Client.CPF && r.IsDirty)
-                                           .OrderBy(r => r.EnterDateTime)
-                                           .LastOrDefault();
+            if (!parking.Spaces.Any(s => s.Status == ParkingSpaceState.Free))
+            {
+                throw new FullParkingException("Não há mais vagas disponíves nesse estacionamento");
+            }
+
+            UsageRecord lastRecord = UsageRecords.FindAll()
+                                     .Where(r => r.EnterDateTime.Date == DateTime.Now.Date && r.Client.CPF == tag.Client.CPF && r.IsDirty)
+                                     .OrderBy(r => r.EnterDateTime)
+                                     .LastOrDefault();
 
             if (lastRecord == null)
             {
+                ParkingSpace space = parking.Spaces.FirstOrDefault(s => s.Status == ParkingSpaceState.Free);
+
                 lastRecord = new UsageRecord()
                 {
                     Client = tag.Client,
@@ -143,26 +151,38 @@ namespace SPS.BO
                     ExitDateTime = DateTime.Now,
                     IsDirty = true,
                     Parking = parking,
-                    Tag = tag
+                    Tag = tag,
+                    SpaceNumber = space.Number
                 };
 
+                space.Status = ParkingSpaceState.Busy;
+                ParkingsSpaces.Update(space);
+                UsageRecords.Add(lastRecord);
                 isNew = true;
-                BusinessManager.Instance.UsageRecords.Add(lastRecord);
             }
             else
             {
+                ParkingSpace space = parking.Spaces.FirstOrDefault(s => s.Number == lastRecord.SpaceNumber);
+
                 lastRecord.IsDirty = false;
                 lastRecord.ExitDateTime = DateTime.Now;
                 lastRecord.TotalHours = Convert.ToSingle((lastRecord.ExitDateTime - lastRecord.EnterDateTime).TotalHours);
                 lastRecord.TotalValue = CalculatePrice(parking.CNPJ, lastRecord.EnterDateTime.TimeOfDay, lastRecord.ExitDateTime.TimeOfDay);
 
+                space.Status = ParkingSpaceState.Free;
+                ParkingsSpaces.Update(space);
+                UsageRecords.Update(lastRecord);
                 isNew = false;
-                BusinessManager.Instance.UsageRecords.Update(lastRecord);
             }
         }
 
         public decimal CalculatePrice(string parkingCNPJ, TimeSpan startTime, TimeSpan endTime)
         {
+            if (startTime > endTime)
+            {
+                throw new ArgumentException("startTime cannot be greater than endtime");
+            }
+
             Parking parking = Parkings.Find(parkingCNPJ);
 
             if (parking == null)
@@ -170,7 +190,7 @@ namespace SPS.BO
                 throw new ArgumentException("No parking with the provided CNPJ");
             }
 
-            Price price = parking.Prices.SingleOrDefault(p => p.StartTime >= startTime && endTime <= p.EndTime);
+            Price price = parking.Prices.SingleOrDefault(p => p.StartTime <= startTime && p.EndTime >= endTime);
             decimal priceValue = price.Value * Convert.ToDecimal((endTime - startTime).TotalHours);
 
             return priceValue;

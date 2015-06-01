@@ -208,5 +208,13 @@ namespace SPS.Web.Controllers
 
             return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
         }
+
+        [HttpPost]
+        public JsonResult GetFreeSpacesCount(string parkingCNPJ)
+        {
+            var parking = BusinessManager.Instance.Parkings.Find(parkingCNPJ);
+
+            return Json(new { Success = true, Count = parking.Spaces.Count(s => s.Status == ParkingSpaceState.Free) });
+        }
     }
 }

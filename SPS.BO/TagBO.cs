@@ -18,10 +18,15 @@ namespace SPS.BO
                 {
                     throw new UniqueKeyViolationException("Tag já vinculada");
                 }
-
+                
                 if (tag.Client != null)
                 {
                     tag.Client = context.Clients.SingleOrDefault(c => c.CPF == tag.Client.CPF);
+
+                    if (tag.Client.Tags.Count > 5)
+                    {
+                        throw new MaximumLimitReachedException("Número máximo de tags atingido");
+                    }
                 }
 
                 context.Tags.Add(tag);

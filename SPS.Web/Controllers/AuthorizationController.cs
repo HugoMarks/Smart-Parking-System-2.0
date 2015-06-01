@@ -1,4 +1,5 @@
 ﻿using SPS.BO;
+using SPS.BO.Exceptions;
 using SPS.Model;
 using SPS.Web.Api;
 using SPS.Web.Models;
@@ -14,6 +15,9 @@ namespace SPS.Web.Controllers
     [Route("api/authorize")]
     public class AuthorizationController : ApiController
     {
+        public const string UnauthorizedMessage = "Unauthorized";
+        public const string FullParkingMessage = "Full";
+
         [HttpPost]
         public HttpResponseMessage Post([FromBody] AuthorizationModel model)
         {
@@ -21,25 +25,33 @@ namespace SPS.Web.Controllers
 
             if (tag == null)
             {
-                return MakeErrorResponse();
+                return MakeErrorResponse(HttpStatusCode.Unauthorized, UnauthorizedMessage);
             }
 
             Parking parking = BusinessManager.Instance.Parkings.Find(model.ParkingCNPJ);
 
             if (parking == null)
             {
-                return MakeErrorResponse();
+                return MakeErrorResponse(HttpStatusCode.Unauthorized, UnauthorizedMessage);
             }
 
             if (!tag.Client.Parkings.Any(p => p.CNPJ == model.ParkingCNPJ))
             {
-                return MakeErrorResponse();
+                return MakeErrorResponse(HttpStatusCode.Unauthorized, UnauthorizedMessage);
             }
 
             bool isNew;
             byte control;
 
-            BusinessManager.Instance.AddOrUpdateRecord(tag, parking, out isNew);
+            try
+            {
+                BusinessManager.Instance.AddOrUpdateRecord(tag, parking, out isNew);
+            }
+            catch (FullParkingException)
+            {
+                return MakeErrorResponse(HttpStatusCode.BadRequest, FullParkingMessage);
+            }
+
             control = Convert.ToByte(isNew);
 
             return MakeSuccessResponse(tag.Client.FirstName, control);
@@ -58,14 +70,14 @@ namespace SPS.Web.Controllers
             };
         }
 
-        private HttpResponseMessage MakeErrorResponse()
+        private HttpResponseMessage MakeErrorResponse(HttpStatusCode statusCode, string message)
         {
             return new HttpResponseMessage()
             {
-                StatusCode = HttpStatusCode.Unauthorized,
+                StatusCode = statusCode,
                 Content = new JsonContent(new 
                 {
-                    Message = "Unauthorized"
+                    Message = message
                 })
             };
         }

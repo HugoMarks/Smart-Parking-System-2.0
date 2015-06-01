@@ -50,6 +50,8 @@
     <Compile Include="BusinessManager.cs" />
     <Compile Include="ClientBO.cs" />
     <Compile Include="CollaboratorBO.cs" />
+    <Compile Include="Exceptions\MaximumLimitReachedException.cs" />
+    <Compile Include="Exceptions\FullParkingException.cs" />
     <Compile Include="Exceptions\UniqueKeyViolationException.cs" />
     <Compile Include="GlobalManagerBO.cs" />
     <Compile Include="IBusiness.cs" />

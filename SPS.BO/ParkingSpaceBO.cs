@@ -47,12 +47,6 @@ namespace SPS.BO
                     return;
 
                 context.Entry(entity).CurrentValues.SetValues(parkingSpace);
-
-                if (parkingSpace.Parking != null)
-                {
-                    parkingSpace.Parking = context.Parkings.Find(parkingSpace.Parking.CNPJ);
-                }
-
                 context.SaveChanges();
             }
         }

@@ -316,6 +316,7 @@
     <Content Include="Scripts\spaceList.js" />
     <Content Include="Scripts\timepicker.js" />
     <Content Include="Scripts\token.js" />
+    <Content Include="Scripts\updateParkingSpaces.js" />
     <Content Include="Scripts\validation.js" />
     <Content Include="Scripts\_references.js" />
     <None Include="Service References\CorreiosService\configuration91.svcinfo" />

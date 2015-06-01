@@ -112,11 +112,16 @@ namespace SPS.BO
 
                 if (!string.IsNullOrEmpty(client.CPF))
                 {
-                    dbClient = context.Clients.Include("Parkings").SingleOrDefault(c => c.CPF == client.CPF);
+                    dbClient = context.Clients.Include(c => c.Parkings).SingleOrDefault(c => c.CPF == client.CPF);
                 }
                 else
                 {
-                    dbClient = context.Clients.Include("Parkings").SingleOrDefault(c => c.Email == client.Email);
+                    dbClient = context.Clients.Include(c => c.Parkings).SingleOrDefault(c => c.Email == client.Email);
+                }
+
+                if (dbClient.Parkings.Count > 5)
+                {
+                    throw new MaximumLimitReachedException("Número máximo de estacionamentos para esse cliente atingido");
                 }
 
                 dbClient.Parkings.Add(dbParking);

@@ -6,7 +6,6 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var spaces = ViewBag.spaces;
 }
 
 <div class="container">
@@ -80,7 +79,7 @@
                             </h3>
                         </div>
                         <div class="panel-body center-text">
-                            <span class="numero-de-vagas">@spaces</span>
+                            <span class="numero-de-vagas" data-parking-cnpj="@ViewBag.CurrentParkingCNPJ"></span>
                         </div>
                     </div>
                 </div>
@@ -140,6 +139,7 @@
 
 @section Scripts
 {
+    <script type="text/javascript" src="@Url.Content("~/Scripts/updateParkingSpaces.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.mask.min.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/validation.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/moment-with-locales.min.js")"></script>

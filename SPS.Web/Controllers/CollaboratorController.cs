@@ -57,8 +57,8 @@ namespace SPS.Web.Controllers
 
             var collaborators = BusinessManager.Instance.Collaborators.FindAll().ToList();
             var collaborator = collaborators.SingleOrDefault(l => l.Email == user.Email);
-            var parking = BusinessManager.Instance.Parkings.FindAll().SingleOrDefault(p => p.CNPJ == collaborator.Parking.CNPJ);
-            ViewBag.spaces = parking.Spaces.Count();
+
+            ViewBag.CurrentParkingCNPJ = collaborator.Parking.CNPJ;
 
             return View();
         }
