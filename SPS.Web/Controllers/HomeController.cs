@@ -18,6 +18,7 @@ using Microsoft.Owin.Security;
 using Owin;
 using SPS.Web.Services;
 using System.ServiceModel;
+using SPS.Web.Common;
 
 
 namespace SPS.Web.Controllers
@@ -40,25 +41,21 @@ namespace SPS.Web.Controllers
 
         public ActionResult Index()
         {
-            if (BusinessManager.Instance.GlobalManagers.FindAll().Count == 0)
+            //cria um usuário de sistema.            
+            if (UserManager.FindByEmail(ApplicationConfig.Mail) == null)
             {
-                //cria um usuário de sistema.
-                ApplicationUserManager systemUserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
                 ApplicationUser systemUser = new ApplicationUser
                 {
-                    Email = "sps.smartparkingsystem@gmail.com",
-                    FirstName = "Smart Parking ",
+                    UserName = "SPS",
+                    Email = ApplicationConfig.Mail,
+                    FirstName = "Smart Parking",
                     LastName = "System",
-                    EmailConfirmed = true,
-                    UserName = "sps.smartparkingsystem@gmail.com",
                     PhoneNumber = "(00) 00000-0000",
                     UserType = UserType.Client
                 };
-
-                systemUserManager.Create(systemUser, "System12__");
+                
+                UserManager.Create(systemUser, "System12__");
             }
-
-             
 
             return View();
         }
@@ -87,7 +84,7 @@ namespace SPS.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                ApplicationUser user = UserManager.FindByEmail("sps@engineer.com");
+                ApplicationUser user = UserManager.FindByEmail(ApplicationConfig.Mail);
 
                 string message = "<br/>Contato criado por: " + model.Name + ".<br/>" +
                                  "Assunto: " + model.Subject + ".<br/>" +

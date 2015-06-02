@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "SPS.Architeture", "SPS.Architeture\SPS.Architeture.modelproj", "{71BADA7C-07C3-427A-8F20-5D335FA267A7}"
 EndProject
@@ -16,8 +16,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPS.Mobile.Root", "SPS.Mobile.Root\SPS.Mobile.Root.csproj", "{F76866A9-38B2-4381-B034-20B686581CB0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPS.Security", "SPS.Security\SPS.Security.csproj", "{1636DB8C-4AEB-45FD-88D2-660BB127F1B4}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPS.WebApi", "SPS.WebApi\SPS.WebApi.csproj", "{6D9C6366-C999-4F1A-A2B7-78825E889004}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -95,14 +93,6 @@ Global
 		{1636DB8C-4AEB-45FD-88D2-660BB127F1B4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1636DB8C-4AEB-45FD-88D2-660BB127F1B4}.Release|ARM.ActiveCfg = Release|Any CPU
 		{1636DB8C-4AEB-45FD-88D2-660BB127F1B4}.Release|x86.ActiveCfg = Release|Any CPU
-		{6D9C6366-C999-4F1A-A2B7-78825E889004}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6D9C6366-C999-4F1A-A2B7-78825E889004}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6D9C6366-C999-4F1A-A2B7-78825E889004}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{6D9C6366-C999-4F1A-A2B7-78825E889004}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{6D9C6366-C999-4F1A-A2B7-78825E889004}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6D9C6366-C999-4F1A-A2B7-78825E889004}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6D9C6366-C999-4F1A-A2B7-78825E889004}.Release|ARM.ActiveCfg = Release|Any CPU
-		{6D9C6366-C999-4F1A-A2B7-78825E889004}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -72,7 +72,7 @@ namespace SPS.Web
                     //Email criado no mail.com
                     var msg = new MailMessage()
                     {
-                        From = new MailAddress("sps@engineer.com", "Smart Parking System"),
+                        From = new MailAddress(ApplicationConfig.Mail, "Smart Parking System"),
                         Subject = message.Subject
                     };
 
