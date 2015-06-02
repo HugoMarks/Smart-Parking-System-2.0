@@ -5,7 +5,7 @@
 @{
     var count = 0;
     var user = User.Identity.GetApplicationUser();
-    var client = BusinessManager.Instance.MontlyClients.FindAll().SingleOrDefault(c => c.Email == user.Email);
+    var client = BusinessManager.Instance.Clients.FindAll().SingleOrDefault(c => c.Email == user.Email);
     var records = client.Records.Select(r => new UsageRecordsViewModel
     {
         EnterDateTime = r.EnterDateTime.ToString("dd/MM/yyy hh:mm"),
@@ -13,7 +13,7 @@
         ParkingCNPJ = r.Parking.CNPJ,
         ParkingName = r.Parking.Name,
         TagNumber = r.Tag.Id.ToString(),
-        TotalCash = r.TotalCash.ToString(),
+        TotalCash = r.TotalValue.ToString(),
         TotalHours = r.TotalHours.ToString()
     }).OrderBy(r => r.EnterDateTime);
 }
