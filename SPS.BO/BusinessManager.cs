@@ -191,6 +191,12 @@ namespace SPS.BO
             }
 
             Price price = parking.Prices.SingleOrDefault(p => p.StartTime <= startTime && p.EndTime >= endTime);
+
+            if (price == null)
+            {
+                price = new Price { Value = 3.00m };
+            }
+
             decimal priceValue = price.Value * Convert.ToDecimal((endTime - startTime).TotalHours);
 
             return priceValue;

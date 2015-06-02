@@ -162,7 +162,7 @@ namespace SPS.Web.Controllers
                     Address = parking.Address,
                     Number = parking.PhoneNumber,
                     StreetNumber = parking.StreetNumber,
-                    Spaces = parking.Spaces.Count
+                    Spaces = parking.Spaces.Where(s => s.Status == ParkingSpaceState.Free).Count()
                 }
             });
         }

@@ -21,7 +21,7 @@ namespace SPS.BO
                 
                 if (tag.Client != null)
                 {
-                    tag.Client = context.Clients.SingleOrDefault(c => c.CPF == tag.Client.CPF);
+                    tag.Client = context.Clients.Include(c => c.Tags).SingleOrDefault(c => c.CPF == tag.Client.CPF);
 
                     if (tag.Client.Tags.Count > 5)
                     {
