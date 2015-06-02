@@ -46,11 +46,11 @@ namespace SPS.Web.Controllers
                 ApplicationUserManager systemUserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
                 ApplicationUser systemUser = new ApplicationUser
                 {
-                    Email = "sps@engineer.com",
+                    Email = "sps.smartparkingsystem@gmail.com",
                     FirstName = "Smart Parking ",
                     LastName = "System",
                     EmailConfirmed = true,
-                    UserName = "sps@engineer.com",
+                    UserName = "sps.smartparkingsystem@gmail.com",
                     PhoneNumber = "(00) 00000-0000",
                     UserType = UserType.Client
                 };
