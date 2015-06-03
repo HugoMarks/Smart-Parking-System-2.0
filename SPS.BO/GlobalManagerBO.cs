@@ -58,7 +58,14 @@ namespace SPS.BO
                 
                 if (globalManager.Address != null)
                 {
-                    entity.Address = context.Addresses.SingleOrDefault(a => a.PostalCode == globalManager.Address.PostalCode);
+                    var address = context.Addresses.SingleOrDefault(a => a.PostalCode == globalManager.Address.PostalCode);
+
+                    if (address == null)
+                    {
+                        address = globalManager.Address;
+                    }
+
+                    entity.Address = address;
                 }
 
                 context.SaveChanges();

@@ -129,12 +129,12 @@ namespace SPS.Web.Controllers
         {
             var selectedId = form["CollaboratorsDropDownList"];
             var collaborator = BusinessManager.Instance.Collaborators.Find(selectedId);
-            var model = collaborator.ToFullEditCollaboratorViewModel();
+            var model = collaborator.ToEditCollaboratorViewModel();
 
             return View(model);
         }
 
-        private ActionResult FullEdit(FullEditCollaboratorViewModel model)
+        private ActionResult FullEdit(EditCollaboratorViewModel model)
         {
             return View(model);
         }
@@ -143,7 +143,7 @@ namespace SPS.Web.Controllers
         {
             var user = User.Identity.GetApplicationUser();
             var collaborator = BusinessManager.Instance.Collaborators.FindAll().Where(c => c.Email == user.Email).FirstOrDefault();
-            var model = collaborator.ToFullEditCollaboratorViewModel();
+            var model = collaborator.ToEditCollaboratorViewModel();
 
             return View(model);
         }
@@ -192,7 +192,7 @@ namespace SPS.Web.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> SaveFullEditChanges(FullEditCollaboratorViewModel model)
+        public async Task<ActionResult> SaveFullEditChanges(EditCollaboratorViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -265,6 +265,7 @@ namespace SPS.Web.Controllers
 
                 client.Parkings.Add(collaborator.Parking);
                 BusinessManager.Instance.Tags.Add(new Tag { Id = model.TagId.ToUpper(), Client = client });
+                BusinessManager.Instance.Clients.AttachToParking(client, collaborator.Parking.CNPJ);
 
                 return Json(new { Message = string.Format("Tag {0} vinculada com sucesso!", model.TagId), Success = true });
             }

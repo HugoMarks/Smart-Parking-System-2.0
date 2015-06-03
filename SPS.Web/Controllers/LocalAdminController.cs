@@ -21,6 +21,7 @@ using System.Web.Script.Serialization;
 using SPS.Repository;
 using SPS.BO.Exceptions;
 using SPS.Web.Common;
+using System.IO;
 
 
 namespace SPS.Web.Controllers
@@ -127,12 +128,12 @@ namespace SPS.Web.Controllers
         {
             var selectedLocalAdmin = form["LocalAdminsDropDownList"];
             var localAdmin = BusinessManager.Instance.LocalManagers.Find(selectedLocalAdmin);
-            var model = localAdmin.ToFullEditLocalAdminViewModel();
+            var model = localAdmin.ToEditLocalAdminViewModel();
 
             return View(model);
         }
 
-        private ActionResult FullEdit(FullEditCollaboratorViewModel model)
+        private ActionResult FullEdit(EditCollaboratorViewModel model)
         {
             return View(model);
         }
@@ -141,7 +142,7 @@ namespace SPS.Web.Controllers
         {
             var user = User.Identity.GetApplicationUser();
             var localAdmin = BusinessManager.Instance.LocalManagers.FindAll().Where(c => c.Email == user.Email).FirstOrDefault();
-            var model = localAdmin.ToFullEditLocalAdminViewModel();
+            var model = localAdmin.ToEditLocalAdminViewModel();
 
             return View(model);
         }
@@ -188,7 +189,7 @@ namespace SPS.Web.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> SaveFullEditChanges(FullEditLocalAdminViewModel model)
+        public async Task<ActionResult> SaveFullEditChanges(EditLocalAdminViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -224,16 +225,38 @@ namespace SPS.Web.Controllers
             return View();
         }
 
+        [HttpPost]
         public ActionResult GenerateBilling(GenerateBillingViewModel model)
         {
-            var user = User.Identity.GetApplicationUser();
-            var localAdmin = BusinessManager.Instance.LocalManagers.FindAll().SingleOrDefault(l => l.Email == user.Email);
-            var parking = BusinessManager.Instance.Parkings.FindAll().SingleOrDefault(p => p.LocalManager.CPF == localAdmin.CPF);
-            var start = DateTime.Parse(model.StartDateTime);
-            var end = DateTime.Parse(model.EndDateTime);
-            var billings = BillingHelper.GetBillingsForParking(parking.CNPJ, start, end);
+            if (ModelState.IsValid)
+            {
+                var user = User.Identity.GetApplicationUser();
+                var localAdmin = BusinessManager.Instance.LocalManagers.FindAll().SingleOrDefault(l => l.Email == user.Email);
+                var parking = BusinessManager.Instance.Parkings.FindAll().SingleOrDefault(p => p.LocalManager.CPF == localAdmin.CPF);
+                var start = DateTime.Parse(model.StartDateTime);
+                var end = DateTime.Parse(model.EndDateTime);
+                var billings = BillingHelper.GetBillingsForParking(parking.CNPJ, start, end);
 
-            return PartialView("_BillingPartial", billings);
+                return Json(new { Success = true, Content = RenderRazorViewToString("_BillingPartial", billings) });
+            }
+
+            return Json(new { Success = false, Content = RenderRazorViewToString("_GenerateBillingPartial", model) });
+        }
+
+        private string RenderRazorViewToString(string viewName, object model)
+        {
+            ViewData.Model = model;
+
+            using (var sw = new StringWriter())
+            {
+                var viewResult = ViewEngines.Engines.FindPartialView(ControllerContext, viewName);
+                var viewContext = new ViewContext(ControllerContext, viewResult.View, ViewData, TempData, sw);
+
+                viewResult.View.Render(viewContext, sw);
+                viewResult.ViewEngine.ReleaseView(ControllerContext, viewResult.View);
+
+                return sw.GetStringBuilder().ToString();
+            }
         }
     }
 }

@@ -34,24 +34,6 @@ namespace SPS.Web.Extensions
                 LastName = collaborator.LastName,
                 Number = collaborator.StreetNumber.ToString(),
                 PhoneNumber = collaborator.Telephone,
-                RG = collaborator.RG
-            };
-
-            SetAddress(collaborator.Address, collaboratorViewModel);
-
-            return collaboratorViewModel;
-        }
-
-        public static FullEditCollaboratorViewModel ToFullEditCollaboratorViewModel(this Collaborator collaborator)
-        {
-            var collaboratorViewModel = new FullEditCollaboratorViewModel
-            {
-                CPF = collaborator.CPF,
-                Email = collaborator.Email,
-                FirstName = collaborator.FirstName,
-                LastName = collaborator.LastName,
-                Number = collaborator.StreetNumber.ToString(),
-                PhoneNumber = collaborator.Telephone,
                 RG = collaborator.RG,
                 Salary = collaborator.Salary.ToString()
             };

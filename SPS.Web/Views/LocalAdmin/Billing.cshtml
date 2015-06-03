@@ -1,6 +1,6 @@
 ﻿@model SPS.Web.Models.GenerateBillingViewModel
 @{
-    ViewBag.Title = "Vizualize o faturamento de toda a sua rede";
+    ViewBag.Title = "Vizualize o faturamento do seu estacionamento";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -11,23 +11,10 @@
 
     <h4>Filtre os faturamentos por data</h4>
 
-    <form class="form-inline" role="form" style="margin-left: -3%;">
-        <div class="col-md-7 col-sm-7 col-xs-7 col-lg-7">
-            <div class="form-group col-md-4" style="margin-bottom:2%;">
-                @Html.TextBoxFor(m => m.StartDateTime, new { @class = "form-control date-time", placeholder = "Data de início" })
-                @Html.ValidationMessageFor(m => m.StartDateTime, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="form-group col-md-4">
-                @Html.TextBoxFor(m => m.EndDateTime, new { @class = "form-control date-time", placeholder = "Data de término" })
-                @Html.ValidationMessageFor(m => m.EndDateTime, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="form-group col-md-4">
-                <input id="submitButton" type="button" class="btn btn-success" value="Gerar faturamento" />
-            </div>
-        </div>
-    </form>
+    <div class="fields" style="margin-left: -3%;">
+        @Html.Partial("~/Views/LocalAdmin/_GenerateBillingPartial.cshtml")
+    </div>
+    
 </div>
 
 <div id="billingContainer" class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
@@ -36,9 +23,9 @@
 
 @section Scripts {
     <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.mask.min.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/validation.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/moment-with-locales.min.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/bootstrap-datetimepicker.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/validation.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/generateBillingLocalAdmin.js")"></script>
 }
 

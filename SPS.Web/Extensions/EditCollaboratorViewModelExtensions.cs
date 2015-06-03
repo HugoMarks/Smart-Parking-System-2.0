@@ -35,22 +35,6 @@ namespace SPS.Web.Extensions
                 LastName = model.LastName,
                 Password = passwordHash,
                 RG = model.RG,
-                Telephone = model.PhoneNumber
-            };
-        }
-
-        public static Collaborator ToCollaborator(this FullEditCollaboratorViewModel model, string passwordHash)
-        {
-            return new Collaborator
-            {
-                Address = GetAddress(model),
-                StreetNumber = int.Parse(model.Number),
-                CPF = model.CPF,
-                Email = model.Email,
-                FirstName = model.FirstName,
-                LastName = model.LastName,
-                Password = passwordHash,
-                RG = model.RG,
                 Telephone = model.PhoneNumber,
                 Salary = decimal.Parse(model.Salary)
             };

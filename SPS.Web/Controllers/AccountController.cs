@@ -157,13 +157,13 @@ namespace SPS.Web.Controllers
                 }
                 else
                 {
-                    var emailErrors = result.Errors.Where(e => e.Contains("email"));
+                    var emailErrors = result.Errors.Where(e => e.ToLower().Contains("email"));
 
                     if (emailErrors.Count() > 0)
                     {
                         foreach (var error in emailErrors)
                         {
-                            ModelState["Email"].Errors.Add(error);
+                            ModelState["Email"].Errors.Add(string.Format("O email '{0}' já está cadastrado no sistema.", model.Email));
                         }
                     }
                 }

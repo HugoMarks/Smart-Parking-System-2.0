@@ -40,23 +40,6 @@ namespace SPS.Web.Extensions
             };
         }
 
-        public static LocalManager ToLocalAdmin(this FullEditLocalAdminViewModel model, string passwordHash)
-        {
-            return new LocalManager
-            {
-                Address = GetAddress(model),
-                StreetNumber = int.Parse(model.Number),
-                CPF = model.CPF,
-                Email = model.Email,
-                FirstName = model.FirstName,
-                LastName = model.LastName,
-                Password = passwordHash,
-                RG = model.RG,
-                Telephone = model.PhoneNumber,
-                Complement = model.Complement
-            };
-        }
-
         private static Address GetAddress(EditLocalAdminViewModel registerModel)
         {
             return new Address

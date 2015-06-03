@@ -26,7 +26,12 @@ namespace SPS.BO
 
                 if (parking.Address != null)
                 {
-                    parking.Address = context.Addresses.SingleOrDefault(a => a.PostalCode == parking.Address.PostalCode);
+                    var address = context.Addresses.SingleOrDefault(a => a.PostalCode == parking.Address.PostalCode);
+
+                    if (address == null)
+                    {
+                        parking.Address = address;
+                    }
                 }
 
                 context.Parkings.Add(parking);
@@ -56,7 +61,14 @@ namespace SPS.BO
 
                 if (parking.Address != null)
                 {
-                    entity.Address = context.Addresses.SingleOrDefault(a => a.PostalCode == parking.Address.PostalCode);
+                    var address = context.Addresses.SingleOrDefault(a => a.PostalCode == parking.Address.PostalCode);
+
+                    if (address == null)
+                    {
+                        address = parking.Address;
+                    }
+
+                    entity.Address = address;
                 }
 
                 if (parking.LocalManager != null)

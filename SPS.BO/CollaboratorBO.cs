@@ -21,7 +21,12 @@ namespace SPS.BO
 
                 if (collaborator.Address != null)
                 {
-                    collaborator.Address = context.Addresses.SingleOrDefault(a => a.PostalCode == collaborator.Address.PostalCode);
+                    var address = context.Addresses.SingleOrDefault(a => a.PostalCode == collaborator.Address.PostalCode);
+
+                    if (address != null)
+                    {
+                        collaborator.Address = address;
+                    }
                 }
 
                 if (collaborator.Parking != null)
@@ -57,7 +62,14 @@ namespace SPS.BO
 
                 if (collaborator.Address != null)
                 {
-                    entity.Address = context.Addresses.SingleOrDefault(a => a.PostalCode == collaborator.Address.PostalCode);
+                    var address = context.Addresses.SingleOrDefault(a => a.PostalCode == collaborator.Address.PostalCode);
+
+                    if (address == null)
+                    {
+                        address = collaborator.Address;
+                    }
+
+                    entity.Address = address;
                 }
 
                 if (collaborator.Parking != null)

@@ -21,7 +21,12 @@ namespace SPS.BO
 
                 if (client.Address != null)
                 {
-                    client.Address = context.Addresses.SingleOrDefault(a => a.PostalCode == client.Address.PostalCode);
+                    var address = context.Addresses.SingleOrDefault(a => a.PostalCode == client.Address.PostalCode);
+
+                    if (address != null)
+                    {
+                        client.Address = address;
+                    }
                 }
 
                 context.Clients.Add(client);
@@ -91,7 +96,14 @@ namespace SPS.BO
 
                 if (client.Address != null)
                 {
-                    entity.Address = context.Addresses.SingleOrDefault(a => a.PostalCode == client.Address.PostalCode);
+                    var address = context.Addresses.SingleOrDefault(a => a.PostalCode == client.Address.PostalCode);
+
+                    if (address == null)
+                    {
+                        address = client.Address;
+                    }
+
+                    entity.Address = address;
                 }
 
                 if (client.Tags != null)

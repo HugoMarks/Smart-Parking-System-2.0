@@ -43,25 +43,6 @@ namespace SPS.Web.Extensions
             return localAdminViewModel;
         }
 
-        public static FullEditLocalAdminViewModel ToFullEditLocalAdminViewModel(this LocalManager localAdmin)
-        {
-            var localAdminViewModel = new FullEditLocalAdminViewModel
-            {
-                CPF = localAdmin.CPF,
-                Email = localAdmin.Email,
-                FirstName = localAdmin.FirstName,
-                LastName = localAdmin.LastName,
-                Number = localAdmin.StreetNumber.ToString(),
-                PhoneNumber = localAdmin.Telephone,
-                RG = localAdmin.RG,
-                Complement = localAdmin.Complement
-            };
-
-            SetAddress(localAdmin.Address, localAdminViewModel);
-
-            return localAdminViewModel;
-        }
-
         private static void SetAddress(Address address, RegisterLocalAdminViewModel localAdminViewModel)
         {
             localAdminViewModel.Street = address.Street;

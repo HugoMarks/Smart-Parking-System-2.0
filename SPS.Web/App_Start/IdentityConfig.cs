@@ -80,17 +80,19 @@ namespace SPS.Web
                     msg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(message.Body, null, MediaTypeNames.Text.Plain));
                     msg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(message.Body, null, MediaTypeNames.Text.Html));
 
-                    var smtpClient = new SmtpClient(ApplicationConfig.MailServerAddress, Convert.ToInt32(465))
-                    {
-                        Credentials = new NetworkCredential(ApplicationConfig.Mail, ApplicationConfig.MailPassword),
+                    var smtpClient = new SmtpClient(ApplicationConfig.MailServerAddress, Convert.ToInt32(587))
+                    {   DeliveryMethod = SmtpDeliveryMethod.Network,
+                        UseDefaultCredentials = false,
                         EnableSsl = true
                     };
+
+                    smtpClient.Credentials = new NetworkCredential(ApplicationConfig.Mail, ApplicationConfig.MailPassword);                     
 
                     try
                     {
                         smtpClient.Send(msg);
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                     }
                 });

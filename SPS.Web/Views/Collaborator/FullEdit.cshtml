@@ -1,4 +1,4 @@
-﻿@model SPS.Web.Models.FullEditCollaboratorViewModel
+﻿@model SPS.Web.Models.EditCollaboratorViewModel
 @{
     ViewBag.Title = "Edite um funcionário";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,7 +8,7 @@
 
 <h4>Realize as alterações disponíveis</h4>
 
-@using (Html.BeginForm("SaveFullEditChanges", "Collaborator", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("SaveEditChanges", "Collaborator", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     <hr />

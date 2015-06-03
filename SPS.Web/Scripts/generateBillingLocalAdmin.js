@@ -18,9 +18,15 @@
 
         var data = form.serialize();
 
-        $.get('/LocalAdmin/GenerateBilling', data)
-        .done(function (partial) {
-            $('#billingContainer').html(partial).fadeIn();
+        $.post('/LocalAdmin/GenerateBilling', data)
+        .done(function (result) {
+            if (result.Success) {
+                $('#billingContainer').html(result.Content).fadeIn();
+            }
+            else {
+                $('.fields').html(result.Content);
+                $('input').addClass('has-error');
+            }
         });
     });
 });

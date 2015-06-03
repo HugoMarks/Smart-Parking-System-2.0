@@ -130,11 +130,6 @@ namespace SPS.BO
 
         public void AddOrUpdateRecord(Tag tag, Parking parking, out bool isNew)
         {
-            if (!parking.Spaces.Any(s => s.Status == ParkingSpaceState.Free))
-            {
-                throw new FullParkingException("Não há mais vagas disponíves nesse estacionamento");
-            }
-
             UsageRecord lastRecord = UsageRecords.FindAll()
                                      .Where(r => r.EnterDateTime.Date == DateTime.Now.Date && r.Client.CPF == tag.Client.CPF && r.IsDirty)
                                      .OrderBy(r => r.EnterDateTime)
@@ -142,6 +137,11 @@ namespace SPS.BO
 
             if (lastRecord == null)
             {
+                if (!parking.Spaces.Any(s => s.Status == ParkingSpaceState.Free))
+                {
+                    throw new FullParkingException("Não há mais vagas disponíves nesse estacionamento");
+                }
+
                 ParkingSpace space = parking.Spaces.FirstOrDefault(s => s.Status == ParkingSpaceState.Free);
 
                 lastRecord = new UsageRecord()

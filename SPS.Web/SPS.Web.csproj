@@ -230,8 +230,6 @@
     <Compile Include="Models\EditGlobalAdminViewModel.cs" />
     <Compile Include="Models\EditLocalAdminViewModel.cs" />
     <Compile Include="Models\EditCollaboratorViewModel.cs" />
-    <Compile Include="Models\FullEditLocalAdminViewModel.cs" />
-    <Compile Include="Models\FullEditCollaboratorViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ParkingSpaceViewModel.cs" />
     <Compile Include="Models\PriceViewModel.cs" />
@@ -511,9 +509,11 @@
     <Content Include="Views\GlobalAdmin\Billing.cshtml" />
     <Content Include="Views\GlobalAdmin\_BillingPartial.cshtml" />
     <Content Include="Views\Parking\EditLocal.cshtml" />
-    <Content Include="Views\LocalAdmin\Billing.cshtml" />
     <Content Include="Views\LocalAdmin\_BillingPartial.cshtml" />
     <Content Include="Views\Collaborator\_AttachTagPartial.cshtml" />
+    <Content Include="Views\GlobalAdmin\_GenerateBillingPartial.cshtml" />
+    <Content Include="Views\LocalAdmin\Billing.cshtml" />
+    <Content Include="Views\LocalAdmin\_GenerateBillingPartial.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

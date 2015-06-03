@@ -42,19 +42,24 @@ namespace SPS.Web.Controllers
         public ActionResult Index()
         {
             //cria um usuário de sistema.            
-            if (UserManager.FindByEmail(ApplicationConfig.Mail) == null)
+            if (UserManager.FindByEmail("sps.smartparkingsystem@gmail.com") == null)
             {
                 ApplicationUser systemUser = new ApplicationUser
                 {
                     UserName = "SPS",
-                    Email = ApplicationConfig.Mail,
+                    Email = "sps.smartparkingsystem@gmail.com",
                     FirstName = "Smart Parking",
                     LastName = "System",
                     PhoneNumber = "(00) 00000-0000",
                     UserType = UserType.Client
                 };
                 
-                UserManager.Create(systemUser, "System12__");
+                var res = UserManager.Create(systemUser, "System12__");
+
+                if (res == null)
+                {
+
+                }
             }
 
             return View();
@@ -84,7 +89,7 @@ namespace SPS.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                ApplicationUser user = UserManager.FindByEmail(ApplicationConfig.Mail);
+                ApplicationUser user = UserManager.FindByEmail("sps.smartparkingsystem@gmail.com");
 
                 string message = "<br/>Contato criado por: " + model.Name + ".<br/>" +
                                  "Assunto: " + model.Subject + ".<br/>" +

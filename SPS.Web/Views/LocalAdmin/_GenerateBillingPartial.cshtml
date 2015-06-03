@@ -1,0 +1,19 @@
+﻿@model SPS.Web.Models.GenerateBillingViewModel
+
+<form class="form-inline" role="form">
+    <div class="col-md-7 col-sm-7 col-xs-7 col-lg-7">
+        <div class="form-group col-md-4" style="margin-bottom:2%;">
+            @Html.TextBoxFor(m => m.StartDateTime, new { @class = "form-control date-time", placeholder = "Data de início" })
+            @Html.ValidationMessageFor(m => m.StartDateTime, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group col-md-4">
+            @Html.TextBoxFor(m => m.EndDateTime, new { @class = "form-control date-time", placeholder = "Data de término" })
+            @Html.ValidationMessageFor(m => m.EndDateTime, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group col-md-4">
+            <input id="submitButton" type="button" class="btn btn-success" value="Gerar faturamento" />
+        </div>
+    </div>
+</form>

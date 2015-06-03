@@ -2,6 +2,9 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var user = User.Identity.GetApplicationUser();
+    var client = SPS.BO.BusinessManager.Instance.Clients.FindAll().SingleOrDefault(c => c.Email == user.Email);
 }
 
 <div class="container">
@@ -25,7 +28,7 @@
                         </a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                             <li>@Html.ActionLink("Histórico de Consumo", "UsageRecords", null, new { @class = "btn-default" })</li>
-                            <li><a class="btn-default" href="#">Realizar Pagamento </a></li>
+                            @*<li><a class="btn-default" href="#">Realizar Pagamento </a></li>*@
                         </ul>
                     </div>
                 </div>
@@ -82,7 +85,7 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                            <li><a id="requestTagLink" class="btn-default">Solicitar nova tag</a></li>
+                            <li><a id="requestTagLink" class="btn-default" data-parkings="@client.Parkings.Count">Solicitar nova tag</a></li>
                         </ul>
                     </div>
                 </div>                
@@ -111,6 +114,22 @@
     </div>
 </div>
 
+<div class="modal fade" id="errorRequestModal" tabindex="-1" role="dialog" aria-labelledby="errorRequestModalTitle" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="errorRequestModalTitle">Não vinculado a nenhum estacionamento</h4>
+            </div>
+            <div class="modal-body">
+                Você deve se vincular a um estacionamento antes de pedir novas tags.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
 @section Scripts {
     <script type="text/javascript" src="@Url.Content("~/Scripts/requestNewTag.js")"></script>
 }

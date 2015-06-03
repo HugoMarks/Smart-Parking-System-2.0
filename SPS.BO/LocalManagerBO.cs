@@ -19,7 +19,12 @@ namespace SPS.BO
 
                 if (localManager.Address != null)
                 {
-                    localManager.Address = context.Addresses.SingleOrDefault(a => a.PostalCode == localManager.Address.PostalCode);
+                    var address = context.Addresses.SingleOrDefault(a => a.PostalCode == localManager.Address.PostalCode);
+
+                    if (address == null)
+                    {
+                        localManager.Address = address;
+                    }
                 }
 
                 context.LocalManagers.Add(localManager);
@@ -50,7 +55,14 @@ namespace SPS.BO
 
                 if (localManager.Address != null)
                 {
-                    entity.Address = context.Addresses.SingleOrDefault(a => a.PostalCode == localManager.Address.PostalCode);
+                    var address = context.Addresses.SingleOrDefault(a => a.PostalCode == localManager.Address.PostalCode);
+
+                    if (address == null)
+                    {
+                        address = localManager.Address;
+                    }
+
+                    entity.Address = address;
                 }
 
                 context.SaveChanges();

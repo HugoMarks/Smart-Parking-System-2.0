@@ -64,5 +64,9 @@ namespace SPS.Web.Models
         [Display(Name = "Confirmar Nova Senha")]
         [Compare("NewPassword", ErrorMessage = "A senha e a senha de confirmação não correspondem.")]
         public string ConfirmNewPassword { get; set; }
+
+        [Display(Name = "Salário")]
+        [DataType(DataType.Currency)]
+        public string Salary { get; set; }
     }
 }

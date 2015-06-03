@@ -20,6 +20,7 @@ using SPS.Web.Extensions;
 using SPS.Model;
 using SPS.Security;
 using SPS.Web.Common;
+using System.IO;
 
 namespace SPS.Web.Controllers
 {
@@ -189,13 +190,19 @@ namespace SPS.Web.Controllers
             return View();
         }
 
+        [HttpPost]
         public ActionResult GenerateBilling(GenerateBillingViewModel model)
         {
-            var start = DateTime.Parse(model.StartDateTime);
-            var end = DateTime.Parse(model.EndDateTime);
-            var billings = BillingHelper.GetBillingsGrouppedByParking(start, end);
+            if (ModelState.IsValid)
+            {
+                var start = DateTime.Parse(model.StartDateTime);
+                var end = DateTime.Parse(model.EndDateTime);
+                var billings = BillingHelper.GetBillingsGrouppedByParking(start, end);
 
-            return PartialView("_BillingPartial", billings);
+                return Json(new { Success = true, Content = RenderRazorViewToString("_BillingPartial", billings) });
+            }
+
+            return Json(new { Success = false, Content = RenderRazorViewToString("_GenerateBillingPartial", model) });
         }
 
         private async Task SignInAsync(string email, string password)
@@ -206,6 +213,22 @@ namespace SPS.Web.Controllers
 
             authenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
             authenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = false }, await user.GenerateUserIdentityAsync(userManager));
+        }
+
+        private string RenderRazorViewToString(string viewName, object model)
+        {
+            ViewData.Model = model;
+
+            using (var sw = new StringWriter())
+            {
+                var viewResult = ViewEngines.Engines.FindPartialView(ControllerContext, viewName);
+                var viewContext = new ViewContext(ControllerContext, viewResult.View, ViewData, TempData, sw);
+
+                viewResult.View.Render(viewContext, sw);
+                viewResult.ViewEngine.ReleaseView(ControllerContext, viewResult.View);
+
+                return sw.GetStringBuilder().ToString();
+            }
         }
     }
 }
