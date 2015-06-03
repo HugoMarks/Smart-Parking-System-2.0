@@ -43,7 +43,7 @@ namespace SPS.BO
                 client = context.Clients
                     .Include(c => c.Tags)
                     .Include(c => c.Records)
-                    .Include(c => c.Parkings)
+                    .Include(c => c.Parkings.Select(p => p.LocalManager))
                     .Include(c => c.Address)
                     .SingleOrDefault(c => c.CPF == cpf);
             }
@@ -58,7 +58,7 @@ namespace SPS.BO
                 return context.Clients
                     .Include(c => c.Tags)
                     .Include(c => c.Records)
-                    .Include(c => c.Parkings)
+                    .Include(c => c.Parkings.Select(p => p.LocalManager))
                     .Include(c => c.Address)
                     .ToList();
             }

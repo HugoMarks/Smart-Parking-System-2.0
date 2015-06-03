@@ -277,14 +277,14 @@ namespace SPS.Web.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<ActionResult> RequestNewTag(string parkingCNPJ)
+        public async Task<ActionResult> RequestNewTag()
         {
             try
             {
                 var userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
                 var user = User.Identity.GetApplicationUser();
                 var client = BusinessManager.Instance.Clients.FindAll().SingleOrDefault(c => c.Email == user.Email);
-                var parking = BusinessManager.Instance.Parkings.Find(parkingCNPJ);
+                var parking = client.Parkings.FirstOrDefault();
 
                 if (parking == null)
                 {
@@ -314,6 +314,38 @@ namespace SPS.Web.Controllers
             }
 
             return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
+        }
+
+        [HttpPost]
+        public JsonResult GetRecordFromTag(string tagId)
+        {
+            Tag tag = BusinessManager.Instance.Tags.Find(tagId);
+
+            if (tag != null)
+            {
+                UsageRecord record = BusinessManager.Instance.UsageRecords.FindAll().LastOrDefault(r => r.Tag.Id == tagId && r.IsDirty);
+
+                if (record != null)
+                {
+                    record.ExitDateTime = DateTime.Now;
+                    record.TotalHours = (float)(record.ExitDateTime - record.EnterDateTime).TotalHours;
+                    record.TotalValue = BusinessManager.Instance.CalculatePrice(record.Parking.CNPJ, record.EnterDateTime.TimeOfDay, record.ExitDateTime.TimeOfDay);
+
+                    return Json(new 
+                    {
+                        Success = true,
+                        Record = new 
+                        {
+                            EnterTime = record.EnterDateTime.ToString("HH:mm dd/MM/yyyy"),
+                            ExitTime = record.ExitDateTime.ToString("HH:mm dd/MM/yyyy"),
+                            TotalHours = TimeSpan.FromHours(record.TotalHours).ToString(@"hh\:mm"),
+                            TotalValue = record.TotalValue.ToString("####.##")
+                        }
+                    });
+                }
+            }
+
+            return Json(new { Success = false, Message = "Tag não encontrada" });
         }
     }
 }

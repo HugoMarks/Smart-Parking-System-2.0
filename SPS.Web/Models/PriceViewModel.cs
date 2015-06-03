@@ -22,5 +22,8 @@ namespace SPS.Web.Models
         [Display(Name = "Preço")]
         [DataType(DataType.Currency)]
         public string Price { get; set; }
+
+        [Display(Name = "Preço padrão")]
+        public bool IsDefault { get; set; }
     }
 }

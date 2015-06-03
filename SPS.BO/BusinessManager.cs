@@ -190,11 +190,16 @@ namespace SPS.BO
                 throw new ArgumentException("No parking with the provided CNPJ");
             }
 
-            Price price = parking.Prices.SingleOrDefault(p => p.StartTime <= startTime && p.EndTime >= endTime);
+            Price price = parking.Prices.SingleOrDefault(p => p.StartTime <= startTime && p.EndTime >= endTime && !p.IsDefault);
 
             if (price == null)
             {
-                price = new Price { Value = 3.00m };
+                price = parking.Prices.SingleOrDefault(p => p.IsDefault);
+
+                if (price == null)
+                {
+                    price = new Price { Value = 3.00m };
+                }
             }
 
             decimal priceValue = price.Value * Convert.ToDecimal((endTime - startTime).TotalHours);

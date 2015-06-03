@@ -28,7 +28,7 @@ namespace SPS.BO
                 {
                     var address = context.Addresses.SingleOrDefault(a => a.PostalCode == parking.Address.PostalCode);
 
-                    if (address == null)
+                    if (address != null)
                     {
                         parking.Address = address;
                     }

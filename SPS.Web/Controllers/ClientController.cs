@@ -96,13 +96,10 @@ namespace SPS.Web.Controllers
                 var collaborator = BusinessManager.Instance.Collaborators.FindAll().SingleOrDefault(c => c.Email == user.Email);
                 var tag = BusinessManager.Instance.Tags.Find(model.Tag);
                 var client = BusinessManager.Instance.Clients.Find(tag.Client.CPF);
+                var parking = BusinessManager.Instance.Parkings.Find(collaborator.Parking.CNPJ);
+                bool isNew;
 
-                model.ParkingCNPJ = collaborator.Parking.CNPJ;
-
-                var record = model.ToUsageRecord();
-
-                record.Client = client;
-                BusinessManager.Instance.UsageRecords.Add(record);
+                BusinessManager.Instance.AddOrUpdateRecord(tag, parking, out isNew);
                 return RedirectToAction("Index", "Collaborator");
             }
 

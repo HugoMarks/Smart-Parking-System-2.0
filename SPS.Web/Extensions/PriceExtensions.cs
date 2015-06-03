@@ -15,7 +15,8 @@ namespace SPS.Web.Extensions
             {
                 EndTime = TimeSpan.Parse(model.EndTime),
                 StartTime = TimeSpan.Parse(model.StartTime),
-                Value = decimal.Parse(model.Price)
+                Value = decimal.Parse(model.Price),
+                IsDefault = model.IsDefault
             };
         }
 
@@ -25,7 +26,8 @@ namespace SPS.Web.Extensions
             {
                 EndTime = price.EndTime.ToString(@"hh\:mm"),
                 StartTime = price.StartTime.ToString(@"hh\:mm"),
-                Price = price.Value.ToString()
+                Price = price.Value.ToString(),
+                IsDefault = price.IsDefault
             };
         }
     }

@@ -16,7 +16,7 @@
     <hr />
 
     <div class="col-md-6">
-        <div class="form-group">
+        <div class="form-group toggle-group">
             @Html.LabelFor(m => m.StartTime, new { @class = "control-label" })
             <div class="bootstrap-timepicker">
                 @Html.TextBoxFor(m => m.StartTime, new { @class = "form-control input-time" })
@@ -24,7 +24,7 @@
             @Html.ValidationMessageFor(m => m.StartTime, "", new { @class = "text-danger" })
         </div>
 
-        <div class="form-group">
+        <div class="form-group toggle-group">
             @Html.LabelFor(m => m.EndTime, new { @class = "control-label" })
             <div class="bootstrap-timepicker">
                 @Html.TextBoxFor(m => m.EndTime, new { @class = "form-control input-time" })
@@ -36,6 +36,15 @@
             @Html.LabelFor(m => m.Price, new { @class = "control-label" })
             @Html.TextBoxFor(m => m.Price, new { @class = "form-control input-price" })
             @Html.ValidationMessageFor(m => m.Price, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <div style="margin-left:4%; margin-bottom:5%">
+                <div class="checkbox">
+                    @Html.CheckBoxFor(m => m.IsDefault)
+                    @Html.LabelFor(m => m.IsDefault)
+                </div>
+            </div>
         </div>
 
         <div class="form-group">

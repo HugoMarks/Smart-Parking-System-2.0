@@ -30,6 +30,12 @@
                 <th>
                     Valor
                 </th>
+                <th>
+                    Padrão
+                </th>
+                @*<th>
+                    Remover
+                </th>*@
             </tr>
         </thead>
         <tbody>
@@ -42,6 +48,19 @@
                     <td>@price.StartTime.ToString(@"hh\:mm")</td>
                     <td>@price.EndTime.ToString(@"hh\:mm")</td>
                     <td>@price.Value</td>
+
+                    @if (price.IsDefault)
+                    {
+                        <td>Padrão</td>
+                    }
+                    else
+                    {
+                        <td></td>
+                    }
+                    @*@using (Html.BeginForm("Remove", "Price", FormMethod.Post, new { id = "removeForm" }))
+                    {
+                        <td><a id="removePriceLink">X</a></td>
+                    }*@
                 </tr>
             }
         </tbody>

@@ -66,6 +66,16 @@ namespace SPS.BO
                 if (entity == null)
                     return;
 
+                if(price.IsDefault)
+                {
+                    var oldDefault = context.Prices.SingleOrDefault(p => p.IsDefault);
+
+                    if (oldDefault != null)
+                    {
+                        oldDefault.IsDefault = false;
+                    }
+                }
+
                 price.Id = entity.Id;
                 context.Entry(entity).CurrentValues.SetValues(price);
 
@@ -80,6 +90,11 @@ namespace SPS.BO
 
         private bool ContainsPrice(Price price1, Price price2)
         {
+            if (price1.IsDefault || price2.IsDefault)
+            {
+                return false;
+            }
+
             return (price1.StartTime == price2.StartTime && price1.EndTime == price2.EndTime) || 
                 (price2.StartTime >= price1.StartTime && price2.EndTime <= price1.EndTime);
         }

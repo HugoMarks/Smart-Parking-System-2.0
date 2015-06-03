@@ -54,6 +54,15 @@ namespace SPS.Web.Controllers
             return View("Manage", prices);
         }
 
+        public ActionResult Remove(string id)
+        {
+            var parking = GetParkingFromCurrentLocalAdmin();
+            var price = parking.Prices.SingleOrDefault(p => p.Id == int.Parse(id));
+
+            BusinessManager.Instance.Prices.Remove(price);
+            return View("Manage", parking.Prices);
+        }
+
         public ActionResult Edit(string id)
         {
             var parking = GetParkingFromCurrentLocalAdmin();
@@ -76,7 +85,7 @@ namespace SPS.Web.Controllers
 
             var prices = GetParkingFromCurrentLocalAdmin().Prices;
 
-            return View("Manage",prices);
+            return View("Manage", prices);
         }
 
         private Parking GetParkingFromCurrentLocalAdmin()

@@ -21,7 +21,7 @@ namespace SPS.BO
                 {
                     var address = context.Addresses.SingleOrDefault(a => a.PostalCode == localManager.Address.PostalCode);
 
-                    if (address == null)
+                    if (address != null)
                     {
                         localManager.Address = address;
                     }

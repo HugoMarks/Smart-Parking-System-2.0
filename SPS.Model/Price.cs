@@ -20,6 +20,8 @@ namespace SPS.Model
         public virtual Parking Parking { get; set; }
 
         public virtual TimeSpan EndTime { get; set; }
+
+        public virtual bool IsDefault { get; set; }
     }
 }
 

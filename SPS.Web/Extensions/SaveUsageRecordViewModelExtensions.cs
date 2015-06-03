@@ -19,7 +19,7 @@ namespace SPS.Web.Extensions
                 Parking = new Parking { CNPJ = model.ParkingCNPJ },
                 Tag = new Tag { Id = model.Tag },
                 TotalValue = decimal.Parse(model.TotalCash),
-                TotalHours = long.Parse(model.TotalHours)
+                TotalHours = float.Parse(model.TotalHours)
             };
         }
     }

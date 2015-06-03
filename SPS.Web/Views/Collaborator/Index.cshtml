@@ -41,30 +41,34 @@
                         </div>
 
                         <div class="form-group">
+                            <button id="searchButton" type="button" class="btn btn-primary">Procurar</button>
+                        </div>
+
+                        <div class="form-group add-record-toggle">
                             @Html.LabelFor(m => m.EnterDateTime, new { @class = "control-label" })
                             @Html.TextBoxFor(m => m.EnterDateTime, new { @class = "form-control date-time" })
                             @Html.ValidationMessageFor(m => m.EnterDateTime, "", new { @class = "text-danger" })
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group add-record-toggle">
                             @Html.LabelFor(m => m.ExitDateTime, new { @class = "control-label" })
                             @Html.TextBoxFor(m => m.ExitDateTime, new { @class = "form-control date-time" })
                             @Html.ValidationMessageFor(m => m.ExitDateTime, "", new { @class = "text-danger" })
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group add-record-toggle">
                             @Html.LabelFor(m => m.TotalHours, new { @class = "control-label" })
                             @Html.TextBoxFor(m => m.TotalHours, new { @class = "form-control" })
                             @Html.ValidationMessageFor(m => m.TotalHours, "", new { @class = "text-danger" })
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group add-record-toggle">
                             @Html.LabelFor(m => m.TotalCash, new { @class = "control-label" })
                             @Html.TextBoxFor(m => m.TotalCash, new { @class = "form-control decimal" })
                             @Html.ValidationMessageFor(m => m.TotalCash, "", new { @class = "text-danger" })
                         </div>
 
-                        <button type="submit" class="btn btn-primary" style="margin-left:-2.5%">Realizar Pagamento</button>
+                        <button type="submit" class="btn btn-primary add-record-toggle" style="margin-left:-2.5%">Realizar Pagamento</button>
                     }
                 </div>
             </div>

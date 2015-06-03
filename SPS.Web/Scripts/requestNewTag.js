@@ -9,9 +9,8 @@
         }
     });
 
-    $('#confirmRequestBtn').click(function () {
+    $('#confirmRequestBtn').on('click', function () {
         $.post("/Collaborator/RequestNewTag").done(function () {
-            alert("Ok");
         });
     });
 });
