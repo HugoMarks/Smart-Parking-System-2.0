@@ -60,7 +60,8 @@ namespace SPS.Web.Extensions
                 Password = passwordHash,
                 RG = registerModel.RG,
                 Telephone = registerModel.PhoneNumber,
-                Complement = registerModel.Complement
+                Complement = registerModel.Complement,
+                StreetNumber = int.Parse(registerModel.Number)
             };
         }
 
@@ -82,7 +83,8 @@ namespace SPS.Web.Extensions
                 Password = passwordHash,
                 RG = registerModel.RG,
                 Telephone = registerModel.PhoneNumber,
-                Complement = registerModel.Complement
+                Complement = registerModel.Complement,
+                StreetNumber = int.Parse(registerModel.Number)
             };
         }
 
