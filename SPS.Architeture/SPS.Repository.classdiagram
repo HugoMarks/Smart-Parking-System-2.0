@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="955ce720-2c6e-426b-b9af-07678c7ff239" name="SPS.Repository" linkedPackageId="5dae76c0-e007-41d3-8149-aa189d381bff" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="955ce720-2c6e-426b-b9af-07678c7ff239" name="SPS.Repository" linkedPackageId="5dae76c0-e007-41d3-8149-aa189d381bff" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
   <appliedStereotypesInternal>
     <stereotypeInstance Id="e6c3b12f-df12-4974-b9e9-0828d6dccbaa" name="namespace" profile="CSharpProfile">
       <elementDefinition Id="718bac50-77ac-41e8-bf19-a26d2936f702" />
@@ -243,6 +243,12 @@
               <referencedTypeMoniker Id="c4a0b683-57d0-4185-857d-a451595f40ec" LastKnownName="DbSet&lt;Client&gt;" />
             </type_NamedElement>
           </property>
+          <property Id="44aa67cc-68a5-4ccc-ab56-baac83854e90" name="Plates" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="866a3ae7-efec-4bd4-9909-073407d98ca3" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="088ad4ac-98c2-4908-951e-4711a61989a0" LastKnownName="DbSet&lt;Plate&gt;" />
+            </type_NamedElement>
+          </property>
         </ownedAttributesInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
@@ -269,6 +275,11 @@
     <packageHasNamedElement>
       <referencedType Id="f13901a9-64b8-4f17-93a3-872b604e3d71" name="DbSet&lt;MonthlyClient&gt;" isAbstract="false" isLeaf="false" cachedFullName="DbSet&lt;MonthlyClient&gt;">
         <elementDefinition Id="e84462ea-8c0b-47fd-968c-9a2908bc2f6d" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="088ad4ac-98c2-4908-951e-4711a61989a0" name="DbSet&lt;Plate&gt;" isAbstract="false" isLeaf="false" cachedFullName="DbSet&lt;Plate&gt;">
+        <elementDefinition Id="b0053b47-a948-4bf9-8dd6-4e7740835281" />
       </referencedType>
     </packageHasNamedElement>
   </packagedElements>

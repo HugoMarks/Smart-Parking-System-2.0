@@ -2,11 +2,11 @@
 <logicalClassDesignerDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="SPS.Repository">
   <logicalClassDesignerModelMoniker Id="955ce720-2c6e-426b-b9af-07678c7ff239" />
   <nestedChildShapes>
-    <classShape Id="34997c4f-0026-445c-8d1d-97d5eb3682c8" absoluteBounds="5.25, 0.5, 2.375, 2.6292418247461318" hideQualifiedName="false" increaseHeight="0.18800345897674561" customColor="181, 193, 223">
+    <classShape Id="34997c4f-0026-445c-8d1d-97d5eb3682c8" absoluteBounds="5.25, 0.5, 2.375, 2.7893980697790779" hideQualifiedName="false" increaseHeight="0.18800345897674561" customColor="181, 193, 223">
       <classMoniker Id="06620f50-ef61-4a3a-9cf0-36a56ed00a86" LastKnownName="SPSDb" />
       <nestedChildShapes>
-        <AttributeElementListCompartment Id="7953a764-bc2b-4771-8485-5e082492662c" absoluteBounds="5.265, 1.0153356393178306, 2.3449999999999998, 1.8027343178788819" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
-        <OperationElementListCompartment Id="12bdab39-b11f-4db0-aa5d-5215568485a2" absoluteBounds="5.265, 2.8280699571967123, 2.3449999999999998, 0.2011718675494194" name="OperationsCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <AttributeElementListCompartment Id="7953a764-bc2b-4771-8485-5e082492662c" absoluteBounds="5.265, 1.0153356393178306, 2.3449999999999998, 1.9628905629118283" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <OperationElementListCompartment Id="12bdab39-b11f-4db0-aa5d-5215568485a2" absoluteBounds="5.265, 2.9882262022296584, 2.3449999999999998, 0.2011718675494194" name="OperationsCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

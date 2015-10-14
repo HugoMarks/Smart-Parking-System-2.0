@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
   dslVersion="1.0.0.0"
   Id="aee29657-1972-4846-a9f6-d5f0a905d204"
   name="SPS.Architeture" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -1228,6 +1228,60 @@
               LastKnownLocation="SPS.Architeture.uml" />
           </generalization>
         </generalsInternal>
+        <targetEnds>
+          <association
+            Id="a03ac573-34c4-405e-b055-ad34f450dab0"
+            isDerived="false"
+            sourceEndRoleName="Collaborator"
+            targetEndRoleName="Parking"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="c4dbfe17-40cb-4011-9d07-5ff7e037693d"
+              LastKnownName="Parking"
+              LastKnownLocation="SPS.Architeture.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d5361818-e965-4558-94d7-492a9821c184"
+                  name="Collaborator"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="06f08abb-4857-49d3-ae7a-721f37590f8f"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="72221b7d-2d91-47ec-853c-24a0e0cf5020"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="91f7d890-2f8c-4e38-ae37-a5e039cc1a9c"
+                  name="Parking"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
         <ownedAttributesInternal>
           <property
             Id="323920af-75ac-4bb5-ab32-0426264b3bd9"
@@ -1375,268 +1429,6 @@
             </propertyInstances>
           </stereotypeInstance>
         </appliedStereotypesInternal>
-        <targetEnds>
-          <association
-            Id="81ce4fe4-abc1-438a-9039-684bab94c87e"
-            isDerived="false"
-            sourceEndRoleName="Address"
-            targetEndRoleName="Parking"
-            isLeaf="false"
-            isAbstract="false">
-            <classMoniker
-              Id="c4dbfe17-40cb-4011-9d07-5ff7e037693d"
-              LastKnownName="Parking"
-              LastKnownLocation="SPS.Architeture.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="7356281c-165b-4e72-88f0-55409a719200"
-                  name="Address"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="ed209c7f-02f5-403d-9892-3ad0c7f371f5"
-                  name="Parking"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false">
-                  <lowerValueInternal>
-                    <literalString
-                      Id="26879bcb-b470-463a-9cbf-6fd5ae9f49db"
-                      name="Lower"
-                      value="1" />
-                  </lowerValueInternal>
-                  <upperValueInternal>
-                    <literalString
-                      Id="b67a3ef7-6fa6-4c5a-a08e-165db2ae94e5"
-                      name="Upper"
-                      value="*" />
-                  </upperValueInternal>
-                </memberEnd>
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-          <association
-            Id="ad7d6731-bee2-4990-b872-b28c925e6ac4"
-            isDerived="false"
-            sourceEndRoleName="Address"
-            targetEndRoleName="MonthlyClient"
-            isLeaf="false"
-            isAbstract="false">
-            <classMoniker
-              Id="ca660bb9-e622-4fb1-8478-dfd16f7edc6e"
-              LastKnownName="MonthlyClient"
-              LastKnownLocation="SPS.Architeture.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="11405496-03a4-4558-860b-eb389fc729c0"
-                  name="Address"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="ab4d8038-a76b-4416-9a1f-9f6da03a4cf5"
-                  name="MonthlyClient"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false">
-                  <lowerValueInternal>
-                    <literalString
-                      Id="aa0c8b3f-94f7-4d01-9ada-0277ed23969a"
-                      name="Lower"
-                      value="1" />
-                  </lowerValueInternal>
-                  <upperValueInternal>
-                    <literalString
-                      Id="14343fbd-4034-4812-ae3e-2eeb6abe2e36"
-                      name="Upper"
-                      value="*" />
-                  </upperValueInternal>
-                </memberEnd>
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-          <association
-            Id="c2fd53a7-691b-41da-b690-82ad780451b1"
-            isDerived="false"
-            sourceEndRoleName="Address"
-            targetEndRoleName="Collaborator"
-            isLeaf="false"
-            isAbstract="false">
-            <classMoniker
-              Id="d5466bae-a328-49c0-bb13-62fb15ad4171"
-              LastKnownName="Collaborator"
-              LastKnownLocation="SPS.Architeture.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="064ce3cb-379c-4d04-83bd-e67a2e51b816"
-                  name="Address"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="18403708-f7f8-4054-ac07-8c8b00be363d"
-                  name="Collaborator"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false">
-                  <lowerValueInternal>
-                    <literalString
-                      Id="37abb37b-c3a0-4f78-8239-045c463a06d0"
-                      name="Lower"
-                      value="1" />
-                  </lowerValueInternal>
-                  <upperValueInternal>
-                    <literalString
-                      Id="48d40f8d-c8ec-4c20-8421-c077e8c6e083"
-                      name="Upper"
-                      value="*" />
-                  </upperValueInternal>
-                </memberEnd>
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-          <association
-            Id="30664665-a754-48bd-95ce-e46ffad9faea"
-            isDerived="false"
-            sourceEndRoleName="Address"
-            targetEndRoleName="LocalManager"
-            isLeaf="false"
-            isAbstract="false">
-            <classMoniker
-              Id="559e958e-f777-4c13-a035-434fac7097a0"
-              LastKnownName="LocalAdministrator"
-              LastKnownLocation="SPS.Architeture.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="7c3e6819-2683-4f9e-b579-d2796fd841df"
-                  name="Address"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="ef7e0ab6-cd95-41fd-9005-34d09086d10f"
-                  name="LocalManager"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false">
-                  <lowerValueInternal>
-                    <literalString
-                      Id="e5ba69f5-a377-4ec0-bd2b-6ef2ee79c31c"
-                      name="Lower"
-                      value="1" />
-                  </lowerValueInternal>
-                  <upperValueInternal>
-                    <literalString
-                      Id="eea9f396-bf33-4a89-b1af-f2cd924f3669"
-                      name="Upper"
-                      value="*" />
-                  </upperValueInternal>
-                </memberEnd>
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-          <association
-            Id="511102f5-885e-423d-9386-60fb733f8308"
-            isDerived="false"
-            sourceEndRoleName="Address"
-            targetEndRoleName="GlobalManager"
-            isLeaf="false"
-            isAbstract="false">
-            <classMoniker
-              Id="2b0a4c2b-3d0a-46ad-b4fe-1335b936be18"
-              LastKnownName="GlobalManager"
-              LastKnownLocation="SPS.Architeture.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="6f789569-0428-4d4a-ae6e-a2a79e0bdbb6"
-                  name="Address"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="025103d8-38c7-43da-b573-a9fa166f0ffb"
-                  name="GlobalManager"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false">
-                  <lowerValueInternal>
-                    <literalString
-                      Id="cf66de4c-3a3f-4d3c-98ab-42fc3f86d9a2"
-                      name="Lower"
-                      value="1" />
-                  </lowerValueInternal>
-                  <upperValueInternal>
-                    <literalString
-                      Id="11a22621-6b9c-4f9e-b200-0d9c282e596b"
-                      name="Upper"
-                      value="*" />
-                  </upperValueInternal>
-                </memberEnd>
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-        </targetEnds>
         <ownedAttributesInternal>
           <property
             Id="9b7b6b7e-8e28-4d9a-aedf-1e376eb3cbc1"
@@ -1991,60 +1783,6 @@
             </propertyInstances>
           </stereotypeInstance>
         </appliedStereotypesInternal>
-        <targetEnds>
-          <association
-            Id="10c96b35-3c6c-4646-9a77-a9e498bc4053"
-            isDerived="false"
-            sourceEndRoleName="Tag"
-            targetEndRoleName="UsageRecord"
-            isLeaf="false"
-            isAbstract="false">
-            <classMoniker
-              Id="84209957-6704-464e-ae76-1784eb559bb9"
-              LastKnownName="UsageRecord"
-              LastKnownLocation="SPS.Architeture.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="00c8cf1b-6723-4550-aeac-e63b905a2b0b"
-                  name="Tag"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="a96aeb11-fa14-4dbd-a579-0888a0ed6316"
-                  name="UsageRecord"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false">
-                  <lowerValueInternal>
-                    <literalString
-                      Id="34b02ee0-78ab-46fa-8585-89618d14e499"
-                      name="Lower"
-                      value="1" />
-                  </lowerValueInternal>
-                  <upperValueInternal>
-                    <literalString
-                      Id="a6e3bd35-a990-45a3-9d96-82e8f733b39d"
-                      name="Upper"
-                      value="*" />
-                  </upperValueInternal>
-                </memberEnd>
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-        </targetEnds>
         <ownedAttributesInternal>
           <property
             Id="a24f047e-4d4c-467e-8cf9-d9ff2335b67a"
@@ -2269,6 +2007,60 @@
             </propertyInstances>
           </stereotypeInstance>
         </appliedStereotypesInternal>
+        <targetEnds>
+          <association
+            Id="848e3bba-d97f-46d9-b8d0-f718480eafd5"
+            isDerived="false"
+            sourceEndRoleName="Price"
+            targetEndRoleName="Parking"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="c4dbfe17-40cb-4011-9d07-5ff7e037693d"
+              LastKnownName="Parking"
+              LastKnownLocation="SPS.Architeture.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="44866c4b-8dbe-4be9-9dcf-7e335ec90cf8"
+                  name="Price"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="7482f77b-4780-419b-8f10-cd6628779655"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="33029269-79be-4dca-8a5d-89fcb2b3f73e"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="7d07f94d-b3d0-44f2-9f35-ada7559a6be4"
+                  name="Parking"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
         <ownedAttributesInternal>
           <property
             Id="d03a4f98-b576-41e7-bc4c-550dcc8403b5"
@@ -2668,6 +2460,58 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
+          <association
+            Id="b3e45156-634b-4c36-bf2e-c339ceb94811"
+            isDerived="false"
+            sourceEndRoleName="ParkingSpace"
+            targetEndRoleName="ParkingSpaceState"
+            isLeaf="false"
+            isAbstract="false">
+            <enumerationMoniker
+              Id="81f5201b-bfef-46f3-bea7-495be4befcad"
+              LastKnownName="ParkingSpaceState"
+              LastKnownLocation="SPS.Architeture.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="3f5c608a-ee6e-4e54-91ad-5b1860b08115"
+                  name="ParkingSpace"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="52ae531e-a20e-49d1-8e36-37fd5b0af5b6"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="1233a63b-c27f-44fe-a6dd-41629bd23a14"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="80f142c5-ffd4-4c49-94a8-330cecac023e"
+                  name="ParkingSpaceState"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
         </targetEnds>
         <ownedAttributesInternal>
           <property
@@ -2876,60 +2720,6 @@
             </propertyInstances>
           </stereotypeInstance>
         </appliedStereotypesInternal>
-        <targetEnds>
-          <association
-            Id="0c3b01ac-18ce-4c24-a142-ba05d5fd3522"
-            isDerived="false"
-            sourceEndRoleName="ParkingSpaceState"
-            targetEndRoleName="ParkingSpace"
-            isLeaf="false"
-            isAbstract="false">
-            <classMoniker
-              Id="c9885e70-7b88-4699-bc61-14d1819f8dda"
-              LastKnownName="ParkingSpace"
-              LastKnownLocation="SPS.Architeture.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="8da0dc85-db0f-4e8c-91de-4dcb2d0f802f"
-                  name="ParkingSpaceState"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="80637349-30fe-488e-9fc2-fe31e3518d75"
-                  name="ParkingSpace"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false">
-                  <lowerValueInternal>
-                    <literalString
-                      Id="0592cf6b-db94-42f8-8ea1-ba2d17a7a02a"
-                      name="Lower"
-                      value="1" />
-                  </lowerValueInternal>
-                  <upperValueInternal>
-                    <literalString
-                      Id="56798ace-0ecb-4f35-b848-e8dabc6454a2"
-                      name="Upper"
-                      value="*" />
-                  </upperValueInternal>
-                </memberEnd>
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-        </targetEnds>
         <ownedLiterals>
           <enumerationLiteral
             Id="1fb09b5c-d26a-49fb-821c-df571ac572c8"
@@ -3052,162 +2842,6 @@
             </relationshipOwnedElementsInternal>
           </association>
           <association
-            Id="d0162912-e3b0-4412-9df7-6984e9b4fac5"
-            isDerived="false"
-            sourceEndRoleName="Parking"
-            targetEndRoleName="Price"
-            isLeaf="false"
-            isAbstract="false">
-            <classMoniker
-              Id="990fce08-0ba4-4a94-baf6-7c56ea644b03"
-              LastKnownName="Price"
-              LastKnownLocation="SPS.Architeture.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="eab870f8-52cd-4614-8c89-e78b2d8c9654"
-                  name="Parking"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="5644d0fb-c27d-4d56-a066-358e726139b4"
-                  name="Price"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false">
-                  <lowerValueInternal>
-                    <literalString
-                      Id="2465b3d7-8f02-46e7-ad12-b63c9a1e08ca"
-                      name="Lower"
-                      value="1" />
-                  </lowerValueInternal>
-                  <upperValueInternal>
-                    <literalString
-                      Id="cd0ceb2e-d049-4982-80e3-a7643ac10c6d"
-                      name="Upper"
-                      value="*" />
-                  </upperValueInternal>
-                </memberEnd>
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-          <association
-            Id="d86b87e9-58ce-4e18-96e9-18518f602ff0"
-            isDerived="false"
-            sourceEndRoleName="Parking"
-            targetEndRoleName="Collaborator"
-            isLeaf="false"
-            isAbstract="false">
-            <classMoniker
-              Id="d5466bae-a328-49c0-bb13-62fb15ad4171"
-              LastKnownName="Collaborator"
-              LastKnownLocation="SPS.Architeture.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="019bc1e0-c10a-468a-b084-e276b3996795"
-                  name="Parking"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="e4c2d3f1-c980-429c-b3c6-7d2ef78aab6d"
-                  name="Collaborator"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false">
-                  <lowerValueInternal>
-                    <literalString
-                      Id="96674247-e17e-4805-83e8-f9110df56c72"
-                      name="Lower"
-                      value="1" />
-                  </lowerValueInternal>
-                  <upperValueInternal>
-                    <literalString
-                      Id="10abdd0a-a599-4661-b44a-b088a44ad48e"
-                      name="Upper"
-                      value="*" />
-                  </upperValueInternal>
-                </memberEnd>
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-          <association
-            Id="a57c9760-4cec-422f-b788-8220f8a49765"
-            isDerived="false"
-            sourceEndRoleName="Parking"
-            targetEndRoleName="MonthlyClient"
-            isLeaf="false"
-            isAbstract="false">
-            <classMoniker
-              Id="ca660bb9-e622-4fb1-8478-dfd16f7edc6e"
-              LastKnownName="MonthlyClient"
-              LastKnownLocation="SPS.Architeture.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="733b5107-3b24-4015-ba7a-59b12e6474be"
-                  name="Parking"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="c3802f1c-470b-44e7-9ac1-508a1d599dda"
-                  name="MonthlyClient"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false">
-                  <lowerValueInternal>
-                    <literalString
-                      Id="a18ed169-48c4-4992-99a6-19dd17c772ba"
-                      name="Lower"
-                      value="1" />
-                  </lowerValueInternal>
-                  <upperValueInternal>
-                    <literalString
-                      Id="25b3e99b-d350-4f53-8340-9f9ab598cee2"
-                      name="Upper"
-                      value="*" />
-                  </upperValueInternal>
-                </memberEnd>
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-          <association
             Id="2c36bbeb-2cb3-4b5e-8b08-a9b574108ec9"
             isDerived="false"
             sourceEndRoleName="Parking"
@@ -3260,20 +2894,20 @@
             </relationshipOwnedElementsInternal>
           </association>
           <association
-            Id="4e681984-e039-4b17-8182-b58c6f5258c8"
+            Id="0e4381a1-c0d4-40d8-9437-93a74946cf1d"
             isDerived="false"
             sourceEndRoleName="Parking"
-            targetEndRoleName="UsageRecord"
+            targetEndRoleName="Address"
             isLeaf="false"
             isAbstract="false">
             <classMoniker
-              Id="84209957-6704-464e-ae76-1784eb559bb9"
-              LastKnownName="UsageRecord"
+              Id="587182c0-5bd1-40f2-b143-738d2a714006"
+              LastKnownName="Address"
               LastKnownLocation="SPS.Architeture.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="736e0ccb-f382-4ed8-bca6-e9aff78960eb"
+                  Id="12813978-b4d3-4333-9e88-c0e8860f865a"
                   name="Parking"
                   isLeaf="false"
                   isStatic="false"
@@ -3286,28 +2920,54 @@
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="84ddb3bf-af47-4f64-8641-dcedb7f74a96"
-                  name="UsageRecord"
+                  Id="ee9cda0c-0b9e-4720-b817-21b0a6616e33"
+                  name="Address"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
                   isDerived="false"
                   isDerivedUnion="false"
                   aggregation="None"
-                  isComposite="false">
-                  <lowerValueInternal>
-                    <literalString
-                      Id="277badb8-d7bc-417e-8563-04ba219103d0"
-                      name="Lower"
-                      value="1" />
-                  </lowerValueInternal>
-                  <upperValueInternal>
-                    <literalString
-                      Id="c38cfa4e-2e37-479e-9a65-1a45e64d1f50"
-                      name="Upper"
-                      value="*" />
-                  </upperValueInternal>
-                </memberEnd>
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="14caac7d-61c0-4adb-bb2d-2518af1f16a5"
+            isDerived="false"
+            sourceEndRoleName="Parking"
+            targetEndRoleName="LocalAdministrator"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="559e958e-f777-4c13-a035-434fac7097a0"
+              LastKnownName="LocalAdministrator"
+              LastKnownLocation="SPS.Architeture.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="960cf6a2-0de9-42d7-ae7b-d0d486b1a879"
+                  name="Parking"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4f8c62b5-6a28-4a51-b9f1-1ab4db510822"
+                  name="LocalAdministrator"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
@@ -3575,24 +3235,6 @@
             </type_NamedElement>
           </property>
           <property
-            Id="c9e5efd8-efcd-458a-a1ca-ddb0bf5198f5"
-            name="Collaborators"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false">
-            <type_NamedElement>
-              <undefinedTypeMoniker
-                Id="1c9f5712-11d1-4d63-bc80-99065d3d1f78"
-                LastKnownName="IList&lt;Collaborator&gt;"
-                LastKnownLocation="SPS.Architeture.uml" />
-            </type_NamedElement>
-          </property>
-          <property
             Id="5d55791f-1f4d-4a5a-982e-652de2e9fb5f"
             name="Spaces"
             isLeaf="false"
@@ -3607,24 +3249,6 @@
               <undefinedTypeMoniker
                 Id="5ff6a078-aff5-481e-94d3-fe2d2e545406"
                 LastKnownName="IList&lt;ParkingSpace&gt;"
-                LastKnownLocation="SPS.Architeture.uml" />
-            </type_NamedElement>
-          </property>
-          <property
-            Id="8f7ae194-b905-4530-bae4-ff2ecf1f053f"
-            name="Prices"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false">
-            <type_NamedElement>
-              <undefinedTypeMoniker
-                Id="083df9e0-cd8d-420b-abb2-bf4a4f74d843"
-                LastKnownName="IList&lt;Price&gt;"
                 LastKnownLocation="SPS.Architeture.uml" />
             </type_NamedElement>
           </property>
@@ -9311,6 +8935,24 @@
                 LastKnownLocation="SPS.Architeture.uml" />
             </type_NamedElement>
           </property>
+          <property
+            Id="866a3ae7-efec-4bd4-9909-073407d98ca3"
+            name="Plates"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="b0053b47-a948-4bf9-8dd6-4e7740835281"
+                LastKnownName="DbSet&lt;Plate&gt;"
+                LastKnownLocation="SPS.Architeture.uml" />
+            </type_NamedElement>
+          </property>
         </ownedAttributesInternal>
       </class>
     </packageHasNamedElement>
@@ -9552,47 +9194,6 @@
               LastKnownLocation="SPS.Architeture.uml" />
           </generalization>
         </generalsInternal>
-        <targetEnds>
-          <association
-            Id="924a8684-2397-470a-b1fc-41dc9c3ac4a8"
-            isDerived="false"
-            sourceEndRoleName="LocalManager"
-            targetEndRoleName="Parking"
-            isLeaf="false"
-            isAbstract="false">
-            <classMoniker
-              Id="c4dbfe17-40cb-4011-9d07-5ff7e037693d"
-              LastKnownName="Parking"
-              LastKnownLocation="SPS.Architeture.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="48d27d3a-7cc8-46d0-baf0-c33fb530054e"
-                  name="LocalManager"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="c9f53c94-f73d-46b5-a308-b0dbe20338d1"
-                  name="Parking"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-        </targetEnds>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -10918,6 +10519,110 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
+          <association
+            Id="8ad92fef-2dca-447f-9c88-ee823707a594"
+            isDerived="false"
+            sourceEndRoleName="MonthlyClient"
+            targetEndRoleName="Plate"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="12f9be6a-a8f4-4cec-9f64-3dfeaa22509f"
+              LastKnownName="Plate"
+              LastKnownLocation="SPS.Architeture.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="96c4c76c-e247-42fe-b488-b17b1b76b9ff"
+                  name="MonthlyClient"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="091fe2d0-db51-4e4e-b213-f778ee71a38e"
+                  name="Plate"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="64a74ab3-fb00-4f6a-be76-578547ed0e82"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="7834c0dd-7a3d-4132-9d16-7434d0d78d07"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="30924923-9349-4630-b09b-4c76f33958be"
+            isDerived="false"
+            sourceEndRoleName="MonthlyClient"
+            targetEndRoleName="Parking"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="c4dbfe17-40cb-4011-9d07-5ff7e037693d"
+              LastKnownName="Parking"
+              LastKnownLocation="SPS.Architeture.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="dff67de4-58cb-4e40-aaa8-eb14cb9b1cd4"
+                  name="MonthlyClient"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="2e01ba2b-9c6d-44c3-92c6-4fc1140a907a"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="576838ed-6397-4f3d-9098-9c5c0138a28b"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="3d1d143a-e02c-4b7f-ab8c-831160924a9e"
+                  name="Parking"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
         </targetEnds>
         <ownedAttributesInternal>
           <property
@@ -10971,6 +10676,24 @@
               <undefinedTypeMoniker
                 Id="4d5c1070-5af0-49f6-8713-65809b932764"
                 LastKnownName="IList&lt;Tag&gt;"
+                LastKnownLocation="SPS.Architeture.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="9b8a45e7-22d1-4f6d-9c88-c16610a5c673"
+            name="Plates"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="ebc5fc7e-9fdc-4acd-945a-017c0de456a3"
+                LastKnownName="IList&lt;Plate&gt;"
                 LastKnownLocation="SPS.Architeture.uml" />
             </type_NamedElement>
           </property>
@@ -11815,6 +11538,47 @@
             </propertyInstances>
           </stereotypeInstance>
         </appliedStereotypesInternal>
+        <targetEnds>
+          <association
+            Id="8079251c-0621-4d0a-953b-dc03109f6316"
+            isDerived="false"
+            sourceEndRoleName="User"
+            targetEndRoleName="Address"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="587182c0-5bd1-40f2-b143-738d2a714006"
+              LastKnownName="Address"
+              LastKnownLocation="SPS.Architeture.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="7be4c258-1530-49d1-b2d2-5a3172032adc"
+                  name="User"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="897a2bc6-d346-4b97-bcff-32c7d0a6a56f"
+                  name="Address"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
         <ownedAttributesInternal>
           <property
             Id="c3eed55f-b553-4280-85e2-ca3b8fe75d24"
@@ -12586,6 +12350,164 @@
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="54ac0e86-31c5-4d36-b95c-ba19a278be9f"
+            isDerived="false"
+            sourceEndRoleName="UsageRecord"
+            targetEndRoleName="Parking"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="c4dbfe17-40cb-4011-9d07-5ff7e037693d"
+              LastKnownName="Parking"
+              LastKnownLocation="SPS.Architeture.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="1d4b6569-7288-4391-88e1-bd79bc34e4b6"
+                  name="UsageRecord"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="58ca9745-096a-41f0-be53-1f4925820d8d"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="41a7d860-ef40-4d53-a3a7-46f103d96339"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="dab750eb-89b3-4b05-a269-55867fe8097d"
+                  name="Parking"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="3841de02-cd60-4cd4-adef-8b9805dde4b8"
+            isDerived="false"
+            sourceEndRoleName="UsageRecord"
+            targetEndRoleName="Tag"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="b613f7fb-9712-4ed9-862f-ff2ab98f96e2"
+              LastKnownName="Tag"
+              LastKnownLocation="SPS.Architeture.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d2231145-1c1d-4f18-889e-8dd252be9952"
+                  name="UsageRecord"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="c51486b3-a40f-4621-80ec-dfb94d52d047"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="4f7ed15f-954f-4bf8-8ec8-6d1c1f93b83c"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="1b6bf27e-9d30-4983-b36c-ce693768d8d8"
+                  name="Tag"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="39f0b146-d703-47cd-9231-f57a0bef6f4f"
+            isDerived="false"
+            sourceEndRoleName="UsageRecord"
+            targetEndRoleName="PaymentStatus"
+            isLeaf="false"
+            isAbstract="false">
+            <enumerationMoniker
+              Id="effbc45a-e4fe-418f-81ac-410353524e82"
+              LastKnownName="PaymentStatus"
+              LastKnownLocation="SPS.Architeture.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c4906eb8-796d-4cce-a6c4-7bc5870b0d5e"
+                  name="UsageRecord"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="ff61c314-1de5-4b0f-8580-3fcdf313c255"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="ff329feb-3a7d-4260-8204-92cf124017f9"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f4f89160-e4f1-47af-8c27-72cc9a6b00fe"
+                  name="PaymentStatus"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
         <ownedAttributesInternal>
           <property
             Id="291f1ed2-3bec-4fc6-903c-092849aa32e2"
@@ -12750,60 +12672,6 @@
         name="PaymentStatus"
         isAbstract="false"
         isLeaf="false">
-        <targetEnds>
-          <association
-            Id="a709b988-c95f-48e7-8329-ececce1c8bdd"
-            isDerived="false"
-            sourceEndRoleName="PaymentStatus"
-            targetEndRoleName="UsageRecord"
-            isLeaf="false"
-            isAbstract="false">
-            <classMoniker
-              Id="84209957-6704-464e-ae76-1784eb559bb9"
-              LastKnownName="UsageRecord"
-              LastKnownLocation="SPS.Architeture.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="c1a78392-4b90-4e8e-b440-ae19e5af925b"
-                  name="PaymentStatus"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="64df63b1-4ecb-42a0-88f8-465fc693887c"
-                  name="UsageRecord"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false">
-                  <lowerValueInternal>
-                    <literalString
-                      Id="fce4f2c2-78af-4bb6-bd74-9cf3325989ce"
-                      name="Lower"
-                      value="1" />
-                  </lowerValueInternal>
-                  <upperValueInternal>
-                    <literalString
-                      Id="16dccc5d-1d97-4059-a2bd-afb67ba9db6c"
-                      name="Upper"
-                      value="*" />
-                  </upperValueInternal>
-                </memberEnd>
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-        </targetEnds>
         <ownedLiterals>
           <enumerationLiteral
             Id="4ddce6a0-bac1-4185-85e1-e18837e9a65e"
@@ -13584,6 +13452,1083 @@
             name="GlobalAdmin" />
         </ownedLiterals>
       </enumeration>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="90b66393-9f4d-4528-9dbc-1aeabe38c1a7"
+        name="Raspberry"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="fbe6de1b-c1f3-4df9-a667-20ba47be8649"
+            isDerived="false"
+            sourceEndRoleName="Raspberry"
+            targetEndRoleName="ReconhecedorPlaca"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="897d2273-c6cd-4e29-95d4-0b008b19ebfa"
+              LastKnownName="ReconhecedorPlaca"
+              LastKnownLocation="SPS.Architeture.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9d5877d2-c24b-462b-8bb7-ce47cb43cd2a"
+                  name="Raspberry"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0f64b21e-ed06-4692-8d02-7420ed543302"
+                  name="ReconhecedorPlaca"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="9cb22610-1477-41d2-8fc9-e5493944818a"
+            isDerived="false"
+            sourceEndRoleName="Raspberry"
+            targetEndRoleName="RFID"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="2a44613b-11ce-4534-82c0-12d3d989e1cb"
+              LastKnownName="RFID"
+              LastKnownLocation="SPS.Architeture.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d2e5518d-d1bd-44f3-a698-1834384d191c"
+                  name="Raspberry"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="bb8aee6c-5697-4640-af5b-0e580f817559"
+                  name="RFID"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="c4881977-79bd-45bf-b015-49dfe95dfd15"
+            isDerived="false"
+            sourceEndRoleName="Raspberry"
+            targetEndRoleName="SensorDistancia"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="1553f549-c823-4bbd-8629-ad67fca4a00f"
+              LastKnownName="SensorDistancia"
+              LastKnownLocation="SPS.Architeture.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e5aa3843-c81e-4579-9ba2-5d347d77d728"
+                  name="Raspberry"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="10095a55-2a20-4c50-988d-97bfb5c3b8d5"
+                  name="SensorDistancia"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="f7311ad6-5873-4e69-9f71-6859bc612558"
+            isDerived="false"
+            sourceEndRoleName="Raspberry"
+            targetEndRoleName="Camera"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="9cfec340-db90-4b2b-8355-2fea3fbd639f"
+              LastKnownName="Camera"
+              LastKnownLocation="SPS.Architeture.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0908fffe-0994-46bb-96be-70df7bb5c154"
+                  name="Raspberry"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="03fa5f8f-4bdd-4512-bff0-5452d5b8d92c"
+                  name="Camera"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="412b3282-d6bd-4a58-88ba-85ee88e83fdc"
+            isDerived="false"
+            sourceEndRoleName="Raspberry"
+            targetEndRoleName="Visor"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="d457118b-22b3-4e6a-824e-841e9528da75"
+              LastKnownName="Visor"
+              LastKnownLocation="SPS.Architeture.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ff4fd2b1-3332-4074-8169-518251c631e4"
+                  name="Raspberry"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4716819a-697f-4abb-b18a-6a15a52205cf"
+                  name="Visor"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="e510411c-ee4b-4875-927d-54e195610606"
+            isDerived="false"
+            sourceEndRoleName="Raspberry"
+            targetEndRoleName="ServoMotor"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="2bff5eae-aa65-4d64-b46b-a475ebb8bbff"
+              LastKnownName="ServoMotor"
+              LastKnownLocation="SPS.Architeture.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f7321278-99fb-4f53-97af-4081a875b9c1"
+                  name="Raspberry"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="dff901c2-7449-499c-8f89-3b7fff54d1f5"
+                  name="ServoMotor"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="3a60f4b8-9b86-4a21-a4c4-8384c437a6e6"
+            name="ReconhecedorPlaca"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="518d0339-5af4-4f24-9783-51a561707694"
+            name="RFID"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="8e0ef9f2-dcd6-48f0-a77d-8651bb3cf829"
+            name="Camera"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="befc8755-9a9f-4ac2-a6b3-851d35632c39"
+            name="SensorDistancia"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="3fe46887-5aa2-42f8-ac04-2536b6289746"
+            name="ServoMotor"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="e5dd43c8-cd16-4dc3-ae48-6b3d38474f17"
+            name="ProcessarComponentes"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="897d2273-c6cd-4e29-95d4-0b008b19ebfa"
+        name="ReconhecedorPlaca"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedOperationsInternal>
+          <operation
+            Id="1d03e642-894a-498f-b9b4-7a09e8ff96d8"
+            name="ProcessarImagem"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="2a44613b-11ce-4534-82c0-12d3d989e1cb"
+        name="RFID"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedOperationsInternal>
+          <operation
+            Id="5808defd-1262-493a-8b05-0d482180276e"
+            name="IdentificarId"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="886ae4c3-5f72-4193-89d3-54fe3dd04477"
+        name="Camera"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedOperationsInternal>
+          <operation
+            Id="bd870976-372d-423d-944f-a5005bf5ef73"
+            name="IdentificarId"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="9cfec340-db90-4b2b-8355-2fea3fbd639f"
+        name="Camera"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <property
+            Id="971a95d8-2189-4dce-a76f-c97a559fbbdb"
+            name="Imagem"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="6c70da8f-b4fd-430a-9cf0-a288060da0ad"
+            name="CapturarImagem"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="1553f549-c823-4bbd-8629-ad67fca4a00f"
+        name="SensorDistancia"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <property
+            Id="c5b0f786-ad69-44c7-a02a-1330c6154aa4"
+            name="TemPresença"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="93944505-7cb6-4b1a-8435-e75f3654dc93"
+            name="IdentificarPresença"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="2bff5eae-aa65-4d64-b46b-a475ebb8bbff"
+        name="ServoMotor"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <property
+            Id="191126fe-f450-4d5f-b596-60a93099267e"
+            name="EstadoCancela"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="47f9980d-5724-420a-bb38-7dc53eda4d55"
+            name="AbrirCancela"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="9b8eeef1-394e-43c3-8a5e-20ef640b68c4"
+            name="FecharCancela"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="d457118b-22b3-4e6a-824e-841e9528da75"
+        name="Visor"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <property
+            Id="d268295d-d4f7-46db-9b3e-af8578afe811"
+            name="Texto"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="f2d14d14-92e2-48b9-9f3a-b8272f7e206c"
+            name="ExibirTexto"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="ebc5fc7e-9fdc-4acd-945a-017c0de456a3"
+        name="IList&lt;Plate&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="12f9be6a-a8f4-4cec-9f64-3dfeaa22509f"
+        name="Plate"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <property
+            Id="f1b4bd12-87c0-4b95-a472-702e88364577"
+            name="Id"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="6afe4206-2814-44fd-abac-3f2d82857e56"
+                LastKnownName="uint"
+                LastKnownLocation="SPS.Architeture.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="6728ca5d-ed83-48d4-a1e7-e3f7fe5057be"
+            name="Characters"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="96049581-dffc-44c4-98f1-e535599dccf4"
+                LastKnownName="string"
+                LastKnownLocation="SPS.Architeture.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="8c5fdc78-f9f8-4ff0-9252-f7b59c036dac"
+        name="PlateBO"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="a917320d-944c-41dd-8d17-2d4bb67b89b2"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="fa744973-1b40-4431-b8a6-ec94a3a4fe3c">
+                <propertyInstance
+                  Id="5370c990-1101-4c0a-85e1-56ed20e43e91"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="5b972a20-38dd-4068-9c93-23ba5513444c">
+                <propertyInstance
+                  Id="b4295f93-e708-4b99-b5df-aee0f1811c84"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="7921b745-ac81-4e4e-b87a-ac7260e21319">
+                <propertyInstance
+                  Id="b447bba8-f07c-4ccb-8039-b3557d8735d8"
+                  name="IsStatic"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="28589509-0345-4f29-8de0-414809b39b0f">
+                <propertyInstance
+                  Id="5821a1a6-4c33-47a0-bdb4-a6451cb9c332"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="1a88933a-292d-4094-bb95-414055c06069">
+                <propertyInstance
+                  Id="3a98a139-5d85-4794-b0cc-3b3d5fc8a0a8"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <suppliersInternal>
+          <interfaceRealization
+            Id="7198ffb0-2836-4cc2-ab02-2c89e0442ce7">
+            <interfaceMoniker
+              Id="8ab65d57-c710-4cc1-9c8d-e27cd402a69d"
+              LastKnownName="IBusiness"
+              LastKnownLocation="SPS.Architeture.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="ad389707-b8e8-4a69-9e7d-54c465ff4685"
+            name="Add"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="3ef1aebb-9dda-4663-96a8-f2b11cd345a8"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="95197b08-f0e2-4bb1-aaf4-bc28bd5814a3">
+                    <propertyInstance
+                      Id="6b65b6d5-6469-42c4-a634-a9ff4a218062"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="01084a0a-d8b9-4ec2-9387-5404482bc61a">
+                    <propertyInstance
+                      Id="7334e546-c4f4-4771-8132-5ed27d05a09c"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5aa845e6-da48-42c1-8bee-ca5d6f16240f">
+                    <propertyInstance
+                      Id="c85c94a7-1f4c-48ae-acf0-c6bf9f2d812c"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cf8df63f-5348-4080-bd66-a4063dcb2d1c">
+                    <propertyInstance
+                      Id="3c67d5fb-9293-4814-8499-dc6525fa2fff"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f90b5890-254d-4354-a183-9e7e34dfd613">
+                    <propertyInstance
+                      Id="6565f6e4-6761-415c-9558-3cc3560d0bec"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9b61ed5a-3c14-48e5-9764-08264496cba4">
+                    <propertyInstance
+                      Id="6728cc41-3c9f-43aa-a6f1-c9970e4f566a"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="0050f279-82ee-4f13-ae2d-05d4c30b0f9b"
+                  name="Plate plate)"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="16344233-00e1-4c09-8f65-2f50de913d12"
+                      LastKnownName="void("
+                      LastKnownLocation="SPS.Architeture.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="3fc0d072-4a25-433a-9447-8ede25a337f9"
+            name="Remove"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="598b91c6-2865-4566-9c50-47a5a2131046"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="398b4248-2549-455f-8a01-563fb6457c32">
+                    <propertyInstance
+                      Id="73e0cab6-6fbe-404c-9057-832fc1a606ed"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5bbbd601-3943-4e70-9c96-a26bcc0c676c">
+                    <propertyInstance
+                      Id="2d78b289-9e00-4f8b-875c-4b4a291e32fc"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="57725596-a257-4c79-8770-9b20c0f9b5b9">
+                    <propertyInstance
+                      Id="9207c5d6-357d-4a6e-b7f3-9715ea2cfe24"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c48d50b2-dd6c-45a6-8e57-c08d233f6970">
+                    <propertyInstance
+                      Id="19ffc6b8-e7ff-4bb8-9b0b-9b25b55e098c"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6834f7f8-f9cd-4032-b10a-ac392041c5af">
+                    <propertyInstance
+                      Id="06fa5b9b-496e-4c67-aabc-385734b73e79"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e441e056-40c9-4b1e-9904-da4d779424b7">
+                    <propertyInstance
+                      Id="b05360c3-9cb0-4a01-b352-a587c5bb55ed"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="c2adfc67-f8f8-47a1-b989-6b2bdaa6f046"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="08a297fd-b816-4219-b263-ae4b9ee4250d"
+                      LastKnownName="void"
+                      LastKnownLocation="SPS.Architeture.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="e56edea5-60b3-4aa2-8d64-8620df7daee0"
+                  name="Plate plate"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="46d48063-02a5-4b3e-b6bd-6f42cb2d7f4c"
+            name="Update"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="af1221de-cf17-4f2b-965a-864341ab9cc7"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="12f5e703-cc72-4265-bddd-c584689e3d97">
+                    <propertyInstance
+                      Id="2f7bc786-4f8a-42c1-9b86-a3ffdb433609"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ddc469b0-b44d-474a-aaab-850640950ee6">
+                    <propertyInstance
+                      Id="739ca840-9b8e-42cc-9601-6e8abac56fe9"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1ad3160c-e5b9-416c-9a46-d7f0f270a6bc">
+                    <propertyInstance
+                      Id="70f1336e-0f34-40b0-8776-a15cbee6a3e3"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0cf5bb57-1100-4c6e-ab37-f56a90633941">
+                    <propertyInstance
+                      Id="e6a44831-a2e0-455c-a419-11e6e6aee750"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="04505e01-35a1-4223-a611-302cf99a63b6">
+                    <propertyInstance
+                      Id="b999d86d-d9be-40eb-825d-04474e873c34"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="26166bfa-0219-42e3-aae3-4f2202245e3e">
+                    <propertyInstance
+                      Id="0693e9e8-1019-4533-88fb-730e9f2d7685"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="84cfed22-0d96-4c79-ad9a-1cf83aa18b07"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="08a297fd-b816-4219-b263-ae4b9ee4250d"
+                      LastKnownName="void"
+                      LastKnownLocation="SPS.Architeture.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="1eabcf17-0a26-4221-bdcd-1b63142f27c4"
+                  name="Plate plate"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="ee81dc02-bba5-49d4-81de-25761f27f026"
+            name="Find"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="89163f31-8684-4e13-84a5-07e1318b4af6"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8d13f731-ed43-4cdb-a1da-436e19c40377">
+                    <propertyInstance
+                      Id="5da09bcf-0554-4b65-add7-d4104067bc75"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fed1bf2c-8db9-4065-a5a2-fcb9ecef68b3">
+                    <propertyInstance
+                      Id="ce5e741b-48cd-4b38-a0aa-914878eb1c22"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="32c38012-5d92-45d0-a37a-fb8fe75f6cfb">
+                    <propertyInstance
+                      Id="2bd533da-226d-4a14-9c6c-a6eec28c7962"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="040f3050-cbb9-4f8a-b3ff-1ae24d8adf31">
+                    <propertyInstance
+                      Id="11e4bc32-64ba-4b52-a870-8748c8c48aab"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b0dcfa69-ed54-41ab-86bb-7aa563161e9d">
+                    <propertyInstance
+                      Id="0261ee6e-2806-4e2d-bb5d-81e8b42b93b0"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="220242d8-308f-4bca-927d-dc40a5b23e12">
+                    <propertyInstance
+                      Id="b5208bac-aee9-4076-bd80-c47d627e1b9d"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="72790eaf-e81e-4451-bb15-e88891d2e027"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="12f9be6a-a8f4-4cec-9f64-3dfeaa22509f"
+                      LastKnownName="Plate"
+                      LastKnownLocation="SPS.Architeture.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="6311d31a-82d3-40db-8864-511bac94ed96"
+                  name="int id"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="03dfc745-28b2-42c8-9f65-b4b94556ea53"
+            name="FindAll"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="124c09a0-d9bb-4546-a08e-dd94ba690bb0"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="201b19c9-78c0-4dc5-8857-206a97c4e7f2">
+                    <propertyInstance
+                      Id="e0e8efa5-f45f-4fd5-849f-9d479b10c82f"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="66aea699-32c7-44d4-a9e2-ac32eae2c021">
+                    <propertyInstance
+                      Id="cf2ac0a3-656b-49a6-ac22-4695e31ae26c"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="dd298018-6730-430c-b32e-f21059e5504b">
+                    <propertyInstance
+                      Id="eaa56b99-00cd-4b7c-a34d-f381dd6489dc"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="34cabb31-f391-4e6d-acf1-822f248d0f30">
+                    <propertyInstance
+                      Id="1846a6fc-45f8-4f98-adcd-e714ffe8536a"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bacffd8c-3558-4bac-8662-061219446f80">
+                    <propertyInstance
+                      Id="1485b8c3-d418-4bab-9954-60fe9de46d78"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="69bd722c-24c7-400a-bd2c-a34edef4258a">
+                    <propertyInstance
+                      Id="8d12d329-3faa-4093-9848-fbab048edebf"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="8ef4d68a-a28c-49b5-9157-376f82af7cd9"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="ebc5fc7e-9fdc-4acd-945a-017c0de456a3"
+                      LastKnownName="IList&lt;Plate&gt;"
+                      LastKnownLocation="SPS.Architeture.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="c05e5ad9-e297-42e8-af32-cc20d78b8fba"
+            name="Find"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="1c8101ad-c385-4c9d-8ddd-b6cd0b7897da"
+                  name="int id"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="e0684af6-edf3-474b-abc4-13013ca130ee"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="c6c3edd9-9bc3-4aba-be5c-47086c538901"
+                      LastKnownName="T"
+                      LastKnownLocation="SPS.Architeture.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="e5f6c6d0-ead8-4297-8e00-dbf40162ba3a"
+            name="FindAll"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="7be3a591-b651-45d6-915a-320eb4e8cffb"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="e451f2f5-3762-47c6-9b69-182a9cb03944"
+                      LastKnownName="IList&lt;T&gt;"
+                      LastKnownLocation="SPS.Architeture.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="b0053b47-a948-4bf9-8dd6-4e7740835281"
+        name="DbSet&lt;Plate&gt;" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

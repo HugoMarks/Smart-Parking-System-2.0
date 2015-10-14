@@ -1,0 +1,314 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="7ec7a8a9-4fdc-464c-8cb3-a87fd67d2abf" name="RaspberryPI" linkedPackageId="de7ec9d3-6e64-4ae0-ae80-385c63655ced" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <appliedStereotypesInternal>
+    <stereotypeInstance Id="02a258c3-2caa-4d90-ad62-999e3fdce637" name="namespace" profile="CSharpProfile">
+      <elementDefinition Id="718bac50-77ac-41e8-bf19-a26d2936f702" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="1e2b3030-ebb8-45f7-bd09-a117bc741da7">
+          <propertyInstance Id="8fa58d08-4f89-4547-a420-3b152a3c4d19" name="BaseName">
+            <elementDefinition Id="f53ed7b2-18d3-457f-8fd6-af594640730d" />
+          </propertyInstance>
+          <elementDefinition Id="2bf240ec-5fdd-4738-92c2-d1822a6720b2" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="7cc196f4-4edd-4861-8c4e-a9e822070d6d">
+          <propertyInstance Id="cc02f0ff-eed0-4360-b98a-3c4730e8e638" name="ClrAttributes">
+            <elementDefinition Id="6e0c67c4-d133-4d43-9915-40358fe1e319" />
+          </propertyInstance>
+          <elementDefinition Id="f2cddda5-3d0d-4884-84aa-dcb941249432" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="14afe6a5-02ae-438d-9c08-db61b0427a22">
+          <propertyInstance Id="2a4eff89-53ed-460b-a125-596340e48373" name="Usings">
+            <elementDefinition Id="df7c2965-95af-4a57-91ed-42acf64ce123" />
+          </propertyInstance>
+          <elementDefinition Id="749e2c43-6bc0-4450-a4f6-287aff321152" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+    <stereotypeInstance Id="2aa4b855-7b35-4fa6-b76a-bd9c46496be6" name="TextTemplateBindings" profile="TextTemplateBindings">
+      <elementDefinition Id="451ee547-bb64-4513-816d-021744bbc55e" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="613f9bed-09b4-4459-96b0-b707973d63c1">
+          <propertyInstance Id="62530b90-4f5e-4d51-97d0-be17be887288" name="Alias" value="ClassTemplate|EnumTemplate|InterfaceTemplate|StructTemplate">
+            <elementDefinition Id="8ad43521-8644-4622-a09d-63bbf41cd6f8" />
+          </propertyInstance>
+          <elementDefinition Id="55ec4195-887b-47ae-b933-d31192b4b1fc" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="dd5cd745-1af0-4884-a393-e38f41328bda">
+          <propertyInstance Id="da924cbb-6915-4d42-b851-c97e3c4820f5" name="TemplateFilePath" value="ClassTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 12.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4|EnumTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 12.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\EnumTemplate.t4|InterfaceTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 12.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\InterfaceTemplate.t4|StructTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 12.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4">
+            <elementDefinition Id="8dd985bd-006c-480c-911e-c2a9864e84b6" />
+          </propertyInstance>
+          <elementDefinition Id="8b77bae0-a356-4e6c-8601-0666a113a886" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="dd1f5afe-68f7-4cfe-9bb2-88b5a68e6aa8">
+          <propertyInstance Id="03b473f5-ae5f-4c53-b757-03488c6f4e2b" name="ProjectPath" value="ClassTemplate=..\SPS.Model\SPS.Model.csproj|EnumTemplate=..\SPS.Model\SPS.Model.csproj|InterfaceTemplate=..\SPS.Model\SPS.Model.csproj|StructTemplate=..\SPS.Model\SPS.Model.csproj">
+            <elementDefinition Id="57bffb0f-f9e5-45d1-97ab-12de075a9140" />
+          </propertyInstance>
+          <elementDefinition Id="1ac5b1c6-e18d-4a79-a0b1-69ba0d64c30e" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="368fa750-53b9-4bee-b349-997d92a106ed">
+          <propertyInstance Id="f244067e-81f0-4003-88a1-f270d8fecdeb" name="TargetDirectory" value="ClassTemplate={PackageStructure}|EnumTemplate=GeneratedCode\{PackageStructure}|InterfaceTemplate={PackageStructure}|StructTemplate=GeneratedCode\{PackageStructure}">
+            <elementDefinition Id="5be2117d-e79f-405d-bb72-63e252d6c209" />
+          </propertyInstance>
+          <elementDefinition Id="28e2c51c-0fbb-4b07-9067-13db95cc11dc" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="82e0bb42-87bb-4127-83b3-d4394dad623f">
+          <propertyInstance Id="f74cb20d-4cac-434e-951a-3e5294d497e5" name="TargetName" value="ClassTemplate={Name}|EnumTemplate={Name}|InterfaceTemplate={Name}|StructTemplate={Name}">
+            <elementDefinition Id="97a0d1ca-c612-427b-aaa6-8bb831c994fb" />
+          </propertyInstance>
+          <elementDefinition Id="595644b5-c33b-4ea2-bf86-af3aeb6ebb87" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="86e40eef-78db-454d-994e-6c82fb7bfe7a">
+          <propertyInstance Id="a9473c4f-c4ad-4e5f-926a-0189e26d8962" name="Overwrite" value="ClassTemplate=True|EnumTemplate=True|InterfaceTemplate=True|StructTemplate=True">
+            <elementDefinition Id="64f81dee-a215-4d9e-8a5e-eeeb88d29e4b" />
+          </propertyInstance>
+          <elementDefinition Id="5a138567-bebb-4263-a8af-3c0dc391e700" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="ea996106-024d-4898-ad5a-8598d9053524">
+          <propertyInstance Id="c3c6d5c7-c4dd-4c80-a9c9-e42e5dc325f0" name="Parameters">
+            <elementDefinition Id="ac7e6a00-a36d-49f2-976d-7f6872967fc0" />
+          </propertyInstance>
+          <elementDefinition Id="0a2e8546-8b14-4b55-afc3-994e7b923cea" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+  </appliedStereotypesInternal>
+  <profileInstances>
+    <packageHasProfileInstances Id="7cd0b5d3-43ad-4335-baed-199a5f587431">
+      <profileInstance Id="9e931586-d7af-46c1-9bcd-0f4230d9e377" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="80e9d238-b49a-4a51-bf0c-6cdbf95501b2">
+      <profileInstance Id="41e37379-12b5-475b-a357-b906210d8ed4" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="2e991c42-c057-4ded-b8c0-b3e03f83e809">
+      <profileInstance Id="826d5cd5-f4e1-4742-a028-8557c6f0004f" name="CSharpProfile">
+        <elementDefinition Id="0a1ca233-9290-4f29-876a-7ea5d7ee3bc7" />
+      </profileInstance>
+      <elementDefinition Id="5c51ec84-ad47-492c-9d11-e660e1b7977a" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="0b8e9723-de3f-46eb-ab26-6850d1dbad12">
+      <profileInstance Id="5076c063-234b-475b-a1ec-0d298d393155" name="TextTemplateBindings">
+        <elementDefinition Id="2c18d6e9-1b00-4a8d-8eff-6849a78afe5d" />
+      </profileInstance>
+      <elementDefinition Id="7efc94cd-2330-485a-a7e9-13a6cb775893" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="1b816433-2487-463f-9664-c00b96c8ff2f" name="Raspberry" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="90b66393-9f4d-4528-9dbc-1aeabe38c1a7" />
+        <targetEnds>
+          <association Id="d5a2034f-d3a3-4498-ab64-b105ffc0a719" isDerived="false" sourceEndRoleName="Raspberry" targetEndRoleName="ReconhecedorPlaca" isLeaf="false" isAbstract="false">
+            <classMoniker Id="6eb9d76e-9d0b-4d29-a8c3-8ba0bfcd9bf4" LastKnownName="ReconhecedorPlaca" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="87a4f206-b3b4-40f2-8198-1c0c05042df5" name="Raspberry" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="9d5877d2-c24b-462b-8bb7-ce47cb43cd2a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="cec77614-2794-4b99-ac8b-f92f8663e85a" name="ReconhecedorPlaca" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="0f64b21e-ed06-4692-8d02-7420ed543302" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="fbe6de1b-c1f3-4df9-a667-20ba47be8649" />
+          </association>
+          <association Id="4cb2c26e-1de0-44b2-b27a-9caf0f76ff6d" isDerived="false" sourceEndRoleName="Raspberry" targetEndRoleName="RFID" isLeaf="false" isAbstract="false">
+            <classMoniker Id="a7b98619-b823-44d1-ac5c-050b0b4a8b53" LastKnownName="RFID" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="9179904f-b8a4-4205-b9b5-0949429c6965" name="Raspberry" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="d2e5518d-d1bd-44f3-a698-1834384d191c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="9c604e42-ce68-4a62-ab5b-86a985c9d86c" name="RFID" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="bb8aee6c-5697-4640-af5b-0e580f817559" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="9cb22610-1477-41d2-8fc9-e5493944818a" />
+          </association>
+          <association Id="7deb93cd-74ef-48da-acd3-d9f02666c596" isDerived="false" sourceEndRoleName="Raspberry" targetEndRoleName="SensorDistancia" isLeaf="false" isAbstract="false">
+            <classMoniker Id="7118bcc9-1b52-4027-84f3-89558289bee1" LastKnownName="SensorDistancia" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f9b54cb8-fd0f-4177-94d2-1196d5534329" name="Raspberry" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="e5aa3843-c81e-4579-9ba2-5d347d77d728" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="31ac0fc3-ea63-43a6-9e6b-1d69a8dd3bf7" name="SensorDistancia" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="10095a55-2a20-4c50-988d-97bfb5c3b8d5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="c4881977-79bd-45bf-b015-49dfe95dfd15" />
+          </association>
+          <association Id="1ef59b78-60ee-4c6c-b7fc-afe5abf9efe3" isDerived="false" sourceEndRoleName="Raspberry" targetEndRoleName="Camera" isLeaf="false" isAbstract="false">
+            <classMoniker Id="b931c40d-d920-4ed4-b848-b60d48e4673b" LastKnownName="Camera" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="ee2c788f-39a8-40e4-8fb8-2036b2a1403f" name="Raspberry" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="0908fffe-0994-46bb-96be-70df7bb5c154" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="72ad3513-6b89-4fb0-96ea-30307e207686" name="Camera" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="03fa5f8f-4bdd-4512-bff0-5452d5b8d92c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="f7311ad6-5873-4e69-9f71-6859bc612558" />
+          </association>
+          <association Id="d9368d43-653a-40b5-bb94-597164d43e44" isDerived="false" sourceEndRoleName="Raspberry" targetEndRoleName="Visor" isLeaf="false" isAbstract="false">
+            <classMoniker Id="bf21f9fb-8d4e-4301-a8b7-d14aba097256" LastKnownName="Visor" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="61ddee21-22b5-4e36-9e67-d17188a34254" name="Raspberry" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="ff4fd2b1-3332-4074-8169-518251c631e4" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="7b8c2082-bc05-4a50-996a-dccef6b3452b" name="Visor" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="4716819a-697f-4abb-b18a-6a15a52205cf" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="412b3282-d6bd-4a58-88ba-85ee88e83fdc" />
+          </association>
+          <association Id="5dc458ee-80c1-4710-9779-f1f215361c5f" isDerived="false" sourceEndRoleName="Raspberry" targetEndRoleName="ServoMotor" isLeaf="false" isAbstract="false">
+            <classMoniker Id="f3817789-c16b-4b56-967a-f8d2db282b66" LastKnownName="ServoMotor" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="437d0f02-cbc9-4bbf-ad71-3df2e0b24b95" name="Raspberry" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="f7321278-99fb-4f53-97af-4081a875b9c1" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d06affc7-561e-4359-b5f4-1e29934ad7a9" name="ServoMotor" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="dff901c2-7449-499c-8f89-3b7fff54d1f5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="e510411c-ee4b-4875-927d-54e195610606" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="970cfbbe-88a5-4e29-9ea4-3afd14a3203c" name="ReconhecedorPlaca" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="3a60f4b8-9b86-4a21-a4c4-8384c437a6e6" />
+          </property>
+          <property Id="38f81075-3d1d-4b1f-951d-a769d3db7c9f" name="RFID" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="518d0339-5af4-4f24-9783-51a561707694" />
+          </property>
+          <property Id="1c66e8e8-994b-46fc-a959-fdf0cd09a229" name="Camera" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="8e0ef9f2-dcd6-48f0-a77d-8651bb3cf829" />
+          </property>
+          <property Id="18bdc417-76c1-4b60-8ab7-a8127f30b29f" name="SensorDistancia" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="befc8755-9a9f-4ac2-a6b3-851d35632c39" />
+          </property>
+          <property Id="4e1ae7d9-3670-44d1-8237-fadc1b241bdc" name="ServoMotor" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="3fe46887-5aa2-42f8-ac04-2536b6289746" />
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="c22b85b8-3916-42fa-91ae-d02ccac15e77" name="ProcessarComponentes" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="e5dd43c8-cd16-4dc3-ae48-6b3d38474f17" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="6eb9d76e-9d0b-4d29-a8c3-8ba0bfcd9bf4" name="ReconhecedorPlaca" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="897d2273-c6cd-4e29-95d4-0b008b19ebfa" />
+        <ownedOperationsInternal>
+          <operation Id="5be675f0-6ded-4d3e-abf8-e588ff972737" name="ProcessarImagem" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="1d03e642-894a-498f-b9b4-7a09e8ff96d8" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="a7b98619-b823-44d1-ac5c-050b0b4a8b53" name="RFID" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="2a44613b-11ce-4534-82c0-12d3d989e1cb" />
+        <ownedOperationsInternal>
+          <operation Id="dccadfa3-05a1-4ad8-8e05-fbed60d40751" name="IdentificarId" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="5808defd-1262-493a-8b05-0d482180276e" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="b931c40d-d920-4ed4-b848-b60d48e4673b" name="Camera" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="9cfec340-db90-4b2b-8355-2fea3fbd639f" />
+        <ownedAttributesInternal>
+          <property Id="0bc5c942-7b49-4fc8-9f1a-4f74687f77ae" name="Imagem" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="971a95d8-2189-4dce-a76f-c97a559fbbdb" />
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="555e9631-04a7-4666-98d9-665123739761" name="CapturarImagem" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="6c70da8f-b4fd-430a-9cf0-a288060da0ad" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="7118bcc9-1b52-4027-84f3-89558289bee1" name="SensorDistancia" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="1553f549-c823-4bbd-8629-ad67fca4a00f" />
+        <ownedAttributesInternal>
+          <property Id="27d54324-4062-4627-aaf6-35d781e01e79" name="TemPresença" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="c5b0f786-ad69-44c7-a02a-1330c6154aa4" />
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="57af16fa-270f-4ad5-8e46-29ab16753399" name="IdentificarPresença" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="93944505-7cb6-4b1a-8435-e75f3654dc93" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="f3817789-c16b-4b56-967a-f8d2db282b66" name="ServoMotor" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="2bff5eae-aa65-4d64-b46b-a475ebb8bbff" />
+        <ownedAttributesInternal>
+          <property Id="732d3854-b8c2-4c17-b5bc-b04116388422" name="EstadoCancela" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="191126fe-f450-4d5f-b596-60a93099267e" />
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="622ec15c-7547-4f8d-bba7-cc291975011a" name="AbrirCancela" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="47f9980d-5724-420a-bb38-7dc53eda4d55" />
+          </operation>
+          <operation Id="b21bef4b-709f-49d4-ac9b-7e4032e33367" name="FecharCancela" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="9b8eeef1-394e-43c3-8a5e-20ef640b68c4" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="bf21f9fb-8d4e-4301-a8b7-d14aba097256" name="Visor" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="d457118b-22b3-4e6a-824e-841e9528da75" />
+        <ownedAttributesInternal>
+          <property Id="271b3f84-c944-44c0-8e58-795509cbafcb" name="Texto" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="d268295d-d4f7-46db-9b3e-af8578afe811" />
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="d58bdc41-f4a1-4753-a462-7e419c4a249f" name="ExibirTexto" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="f2d14d14-92e2-48b9-9f3a-b8272f7e206c" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="de7ec9d3-6e64-4ae0-ae80-385c63655ced" name="SPS.Architeture">
+    <elementDefinition Id="aee29657-1972-4846-a9f6-d5f0a905d204" />
+  </package>
+</logicalClassDesignerModel>
