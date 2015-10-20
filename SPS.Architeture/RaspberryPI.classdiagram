@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="7ec7a8a9-4fdc-464c-8cb3-a87fd67d2abf" name="RaspberryPI" linkedPackageId="de7ec9d3-6e64-4ae0-ae80-385c63655ced" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="7ec7a8a9-4fdc-464c-8cb3-a87fd67d2abf" name="RaspberryPI" linkedPackageId="de7ec9d3-6e64-4ae0-ae80-385c63655ced" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
   <appliedStereotypesInternal>
     <stereotypeInstance Id="02a258c3-2caa-4d90-ad62-999e3fdce637" name="namespace" profile="CSharpProfile">
       <elementDefinition Id="718bac50-77ac-41e8-bf19-a26d2936f702" />
@@ -72,32 +72,6 @@
       </propertyInstances>
     </stereotypeInstance>
   </appliedStereotypesInternal>
-  <profileInstances>
-    <packageHasProfileInstances Id="7cd0b5d3-43ad-4335-baed-199a5f587431">
-      <profileInstance Id="9e931586-d7af-46c1-9bcd-0f4230d9e377" name="StandardProfileL2">
-        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
-      </profileInstance>
-      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="80e9d238-b49a-4a51-bf0c-6cdbf95501b2">
-      <profileInstance Id="41e37379-12b5-475b-a357-b906210d8ed4" name="StandardProfileL3">
-        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
-      </profileInstance>
-      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="2e991c42-c057-4ded-b8c0-b3e03f83e809">
-      <profileInstance Id="826d5cd5-f4e1-4742-a028-8557c6f0004f" name="CSharpProfile">
-        <elementDefinition Id="0a1ca233-9290-4f29-876a-7ea5d7ee3bc7" />
-      </profileInstance>
-      <elementDefinition Id="5c51ec84-ad47-492c-9d11-e660e1b7977a" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="0b8e9723-de3f-46eb-ab26-6850d1dbad12">
-      <profileInstance Id="5076c063-234b-475b-a1ec-0d298d393155" name="TextTemplateBindings">
-        <elementDefinition Id="2c18d6e9-1b00-4a8d-8eff-6849a78afe5d" />
-      </profileInstance>
-      <elementDefinition Id="7efc94cd-2330-485a-a7e9-13a6cb775893" />
-    </packageHasProfileInstances>
-  </profileInstances>
   <packagedElements>
     <logicalClassDesignerModelHasTypes>
       <class Id="1b816433-2487-463f-9664-c00b96c8ff2f" name="Raspberry" isAbstract="false" isLeaf="false" isActiveClass="false">
@@ -310,5 +284,31 @@
   </packagedElements>
   <package Id="de7ec9d3-6e64-4ae0-ae80-385c63655ced" name="SPS.Architeture">
     <elementDefinition Id="aee29657-1972-4846-a9f6-d5f0a905d204" />
+    <profileInstances>
+      <packageHasProfileInstances Id="7cd0b5d3-43ad-4335-baed-199a5f587431">
+        <profileInstance Id="9e931586-d7af-46c1-9bcd-0f4230d9e377" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="80e9d238-b49a-4a51-bf0c-6cdbf95501b2">
+        <profileInstance Id="41e37379-12b5-475b-a357-b906210d8ed4" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="2e991c42-c057-4ded-b8c0-b3e03f83e809">
+        <profileInstance Id="826d5cd5-f4e1-4742-a028-8557c6f0004f" name="CSharpProfile">
+          <elementDefinition Id="0a1ca233-9290-4f29-876a-7ea5d7ee3bc7" />
+        </profileInstance>
+        <elementDefinition Id="5c51ec84-ad47-492c-9d11-e660e1b7977a" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="0b8e9723-de3f-46eb-ab26-6850d1dbad12">
+        <profileInstance Id="5076c063-234b-475b-a1ec-0d298d393155" name="TextTemplateBindings">
+          <elementDefinition Id="2c18d6e9-1b00-4a8d-8eff-6849a78afe5d" />
+        </profileInstance>
+        <elementDefinition Id="7efc94cd-2330-485a-a7e9-13a6cb775893" />
+      </packageHasProfileInstances>
+    </profileInstances>
   </package>
 </logicalClassDesignerModel>
