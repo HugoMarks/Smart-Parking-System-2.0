@@ -1,0 +1,19 @@
+﻿<Page
+    x:Class="SPS.Raspberry.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SPS.Raspberry"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel>
+            <TextBlock x:Name="TagUUIDTextBlock" VerticalAlignment="Center" HorizontalAlignment="Center"
+                       Text="Waiting for tag" FontSize="18"
+                       Margin="0,20,0,100"/>
+            <Button Content="Start" VerticalAlignment="Center" HorizontalAlignment="Center"
+                Click="OnStartButtonClick"/>
+        </StackPanel>
+    </Grid>
+</Page>

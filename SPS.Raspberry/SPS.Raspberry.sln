@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPS.Raspberry", "SPS.Raspberry\SPS.Raspberry.csproj", "{D317132D-8248-4795-9A0D-DF42515843F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPS.Raspberry.Core", "SPS.Raspberry.Core\SPS.Raspberry.Core.csproj", "{F6575EAB-B689-4570-AA52-DF0AA8B83A25}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM = Debug|ARM
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|ARM = Release|ARM
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D317132D-8248-4795-9A0D-DF42515843F5}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{D317132D-8248-4795-9A0D-DF42515843F5}.Debug|ARM.ActiveCfg = Debug|ARM
+		{D317132D-8248-4795-9A0D-DF42515843F5}.Debug|ARM.Build.0 = Debug|ARM
+		{D317132D-8248-4795-9A0D-DF42515843F5}.Debug|ARM.Deploy.0 = Debug|ARM
+		{D317132D-8248-4795-9A0D-DF42515843F5}.Debug|x64.ActiveCfg = Debug|x64
+		{D317132D-8248-4795-9A0D-DF42515843F5}.Debug|x64.Build.0 = Debug|x64
+		{D317132D-8248-4795-9A0D-DF42515843F5}.Debug|x64.Deploy.0 = Debug|x64
+		{D317132D-8248-4795-9A0D-DF42515843F5}.Debug|x86.ActiveCfg = Debug|x86
+		{D317132D-8248-4795-9A0D-DF42515843F5}.Debug|x86.Build.0 = Debug|x86
+		{D317132D-8248-4795-9A0D-DF42515843F5}.Debug|x86.Deploy.0 = Debug|x86
+		{D317132D-8248-4795-9A0D-DF42515843F5}.Release|Any CPU.ActiveCfg = Release|x86
+		{D317132D-8248-4795-9A0D-DF42515843F5}.Release|ARM.ActiveCfg = Release|ARM
+		{D317132D-8248-4795-9A0D-DF42515843F5}.Release|ARM.Build.0 = Release|ARM
+		{D317132D-8248-4795-9A0D-DF42515843F5}.Release|ARM.Deploy.0 = Release|ARM
+		{D317132D-8248-4795-9A0D-DF42515843F5}.Release|x64.ActiveCfg = Release|x64
+		{D317132D-8248-4795-9A0D-DF42515843F5}.Release|x64.Build.0 = Release|x64
+		{D317132D-8248-4795-9A0D-DF42515843F5}.Release|x64.Deploy.0 = Release|x64
+		{D317132D-8248-4795-9A0D-DF42515843F5}.Release|x86.ActiveCfg = Release|x86
+		{D317132D-8248-4795-9A0D-DF42515843F5}.Release|x86.Build.0 = Release|x86
+		{D317132D-8248-4795-9A0D-DF42515843F5}.Release|x86.Deploy.0 = Release|x86
+		{F6575EAB-B689-4570-AA52-DF0AA8B83A25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6575EAB-B689-4570-AA52-DF0AA8B83A25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6575EAB-B689-4570-AA52-DF0AA8B83A25}.Debug|ARM.ActiveCfg = Debug|ARM
+		{F6575EAB-B689-4570-AA52-DF0AA8B83A25}.Debug|ARM.Build.0 = Debug|ARM
+		{F6575EAB-B689-4570-AA52-DF0AA8B83A25}.Debug|x64.ActiveCfg = Debug|x64
+		{F6575EAB-B689-4570-AA52-DF0AA8B83A25}.Debug|x64.Build.0 = Debug|x64
+		{F6575EAB-B689-4570-AA52-DF0AA8B83A25}.Debug|x86.ActiveCfg = Debug|x86
+		{F6575EAB-B689-4570-AA52-DF0AA8B83A25}.Debug|x86.Build.0 = Debug|x86
+		{F6575EAB-B689-4570-AA52-DF0AA8B83A25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6575EAB-B689-4570-AA52-DF0AA8B83A25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6575EAB-B689-4570-AA52-DF0AA8B83A25}.Release|ARM.ActiveCfg = Release|ARM
+		{F6575EAB-B689-4570-AA52-DF0AA8B83A25}.Release|ARM.Build.0 = Release|ARM
+		{F6575EAB-B689-4570-AA52-DF0AA8B83A25}.Release|x64.ActiveCfg = Release|x64
+		{F6575EAB-B689-4570-AA52-DF0AA8B83A25}.Release|x64.Build.0 = Release|x64
+		{F6575EAB-B689-4570-AA52-DF0AA8B83A25}.Release|x86.ActiveCfg = Release|x86
+		{F6575EAB-B689-4570-AA52-DF0AA8B83A25}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
