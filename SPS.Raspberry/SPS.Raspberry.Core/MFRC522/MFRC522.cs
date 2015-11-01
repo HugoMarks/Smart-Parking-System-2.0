@@ -15,6 +15,16 @@ namespace SPS.Raspberry.Core.MFRC522
     {
         #region Const fields
 
+        /// <summary>
+        /// Gets the max length of a block, in bytes.
+        /// </summary>
+        private const int MaxBlockLength = 16;
+
+        /// <summary>
+        /// Gets the number of bytes for an authentication package.
+        /// </summary>
+        private const int AuthenticationPacketLength = 12;
+
         ///<summary>
         ///Gets the Spi device clock frequency.
         ///</summary>
@@ -167,11 +177,11 @@ namespace SPS.Raspberry.Core.MFRC522
         {
             if (keyA != null)
             {
-                MifareAuthenticate(PiccCommands.AuthenticateKeyA, blockNumber, uid, keyA);
+                Authenticate(PiccCommands.AuthenticateKeyA, blockNumber, uid, keyA);
             }
             else if (keyB != null)
             {
-                MifareAuthenticate(PiccCommands.AuthenticateKeyB, blockNumber, uid, keyB);
+                Authenticate(PiccCommands.AuthenticateKeyB, blockNumber, uid, keyB);
             }
             else
             {
@@ -181,7 +191,7 @@ namespace SPS.Raspberry.Core.MFRC522
             //Read block
             Transceive(true, PiccCommands.Read, blockNumber);
 
-            return ReadFromFifo(16);
+            return ReadFromFifo(MaxBlockLength);
         }
 
         /// <summary>
@@ -196,11 +206,11 @@ namespace SPS.Raspberry.Core.MFRC522
         {
             if (keyA != null)
             {
-                MifareAuthenticate(PiccCommands.AuthenticateKeyA, blockNumber, uid, keyA);
+                Authenticate(PiccCommands.AuthenticateKeyA, blockNumber, uid, keyA);
             }
             else if (keyB != null)
             {
-                MifareAuthenticate(PiccCommands.AuthenticateKeyB, blockNumber, uid, keyB);
+                Authenticate(PiccCommands.AuthenticateKeyB, blockNumber, uid, keyB);
             }
             else
             {
@@ -216,7 +226,7 @@ namespace SPS.Raspberry.Core.MFRC522
             }
 
             //Make sure we write only 16 bytes
-            var buffer = new byte[16];
+            var buffer = new byte[MaxBlockLength];
 
             data.CopyTo(buffer, 0);
             Transceive(true, buffer);
@@ -360,7 +370,7 @@ namespace SPS.Raspberry.Core.MFRC522
             }
         }
 
-        private void MifareAuthenticate(byte command, byte blockNumber, TagUid uid, [ReadOnlyArray] byte[] key)
+        private void Authenticate(byte command, byte blockNumber, TagUid uid, [ReadOnlyArray] byte[] key)
         {
             //Put reader in Idle mode
             WriteRegister(MFRC522Registers.Command, PcdCommands.Idle);
@@ -368,7 +378,7 @@ namespace SPS.Raspberry.Core.MFRC522
             SetRegisterBits(MFRC522Registers.FifoLevel, 0x80);
 
             //Create Authentication packet
-            var data = new byte[12];
+            var data = new byte[AuthenticationPacketLength];
 
             data[0] = command;
             data[1] = (byte)(blockNumber & 0xFF);
@@ -376,7 +386,7 @@ namespace SPS.Raspberry.Core.MFRC522
             uid.Bytes.CopyTo(data, 8);
             WriteToFifo(data);
             //Put reader in MfAuthent mode
-            WriteRegister(MFRC522Registers.Command, PcdCommands.MifareAuthenticate);
+            WriteRegister(MFRC522Registers.Command, PcdCommands.Authenticate);
             //Wait for (a generous) 25 ms
             Task.Delay(DefaultThreadSleepTime / 2).RunSynchronously(TaskScheduler.Current);
         }

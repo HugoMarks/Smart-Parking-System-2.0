@@ -50,6 +50,7 @@ namespace SPS.Raspberry
                 var tag = _mfrc522.ReadUid();
 
                 TagUUIDTextBlock.Text = $"Tag found: {tag}";
+                _mfrc522.HaltTag();
             });
         }
     }
