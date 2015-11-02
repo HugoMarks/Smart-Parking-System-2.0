@@ -99,9 +99,17 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BoardConfig.cs" />
-    <Compile Include="MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
+    <Compile Include="Constants\BoardConfig.cs" />
+    <Compile Include="Constants\Constants.cs" />
+    <Compile Include="DataObject\AuthRequest.cs" />
+    <Compile Include="DataObject\AuthResponse.cs" />
+    <Compile Include="DataObject\IRequest.cs" />
+    <Compile Include="DataObject\IResponse.cs" />
+    <Compile Include="Helpers\JsonHelper.cs" />
+    <Compile Include="Logic\AuthResponseEventArgs.cs" />
+    <Compile Include="Logic\StartPageLogic.cs" />
+    <Compile Include="Pages\StartPage.xaml.cs">
+      <DependentUpon>StartPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -126,7 +134,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainPage.xaml">
+    <Page Include="Pages\StartPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

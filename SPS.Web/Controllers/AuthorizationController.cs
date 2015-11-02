@@ -4,7 +4,6 @@ using SPS.Model;
 using SPS.Web.Api;
 using SPS.Web.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -15,8 +14,11 @@ namespace SPS.Web.Controllers
     [Route("api/authorize")]
     public class AuthorizationController : ApiController
     {
-        public const string UnauthorizedMessage = "Unauthorized";
-        public const string FullParkingMessage = "Full";
+        private const string SuccessMessage = "Ok";
+
+        private const string UnauthorizedMessage = "Unauthorized";
+
+        private const string FullParkingMessage = "Full";
 
         [HttpPost]
         public HttpResponseMessage Post([FromBody] AuthorizationModel model)
@@ -25,19 +27,19 @@ namespace SPS.Web.Controllers
 
             if (tag == null)
             {
-                return MakeErrorResponse(HttpStatusCode.Unauthorized, UnauthorizedMessage);
+                return MakeResponse(UnauthorizedMessage, string.Empty, 0, HttpStatusCode.Unauthorized);
             }
 
             Parking parking = BusinessManager.Instance.Parkings.Find(model.ParkingCNPJ);
 
             if (parking == null)
             {
-                return MakeErrorResponse(HttpStatusCode.Unauthorized, UnauthorizedMessage);
+                return MakeResponse(UnauthorizedMessage, string.Empty, 0, HttpStatusCode.Unauthorized);
             }
 
             if (!tag.Client.Parkings.Any(p => p.CNPJ == model.ParkingCNPJ))
             {
-                return MakeErrorResponse(HttpStatusCode.Unauthorized, UnauthorizedMessage);
+                return MakeResponse(UnauthorizedMessage, string.Empty, 0, HttpStatusCode.Unauthorized);
             }
 
             bool isNew;
@@ -49,35 +51,24 @@ namespace SPS.Web.Controllers
             }
             catch (FullParkingException)
             {
-                return MakeErrorResponse(HttpStatusCode.BadRequest, FullParkingMessage);
+                return MakeResponse(FullParkingMessage, string.Empty, 0, HttpStatusCode.BadRequest);
             }
 
             control = Convert.ToByte(isNew);
 
-            return MakeSuccessResponse(tag.Client.FirstName, control);
+            return MakeResponse(SuccessMessage, tag.Client.FirstName, control, HttpStatusCode.OK);
         }
 
-        private HttpResponseMessage MakeSuccessResponse(string userName, byte control)
+        private HttpResponseMessage MakeResponse(string message, string userName, byte control, HttpStatusCode code)
         {
             return new HttpResponseMessage()
             {
                 StatusCode = HttpStatusCode.OK,
                 Content = new JsonContent(new
                 {
+                    Message = message,
                     Control = control,
                     UserName = userName
-                })
-            };
-        }
-
-        private HttpResponseMessage MakeErrorResponse(HttpStatusCode statusCode, string message)
-        {
-            return new HttpResponseMessage()
-            {
-                StatusCode = statusCode,
-                Content = new JsonContent(new 
-                {
-                    Message = message
                 })
             };
         }
