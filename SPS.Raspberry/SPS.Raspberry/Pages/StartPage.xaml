@@ -8,12 +8,30 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel>
-            <TextBlock x:Name="TagUUIDTextBlock" VerticalAlignment="Center" HorizontalAlignment="Center"
-                       Text="Waiting for tag" FontSize="18"
-                       Margin="0,20,0,100"/>
-            <Button Content="Start" VerticalAlignment="Center" HorizontalAlignment="Center"
-                Click="OnStartButtonClick"/>
-        </StackPanel>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="60*"/>
+                <RowDefinition Height="20*"/>
+            </Grid.RowDefinitions>
+            <Border Background="#FF005DFF" Grid.Row="0">
+                <TextBlock TextAlignment="Center" Foreground="White"
+                           FontSize="36" VerticalAlignment="Center" HorizontalAlignment="Center">                    
+                    <Run Text="Smart Parking System"/>
+                    <LineBreak/>
+                    <Run Text="2.0"/>
+                </TextBlock>
+            </Border>
+            <Border Background="White" Grid.Row="1">
+                <CaptureElement x:Name="PreviewElement"/>
+            </Border>
+            <StackPanel Grid.Row="2" Margin="50,0,0,0">
+                <TextBlock x:Name="TagUUIDTextBlock" VerticalAlignment="Center" HorizontalAlignment="Left"
+                       Text="Esperando por uma tag..." FontSize="18"
+                           Margin="0,0,0,15"/>
+                <TextBlock x:Name="DistanceTextBlock" VerticalAlignment="Center" HorizontalAlignment="Left"
+                           FontSize="18"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>

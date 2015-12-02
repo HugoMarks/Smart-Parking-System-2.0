@@ -1,17 +1,16 @@
-﻿using Windows.Devices.Spi;
-using Windows.Devices.Gpio;
-using Windows.Foundation;
-using System.Threading.Tasks;
-using System;
-using Windows.Devices.Enumeration;
+﻿using System;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
+using Windows.Devices.Enumeration;
+using Windows.Devices.Gpio;
+using Windows.Devices.Spi;
 
 namespace SPS.Raspberry.Core.MFRC522
 {
     ///<summary>
     ///A MFRC522 RFID reader controller.
     ///</summary>
-    public sealed class MFRC522
+    public sealed class MFRC522 : IMFRC522
     {
         #region Const fields
 
@@ -83,10 +82,26 @@ namespace SPS.Raspberry.Core.MFRC522
         ///<param name="spiControllerName">The name of the Spi controller.</param>
         ///<param name="spiChipLine">The spi chip select line number.</param>
         ///<returns><see cref="IAsyncAction"/></returns>
-        public IAsyncAction InitAsync(string spiControllerName, int spiChipLine)
+        public async Task InitAsync(string spiControllerName, int spiChipLine)
         {
-            return InternalInitAsync(spiControllerName, spiChipLine).AsAsyncAction();
+            var settings = new SpiConnectionSettings(spiChipLine)
+            {
+                Mode = SpiMode.Mode3,
+                ClockFrequency = SpiClockFrequency
+            };
+
+            string spis = SpiDevice.GetDeviceSelector(spiControllerName);
+            var devicesInfo = await DeviceInformation.FindAllAsync(spis);
+
+            if (devicesInfo.Count == 0)
+            {
+                throw new ArgumentException("No device information for the provided parameters.");
+            }
+
+            _spiDevice = await SpiDevice.FromIdAsync(devicesInfo[0].Id, settings);
+            Reset();
         }
+
 
         /// <summary>
         /// Resets the MFRC522 reader.
@@ -94,7 +109,6 @@ namespace SPS.Raspberry.Core.MFRC522
         public void Reset()
         {
             _resetPin.Write(GpioPinValue.Low);
-            Task.Delay(DefaultThreadSleepTime).RunSynchronously(TaskScheduler.Current);
             _resetPin.Write(GpioPinValue.High);
 
             //Force 100% ASK modulation
@@ -173,7 +187,7 @@ namespace SPS.Raspberry.Core.MFRC522
         /// <param name="keyA">The first key to use while reading.</param>
         /// <param name="keyB">The second key to use while reading.</param>
         /// <returns>The data read.</returns>
-        public byte[] ReadBlock(byte blockNumber, TagUid uid, [ReadOnlyArray] byte[] keyA, [ReadOnlyArray] byte[] keyB)
+        public byte[] ReadBlock(byte blockNumber, TagUid uid, byte[] keyA = null, byte[] keyB = null)
         {
             if (keyA != null)
             {
@@ -202,7 +216,7 @@ namespace SPS.Raspberry.Core.MFRC522
         /// <param name="keyA">The first key to use while writing.</param>
         /// <param name="keyB">The second key to use while writing.</param>
         /// <returns>true if the data was written; false otherwise.</returns>
-        public bool WriteBlock(byte blockNumber, TagUid uid, [ReadOnlyArray] byte[] data, [ReadOnlyArray] byte[] keyA, [ReadOnlyArray] byte[] keyB)
+        public bool WriteBlock(byte blockNumber, TagUid uid, byte[] data, byte[] keyA = null, byte[] keyB = null)
         {
             if (keyA != null)
             {
@@ -237,25 +251,6 @@ namespace SPS.Raspberry.Core.MFRC522
         #endregion
 
         #region Helpers
-
-        private async Task InternalInitAsync(string spiControllerName, int spiChipLine)
-        {
-            var settings = new SpiConnectionSettings(spiChipLine)
-            {
-                Mode = SpiMode.Mode3,
-                ClockFrequency = SpiClockFrequency
-            };
-
-            string spis = SpiDevice.GetDeviceSelector(spiControllerName);
-            var devicesInfo = await DeviceInformation.FindAllAsync(spis);
-
-            if (devicesInfo.Count == 0)
-            {
-                throw new ArgumentException("No device information for the provided parameters.");
-            }
-
-            _spiDevice = await SpiDevice.FromIdAsync(devicesInfo[0].Id, settings);
-        }
 
         private void WriteRegister(byte register, byte value)
         {
@@ -355,10 +350,7 @@ namespace SPS.Raspberry.Core.MFRC522
             //Put reader in Transceive mode and start sending
             WriteRegister(MFRC522Registers.Command, PcdCommands.Transceive);
             SetRegisterBits(MFRC522Registers.BitFraming, 0x80);
-
-            //Wait for (a generous) 25 ms
-            Task.Delay(DefaultThreadSleepTime / 2).RunSynchronously(TaskScheduler.Current);
-
+            
             //Stop sending
             ClearRegisterBits(MFRC522Registers.BitFraming, 0x80);
 
@@ -387,8 +379,6 @@ namespace SPS.Raspberry.Core.MFRC522
             WriteToFifo(data);
             //Put reader in MfAuthent mode
             WriteRegister(MFRC522Registers.Command, PcdCommands.Authenticate);
-            //Wait for (a generous) 25 ms
-            Task.Delay(DefaultThreadSleepTime / 2).RunSynchronously(TaskScheduler.Current);
         }
 
         #endregion

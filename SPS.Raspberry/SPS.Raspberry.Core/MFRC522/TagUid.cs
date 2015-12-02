@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Text;
 
 namespace SPS.Raspberry.Core.MFRC522
 {
     public sealed class TagUid
     {
+        private const int UidLength = 4;
+
         public byte Bcc { get; private set; }
 
         public byte[] Bytes { get; private set; }
@@ -15,13 +18,13 @@ namespace SPS.Raspberry.Core.MFRC522
         internal TagUid(byte[] uid)
         {
             FullUid = uid;
-            Bcc = uid[4];
-            Bytes = new byte[4];
-            Array.Copy(FullUid, 0, Bytes, 0, 4);
+            Bcc = uid[UidLength];
+            Bytes = new byte[UidLength];
+            Array.Copy(FullUid, 0, Bytes, 0, UidLength);
 
-            foreach (var b in Bytes)
+            for (int i = 0; i < UidLength; i++)
             {
-                if (b != 0x00)
+                if (Bytes[i] != 0x00)
                 {
                     IsValid = true;
                 }
@@ -52,7 +55,7 @@ namespace SPS.Raspberry.Core.MFRC522
         {
             int uid = 0;
 
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < UidLength; i++)
             {
                 uid |= Bytes[i] << (i * 8);
             }
@@ -62,9 +65,15 @@ namespace SPS.Raspberry.Core.MFRC522
 
         public override string ToString()
         {
-            var formatString = "x" + (Bytes.Length * 2);
+            StringBuilder hex = new StringBuilder(UidLength * 2);
 
-            return GetHashCode().ToString(formatString);
+            for (int i = 0; i < UidLength - 1; i++)
+            {
+                hex.AppendFormat("{0:X2} ", Bytes[i]);
+            }
+
+            hex.AppendFormat("{0:X2}", Bytes[UidLength - 1]);
+            return hex.ToString();
         }
     }
 }

@@ -1,0 +1,159 @@
+﻿using SPS.Raspberry.Core.Camera;
+using SPS.Raspberry.Core.MFRC522;
+using SPS.Raspberry.Core.ServoMotor;
+using SPS.Raspberry.Core.UltrasonicSensor;
+using SPS.Raspberry.DataObject;
+using System;
+using System.Threading.Tasks;
+using Windows.UI.Xaml.Controls;
+using Windows.Web.Http;
+
+namespace SPS.Raspberry.Logic
+{
+    /// <summary>
+    /// Logic for the <see cref="Pages.StartPage"/> page.
+    /// </summary>
+    public class StartPageLogic
+    {
+        private const string ServerUrl = "http://" + Constants.ServerAddress + "/api/authorize";
+
+        private MFRC522 _mfrc522;
+        private UltrasonicDistanceSensor _distanceSensor;
+        private PhotoCam _camera;
+        private ServoMotor _motor;
+        private HttpClient _httpClient;
+
+        /// <summary>
+        /// Fires when a new <see cref="AuthResponse"/> is received.
+        /// </summary>
+        public event EventHandler<AuthResponseEventArgs> NewResponse;
+
+        /// <summary>
+        /// Fires when a new <see cref="TagUid"/> is received.
+        /// </summary>
+        public event EventHandler<TagPresentEventArgs> TagPresent;
+
+        public event EventHandler<DistanceChangedEventArgs> DistanceChanged;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StartPageLogic"/> class.
+        /// </summary>
+        public StartPageLogic()
+        {
+            _mfrc522 = new MFRC522(BoardConfig.MFRC522CmdPin, BoardConfig.MFRC522ResetPin);
+            _distanceSensor = new UltrasonicDistanceSensor(BoardConfig.UltrasonicSensorTriggerPin, BoardConfig.UltrasonicSensorEchoPin);
+            _camera = new PhotoCam();
+            _motor = new ServoMotor(BoardConfig.ServoMotorPin);
+            _httpClient = new HttpClient();
+        }
+
+        /// <summary>
+        /// Starts the <see cref="MFRC522"/> component.
+        /// </summary>
+        /// <returns><see cref="Task"/></returns>
+        public async Task StartMFRC522ComponentAsync()
+        {
+            await _mfrc522.InitAsync(BoardConfig.MFRC522SpiControllerName, BoardConfig.MFRC522SpiSelectChipLine);
+            StartTagListener();
+        }
+
+        public void StartUltrasonicDistanceSensor()
+        {
+            Task.Factory.StartNew(() =>
+            {
+                while (_distanceSensor != null)
+                {
+                    var distance = _distanceSensor.GetDistance();
+
+                    if (DistanceChanged != null)
+                    {
+                        DistanceChanged(this, new DistanceChangedEventArgs(distance));
+                    }
+                }
+            });
+        }
+
+        public void StartServoMotor()
+        {
+            _motor.Init();
+        }
+
+        public async Task StartCameraAsync(CaptureElement captureElement)
+        {
+            await _camera.InitAsync(captureElement);
+        }
+
+        public async Task TakePhoto(string fileName)
+        {
+            await _camera.TakePhoto();
+        }
+
+        public async Task RotateMotor(double angle)
+        {
+            await _motor.RotateAsync(angle);
+        }
+
+        /// <summary>
+        /// Starts listening for present tags.
+        /// </summary>
+        private async void StartTagListener()
+        {
+            await Task.Run(async () =>
+            {
+                while (true)
+                {
+                    while (!_mfrc522.IsTagPresent())
+                    {
+                        await Task.Delay(50);
+                    }
+
+                    var tagUid = _mfrc522.ReadUid();
+                    var request = new AuthRequest();
+
+                    request.TagId = tagUid.ToString();
+                    RaiseNewTagEvent(tagUid);
+                    //await SendAuthRequestAsync(request);
+                }
+            });
+        }
+
+        /// <summary>
+        /// Sends an authorization request to the server.
+        /// </summary>
+        /// <param name="request">The request to send.</param>
+        /// <returns><see cref="Task"/></returns>
+        private async Task SendAuthRequestAsync(IRequest request)
+        {
+            var content = new HttpStringContent(request.Serialize());
+            var httpResponse = await _httpClient.PostAsync(new Uri(ServerUrl, UriKind.Absolute), content);
+            var response = new AuthResponse();
+
+            response.Deserialize(await httpResponse.Content.ReadAsStringAsync());
+            RaiseNewResponseEvent(response);
+        }
+
+        /// <summary>
+        /// Raises the <see cref="StartPageLogic.NewResponse"/> event.
+        /// </summary>
+        /// <param name="response">The response to be included in the event data.</param>
+        private void RaiseNewResponseEvent(AuthResponse response)
+        {
+            if (NewResponse != null)
+            {
+                NewResponse(this, new AuthResponseEventArgs(response));
+            }
+        }
+
+        /// <summary>
+        /// Raises the <see cref="StartPageLogic.NewResponse"/> event.
+        /// </summary>
+        /// <param name="tagUid">The response to be included in the event data.</param>
+        private void RaiseNewTagEvent(TagUid tagUid)
+        {
+            if (TagPresent != null)
+            {
+                TagPresent(this, new TagPresentEventArgs(tagUid));
+            }
+        }
+    }
+}

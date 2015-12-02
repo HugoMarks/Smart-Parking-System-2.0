@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPS.Raspberry", "SPS.Raspbe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPS.Raspberry.Core", "SPS.Raspberry.Core\SPS.Raspberry.Core.csproj", "{F6575EAB-B689-4570-AA52-DF0AA8B83A25}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPS.Raspberry.UnitTest", "SPS.Raspberry.UnitTest\SPS.Raspberry.UnitTest.csproj", "{DC577CD5-3EC9-405E-BA1F-FD890552EF5F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,26 @@ Global
 		{F6575EAB-B689-4570-AA52-DF0AA8B83A25}.Release|x64.Build.0 = Release|x64
 		{F6575EAB-B689-4570-AA52-DF0AA8B83A25}.Release|x86.ActiveCfg = Release|x86
 		{F6575EAB-B689-4570-AA52-DF0AA8B83A25}.Release|x86.Build.0 = Release|x86
+		{DC577CD5-3EC9-405E-BA1F-FD890552EF5F}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{DC577CD5-3EC9-405E-BA1F-FD890552EF5F}.Debug|ARM.ActiveCfg = Debug|ARM
+		{DC577CD5-3EC9-405E-BA1F-FD890552EF5F}.Debug|ARM.Build.0 = Debug|ARM
+		{DC577CD5-3EC9-405E-BA1F-FD890552EF5F}.Debug|ARM.Deploy.0 = Debug|ARM
+		{DC577CD5-3EC9-405E-BA1F-FD890552EF5F}.Debug|x64.ActiveCfg = Debug|x64
+		{DC577CD5-3EC9-405E-BA1F-FD890552EF5F}.Debug|x64.Build.0 = Debug|x64
+		{DC577CD5-3EC9-405E-BA1F-FD890552EF5F}.Debug|x64.Deploy.0 = Debug|x64
+		{DC577CD5-3EC9-405E-BA1F-FD890552EF5F}.Debug|x86.ActiveCfg = Debug|x86
+		{DC577CD5-3EC9-405E-BA1F-FD890552EF5F}.Debug|x86.Build.0 = Debug|x86
+		{DC577CD5-3EC9-405E-BA1F-FD890552EF5F}.Debug|x86.Deploy.0 = Debug|x86
+		{DC577CD5-3EC9-405E-BA1F-FD890552EF5F}.Release|Any CPU.ActiveCfg = Release|x86
+		{DC577CD5-3EC9-405E-BA1F-FD890552EF5F}.Release|ARM.ActiveCfg = Release|ARM
+		{DC577CD5-3EC9-405E-BA1F-FD890552EF5F}.Release|ARM.Build.0 = Release|ARM
+		{DC577CD5-3EC9-405E-BA1F-FD890552EF5F}.Release|ARM.Deploy.0 = Release|ARM
+		{DC577CD5-3EC9-405E-BA1F-FD890552EF5F}.Release|x64.ActiveCfg = Release|x64
+		{DC577CD5-3EC9-405E-BA1F-FD890552EF5F}.Release|x64.Build.0 = Release|x64
+		{DC577CD5-3EC9-405E-BA1F-FD890552EF5F}.Release|x64.Deploy.0 = Release|x64
+		{DC577CD5-3EC9-405E-BA1F-FD890552EF5F}.Release|x86.ActiveCfg = Release|x86
+		{DC577CD5-3EC9-405E-BA1F-FD890552EF5F}.Release|x86.Build.0 = Release|x86
+		{DC577CD5-3EC9-405E-BA1F-FD890552EF5F}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
