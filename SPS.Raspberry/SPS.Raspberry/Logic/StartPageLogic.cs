@@ -4,7 +4,10 @@ using SPS.Raspberry.Core.ServoMotor;
 using SPS.Raspberry.Core.UltrasonicSensor;
 using SPS.Raspberry.DataObject;
 using System;
+using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text;
 using System.Threading.Tasks;
+using Windows.Storage.Streams;
 using Windows.UI.Xaml.Controls;
 using Windows.Web.Http;
 
@@ -112,9 +115,25 @@ namespace SPS.Raspberry.Logic
 
                     request.TagId = tagUid.ToString();
                     RaiseNewTagEvent(tagUid);
-                    //await SendAuthRequestAsync(request);
                 }
             });
+        }
+
+        public async Task<TagUid> WaitForTag()
+        {
+            TaskCompletionSource<TagUid> _tagTask = new TaskCompletionSource<TagUid>();
+
+            TagPresent += (s, e) =>
+            {
+                _tagTask.SetResult(e.TagUid);
+            };
+
+            return await _tagTask.Task;
+        }
+
+        public async Task SendTagToServerAsync(TagUid tag)
+        {
+            await SendAuthRequestAsync(new AuthRequest() { TagId = tag.ToString(), CarPlate = "", ParkingCNPJ = "97.818.142/0001-00" });
         }
 
         /// <summary>
@@ -125,10 +144,15 @@ namespace SPS.Raspberry.Logic
         private async Task SendAuthRequestAsync(IRequest request)
         {
             var content = new HttpStringContent(request.Serialize());
-            var httpResponse = await _httpClient.PostAsync(new Uri(ServerUrl, UriKind.Absolute), content);
-            var response = new AuthResponse();
 
-            response.Deserialize(await httpResponse.Content.ReadAsStringAsync());
+            content.Headers["Content-Type"]  = "application/json";
+
+            var httpResponse = await _httpClient.PostAsync(new Uri(ServerUrl, UriKind.Absolute), content);
+            var response = new AuthResponse() { StatusCode = httpResponse.StatusCode };
+            var buffer = await httpResponse.Content.ReadAsBufferAsync();
+            var bytes = buffer.ToArray();
+
+            response.Deserialize(Encoding.UTF8.GetString(bytes, 0, bytes.Length));
             RaiseNewResponseEvent(response);
         }
 

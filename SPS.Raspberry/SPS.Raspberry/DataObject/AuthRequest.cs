@@ -6,7 +6,7 @@ namespace SPS.Raspberry.DataObject
     {
         public string TagId { get; set; }
 
-        public string ParkingId { get; set; }
+        public string ParkingCNPJ { get; set; }
 
         public string CarPlate { get; set; }
 

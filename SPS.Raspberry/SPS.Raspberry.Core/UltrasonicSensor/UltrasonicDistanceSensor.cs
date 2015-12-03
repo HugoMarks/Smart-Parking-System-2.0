@@ -28,9 +28,9 @@ namespace SPS.Raspberry.Core.UltrasonicSensor
         {
             var mre = new ManualResetEventSlim(false);
 
-            //Send a 10µs pulse to start the measurement
+            //Send a 1.5s pulse to start the measurement
             _outPin.Write(GpioPinValue.High);
-            mre.Wait(TimeSpan.FromMilliseconds(0.05));
+            mre.Wait(TimeSpan.FromSeconds(3));
             _outPin.Write(GpioPinValue.Low);
 
             var time = PulseIn();

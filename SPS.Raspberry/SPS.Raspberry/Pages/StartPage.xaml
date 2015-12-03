@@ -26,11 +26,9 @@
                 <CaptureElement x:Name="PreviewElement"/>
             </Border>
             <StackPanel Grid.Row="2" Margin="50,0,0,0">
-                <TextBlock x:Name="TagUUIDTextBlock" VerticalAlignment="Center" HorizontalAlignment="Left"
-                       Text="Esperando por uma tag..." FontSize="18"
-                           Margin="0,0,0,15"/>
-                <TextBlock x:Name="DistanceTextBlock" VerticalAlignment="Center" HorizontalAlignment="Left"
-                           FontSize="18"/>
+                <TextBlock x:Name="MessageTextBlock" VerticalAlignment="Center" HorizontalAlignment="Center"
+                           Text="Smart Parking System"
+                           FontSize="36"/>
             </StackPanel>
         </Grid>
     </Grid>

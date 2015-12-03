@@ -11,7 +11,9 @@ namespace SPS.Raspberry.DataObject
         /// <summary>
         /// Gets or sets the response HTTP code.
         /// </summary>
-        public HttpStatusCode Code { get; set; }
+        public HttpStatusCode StatusCode { get; set; }
+
+        public string UserName { get; set; }
 
         /// <summary>
         /// Gets or sets the response control byte.
@@ -39,7 +41,7 @@ namespace SPS.Raspberry.DataObject
         {
             AuthResponse response = JsonHelper.Deserialize<AuthResponse>(json);
 
-            Code = response.Code;
+            UserName = response.UserName;
             Message = response.Message;
             Control = response.Control;
         }
