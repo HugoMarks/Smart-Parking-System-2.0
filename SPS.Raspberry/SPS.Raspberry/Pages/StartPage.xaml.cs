@@ -1,6 +1,7 @@
 ﻿using SPS.Raspberry.Core.MFRC522;
 using SPS.Raspberry.Logic;
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -16,10 +17,10 @@ namespace SPS.Raspberry.Pages
     public sealed partial class StartPage : Page
     {
 
-        private const double Close = 160;
-        private const double Open = 70;
-        private bool _rotateMotor = false;
+        private const double CloseAngle = 160;
+        private const double OpenAngle = 70;
         private bool _isProcessing = false;
+        private bool _isCloseToSensor = false;
 
         public StartPageLogic Logic { get; set; }
 
@@ -43,83 +44,94 @@ namespace SPS.Raspberry.Pages
                     if (e.Reponse.Control == 1)
                     {
                         MessageTextBlock.Text = "Bem vindo, " + e.Reponse.UserName;
-                        await Logic.RotateMotor(Open);
+                        await Logic.RotateMotor(OpenAngle);
                     }
                     else
                     {
                         MessageTextBlock.Text = "Até logo, " + e.Reponse.UserName;
-                        await Logic.RotateMotor(Close);
+                        await Logic.RotateMotor(OpenAngle);
                     }
-
-                    await Task.Delay(TimeSpan.FromSeconds(5));
                 }
                 else if (status == HttpStatusCode.BadRequest)
                 {
                     MessageTextBlock.Text = "Não há mais vagas disponíveis";
-                    _rotateMotor = false;
                 }
                 else if (status == HttpStatusCode.Unauthorized)
                 {
                     MessageTextBlock.Text = "Falha na autenticação";
-                    _rotateMotor = false;
                 }
                 else
                 {
                     MessageTextBlock.Text = "Oops, um erro aconteceu";
-                    _rotateMotor = false;
                 }
+                
+                await Task.Delay(TimeSpan.FromSeconds(3));
+                MessageTextBlock.Text = "Smart Parking System";
             });
         }
 
         private async void OnDistanceChanged(object sender, DistanceChangedEventArgs e)
         {
-            if (_rotateMotor)
+            if (e.Distance < 4d || e.Distance > 13d)
             {
-                if (e.Distance < 4d || e.Distance > 13d)
+                if (_isCloseToSensor)
                 {
-                    await Logic.RotateMotor(Close);
-                    _rotateMotor = false;
-                    _isProcessing = false;
+                    await ProcessVehicleFarFromSensorAsync();
                 }
 
-                await this.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
-                {
-                    MessageTextBlock.Text = "Aguarde a leitura de sua placa...";
-                });
-
-                return;
+                _isCloseToSensor = false;
             }
-
-            if (e.Distance >= 4d && e.Distance <= 13d && !_isProcessing)
+            else
             {
-                _isProcessing = true;
-
-                await this.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () =>
+                if (_isProcessing)
                 {
-                    MessageTextBlock.Text = "Aguarde a leitura de sua placa...";
-                    //Simulates the plate reading...
-                    await Task.Delay(TimeSpan.FromSeconds(3));
-                    MessageTextBlock.Text = "Esperando por uma tag...";
+                    return;
+                }
 
-                    var tag = await Logic.WaitForTag();
+                if (!_isCloseToSensor)
+                {
+                    await ProcessVehicleNearToSensorAsync();
+                }
 
-                    _rotateMotor = true;
-                    MessageTextBlock.Text = "Consultando sua tag no sistema. Aguarde";
-                    await Logic.SendTagToServerAsync(tag);
-                });
-
-                _isProcessing = false;
+                _isCloseToSensor = true;
             }
+        }
+
+        private async Task ProcessVehicleNearToSensorAsync()
+        {
+            _isProcessing = true;
+            await SetMessageTextAsync("Verificando sua placa...");
+            await Logic.TakePhoto(string.Empty);
+            await SetMessageTextAsync("Aguardando sua tag...");
+
+            var tag = await Logic.WaitForTagAsync();
+
+            await SetMessageTextAsync("Verificando sua tag no sistema. Aguarde.");
+            await Logic.SendTagToServerAsync(tag);
+        }
+
+        private async Task ProcessVehicleFarFromSensorAsync()
+        {
+            await Logic.RotateMotor(CloseAngle);
+            await SetMessageTextAsync("Smart Parking System");
+            _isProcessing = false;
         }
 
         private async void OnLoaded(object sender, RoutedEventArgs e)
         {
-            //await Logic.StartCameraAsync(PreviewElement);
+            await Logic.StartCameraAsync(new CaptureElement());
             await Logic.StartMFRC522ComponentAsync();
             Logic.StartUltrasonicDistanceSensor();
             Logic.StartServoMotor();
-            await Logic.RotateMotor(Close);
+            await Logic.RotateMotor(CloseAngle);
         }
 
+        private async Task SetMessageTextAsync(string text)
+        {
+            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.High, () =>
+            {
+                MessageTextBlock.Text = text;
+            });
+        }
     }
 }

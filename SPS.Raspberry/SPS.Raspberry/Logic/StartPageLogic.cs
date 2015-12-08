@@ -119,13 +119,13 @@ namespace SPS.Raspberry.Logic
             });
         }
 
-        public async Task<TagUid> WaitForTag()
+        public async Task<TagUid> WaitForTagAsync()
         {
             TaskCompletionSource<TagUid> _tagTask = new TaskCompletionSource<TagUid>();
 
             TagPresent += (s, e) =>
             {
-                _tagTask.SetResult(e.TagUid);
+                _tagTask.TrySetResult(e.TagUid);
             };
 
             return await _tagTask.Task;

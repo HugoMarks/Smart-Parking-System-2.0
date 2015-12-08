@@ -10,5 +10,7 @@ namespace SPS.Web.Models
         public string TagId { get; set; }
 
         public string ParkingCNPJ { get; set; }
+
+        public string CarPlate { get; set; }
     }
 }

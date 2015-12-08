@@ -22,13 +22,13 @@
                     <Run Text="2.0"/>
                 </TextBlock>
             </Border>
-            <Border Background="White" Grid.Row="1">
+            <!--<Border Background="White" Grid.Row="1">
                 <CaptureElement x:Name="PreviewElement"/>
-            </Border>
+            </Border>-->
             <StackPanel Grid.Row="2" Margin="50,0,0,0">
                 <TextBlock x:Name="MessageTextBlock" VerticalAlignment="Center" HorizontalAlignment="Center"
                            Text="Smart Parking System"
-                           FontSize="36"/>
+                           FontSize="28"/>
             </StackPanel>
         </Grid>
     </Grid>
