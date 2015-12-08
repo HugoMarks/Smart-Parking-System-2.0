@@ -21,6 +21,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -220,7 +221,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512082149177_Inheritance.cs" />
+    <Compile Include="Migrations\201512082149177_Inheritance.Designer.cs">
+      <DependentUpon>201512082149177_Inheritance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AttachPlateViewModel.cs" />
     <Compile Include="Models\AttachTagViewModel.cs" />
     <Compile Include="Models\AuthorizationModel.cs" />
     <Compile Include="Models\BillingViewModel.cs" />
@@ -514,8 +521,8 @@
     <Content Include="Views\GlobalAdmin\_GenerateBillingPartial.cshtml" />
     <Content Include="Views\LocalAdmin\Billing.cshtml" />
     <Content Include="Views\LocalAdmin\_GenerateBillingPartial.cshtml" />
+    <Content Include="Views\Collaborator\_AttachPlatePartial.cshtml" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -548,6 +555,11 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\CorreiosService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201512082149177_Inheritance.resx">
+      <DependentUpon>201512082149177_Inheritance.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

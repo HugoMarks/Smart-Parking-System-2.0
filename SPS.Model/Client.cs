@@ -11,6 +11,8 @@ namespace SPS.Model
     {
         public virtual IList<Tag> Tags { get; set; }
 
+        public virtual IList<Plate> Plates { get; set; }
+
         public virtual IList<UsageRecord> Records { get; set; }
 
         public virtual IList<Parking> Parkings { get; set; }

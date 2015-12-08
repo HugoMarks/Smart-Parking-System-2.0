@@ -1,0 +1,20 @@
+﻿@model SPS.Web.Models.AttachPlateViewModel
+
+<form id="attachPlateForm" class="form-horizontal" role="form">
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.UserEmail, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.UserEmail, new { @class = "form-control", placeholder = "Email do cliente" })
+        @Html.ValidationMessageFor(m => m.UserEmail, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.PlateId, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.PlateId, new { @class = "form-control plate-id", placeholder = "Placa para vincular" })
+        @Html.ValidationMessageFor(m => m.PlateId, "", new { @class = "text-danger" })
+    </div>
+
+    <button id="attachPlateButton" type="button" class="btn btn-primary" style="margin-left:-1.5%">Vincular</button>
+</form>
+

@@ -30,6 +30,7 @@ namespace SPS.BO
         private PriceBO priceBO;
         private AddressBO addressBO;
         private TagBO tagBO;
+        private PlateBO plateBO;
         private UsageRecordBO usageRecordsBO;
 
         private BusinessManager()
@@ -43,6 +44,7 @@ namespace SPS.BO
             this.priceBO = new PriceBO();
             this.addressBO = new AddressBO();
             this.tagBO = new TagBO();
+            this.plateBO = new PlateBO();
             this.usageRecordsBO = new UsageRecordBO();
         }
 
@@ -120,6 +122,14 @@ namespace SPS.BO
             }
         }
 
+        public PlateBO Plates
+        {
+            get
+            {
+                return this.plateBO;
+            }
+        }
+
         public UsageRecordBO UsageRecords
         {
             get
@@ -152,6 +162,54 @@ namespace SPS.BO
                     IsDirty = true,
                     Parking = parking,
                     Tag = tag,
+                    SpaceNumber = space.Number
+                };
+
+                space.Status = ParkingSpaceState.Busy;
+                ParkingsSpaces.Update(space);
+                UsageRecords.Add(lastRecord);
+                isNew = true;
+            }
+            else
+            {
+                ParkingSpace space = parking.Spaces.FirstOrDefault(s => s.Number == lastRecord.SpaceNumber);
+
+                lastRecord.IsDirty = false;
+                lastRecord.ExitDateTime = DateTime.Now;
+                lastRecord.TotalHours = Convert.ToSingle((lastRecord.ExitDateTime - lastRecord.EnterDateTime).TotalHours);
+                lastRecord.TotalValue = CalculatePrice(parking.CNPJ, lastRecord.EnterDateTime.TimeOfDay, lastRecord.ExitDateTime.TimeOfDay);
+
+                space.Status = ParkingSpaceState.Free;
+                ParkingsSpaces.Update(space);
+                UsageRecords.Update(lastRecord);
+                isNew = false;
+            }
+        }
+
+        public void AddOrUpdateRecord(Plate plate, Parking parking, out bool isNew)
+        {
+            UsageRecord lastRecord = UsageRecords.FindAll()
+                                     .Where(r => r.EnterDateTime.Date == DateTime.Now.Date && r.Client.CPF == plate.Client.CPF && r.IsDirty)
+                                     .OrderBy(r => r.EnterDateTime)
+                                     .LastOrDefault();
+
+            if (lastRecord == null)
+            {
+                if (!parking.Spaces.Any(s => s.Status == ParkingSpaceState.Free))
+                {
+                    throw new FullParkingException("Não há mais vagas disponíves nesse estacionamento");
+                }
+
+                ParkingSpace space = parking.Spaces.FirstOrDefault(s => s.Status == ParkingSpaceState.Free);
+
+                lastRecord = new UsageRecord()
+                {
+                    Client = plate.Client,
+                    EnterDateTime = DateTime.Now,
+                    ExitDateTime = DateTime.Now,
+                    IsDirty = true,
+                    Parking = parking,
+                    Plate = plate,
                     SpaceNumber = space.Number
                 };
 

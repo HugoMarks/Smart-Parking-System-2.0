@@ -19,6 +19,11 @@ namespace SPS.BO
                     usageRecord.Tag = context.Tags.Find(usageRecord.Tag.Id);
                 }
 
+                if (usageRecord.Plate != null)
+                {
+                    usageRecord.Plate = context.Plates.Find(usageRecord.Plate.Id);
+                }
+
                 if (usageRecord.Parking != null)
                 {
                     usageRecord.Parking = context.Parkings.Find(usageRecord.Parking.CNPJ);
@@ -42,6 +47,7 @@ namespace SPS.BO
             {
                 usageRecord = context.UsageRecords
                     .Include("Tag")
+                    .Include("Plate")
                     .Include("Parking")
                     .Include("Client")
                     .SingleOrDefault(c => c.Id == id);
@@ -56,6 +62,7 @@ namespace SPS.BO
             {
                 return context.UsageRecords
                     .Include("Tag")
+                    .Include("Plate")
                     .Include("Parking")
                     .Include("Client")
                     .ToList();
@@ -85,6 +92,11 @@ namespace SPS.BO
                 if (usageRecord.Tag != null)
                 {
                     entity.Tag = context.Tags.Find(usageRecord.Tag.Id);
+                }
+
+                if (usageRecord.Plate != null)
+                {
+                    entity.Plate = context.Plates.Find(usageRecord.Plate.Id);
                 }
 
                 if (usageRecord.Parking != null)

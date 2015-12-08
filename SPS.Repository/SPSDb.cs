@@ -58,6 +58,11 @@ namespace SPS.Repository
         public DbSet<Tag> Tags { get; set; }
 
         /// <summary>
+        /// Gets the Plate table.
+        /// </summary>
+        public DbSet<Plate> Plates { get; set; }
+
+        /// <summary>
         /// Gets the Price table.
         /// </summary>
         public DbSet<Price> Prices { get; set; }

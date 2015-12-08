@@ -10,6 +10,8 @@ namespace SPS.Model
 
         public virtual Tag Tag { get; set; }
 
+        public virtual Plate Plate { get; set; }
+
         public virtual Client Client { get; set; }
 
         public virtual Parking Parking { get; set; }

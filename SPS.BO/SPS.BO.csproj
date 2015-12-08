@@ -58,6 +58,7 @@
     <Compile Include="LocalManagerBO.cs" />
     <Compile Include="ParkingBO.cs" />
     <Compile Include="ParkingSpaceBO.cs" />
+    <Compile Include="PlateBO.cs" />
     <Compile Include="PriceBO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TagBO.cs" />

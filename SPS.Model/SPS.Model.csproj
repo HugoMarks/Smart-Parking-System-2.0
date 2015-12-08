@@ -52,6 +52,7 @@
     <Compile Include="Client.cs" />
     <Compile Include="Collaborator.cs" />
     <Compile Include="PaymentStatus.cs" />
+    <Compile Include="Plate.cs" />
     <Compile Include="UsageRecord.cs" />
     <Compile Include="User.cs" />
     <Compile Include="ParkingSpaceState.cs" />

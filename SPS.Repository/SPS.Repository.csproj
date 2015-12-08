@@ -46,17 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201505260119083_Inheritance.cs" />
-    <Compile Include="Migrations\201505260119083_Inheritance.Designer.cs">
-      <DependentUpon>201505260119083_Inheritance.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505300147472_Inheritance1.cs" />
-    <Compile Include="Migrations\201505300147472_Inheritance1.Designer.cs">
-      <DependentUpon>201505300147472_Inheritance1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201506030438541_Inheritance2.cs" />
-    <Compile Include="Migrations\201506030438541_Inheritance2.Designer.cs">
-      <DependentUpon>201506030438541_Inheritance2.cs</DependentUpon>
+    <Compile Include="Migrations\201512082147556_Inheritance.cs" />
+    <Compile Include="Migrations\201512082147556_Inheritance.Designer.cs">
+      <DependentUpon>201512082147556_Inheritance.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -77,14 +69,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201505260119083_Inheritance.resx">
-      <DependentUpon>201505260119083_Inheritance.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505300147472_Inheritance1.resx">
-      <DependentUpon>201505300147472_Inheritance1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506030438541_Inheritance2.resx">
-      <DependentUpon>201506030438541_Inheritance2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201512082147556_Inheritance.resx">
+      <DependentUpon>201512082147556_Inheritance.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
