@@ -277,6 +277,31 @@ namespace SPS.Web.Controllers
 
         [HttpPost]
         [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult AttachPlate(AttachPlateViewModel model)
+        {
+            try
+            {
+                var client = BusinessManager.Instance.Clients.FindAll().SingleOrDefault(u => u.Email == model.UserEmail);
+                var user = User.Identity.GetApplicationUser();
+                var collaborator = BusinessManager.Instance.Collaborators.FindAll().SingleOrDefault(c => c.Email == user.Email);
+
+                client.Parkings.Add(collaborator.Parking);
+                BusinessManager.Instance.Plates.Add(new Plate { Id = model.PlateId.ToUpper(), Client = client });
+                BusinessManager.Instance.Clients.AttachToParking(client, collaborator.Parking.CNPJ);
+
+                return Json(new { Message = string.Format("Placa {0} vinculada com sucesso!", model.PlateId), Success = true });
+            }
+            catch (UniqueKeyViolationException)
+            {
+                return Json(new { Message = "Placa já associada à um usuário.", Success = false });
+            }
+        }
+
+
+
+        [HttpPost]
+        [AllowAnonymous]
         public async Task<ActionResult> RequestNewTag()
         {
             try

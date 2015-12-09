@@ -23,12 +23,25 @@ namespace SPS.Web.Controllers
         [HttpPost]
         public HttpResponseMessage Post([FromBody] AuthorizationModel model)
         {
+            bool controler = false; // true - usado para placa , false - usado pra tag
+
+            Plate plate = BusinessManager.Instance.Plates.Find(model.CarPlate);
+
             Tag tag = BusinessManager.Instance.Tags.Find(model.TagId);
 
-            if (tag == null)
-            {
+
+
+            if (plate == null && tag == null)
+            {         
                 return MakeResponse(UnauthorizedMessage, string.Empty, 0, HttpStatusCode.Unauthorized);
             }
+
+            if (plate != null)
+            {
+                controler = true;
+            }
+                
+
 
             Parking parking = BusinessManager.Instance.Parkings.Find(model.ParkingCNPJ);
 
@@ -37,17 +50,37 @@ namespace SPS.Web.Controllers
                 return MakeResponse(UnauthorizedMessage, string.Empty, 0, HttpStatusCode.Unauthorized);
             }
 
-            if (!tag.Client.Parkings.Any(p => p.CNPJ == model.ParkingCNPJ))
-            {
-                return MakeResponse(UnauthorizedMessage, string.Empty, 0, HttpStatusCode.Unauthorized);
+
+            if (controler)
+            { // is plate
+                if (!plate.Client.Parkings.Any(p => p.CNPJ == model.ParkingCNPJ))
+                {
+                    return MakeResponse(UnauthorizedMessage, string.Empty, 0, HttpStatusCode.Unauthorized);
+                }
             }
+            else
+            { //is tag
+                if (!tag.Client.Parkings.Any(p => p.CNPJ == model.ParkingCNPJ))
+                {
+                    return MakeResponse(UnauthorizedMessage, string.Empty, 0, HttpStatusCode.Unauthorized);
+                }
+            }
+           
 
             bool isNew;
             byte control;
 
             try
             {
-                BusinessManager.Instance.AddOrUpdateRecord(tag, parking, out isNew);
+                if (controler)
+                {
+                    BusinessManager.Instance.AddOrUpdateRecord(plate, parking, out isNew);
+                }
+                else
+                {
+                    BusinessManager.Instance.AddOrUpdateRecord(tag, parking, out isNew);
+                }
+                
             }
             catch (FullParkingException)
             {
@@ -56,14 +89,23 @@ namespace SPS.Web.Controllers
 
             control = Convert.ToByte(isNew);
 
-            return MakeResponse(SuccessMessage, tag.Client.FirstName, control, HttpStatusCode.OK);
+            if (controler)
+            {
+                return MakeResponse(SuccessMessage, plate.Client.FirstName, control, HttpStatusCode.OK);
+            }
+            else
+            {
+                return MakeResponse(SuccessMessage, tag.Client.FirstName, control, HttpStatusCode.OK);
+            }
+
+           
         }
 
         private HttpResponseMessage MakeResponse(string message, string userName, byte control, HttpStatusCode code)
         {
             return new HttpResponseMessage()
             {
-                StatusCode = HttpStatusCode.OK,
+                StatusCode = code,
                 Content = new JsonContent(new
                 {
                     Message = message,

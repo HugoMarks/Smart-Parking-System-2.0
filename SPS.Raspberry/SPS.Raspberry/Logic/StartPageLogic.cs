@@ -147,7 +147,7 @@ namespace SPS.Raspberry.Logic
 
         public async Task SendTagToServerAsync(TagUid tag)
         {
-            await SendAuthRequestAsync(new AuthRequest() { TagId = tag.ToString(), CarPlate = "", ParkingCNPJ = "97.818.142/0001-00" });
+            await SendAuthRequestAsync(new AuthRequest() { TagId = tag.ToString(), CarPlate = "", ParkingCNPJ = "69.264.191/0001-03" });
         }
 
         /// <summary>
