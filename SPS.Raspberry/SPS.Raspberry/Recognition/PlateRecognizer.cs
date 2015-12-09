@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.Foundation;
+using Windows.Storage;
 using Windows.Storage.Streams;
 using Windows.UI.Xaml.Media.Imaging;
 using AForgePoint = AForge.Point;
@@ -24,11 +25,26 @@ namespace SPS.Raspberry.Recognition
         {
             var writeableBitmap = await WriteableBitmapExtensions.FromStream(null, imageStream);
             var processedImage = GetEdgedImage(writeableBitmap.Clone());
-            
+
+            await SaveImageAsync((WriteableBitmap)processedImage);
+
             var possiblePlatePositions = await GetPlateRectanglesAsync(processedImage);
             var plate = FindPlate(possiblePlatePositions, writeableBitmap);
 
+            await SaveImageAsync(plate);
+
             return plate;
+        }
+
+        private async Task SaveImageAsync(WriteableBitmap bitmap)
+        {
+            var folder = KnownFolders.PicturesLibrary;
+            var file = await folder.CreateFileAsync("placa.jpeg", CreationCollisionOption.GenerateUniqueName);
+
+            using (var stream = await file.OpenAsync(FileAccessMode.ReadWrite))
+            {
+                await bitmap.ToStreamAsJpeg(stream);
+            }
         }
 
         private WriteableBitmap FindPlate(IEnumerable<Rect> rects, WriteableBitmap image)

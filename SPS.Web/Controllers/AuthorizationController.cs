@@ -4,6 +4,9 @@ using SPS.Model;
 using SPS.Web.Api;
 using SPS.Web.Models;
 using System;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -23,13 +26,11 @@ namespace SPS.Web.Controllers
         [HttpPost]
         public HttpResponseMessage Post([FromBody] AuthorizationModel model)
         {
+            ConvertImageFromBase64String(model.CarPlate);
+
             bool controler = false; // true - usado para placa , false - usado pra tag
-
             Plate plate = BusinessManager.Instance.Plates.Find(model.CarPlate);
-
             Tag tag = BusinessManager.Instance.Tags.Find(model.TagId);
-
-
 
             if (plate == null && tag == null)
             {         
@@ -40,8 +41,6 @@ namespace SPS.Web.Controllers
             {
                 controler = true;
             }
-                
-
 
             Parking parking = BusinessManager.Instance.Parkings.Find(model.ParkingCNPJ);
 
@@ -113,6 +112,16 @@ namespace SPS.Web.Controllers
                     UserName = userName
                 })
             };
+        }
+
+        private Image ConvertImageFromBase64String(string base64String)
+        {
+            var bytes = Convert.FromBase64String(base64String);
+
+            using (var stream = new MemoryStream(bytes))
+            {
+                return Image.FromStream(stream);
+            }
         }
     }
 }

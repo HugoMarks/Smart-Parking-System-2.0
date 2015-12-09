@@ -99,7 +99,18 @@ namespace SPS.Raspberry.Logic
 
                 var plateImage =  await plateRecognizer.RecognizePlateAsync(stream);
 
-                plateNumber = await plateImage.ToBase64StringAsync();
+                if (plateImage == null)
+                {
+                    return null;
+                }
+
+                var base64Image = await plateImage.ToBase64StringAsync();
+                var request = new AuthRequest
+                {
+                    CarPlate = base64Image
+                };
+
+                await SendAuthRequestAsync(request);
             }
 
             return plateNumber;

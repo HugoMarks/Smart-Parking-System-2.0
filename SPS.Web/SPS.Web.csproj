@@ -221,11 +221,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201512082149177_Inheritance.cs" />
-    <Compile Include="Migrations\201512082149177_Inheritance.Designer.cs">
-      <DependentUpon>201512082149177_Inheritance.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AttachPlateViewModel.cs" />
     <Compile Include="Models\AttachTagViewModel.cs" />
@@ -555,11 +550,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\CorreiosService\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201512082149177_Inheritance.resx">
-      <DependentUpon>201512082149177_Inheritance.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
