@@ -88,9 +88,8 @@ namespace SPS.Raspberry.Logic
             await _camera.InitAsync(captureElement);
         }
 
-        public async Task<string> GetPlateNumberAsync()
+        public async Task<bool> GetPlateNumberAsync()
         {
-            string plateNumber = string.Empty;
             var plateRecognizer = new PlateRecognizer();
 
             using (var stream = new InMemoryRandomAccessStream())
@@ -101,19 +100,26 @@ namespace SPS.Raspberry.Logic
 
                 if (plateImage == null)
                 {
-                    return null;
+                    return false;
                 }
 
                 var base64Image = await plateImage.ToBase64StringAsync();
+
+                if (base64Image == null)
+                {
+                    return false;
+                }
+
                 var request = new AuthRequest
                 {
-                    CarPlate = base64Image
+                    CarPlate = base64Image,
+                    ParkingCNPJ = "46.451.585/0001-67"
                 };
 
                 await SendAuthRequestAsync(request);
             }
 
-            return plateNumber;
+            return true;
         }
 
         public async Task RotateMotor(double angle)
@@ -158,7 +164,7 @@ namespace SPS.Raspberry.Logic
 
         public async Task SendTagToServerAsync(TagUid tag)
         {
-            await SendAuthRequestAsync(new AuthRequest() { TagId = tag.ToString(), CarPlate = "", ParkingCNPJ = "69.264.191/0001-03" });
+            await SendAuthRequestAsync(new AuthRequest() { TagId = tag.ToString(), CarPlate = "", ParkingCNPJ = "46.451.585/0001-67" });
         }
 
         /// <summary>

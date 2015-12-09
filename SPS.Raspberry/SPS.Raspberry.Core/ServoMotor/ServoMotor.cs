@@ -47,13 +47,8 @@ namespace SPS.Raspberry.Core.ServoMotor
             return Task.Factory.StartNew(() =>
             {
                 var value = Map(angle, 0, 180, MinPulseWidth, MaxPulseWidth);
-                var iterations = angle - DefaultInterval;
-
-                if (iterations <= 0)
-                {
-                    iterations = DefaultInterval;
-                }
-
+                var iterations = angle;
+                
                 while (iterations > 0)
                 {
                     _pin.Write(GpioPinValue.High);

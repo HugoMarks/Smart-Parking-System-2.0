@@ -10,6 +10,11 @@ namespace SPS.Raspberry.Extensions
     {
         public static async Task<string> ToBase64StringAsync(this WriteableBitmap writeableBitmap)
         {
+            if (writeableBitmap == null)
+            {
+                return null;
+            }
+
             using (var stream = new InMemoryRandomAccessStream())
             {                      
                 await writeableBitmap.ToStreamAsJpeg(stream);

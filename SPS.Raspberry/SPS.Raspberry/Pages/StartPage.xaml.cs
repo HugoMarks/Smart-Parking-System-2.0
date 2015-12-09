@@ -58,7 +58,16 @@ namespace SPS.Raspberry.Pages
                 }
                 else if (status == HttpStatusCode.Unauthorized)
                 {
-                    MessageTextBlock.Text = "Falha na autenticação";
+                    if (e.Reponse.Message.Contains("tag"))
+                    {
+                        MessageTextBlock.Text = "Tag inválida";
+                    }
+                    else
+                    {
+                        MessageTextBlock.Text = "Placa não reconhecida.";
+                        await Task.Delay(TimeSpan.FromSeconds(2));
+                        await RequestTagAsync();
+                    }
                 }
                 else
                 {
@@ -101,7 +110,26 @@ namespace SPS.Raspberry.Pages
         {
             _isProcessing = true;
             await SetMessageTextAsync("Verificando sua placa...");
-            
+
+            var tcs = new TaskCompletionSource<bool>();
+
+            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.High, async () =>
+            {
+                var result = await Logic.GetPlateNumberAsync();
+
+                tcs.SetResult(result);
+            });
+
+            var responseResult = await tcs.Task;
+
+            if (!responseResult)
+            {
+                await RequestTagAsync();
+            }
+        }
+
+        private async Task RequestTagAsync()
+        {
             await SetMessageTextAsync("Aguardando sua tag...");
 
             var tag = await Logic.WaitForTagAsync();
@@ -119,18 +147,11 @@ namespace SPS.Raspberry.Pages
 
         private async void OnLoaded(object sender, RoutedEventArgs e)
         {
-            await Logic.StartCameraAsync(PreviewElement);//(new CaptureElement());
-            //await Logic.StartMFRC522ComponentAsync();
-            //Logic.StartUltrasonicDistanceSensor();
-            //Logic.StartServoMotor();
-            //await Logic.RotateMotor(CloseAngle);
-
-            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.High, async () =>
-            {
-                var plateNumber = await Logic.GetPlateNumberAsync();
-
-                MessageTextBlock.Text = plateNumber ?? "Não foi possível reconhecer a placa";
-            });
+            await Logic.StartCameraAsync(new CaptureElement());
+            await Logic.StartMFRC522ComponentAsync();
+            Logic.StartUltrasonicDistanceSensor();
+            Logic.StartServoMotor();
+            await Logic.RotateMotor(CloseAngle);
         }
 
         private async Task SetMessageTextAsync(string text)

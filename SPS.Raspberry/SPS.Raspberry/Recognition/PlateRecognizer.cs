@@ -24,12 +24,14 @@ namespace SPS.Raspberry.Recognition
         public async Task<WriteableBitmap> RecognizePlateAsync(IRandomAccessStream imageStream)
         {
             var writeableBitmap = await WriteableBitmapExtensions.FromStream(null, imageStream);
-            var processedImage = GetEdgedImage(writeableBitmap.Clone());
-
-            await SaveImageAsync((WriteableBitmap)processedImage);
-
+            var processedImage = GetEdgedImage(writeableBitmap.Clone());            
             var possiblePlatePositions = await GetPlateRectanglesAsync(processedImage);
             var plate = FindPlate(possiblePlatePositions, writeableBitmap);
+
+            if (plate == null)
+            {
+                return null;
+            }
 
             await SaveImageAsync(plate);
 

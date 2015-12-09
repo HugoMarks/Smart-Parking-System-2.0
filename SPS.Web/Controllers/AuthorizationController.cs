@@ -3,6 +3,7 @@ using SPS.BO.Exceptions;
 using SPS.Model;
 using SPS.Web.Api;
 using SPS.Web.Models;
+using SPS.Web.Ocr;
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -10,6 +11,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 
 namespace SPS.Web.Controllers
@@ -19,22 +21,40 @@ namespace SPS.Web.Controllers
     {
         private const string SuccessMessage = "Ok";
 
-        private const string UnauthorizedMessage = "Unauthorized";
+        private const string UnauthorizedParkingMessage = "Unauthorized parking";
+
+        private const string UnauthorizedTagMessage = "Unauthorized tag";
+
+        private const string UnauthorizedPlateMessage = "Unauthorized plate";
 
         private const string FullParkingMessage = "Full";
 
         [HttpPost]
         public HttpResponseMessage Post([FromBody] AuthorizationModel model)
         {
-            ConvertImageFromBase64String(model.CarPlate);
+            var plateText = string.Empty;
+
+            if (!string.IsNullOrEmpty(model.CarPlate))
+            {
+                var dataPath = HttpContext.Current.Server.MapPath(@"~/tessdata");
+                var image = ConvertImageFromBase64String(model.CarPlate);
+                var ocrEngine = new OcrEngine(dataPath);
+
+                plateText = ocrEngine.GetText(new Bitmap(image));
+
+                if (plateText == null)
+                {
+                    return MakeResponse(UnauthorizedPlateMessage, string.Empty, 0, HttpStatusCode.Unauthorized);
+                }
+            }
 
             bool controler = false; // true - usado para placa , false - usado pra tag
-            Plate plate = BusinessManager.Instance.Plates.Find(model.CarPlate);
+            Plate plate = BusinessManager.Instance.Plates.Find(plateText);
             Tag tag = BusinessManager.Instance.Tags.Find(model.TagId);
 
-            if (plate == null && tag == null)
-            {         
-                return MakeResponse(UnauthorizedMessage, string.Empty, 0, HttpStatusCode.Unauthorized);
+            if (tag == null && plate == null)
+            {
+                return MakeResponse(UnauthorizedPlateMessage, string.Empty, 0, HttpStatusCode.Unauthorized);
             }
 
             if (plate != null)
@@ -46,7 +66,7 @@ namespace SPS.Web.Controllers
 
             if (parking == null)
             {
-                return MakeResponse(UnauthorizedMessage, string.Empty, 0, HttpStatusCode.Unauthorized);
+                return MakeResponse(UnauthorizedParkingMessage, string.Empty, 0, HttpStatusCode.Unauthorized);
             }
 
 
@@ -54,14 +74,14 @@ namespace SPS.Web.Controllers
             { // is plate
                 if (!plate.Client.Parkings.Any(p => p.CNPJ == model.ParkingCNPJ))
                 {
-                    return MakeResponse(UnauthorizedMessage, string.Empty, 0, HttpStatusCode.Unauthorized);
+                    return MakeResponse(UnauthorizedPlateMessage, string.Empty, 0, HttpStatusCode.Unauthorized);
                 }
             }
             else
             { //is tag
                 if (!tag.Client.Parkings.Any(p => p.CNPJ == model.ParkingCNPJ))
                 {
-                    return MakeResponse(UnauthorizedMessage, string.Empty, 0, HttpStatusCode.Unauthorized);
+                    return MakeResponse(UnauthorizedTagMessage, string.Empty, 0, HttpStatusCode.Unauthorized);
                 }
             }
            
@@ -120,7 +140,10 @@ namespace SPS.Web.Controllers
 
             using (var stream = new MemoryStream(bytes))
             {
-                return Image.FromStream(stream);
+                var img = Image.FromStream(stream);
+
+                img.Save(@"C:\Temp\imagem.jpeg", ImageFormat.Jpeg);
+                return img;
             }
         }
     }
