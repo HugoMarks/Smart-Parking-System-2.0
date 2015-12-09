@@ -3,6 +3,7 @@ using SPS.Model;
 using SPS.Web.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 
@@ -25,6 +26,8 @@ namespace SPS.Web.Extensions
 
         public static Collaborator ToCollaborator(this RegisterCollaboratorViewModel model, string passwordHash)
         {
+            var salary = decimal.Parse(model.Salary, NumberStyles.Currency, new CultureInfo("pt-br"));
+
             return new Collaborator
             {
                 Address = GetAddress(model),
@@ -35,7 +38,7 @@ namespace SPS.Web.Extensions
                 LastName = model.LastName,
                 Password = passwordHash,
                 RG = model.RG,
-                Salary = decimal.Parse(model.Salary),
+                Salary = salary,
                 Telephone = model.PhoneNumber,
                 Complement = model.Complement
             };
