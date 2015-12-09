@@ -7,6 +7,7 @@ using Windows.Devices.Enumeration;
 using Windows.Media.Capture;
 using Windows.Media.MediaProperties;
 using Windows.Storage;
+using Windows.Storage.Streams;
 using Windows.UI.Xaml.Controls;
 
 namespace SPS.Raspberry.Core.Camera
@@ -27,17 +28,9 @@ namespace SPS.Raspberry.Core.Camera
             await _mediaCapture.StartPreviewAsync();
         }
 
-        public async Task TakePhoto()
+        public async Task TakePhotoToStreamAsync(IRandomAccessStream srcStream)
         {
-            var file = await KnownFolders.PicturesLibrary.CreateFileAsync("my_photo.jpeg", CreationCollisionOption.GenerateUniqueName);
-            var imageProperties = ImageEncodingProperties.CreateJpeg();
-
-            await _mediaCapture.CapturePhotoToStorageFileAsync(imageProperties, file);
-
-            if (file.Path != null)
-            {
-
-            }
+            await _mediaCapture.CapturePhotoToStreamAsync(ImageEncodingProperties.CreateJpeg(), srcStream);
         }
         private static async Task<DeviceInformation> GetCameraID(Windows.Devices.Enumeration.Panel desired)
         {

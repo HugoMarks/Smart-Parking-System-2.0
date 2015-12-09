@@ -260,6 +260,59 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
+      "portable.aforge.core/2.2.5.50513": {
+        "dependencies": {
+          "shim": "[1.0.1.50427, )"
+        },
+        "compile": {
+          "lib/netcore451/AForge.dll": {}
+        },
+        "runtime": {
+          "lib/netcore451/AForge.dll": {}
+        }
+      },
+      "portable.aforge.imaging/2.2.5.50513": {
+        "dependencies": {
+          "portable.aforge.math": "[2.2.5.50513, )",
+          "shim.drawing": "[2.2.5.50504, )"
+        },
+        "compile": {
+          "lib/portable-net45+netcore45+wpa81/AForge.Imaging.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wpa81/AForge.Imaging.dll": {}
+        }
+      },
+      "portable.aforge.math/2.2.5.50513": {
+        "dependencies": {
+          "portable.aforge.core": "[2.2.5.50513, )"
+        },
+        "compile": {
+          "lib/portable-net45+netcore45+wpa81/AForge.Math.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wpa81/AForge.Math.dll": {}
+        }
+      },
+      "shim/1.0.1.50427": {
+        "compile": {
+          "lib/netcore451/Shim.dll": {}
+        },
+        "runtime": {
+          "lib/netcore451/Shim.dll": {}
+        }
+      },
+      "shim.drawing/2.2.5.50504": {
+        "dependencies": {
+          "shim": "[1.0.1.50427, )"
+        },
+        "compile": {
+          "lib/portable-win81+wpa81/Shim.Drawing.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win81+wpa81/Shim.Drawing.dll": {}
+        }
+      },
       "System.AppContext/4.0.0": {
         "dependencies": {
           "System.Collections": "[4.0.0, )",
@@ -1594,6 +1647,14 @@
         "runtime": {
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "WriteableBitmapEx/1.5.0": {
+        "compile": {
+          "lib/NetCore45/WriteableBitmapEx.WinRT.dll": {}
+        },
+        "runtime": {
+          "lib/NetCore45/WriteableBitmapEx.WinRT.dll": {}
+        }
       }
     },
     "UAP,Version=v10.0/win10-arm": {
@@ -1895,6 +1956,59 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "portable.aforge.core/2.2.5.50513": {
+        "dependencies": {
+          "shim": "[1.0.1.50427, )"
+        },
+        "compile": {
+          "lib/netcore451/AForge.dll": {}
+        },
+        "runtime": {
+          "lib/netcore451/AForge.dll": {}
+        }
+      },
+      "portable.aforge.imaging/2.2.5.50513": {
+        "dependencies": {
+          "portable.aforge.math": "[2.2.5.50513, )",
+          "shim.drawing": "[2.2.5.50504, )"
+        },
+        "compile": {
+          "lib/portable-net45+netcore45+wpa81/AForge.Imaging.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wpa81/AForge.Imaging.dll": {}
+        }
+      },
+      "portable.aforge.math/2.2.5.50513": {
+        "dependencies": {
+          "portable.aforge.core": "[2.2.5.50513, )"
+        },
+        "compile": {
+          "lib/portable-net45+netcore45+wpa81/AForge.Math.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wpa81/AForge.Math.dll": {}
+        }
+      },
+      "shim/1.0.1.50427": {
+        "compile": {
+          "lib/netcore451/Shim.dll": {}
+        },
+        "runtime": {
+          "lib/netcore451/Shim.dll": {}
+        }
+      },
+      "shim.drawing/2.2.5.50504": {
+        "dependencies": {
+          "shim": "[1.0.1.50427, )"
+        },
+        "compile": {
+          "lib/portable-win81+wpa81/Shim.Drawing.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win81+wpa81/Shim.Drawing.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -3278,6 +3392,14 @@
         "runtime": {
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "WriteableBitmapEx/1.5.0": {
+        "compile": {
+          "lib/NetCore45/WriteableBitmapEx.WinRT.dll": {}
+        },
+        "runtime": {
+          "lib/NetCore45/WriteableBitmapEx.WinRT.dll": {}
+        }
       }
     },
     "UAP,Version=v10.0/win10-arm-aot": {
@@ -3565,6 +3687,59 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "portable.aforge.core/2.2.5.50513": {
+        "dependencies": {
+          "shim": "[1.0.1.50427, )"
+        },
+        "compile": {
+          "lib/netcore451/AForge.dll": {}
+        },
+        "runtime": {
+          "lib/netcore451/AForge.dll": {}
+        }
+      },
+      "portable.aforge.imaging/2.2.5.50513": {
+        "dependencies": {
+          "portable.aforge.math": "[2.2.5.50513, )",
+          "shim.drawing": "[2.2.5.50504, )"
+        },
+        "compile": {
+          "lib/portable-net45+netcore45+wpa81/AForge.Imaging.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wpa81/AForge.Imaging.dll": {}
+        }
+      },
+      "portable.aforge.math/2.2.5.50513": {
+        "dependencies": {
+          "portable.aforge.core": "[2.2.5.50513, )"
+        },
+        "compile": {
+          "lib/portable-net45+netcore45+wpa81/AForge.Math.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wpa81/AForge.Math.dll": {}
+        }
+      },
+      "shim/1.0.1.50427": {
+        "compile": {
+          "lib/netcore451/Shim.dll": {}
+        },
+        "runtime": {
+          "lib/netcore451/Shim.dll": {}
+        }
+      },
+      "shim.drawing/2.2.5.50504": {
+        "dependencies": {
+          "shim": "[1.0.1.50427, )"
+        },
+        "compile": {
+          "lib/portable-win81+wpa81/Shim.Drawing.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win81+wpa81/Shim.Drawing.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -4933,6 +5108,14 @@
         },
         "runtime": {
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
+        }
+      },
+      "WriteableBitmapEx/1.5.0": {
+        "compile": {
+          "lib/NetCore45/WriteableBitmapEx.WinRT.dll": {}
+        },
+        "runtime": {
+          "lib/NetCore45/WriteableBitmapEx.WinRT.dll": {}
         }
       }
     },
@@ -5242,6 +5425,59 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
+      "portable.aforge.core/2.2.5.50513": {
+        "dependencies": {
+          "shim": "[1.0.1.50427, )"
+        },
+        "compile": {
+          "lib/netcore451/AForge.dll": {}
+        },
+        "runtime": {
+          "lib/netcore451/AForge.dll": {}
+        }
+      },
+      "portable.aforge.imaging/2.2.5.50513": {
+        "dependencies": {
+          "portable.aforge.math": "[2.2.5.50513, )",
+          "shim.drawing": "[2.2.5.50504, )"
+        },
+        "compile": {
+          "lib/portable-net45+netcore45+wpa81/AForge.Imaging.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wpa81/AForge.Imaging.dll": {}
+        }
+      },
+      "portable.aforge.math/2.2.5.50513": {
+        "dependencies": {
+          "portable.aforge.core": "[2.2.5.50513, )"
+        },
+        "compile": {
+          "lib/portable-net45+netcore45+wpa81/AForge.Math.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wpa81/AForge.Math.dll": {}
+        }
+      },
+      "shim/1.0.1.50427": {
+        "compile": {
+          "lib/netcore451/Shim.dll": {}
+        },
+        "runtime": {
+          "lib/netcore451/Shim.dll": {}
+        }
+      },
+      "shim.drawing/2.2.5.50504": {
+        "dependencies": {
+          "shim": "[1.0.1.50427, )"
+        },
+        "compile": {
+          "lib/portable-win81+wpa81/Shim.Drawing.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win81+wpa81/Shim.Drawing.dll": {}
+        }
+      },
       "System.AppContext/4.0.0": {
         "dependencies": {
           "System.Collections": "[4.0.0, )",
@@ -6623,6 +6859,14 @@
         "runtime": {
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "WriteableBitmapEx/1.5.0": {
+        "compile": {
+          "lib/NetCore45/WriteableBitmapEx.WinRT.dll": {}
+        },
+        "runtime": {
+          "lib/NetCore45/WriteableBitmapEx.WinRT.dll": {}
+        }
       }
     },
     "UAP,Version=v10.0/win10-x64-aot": {
@@ -6910,6 +7154,59 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "portable.aforge.core/2.2.5.50513": {
+        "dependencies": {
+          "shim": "[1.0.1.50427, )"
+        },
+        "compile": {
+          "lib/netcore451/AForge.dll": {}
+        },
+        "runtime": {
+          "lib/netcore451/AForge.dll": {}
+        }
+      },
+      "portable.aforge.imaging/2.2.5.50513": {
+        "dependencies": {
+          "portable.aforge.math": "[2.2.5.50513, )",
+          "shim.drawing": "[2.2.5.50504, )"
+        },
+        "compile": {
+          "lib/portable-net45+netcore45+wpa81/AForge.Imaging.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wpa81/AForge.Imaging.dll": {}
+        }
+      },
+      "portable.aforge.math/2.2.5.50513": {
+        "dependencies": {
+          "portable.aforge.core": "[2.2.5.50513, )"
+        },
+        "compile": {
+          "lib/portable-net45+netcore45+wpa81/AForge.Math.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wpa81/AForge.Math.dll": {}
+        }
+      },
+      "shim/1.0.1.50427": {
+        "compile": {
+          "lib/netcore451/Shim.dll": {}
+        },
+        "runtime": {
+          "lib/netcore451/Shim.dll": {}
+        }
+      },
+      "shim.drawing/2.2.5.50504": {
+        "dependencies": {
+          "shim": "[1.0.1.50427, )"
+        },
+        "compile": {
+          "lib/portable-win81+wpa81/Shim.Drawing.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win81+wpa81/Shim.Drawing.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -8278,6 +8575,14 @@
         },
         "runtime": {
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
+        }
+      },
+      "WriteableBitmapEx/1.5.0": {
+        "compile": {
+          "lib/NetCore45/WriteableBitmapEx.WinRT.dll": {}
+        },
+        "runtime": {
+          "lib/NetCore45/WriteableBitmapEx.WinRT.dll": {}
         }
       }
     },
@@ -8587,6 +8892,59 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
+      "portable.aforge.core/2.2.5.50513": {
+        "dependencies": {
+          "shim": "[1.0.1.50427, )"
+        },
+        "compile": {
+          "lib/netcore451/AForge.dll": {}
+        },
+        "runtime": {
+          "lib/netcore451/AForge.dll": {}
+        }
+      },
+      "portable.aforge.imaging/2.2.5.50513": {
+        "dependencies": {
+          "portable.aforge.math": "[2.2.5.50513, )",
+          "shim.drawing": "[2.2.5.50504, )"
+        },
+        "compile": {
+          "lib/portable-net45+netcore45+wpa81/AForge.Imaging.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wpa81/AForge.Imaging.dll": {}
+        }
+      },
+      "portable.aforge.math/2.2.5.50513": {
+        "dependencies": {
+          "portable.aforge.core": "[2.2.5.50513, )"
+        },
+        "compile": {
+          "lib/portable-net45+netcore45+wpa81/AForge.Math.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wpa81/AForge.Math.dll": {}
+        }
+      },
+      "shim/1.0.1.50427": {
+        "compile": {
+          "lib/netcore451/Shim.dll": {}
+        },
+        "runtime": {
+          "lib/netcore451/Shim.dll": {}
+        }
+      },
+      "shim.drawing/2.2.5.50504": {
+        "dependencies": {
+          "shim": "[1.0.1.50427, )"
+        },
+        "compile": {
+          "lib/portable-win81+wpa81/Shim.Drawing.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win81+wpa81/Shim.Drawing.dll": {}
+        }
+      },
       "System.AppContext/4.0.0": {
         "dependencies": {
           "System.Collections": "[4.0.0, )",
@@ -9968,6 +10326,14 @@
         "runtime": {
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "WriteableBitmapEx/1.5.0": {
+        "compile": {
+          "lib/NetCore45/WriteableBitmapEx.WinRT.dll": {}
+        },
+        "runtime": {
+          "lib/NetCore45/WriteableBitmapEx.WinRT.dll": {}
+        }
       }
     },
     "UAP,Version=v10.0/win10-x86-aot": {
@@ -10255,6 +10621,59 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "portable.aforge.core/2.2.5.50513": {
+        "dependencies": {
+          "shim": "[1.0.1.50427, )"
+        },
+        "compile": {
+          "lib/netcore451/AForge.dll": {}
+        },
+        "runtime": {
+          "lib/netcore451/AForge.dll": {}
+        }
+      },
+      "portable.aforge.imaging/2.2.5.50513": {
+        "dependencies": {
+          "portable.aforge.math": "[2.2.5.50513, )",
+          "shim.drawing": "[2.2.5.50504, )"
+        },
+        "compile": {
+          "lib/portable-net45+netcore45+wpa81/AForge.Imaging.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wpa81/AForge.Imaging.dll": {}
+        }
+      },
+      "portable.aforge.math/2.2.5.50513": {
+        "dependencies": {
+          "portable.aforge.core": "[2.2.5.50513, )"
+        },
+        "compile": {
+          "lib/portable-net45+netcore45+wpa81/AForge.Math.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wpa81/AForge.Math.dll": {}
+        }
+      },
+      "shim/1.0.1.50427": {
+        "compile": {
+          "lib/netcore451/Shim.dll": {}
+        },
+        "runtime": {
+          "lib/netcore451/Shim.dll": {}
+        }
+      },
+      "shim.drawing/2.2.5.50504": {
+        "dependencies": {
+          "shim": "[1.0.1.50427, )"
+        },
+        "compile": {
+          "lib/portable-win81+wpa81/Shim.Drawing.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win81+wpa81/Shim.Drawing.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -11623,6 +12042,14 @@
         },
         "runtime": {
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
+        }
+      },
+      "WriteableBitmapEx/1.5.0": {
+        "compile": {
+          "lib/NetCore45/WriteableBitmapEx.WinRT.dll": {}
+        },
+        "runtime": {
+          "lib/NetCore45/WriteableBitmapEx.WinRT.dll": {}
         }
       }
     }
@@ -12372,6 +12799,118 @@
         "ref/net46/Microsoft.Win32.Primitives.dll",
         "ref/xamarinios10/_._",
         "ref/xamarinmac20/_._"
+      ]
+    },
+    "portable.aforge.core/2.2.5.50513": {
+      "sha512": "do7aPus+9zr8thTH7W7b00Qtb8Ooxa/+FwEHn9f36vd545Illo+9CnAAao0KP1yCaNW2NFZo4XkgVdl0iKH63Q==",
+      "type": "Package",
+      "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
+        "lib/net45/AForge.dll",
+        "lib/net45/AForge.pdb",
+        "lib/net45/AForge.XML",
+        "lib/netcore451/AForge.dll",
+        "lib/netcore451/AForge.pdb",
+        "lib/netcore451/AForge.pri",
+        "lib/netcore451/AForge.XML",
+        "lib/portable-net45+netcore45+wpa81/AForge.dll",
+        "lib/portable-net45+netcore45+wpa81/AForge.pdb",
+        "lib/portable-net45+netcore45+wpa81/AForge.XML",
+        "package/services/metadata/core-properties/c9d9dc529dab420594c1ea8f3ae1cdeb.psmdcp",
+        "portable.aforge.core.nuspec"
+      ]
+    },
+    "portable.aforge.imaging/2.2.5.50513": {
+      "sha512": "h0XiyR8oZQXfQ1GDiHuTD8B+JVNwZ/iYOBjwdVf6q1WU+p6T67hCkBsk1SPz1GgO/Ycx7UqPFHYxnKEAE2b2UQ==",
+      "type": "Package",
+      "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
+        "lib/portable-net45+netcore45+wpa81/AForge.Imaging.dll",
+        "lib/portable-net45+netcore45+wpa81/AForge.Imaging.pdb",
+        "lib/portable-net45+netcore45+wpa81/AForge.Imaging.XML",
+        "package/services/metadata/core-properties/d8b114f553df4c1db5e8edd7e5680731.psmdcp",
+        "portable.aforge.imaging.nuspec"
+      ]
+    },
+    "portable.aforge.math/2.2.5.50513": {
+      "sha512": "yMohHqpqZxp3M3zPGQiJT0XtzDWf0wa0E7ULjkttRyR/AKi8RaL/fT5TyxJgSZCwIj61GKVeAen7OJVsiunGSQ==",
+      "type": "Package",
+      "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
+        "lib/portable-net45+netcore45+wpa81/AForge.Math.dll",
+        "lib/portable-net45+netcore45+wpa81/AForge.Math.pdb",
+        "lib/portable-net45+netcore45+wpa81/AForge.Math.XML",
+        "package/services/metadata/core-properties/c9a0e2d879ca4431891e84f2065b59d2.psmdcp",
+        "portable.aforge.math.nuspec"
+      ]
+    },
+    "shim/1.0.1.50427": {
+      "sha512": "7ckTk7oBmTfAfIHx4FO0hLjngEv9euTdyLZ1v6JpPJiWy7o1TZHfeFc5qaAGS/AGYTl/VLbupheH0f9WXkATIA==",
+      "type": "Package",
+      "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
+        "lib/MonoAndroid1/Shim.dll",
+        "lib/MonoAndroid1/Shim.pdb",
+        "lib/MonoAndroid1/Shim.XML",
+        "lib/MonoTouch1/Shim.dll",
+        "lib/MonoTouch1/Shim.pdb",
+        "lib/MonoTouch1/Shim.XML",
+        "lib/net45/Shim.dll",
+        "lib/net45/Shim.pdb",
+        "lib/net45/Shim.XML",
+        "lib/netcore45/Shim.dll",
+        "lib/netcore45/Shim.pdb",
+        "lib/netcore45/Shim.pri",
+        "lib/netcore45/Shim.XML",
+        "lib/netcore451/Shim.dll",
+        "lib/netcore451/Shim.pdb",
+        "lib/netcore451/Shim.pri",
+        "lib/netcore451/Shim.XML",
+        "lib/portable-net45+netcore45+wpa81/Shim.dll",
+        "lib/portable-net45+netcore45+wpa81/Shim.pdb",
+        "lib/portable-net45+netcore45+wpa81/Shim.XML",
+        "lib/portable-net45+netcore45+wpa81+wp8/Shim.dll",
+        "lib/portable-net45+netcore45+wpa81+wp8/Shim.pdb",
+        "lib/portable-net45+netcore45+wpa81+wp8/Shim.XML",
+        "lib/portable-win81+wpa81/Shim.dll",
+        "lib/portable-win81+wpa81/Shim.pdb",
+        "lib/portable-win81+wpa81/Shim.pri",
+        "lib/portable-win81+wpa81/Shim.XML",
+        "lib/wp8/Shim.dll",
+        "lib/wp8/Shim.pdb",
+        "lib/wp8/Shim.XML",
+        "lib/Xamarin.iOS10/Shim.dll",
+        "lib/Xamarin.iOS10/Shim.pdb",
+        "lib/Xamarin.iOS10/Shim.XML",
+        "package/services/metadata/core-properties/7420253e042d4e69bd245a28fed4b3b7.psmdcp",
+        "shim.nuspec"
+      ]
+    },
+    "shim.drawing/2.2.5.50504": {
+      "sha512": "VxONMk/b/7xtiqqfrzhi/+ynUYeBxZzbo5ydmBmji3Qv/aWa02pBGYACzsPiYNpVAiORL3h/I6zrJkd6fnvXCA==",
+      "type": "Package",
+      "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
+        "lib/MonoAndroid1/Shim.Drawing.dll",
+        "lib/MonoAndroid1/Shim.Drawing.pdb",
+        "lib/MonoTouch1/Shim.Drawing.dll",
+        "lib/MonoTouch1/Shim.Drawing.pdb",
+        "lib/net45/Shim.Drawing.dll",
+        "lib/net45/Shim.Drawing.pdb",
+        "lib/portable-net45+netcore45+wpa81/Shim.Drawing.dll",
+        "lib/portable-net45+netcore45+wpa81/Shim.Drawing.pdb",
+        "lib/portable-win81+wpa81/Shim.Drawing.dll",
+        "lib/portable-win81+wpa81/Shim.Drawing.pdb",
+        "lib/portable-win81+wpa81/Shim.Drawing.pri",
+        "lib/Xamarin.iOS10/Shim.Drawing.dll",
+        "lib/Xamarin.iOS10/Shim.Drawing.pdb",
+        "package/services/metadata/core-properties/d84981be53c44eedbcbd53671bc499fa.psmdcp",
+        "shim.drawing.nuspec"
       ]
     },
     "System.AppContext/4.0.0": {
@@ -15068,6 +15607,40 @@
         "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll",
         "System.Xml.XmlSerializer.nuspec"
       ]
+    },
+    "WriteableBitmapEx/1.5.0": {
+      "sha512": "K4g5wN6y4RhDUcfLdOoNZrQQBdv6dbXycaOoeBcS3qrXMhXssECb4K/3cPXehi+hDSwNx5dYLhRilk49DXiFZQ==",
+      "type": "Package",
+      "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
+        "lib/net40/WriteableBitmapEx.Wpf.dll",
+        "lib/net40/WriteableBitmapEx.Wpf.pdb",
+        "lib/net40/WriteableBitmapEx.Wpf.XML",
+        "lib/NetCore45/WriteableBitmapEx.WinRT.dll",
+        "lib/NetCore45/WriteableBitmapEx.WinRT.pdb",
+        "lib/NetCore45/WriteableBitmapEx.WinRT.xml",
+        "lib/sl4/WriteableBitmapEx.dll",
+        "lib/sl4/WriteableBitmapEx.pdb",
+        "lib/sl4/WriteableBitmapEx.XML",
+        "lib/sl4-wp71/WriteableBitmapExWinPhone.dll",
+        "lib/sl4-wp71/WriteableBitmapExWinPhone.pdb",
+        "lib/sl4-wp71/WriteableBitmapExWinPhone.XML",
+        "lib/sl4-wp71/WriteableBitmapExWinPhoneXnaDependant.dll",
+        "lib/sl4-wp71/WriteableBitmapExWinPhoneXnaDependant.pdb",
+        "lib/sl4-wp71/WriteableBitmapExWinPhoneXnaDependant.XML",
+        "lib/WindowsPhone8/WriteableBitmapExWinPhone.dll",
+        "lib/WindowsPhone8/WriteableBitmapExWinPhone.pdb",
+        "lib/WindowsPhone8/WriteableBitmapExWinPhone.XML",
+        "lib/WindowsPhone8/WriteableBitmapExWinPhoneXnaDependant.dll",
+        "lib/WindowsPhone8/WriteableBitmapExWinPhoneXnaDependant.pdb",
+        "lib/WindowsPhone8/WriteableBitmapExWinPhoneXnaDependant.XML",
+        "lib/wpa81/WriteableBitmapEx.WinRT.dll",
+        "lib/wpa81/WriteableBitmapEx.WinRT.pdb",
+        "lib/wpa81/WriteableBitmapEx.WinRT.xml",
+        "package/services/metadata/core-properties/23a5426dfec74835823a81716acfa9bb.psmdcp",
+        "WriteableBitmapEx.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
@@ -15076,7 +15649,9 @@
       "Microsoft.ApplicationInsights.PersistenceChannel >= 1.0.0",
       "Microsoft.ApplicationInsights.WindowsApps >= 1.0.0",
       "Microsoft.IoT.Devices >= 1.0.4",
-      "Microsoft.NETCore.UniversalWindowsPlatform >= 5.0.0"
+      "Microsoft.NETCore.UniversalWindowsPlatform >= 5.0.0",
+      "portable.aforge.imaging >= 2.2.5.50513",
+      "WriteableBitmapEx >= 1.5.0"
     ],
     "UAP,Version=v10.0": []
   }

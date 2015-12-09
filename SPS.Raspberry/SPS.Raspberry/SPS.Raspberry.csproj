@@ -105,6 +105,7 @@
     <Compile Include="DataObject\AuthResponse.cs" />
     <Compile Include="DataObject\IRequest.cs" />
     <Compile Include="DataObject\IResponse.cs" />
+    <Compile Include="Extensions\ImageExtensions.cs" />
     <Compile Include="Helpers\JsonHelper.cs" />
     <Compile Include="Logic\AuthResponseEventArgs.cs" />
     <Compile Include="Logic\DistanceChangedEventArgs.cs" />
@@ -114,6 +115,7 @@
       <DependentUpon>StartPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Recognition\PlateRecognizer.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -152,6 +154,7 @@
       <Name>SPS.Raspberry.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

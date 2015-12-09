@@ -3,6 +3,8 @@ using SPS.Raspberry.Core.MFRC522;
 using SPS.Raspberry.Core.ServoMotor;
 using SPS.Raspberry.Core.UltrasonicSensor;
 using SPS.Raspberry.DataObject;
+using SPS.Raspberry.Extensions;
+using SPS.Raspberry.Recognition;
 using System;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
@@ -86,9 +88,21 @@ namespace SPS.Raspberry.Logic
             await _camera.InitAsync(captureElement);
         }
 
-        public async Task TakePhoto(string fileName)
+        public async Task<string> GetPlateNumberAsync()
         {
-            await _camera.TakePhoto();
+            string plateNumber = string.Empty;
+            var plateRecognizer = new PlateRecognizer();
+
+            using (var stream = new InMemoryRandomAccessStream())
+            {
+                await _camera.TakePhotoToStreamAsync(stream);
+
+                var plateImage =  await plateRecognizer.RecognizePlateAsync(stream);
+
+                plateNumber = await plateImage.ToBase64StringAsync();
+            }
+
+            return plateNumber;
         }
 
         public async Task RotateMotor(double angle)

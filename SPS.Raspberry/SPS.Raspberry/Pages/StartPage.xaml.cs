@@ -101,7 +101,7 @@ namespace SPS.Raspberry.Pages
         {
             _isProcessing = true;
             await SetMessageTextAsync("Verificando sua placa...");
-            await Logic.TakePhoto(string.Empty);
+            
             await SetMessageTextAsync("Aguardando sua tag...");
 
             var tag = await Logic.WaitForTagAsync();
@@ -120,10 +120,17 @@ namespace SPS.Raspberry.Pages
         private async void OnLoaded(object sender, RoutedEventArgs e)
         {
             await Logic.StartCameraAsync(new CaptureElement());
-            await Logic.StartMFRC522ComponentAsync();
-            Logic.StartUltrasonicDistanceSensor();
-            Logic.StartServoMotor();
-            await Logic.RotateMotor(CloseAngle);
+            //await Logic.StartMFRC522ComponentAsync();
+            //Logic.StartUltrasonicDistanceSensor();
+            //Logic.StartServoMotor();
+            //await Logic.RotateMotor(CloseAngle);
+
+            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.High, async () =>
+            {
+                var plateNumber = await Logic.GetPlateNumberAsync();
+
+                MessageTextBlock.Text = plateNumber ?? "Não foi possível reconhecer a placa";
+            });
         }
 
         private async Task SetMessageTextAsync(string text)
