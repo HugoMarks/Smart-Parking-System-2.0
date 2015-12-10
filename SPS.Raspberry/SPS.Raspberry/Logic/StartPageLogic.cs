@@ -174,17 +174,26 @@ namespace SPS.Raspberry.Logic
         /// <returns><see cref="Task"/></returns>
         private async Task SendAuthRequestAsync(IRequest request)
         {
-            var content = new HttpStringContent(request.Serialize());
+            try
+            {
+                var content = new HttpStringContent(request.Serialize());
 
-            content.Headers["Content-Type"]  = "application/json";
+                content.Headers["Content-Type"] = "application/json";
 
-            var httpResponse = await _httpClient.PostAsync(new Uri(ServerUrl, UriKind.Absolute), content);
-            var response = new AuthResponse() { StatusCode = httpResponse.StatusCode };
-            var buffer = await httpResponse.Content.ReadAsBufferAsync();
-            var bytes = buffer.ToArray();
+                var httpResponse = await _httpClient.PostAsync(new Uri(ServerUrl, UriKind.Absolute), content);
+                var response = new AuthResponse() { StatusCode = httpResponse.StatusCode };
+                var buffer = await httpResponse.Content.ReadAsBufferAsync();
+                var bytes = buffer.ToArray();
 
-            response.Deserialize(Encoding.UTF8.GetString(bytes, 0, bytes.Length));
-            RaiseNewResponseEvent(response);
+                response.Deserialize(Encoding.UTF8.GetString(bytes, 0, bytes.Length));
+                RaiseNewResponseEvent(response);
+            }
+            catch
+            {
+                var response = new AuthResponse { StatusCode = HttpStatusCode.InternalServerError };
+
+                RaiseNewResponseEvent(response);
+            }
         }
 
         /// <summary>

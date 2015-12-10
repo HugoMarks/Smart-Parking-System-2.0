@@ -2,6 +2,6 @@
 {
     public static class Constants
     {
-        public const string ServerAddress = "192.168.0.10:5216";
+        public const string ServerAddress = "192.168.73.61:5216";
     }
 }

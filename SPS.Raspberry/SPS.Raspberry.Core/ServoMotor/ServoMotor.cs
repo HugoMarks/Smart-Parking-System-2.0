@@ -29,11 +29,13 @@ namespace SPS.Raspberry.Core.ServoMotor
         
         private GpioPin _pin;
         private Stopwatch _stopwatch;
+        private double _oldAngle;
 
         public ServoMotor(int pin)
         {
             _pin = DefaultGpioController.OpenPin(pin);
             _stopwatch = Stopwatch.StartNew();
+            _oldAngle = 0d;
         }
 
         public void Init()
@@ -46,8 +48,13 @@ namespace SPS.Raspberry.Core.ServoMotor
         {
             return Task.Factory.StartNew(() =>
             {
+                if (_oldAngle == angle)
+                {
+                    return;
+                }
+
                 var value = Map(angle, 0, 180, MinPulseWidth, MaxPulseWidth);
-                var iterations = angle;
+                var iterations = (int)Map(angle, 0, 90, 0, 25);
                 
                 while (iterations > 0)
                 {
@@ -57,6 +64,8 @@ namespace SPS.Raspberry.Core.ServoMotor
                     Wait(DefaultInterval - value);
                     iterations--;
                 }
+
+                _oldAngle = angle;
             });
         }
 

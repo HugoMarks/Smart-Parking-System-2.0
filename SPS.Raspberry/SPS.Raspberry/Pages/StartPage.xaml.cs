@@ -147,7 +147,7 @@ namespace SPS.Raspberry.Pages
 
         private async void OnLoaded(object sender, RoutedEventArgs e)
         {
-            await Logic.StartCameraAsync(new CaptureElement());
+            await Logic.StartCameraAsync(PreviewElement);//(new CaptureElement());
             await Logic.StartMFRC522ComponentAsync();
             Logic.StartUltrasonicDistanceSensor();
             Logic.StartServoMotor();
