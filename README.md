@@ -1,4 +1,4 @@
-# Smart Parking System 2.0 - Final Version
+# Smart Parking System 2.0 - Last Version
 
 Sistema de controle de estacionamento de veículos inteligente, tendo seu diferencial o sistema integrado com todo o controle de hardware.
 
@@ -9,4 +9,4 @@ Autores:
 André Nicoletti,
 Hugo Marques Casarini,
 Yago Elias,
-Thamer El Ayssami,
+Thamer El Ayssami
