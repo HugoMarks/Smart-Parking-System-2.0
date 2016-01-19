@@ -6,7 +6,7 @@ Projeto desenvolvido como parte do projeto único da matéria Projeto Integrado 
 
 Autores:
 
-André Nicoletti
-Hugo Marques Casarini
-Yago Elias
-Thamer El Ayssami
+André Nicoletti,
+Hugo Marques Casarini,
+Yago Elias,
+Thamer El Ayssami,
